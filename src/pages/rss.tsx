@@ -1,5 +1,5 @@
 import React from 'react';
-import RssGenerator from '@/tools/rss/rss';
+import RssGenerator from '@/components/pages/rss/rss';
 
 const RssPage: React.VFC = () => {
   return <RssGenerator />;

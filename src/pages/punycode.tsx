@@ -1,5 +1,5 @@
 import React from 'react';
-import Punycode from '@/tools/punycode/punycode';
+import Punycode from '@/components/pages/punycode/Punycode';
 
 const PunycodePage: React.VFC = () => {
   return <Punycode />;
