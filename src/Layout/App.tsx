@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Content, Header } from 'rsuite';
 import { NavBar } from '@/components/NavBar';
-import 'rsuite/dist/styles/rsuite-default.min.css';
+import styles from '@/styles/Layout/App.module.scss';
 
 export const AppLayout: React.FC = ({ children }) => {
   return (
-    <Container>
+    <Container className={styles.container}>
       <Header>
         <NavBar />
       </Header>

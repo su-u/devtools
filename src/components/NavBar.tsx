@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Icon, Navbar as RNavBar } from 'rsuite';
-import styles from '../styles/Nav.module.scss';
+import styles from '../styles/components/Nav.module.scss';
 
 export const NavBar: React.VFC = () => {
   const [activeKey, setActiveKey] = React.useState('Home');
