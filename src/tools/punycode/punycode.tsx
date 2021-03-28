@@ -2,7 +2,7 @@ import React from 'react';
 import { FlexboxGrid, Input } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 
-const RssGenerator: React.VFC = () => {
+const Punycode: React.VFC = () => {
   return (
     <AppLayout>
       <FlexboxGrid justify="center">
@@ -15,4 +15,4 @@ const RssGenerator: React.VFC = () => {
   );
 };
 
-export default RssGenerator;
+export default Punycode;

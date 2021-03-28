@@ -5,15 +5,17 @@ import styles from '../styles/Nav.module.scss';
 export const NavBar: React.VFC = () => {
   const [activeKey, setActiveKey] = React.useState('Home');
 
-  const onSelect = React.useCallback((activeKey: string) => {
-    setActiveKey(activeKey);
-  }, [activeKey]);
-
+  const onSelect = React.useCallback(
+    (activeKey: string) => {
+      setActiveKey(activeKey);
+    },
+    [activeKey],
+  );
 
   return (
-    <RNavBar  className={styles.navbar}>
+    <RNavBar className={styles.navbar}>
       <Nav activeKey={activeKey} onSelect={onSelect}>
-        <Nav.Item eventKey="home" icon={<Icon icon="home"/>}>
+        <Nav.Item eventKey="home" icon={<Icon icon="home" />}>
           Home
         </Nav.Item>
         <Nav.Item eventKey="news">News</Nav.Item>

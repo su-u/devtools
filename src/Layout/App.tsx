@@ -8,5 +8,5 @@ export const AppLayout: React.FC = ({ children }) => {
       <NavBar />
       {children}
     </div>
-  )
+  );
 };
