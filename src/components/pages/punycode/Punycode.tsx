@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  FlexboxGrid,
-  Input,
-  Panel,
-} from 'rsuite';
+import { Button, FlexboxGrid, Input, Panel } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { useForm, Controller } from 'react-hook-form';
