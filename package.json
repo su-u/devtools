@@ -9,6 +9,7 @@
     "format": "prettier --write **/*.{tsx,ts}"
   },
   "dependencies": {
+    "dayjs": "^1.10.4",
     "next": "10.0.7",
     "punycode": "^2.1.1",
     "react": "17.0.1",

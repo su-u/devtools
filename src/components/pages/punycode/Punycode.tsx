@@ -4,7 +4,7 @@ import { Button, Col, Grid, Icon, Input, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { PageTitle } from '@/components/PageTitle';
-import styles from '@/styles/components/pages/punycode.module.scss';
+import styles from './styles/punycode.module.scss';
 
 const Punycode: React.VFC = () => {
   const { control, watch } = useForm<any>({
