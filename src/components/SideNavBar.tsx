@@ -1,9 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, Icon, Navbar as RNavBar, Dropdown, Sidenav } from 'rsuite';
-import styles from '../styles/components/Nav.module.scss';
-import Punycode from '@/components/pages/punycode/Punycode';
 
 type NavItem = {
   key: string;

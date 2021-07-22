@@ -11,6 +11,7 @@
   "dependencies": {
     "dayjs": "^1.10.4",
     "next": "^11.0.1",
+    "obtain-unicode": "^0.0.5",
     "punycode": "^2.1.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
