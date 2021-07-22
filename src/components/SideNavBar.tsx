@@ -29,6 +29,11 @@ const navList: NavGroup[] = [
         key: 'punycode',
         title: 'Punycode変換',
         path: '/punycode',
+      },
+      {
+        key: 'character_count',
+        title: '文字数カウント',
+        path: '/character_count',
       }
     ]
   }
@@ -60,7 +65,7 @@ export const SideNavBar: React.VFC = () => {
               return (
                 <Dropdown key={group.key} eventKey={group.key} title={group.title} icon={group.icon}>
                   {group.items?.map((item) => (
-                    <Dropdown.Item eventKey={item.key} onSelect={itemOnClick(item.path)}>{item.title}</Dropdown.Item>
+                    <Dropdown.Item key={item.key} eventKey={item.key} onSelect={itemOnClick(item.path)}>{item.title}</Dropdown.Item>
                   ))}
                 </Dropdown>);
             })}

@@ -1,8 +1,8 @@
 import React from 'react';
-import Punycode from '@/components/pages/punycode/Punycode';
+import { CharacterCount } from '@/components/pages/character_count/CharacterCount';
 
-const PunycodePage: React.VFC = () => {
-  return <Punycode />;
+const CharacterCountPage: React.VFC = () => {
+  return <CharacterCount />;
 };
 
-export default PunycodePage;
+export default CharacterCountPage;

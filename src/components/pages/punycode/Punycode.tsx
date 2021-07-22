@@ -4,15 +4,15 @@ import { Col, Grid, Icon, Input, InputGroup, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { PageTitle } from '@/components/PageTitle';
-import styles from './styles/punycode.module.scss';
+import styles from './punycode.module.scss';
 
 type PunycodeForm = {
   input: string;
 }
 
-const Punycode: React.VFC = () => {
+export const Punycode: React.VFC = () => {
   const { control, watch } = useForm<PunycodeForm>({
-    mode: 'onSubmit',
+    mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: undefined,
     context: undefined,
@@ -77,4 +77,3 @@ const Punycode: React.VFC = () => {
   );
 };
 
-export default Punycode;
