@@ -1,13 +1,17 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, Col, Grid, Icon, Input, InputGroup, Panel, Row } from 'rsuite';
+import { Col, Grid, Icon, Input, InputGroup, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { PageTitle } from '@/components/PageTitle';
 import styles from './styles/punycode.module.scss';
 
+type PunycodeForm = {
+  input: string;
+}
+
 const Punycode: React.VFC = () => {
-  const { control, watch } = useForm<any>({
+  const { control, watch } = useForm<PunycodeForm>({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
     resolver: undefined,
