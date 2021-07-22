@@ -17,6 +17,9 @@ const Punycode: React.VFC = () => {
     shouldUnregister: true,
   });
 
+  const converted_ascii = punycode.toASCII(watch('input') ?? '');
+  const converted_punycode = punycode.encode(watch('input') ?? '');
+
   return (
     <AppLayout>
       <Grid fluid>
@@ -42,9 +45,9 @@ const Punycode: React.VFC = () => {
                   componentClass="textarea"
                   rows={4}
                   readOnly
-                  value={punycode.toASCII(watch('input') ?? '')}
+                  value={converted_ascii}
                 />
-                <InputGroup.Button>
+                <InputGroup.Button onClick={() => converted_ascii && navigator.clipboard.writeText(converted_ascii)}>
                   <Icon icon="copy-o"/>
                 </InputGroup.Button>
               </InputGroup>
@@ -56,9 +59,9 @@ const Punycode: React.VFC = () => {
                   componentClass="textarea"
                   rows={4}
                   readOnly
-                  value={punycode.encode(watch('input') ?? '')}
+                  value={converted_punycode}
                 />
-                <InputGroup.Button>
+                <InputGroup.Button onClick={() => converted_punycode && navigator.clipboard.writeText(converted_punycode)}>
                   <Icon icon="copy-o"/>
                 </InputGroup.Button>
               </InputGroup>
