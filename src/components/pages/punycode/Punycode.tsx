@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, Col, Grid, Icon, Input, Panel, Row } from 'rsuite';
+import { Button, Col, Grid, Icon, Input, InputGroup, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { PageTitle } from '@/components/PageTitle';
@@ -19,44 +19,49 @@ const Punycode: React.VFC = () => {
 
   return (
     <AppLayout>
-      <Grid>
+      <Grid fluid>
         <Row>
-          <Col sm={24}>
-            <PageTitle title="punycode変換（日本語ドメイン変換）" />
+          <Col xs={24}>
+            <PageTitle title="punycode変換（日本語ドメイン変換）"/>
           </Col>
         </Row>
-        <Row className={styles.input}>
-          <Col sm={24}>
+        <Row gutter={10}>
+          <Col xs={12}>
             <Controller
-              as={<Input componentClass="textarea" rows={4} />}
+              as={<Input className={styles.textarea} componentClass="textarea" rows={19}/>}
               name="input"
               control={control}
               defaultValue=""
             />
           </Col>
-          <Col className={styles.icon} sm={24}>
-            <Icon icon="long-arrow-down" size="4x" />
-          </Col>
-        </Row>
-        <Row>
-          <Col className={styles.converted} sm={24}>
-            <Panel className={styles.panel} bordered header="ドメイン変換">
-              <Input
-                componentClass="textarea"
-                rows={3}
-                readOnly
-                value={punycode.toASCII(watch('input') ?? '')}
-              />
-              <Button appearance="primary">コピー</Button>
+          <Col xs={12} className={styles.converted}>
+            <Panel bordered header="ドメイン変換">
+              <InputGroup>
+                <Input
+                  className={styles.textarea}
+                  componentClass="textarea"
+                  rows={4}
+                  readOnly
+                  value={punycode.toASCII(watch('input') ?? '')}
+                />
+                <InputGroup.Button>
+                  <Icon icon="copy-o"/>
+                </InputGroup.Button>
+              </InputGroup>
             </Panel>
-            <Panel className={styles.panel} bordered header="punycode変換">
-              <Input
-                componentClass="textarea"
-                rows={3}
-                readOnly
-                value={punycode.encode(watch('input') ?? '')}
-              />
-              <Button appearance="primary">コピー</Button>
+            <Panel bordered header="punycode変換">
+              <InputGroup>
+                <Input
+                  className={styles.textarea}
+                  componentClass="textarea"
+                  rows={4}
+                  readOnly
+                  value={punycode.encode(watch('input') ?? '')}
+                />
+                <InputGroup.Button>
+                  <Icon icon="copy-o"/>
+                </InputGroup.Button>
+              </InputGroup>
             </Panel>
           </Col>
         </Row>
