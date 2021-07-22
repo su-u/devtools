@@ -7,9 +7,9 @@ import { SideNavBar } from '@/components/SideNavBar';
 export const AppLayout: React.FC = ({ children }) => {
   return (
     <Container className={styles.container}>
-      <Header>
-        <NavBar/>
-      </Header>
+      {/*<Header>*/}
+      {/*  <NavBar/>*/}
+      {/*</Header>*/}
       <Container>
         <Sidebar className={styles.sidebar}><SideNavBar/></Sidebar>
         <Content>{children}</Content>

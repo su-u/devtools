@@ -27,7 +27,7 @@ const navList: NavGroup[] = [
     items: [
       {
         key: 'punycode',
-        title: 'Punycode',
+        title: 'Punycode変換',
         path: '/punycode',
       }
     ]
