@@ -1,8 +1,8 @@
 import React from 'react';
-import { Entai } from '@/components/pages/entai/Entai';
+import Punycode from '@/components/pages/punycode/Punycode';
 
 const PunycodePage: React.VFC = () => {
-  return <Entai />;
+  return <Punycode />;
 };
 
 export default PunycodePage;
