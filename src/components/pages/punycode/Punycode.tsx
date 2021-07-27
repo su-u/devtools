@@ -5,12 +5,14 @@ import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { PageTitle } from '@/components/PageTitle';
 import styles from './punycode.module.scss';
+import { copy } from '@/lib/copy';
 
 type PunycodeForm = {
   input: string;
 }
 
 export const Punycode: React.VFC = () => {
+  const title = 'punycode変換くん（日本語ドメイン変換）';
   const { control, watch } = useForm<PunycodeForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -25,21 +27,23 @@ export const Punycode: React.VFC = () => {
   const converted_punycode = punycode.encode(watch('input') ?? '');
 
   return (
-    <AppLayout>
+    <AppLayout title={title}>
       <Grid fluid>
         <Row>
           <Col xs={24}>
-            <PageTitle title="punycode変換（日本語ドメイン変換）"/>
+            <PageTitle title={title}/>
           </Col>
         </Row>
         <Row gutter={10}>
           <Col xs={12}>
-            <Controller
-              as={<Input className={styles.textarea} componentClass="textarea" rows={19}/>}
-              name="input"
-              control={control}
-              defaultValue=""
-            />
+            <Panel bordered header="変換する文字列">
+              <Controller
+                as={<Input className={styles.textarea} componentClass="textarea" rows={14}/>}
+                name="input"
+                control={control}
+                defaultValue=""
+              />
+            </Panel>
           </Col>
           <Col xs={12} className={styles.converted}>
             <Panel bordered header="ドメイン変換">
@@ -51,7 +55,7 @@ export const Punycode: React.VFC = () => {
                   readOnly
                   value={converted_ascii}
                 />
-                <InputGroup.Button onClick={() => converted_ascii && navigator.clipboard.writeText(converted_ascii)}>
+                <InputGroup.Button onClick={copy(converted_ascii)}>
                   <Icon icon="copy-o"/>
                 </InputGroup.Button>
               </InputGroup>
@@ -65,7 +69,7 @@ export const Punycode: React.VFC = () => {
                   readOnly
                   value={converted_punycode}
                 />
-                <InputGroup.Button onClick={() => converted_punycode && navigator.clipboard.writeText(converted_punycode)}>
+                <InputGroup.Button onClick={copy(converted_punycode)}>
                   <Icon icon="copy-o"/>
                 </InputGroup.Button>
               </InputGroup>

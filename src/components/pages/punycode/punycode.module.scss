@@ -6,10 +6,6 @@
   > div:not(:first-child) {
     margin-top: 10px;
   }
-
-  & .textarea {
-    cursor: not-allowed !important;
-  }
 }
 
 .textarea {

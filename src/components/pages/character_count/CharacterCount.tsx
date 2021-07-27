@@ -6,9 +6,13 @@ import { PageTitle } from '@/components/PageTitle';
 import styles from './characterCount.module.scss';
 import {
   characterCountWithoutSpace,
-  characterCountWithSpace, linesCount,
+  characterCountWithSpace,
+  fullWidthCharacterCount,
+  halfWidthCharacterCount,
+  linesCount,
   spaceCount
 } from '@/components/pages/character_count/CharacterCountLib';
+import { copy } from '@/lib/copy';
 
 type characterCountForm = {
   input: string;
@@ -25,29 +29,34 @@ export const CharacterCount: React.VFC = () => {
     shouldUnregister: true,
   });
 
+  const title = '文字数カウントくん';
   const input = watch('input') ?? '';
 
   const characterCountValue = characterCountWithSpace(input).toString();
   const characterCountWithoutSpaceValue = characterCountWithoutSpace(input).toString();
   const spaceCharacterCountValue = spaceCount(input).toString();
+  const fullWidthCharacterCountValue = fullWidthCharacterCount(input).toString();
+  const halfWidthCharacterCountValue = halfWidthCharacterCount(input).toString();
   const linesCountValue = linesCount(input).toString();
 
   return (
-    <AppLayout>
+    <AppLayout title={title}>
       <Grid fluid>
         <Row>
           <Col xs={24}>
-            <PageTitle title="文字数カウント"/>
+            <PageTitle title={title}/>
           </Col>
         </Row>
         <Row gutter={10}>
           <Col xs={12}>
-            <Controller
-              as={<Input className={styles.textarea} componentClass="textarea" rows={19}/>}
-              name="input"
-              control={control}
-              defaultValue=""
-            />
+            <Panel bordered header="カウントする文字列">
+              <Controller
+                as={<Input className={styles.textarea} componentClass="textarea" rows={15}/>}
+                name="input"
+                control={control}
+                defaultValue=""
+              />
+            </Panel>
           </Col>
           <Col xs={12}>
             <Panel bordered header="文字数">
@@ -55,6 +64,8 @@ export const CharacterCount: React.VFC = () => {
                 <InputLine label="文字数（スペース込み）" value={characterCountValue}/>
                 <InputLine label="文字数（スペース除外）" value={characterCountWithoutSpaceValue}/>
                 <InputLine label="スペースの数" value={spaceCharacterCountValue}/>
+                <InputLine label="全角文字数" value={fullWidthCharacterCountValue}/>
+                <InputLine label="半角文字数" value={halfWidthCharacterCountValue}/>
                 <InputLine label="行数" value={linesCountValue}/>
               </Form>
             </Panel>
@@ -78,10 +89,10 @@ const InputLine: React.VFC<{
           readOnly
           value={value}
         />
-        <InputGroup.Button onClick={() => value && navigator.clipboard.writeText(value)}>
+        <InputGroup.Button onClick={copy(value)}>
           <Icon icon="copy-o"/>
         </InputGroup.Button>
       </InputGroup>
     </FormGroup>
-  )
-}
+  );
+};

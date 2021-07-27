@@ -1,0 +1,1 @@
+export const copy = (text?: string) => () => text && navigator.clipboard.writeText(text);

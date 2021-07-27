@@ -18,7 +18,7 @@ type NavGroup = {
 
 const navList: NavGroup[] = [
   {
-    title: 'Text Tools',
+    title: 'テキストツール',
     icon: <Icon icon="magic"/>,
     key: '1',
     items: [
@@ -31,6 +31,11 @@ const navList: NavGroup[] = [
         key: 'character_count',
         title: '文字数カウント',
         path: '/character_count',
+      },
+      {
+        key: 'character_replace',
+        title: '文字列置換',
+        path: '/character_replace',
       }
     ]
   }

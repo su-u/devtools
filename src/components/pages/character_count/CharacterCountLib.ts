@@ -18,3 +18,13 @@ export const spaceCount = (text: string) => {
 export const linesCount = (text: string) => {
   return text.split(/\r\n|\n|\r/gm).length;
 }
+
+export const fullWidthCharacterCount = (text: string) => {
+  const fullWidthCharacters = Array.from(text.matchAll(/[^\x00-\x7E]+/gm)).join('');
+  return obtainUnicode(fullWidthCharacters).length
+}
+
+export const halfWidthCharacterCount = (text: string) => {
+  const halfWidthCharacters = Array.from(text.matchAll(/[ -~]/gm)).join('');
+  return obtainUnicode(halfWidthCharacters).length
+}
