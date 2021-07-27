@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Col, Grid, Icon, Input, InputGroup, Panel, Row } from 'rsuite';
-import { AppLayout } from '@/Layout/App';
+import { Col, Grid, Icon, Input, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
 import punycode from 'punycode/';
+import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
-import styles from './punycode.module.scss';
 import commonStyles from '@/styles/components/Common.module.scss';
 import { copy } from '@/lib/copy';
 
@@ -46,35 +45,37 @@ export const Punycode: React.VFC = () => {
               />
             </Panel>
           </Col>
-          <Col xs={12} className={styles.converted}>
-            <Panel bordered header="ドメイン変換">
-              <InputGroup>
-                <Input
-                  className={commonStyles.no_resize}
-                  componentClass="textarea"
-                  rows={4}
-                  readOnly
-                  value={converted_ascii}
-                />
-                <InputGroup.Button onClick={copy(converted_ascii)}>
-                  <Icon icon="copy-o"/>
-                </InputGroup.Button>
-              </InputGroup>
-            </Panel>
-            <Panel bordered header="punycode変換">
-              <InputGroup>
-                <Input
-                  className={commonStyles.no_resize}
-                  componentClass="textarea"
-                  rows={4}
-                  readOnly
-                  value={converted_punycode}
-                />
-                <InputGroup.Button onClick={copy(converted_punycode)}>
-                  <Icon icon="copy-o"/>
-                </InputGroup.Button>
-              </InputGroup>
-            </Panel>
+          <Col xs={12}>
+            <PanelGroup bordered>
+              <Panel header="ドメイン変換">
+                <InputGroup>
+                  <Input
+                    className={commonStyles.no_resize}
+                    componentClass="textarea"
+                    rows={4}
+                    readOnly
+                    value={converted_ascii}
+                  />
+                  <InputGroup.Button onClick={copy(converted_ascii)}>
+                    <Icon icon="copy-o"/>
+                  </InputGroup.Button>
+                </InputGroup>
+              </Panel>
+              <Panel header="punycode変換">
+                <InputGroup>
+                  <Input
+                    className={commonStyles.no_resize}
+                    componentClass="textarea"
+                    rows={4}
+                    readOnly
+                    value={converted_punycode}
+                  />
+                  <InputGroup.Button onClick={copy(converted_punycode)}>
+                    <Icon icon="copy-o"/>
+                  </InputGroup.Button>
+                </InputGroup>
+              </Panel>
+            </PanelGroup>
           </Col>
         </Row>
       </Grid>
