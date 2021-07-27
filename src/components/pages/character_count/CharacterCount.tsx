@@ -13,6 +13,7 @@ import {
   spaceCount
 } from '@/components/pages/character_count/CharacterCountLib';
 import { copy } from '@/lib/copy';
+import commonStyles from '@/styles/components/Common.module.scss';
 
 type characterCountForm = {
   input: string;
@@ -51,7 +52,7 @@ export const CharacterCount: React.VFC = () => {
           <Col xs={12}>
             <Panel bordered header="カウントする文字列">
               <Controller
-                as={<Input className={styles.textarea} componentClass="textarea" rows={15}/>}
+                as={<Input className={commonStyles.no_resize} componentClass="textarea" rows={15}/>}
                 name="input"
                 control={control}
                 defaultValue=""
@@ -85,7 +86,7 @@ const InputLine: React.VFC<{
       <InputGroup>
         <ControlLabel className={styles.label}>{label}</ControlLabel>
         <Input
-          className={styles.textarea}
+          className={commonStyles.no_resize}
           readOnly
           value={value}
         />

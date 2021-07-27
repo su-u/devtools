@@ -5,6 +5,7 @@ import { AppLayout } from '@/Layout/App';
 import punycode from 'punycode/';
 import { PageTitle } from '@/components/PageTitle';
 import styles from './punycode.module.scss';
+import commonStyles from '@/styles/components/Common.module.scss';
 import { copy } from '@/lib/copy';
 
 type PunycodeForm = {
@@ -38,7 +39,7 @@ export const Punycode: React.VFC = () => {
           <Col xs={12}>
             <Panel bordered header="変換する文字列">
               <Controller
-                as={<Input className={styles.textarea} componentClass="textarea" rows={14}/>}
+                as={<Input className={commonStyles.no_resize} componentClass="textarea" rows={14}/>}
                 name="input"
                 control={control}
                 defaultValue=""
@@ -49,7 +50,7 @@ export const Punycode: React.VFC = () => {
             <Panel bordered header="ドメイン変換">
               <InputGroup>
                 <Input
-                  className={styles.textarea}
+                  className={commonStyles.no_resize}
                   componentClass="textarea"
                   rows={4}
                   readOnly
@@ -63,7 +64,7 @@ export const Punycode: React.VFC = () => {
             <Panel bordered header="punycode変換">
               <InputGroup>
                 <Input
-                  className={styles.textarea}
+                  className={commonStyles.no_resize}
                   componentClass="textarea"
                   rows={4}
                   readOnly
