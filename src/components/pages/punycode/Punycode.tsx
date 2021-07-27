@@ -35,7 +35,7 @@ export const Punycode: React.VFC = () => {
           </Col>
         </Row>
         <Row gutter={10}>
-          <Col xs={12}>
+          <Col xs={24} md={12}>
             <Panel bordered header="変換する文字列">
               <Controller
                 as={<Input className={commonStyles.no_resize} componentClass="textarea" rows={14}/>}
@@ -45,7 +45,7 @@ export const Punycode: React.VFC = () => {
               />
             </Panel>
           </Col>
-          <Col xs={12}>
+          <Col xs={24} md={12}>
             <PanelGroup bordered>
               <Panel header="ドメイン変換">
                 <InputGroup>

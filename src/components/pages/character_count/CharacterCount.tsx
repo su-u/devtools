@@ -49,7 +49,7 @@ export const CharacterCount: React.VFC = () => {
           </Col>
         </Row>
         <Row gutter={10}>
-          <Col xs={12}>
+          <Col xs={24} md={12}>
             <Panel bordered header="カウントする文字列">
               <Controller
                 as={<Input className={commonStyles.no_resize} componentClass="textarea" rows={15}/>}
@@ -59,7 +59,7 @@ export const CharacterCount: React.VFC = () => {
               />
             </Panel>
           </Col>
-          <Col xs={12}>
+          <Col xs={24} md={12}>
             <Panel bordered header="文字数">
               <Form className={styles.converted_form} layout="horizontal">
                 <InputLine label="文字数（スペース込み）" value={characterCountValue}/>

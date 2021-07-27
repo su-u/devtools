@@ -9,10 +9,17 @@
 }
 
 .label {
-  width: 20px !important;
+  width: 15px !important;
 }
 
 .input_replace_header {
   display: flex;
   justify-content: space-between;
+}
+
+.center_text {
+  margin-bottom: auto;
+  margin-top: 8px;
+  text-align: center;
+  vertical-align: top;
 }

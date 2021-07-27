@@ -35,7 +35,7 @@ export const CharacterReplace: React.VFC = () => {
           </Col>
         </Row>
         <Row gutter={10}>
-          <Col xs={12}>
+          <Col xs={24} md={12}>
             <PanelGroup bordered>
               <Panel bordered header="入力文字">
                 <Controller
@@ -70,7 +70,7 @@ export const CharacterReplace: React.VFC = () => {
               </Panel>
             </PanelGroup>
           </Col>
-          <Col xs={12}>
+          <Col xs={24} md={12}>
             <Panel bordered header="置換後">
               <Input componentClass="textarea" rows={20} readOnly value={output}/>
             </Panel>
@@ -86,25 +86,31 @@ const ReplaceLine: React.VFC<{
   control: any;
 }> = ({ label, control }) => {
   return (
-    <FormGroup className={styles.input_group}>
-      <ControlLabel className={styles.label}>{label}</ControlLabel>
-      <FormGroup>
-        <Controller
-          as={<Input/>}
-          name={`target_${label}`}
-          control={control}
-          defaultValue=""
-        />
-      </FormGroup>
-      {' '}→{' '}
-      <FormGroup>
-        <Controller
-          as={<Input/>}
-          name={`replace_${label}`}
-          control={control}
-          defaultValue=""
-        />
-      </FormGroup>
-    </FormGroup>
+    <Grid fluid className={styles.input_group}>
+      <Row>
+        <Col xs={2} md={1}>
+          <ControlLabel className={styles.label}>{label}</ControlLabel>
+        </Col>
+        <Col xs={10}>
+          <Controller
+            as={<Input/>}
+            name={`target_${label}`}
+            control={control}
+            defaultValue=""
+          />
+        </Col>
+        <Col xs={2} md={1}>
+          <div className={styles.center_text}>→</div>
+        </Col>
+        <Col xs={10}>
+          <Controller
+            as={<Input/>}
+            name={`replace_${label}`}
+            control={control}
+            defaultValue=""
+          />
+        </Col>
+      </Row>
+    </Grid>
   );
 };
