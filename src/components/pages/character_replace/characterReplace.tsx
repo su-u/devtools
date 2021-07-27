@@ -1,38 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Col, ControlLabel, Form, FormGroup, Grid, Input, Panel, PanelGroup, Row } from 'rsuite';
+import {
+  ButtonToolbar,
+  Col,
+  ControlLabel,
+  Form,
+  FormGroup,
+  Grid, Icon,
+  IconButton,
+  Input,
+  Panel,
+  PanelGroup,
+  Row
+} from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
+import styles from './characterReplace.module.scss';
+import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 
-type characterCountForm = {
-  input: string;
-  [key: string]: string;
-}
 
 export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換くん';
-  const { control, watch } = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    resolver: undefined,
-    context: undefined,
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const {
+    control, output, countUp, countDown, countDownDisabled, countUpDisabled, numberArray
+  } = useCharacterReplace();
 
-  const input_count = 2;
-  // @ts-ignore
-  const array = [...Array(input_count).keys()].map(i => ++i);
-
-  const input = watch('input') ?? '';
-  const output = array.reduce((a, b) => {
-    const target = watch(`target_${b}`) ?? '';
-    const replace = watch(`replace_${b}`) ?? '';
-    if (target === '') return a;
-
-    return a.replace(new RegExp(target, 'gm'), replace);
-  }, input);
 
   return (
     <AppLayout title={title}>
@@ -53,9 +45,29 @@ export const CharacterReplace: React.VFC = () => {
                   defaultValue=""
                 />
               </Panel>
-              <Panel bordered header="置換する文字">
-                <Form layout="inline" autoComplete="off">
-                  {array.map(i => (<ReplaceLine key={i} label={`${i}`} control={control}/>))}
+              <Panel bordered header={
+                <Grid fluid>
+                  <Row>
+                    <Col xs={4}>
+                      置換する文字
+                    </Col>
+                    <Col xs={8} xsPush={14}>
+                      <ButtonToolbar>
+                        <IconButton disabled={countDownDisabled} icon={<Icon icon="minus"/>} placement="right"
+                                    onClick={countDown}>
+                          削除
+                        </IconButton>
+                        <IconButton disabled={countUpDisabled} icon={<Icon icon="plus"/>} placement="right"
+                                    onClick={countUp}>
+                          追加
+                        </IconButton>
+                      </ButtonToolbar>
+                    </Col>
+                  </Row>
+                </Grid>
+              }>
+                <Form className={styles.input_form} layout="inline" autoComplete="off">
+                  {numberArray.map(i => (<ReplaceLine key={i} label={`${i}`} control={control}/>))}
                 </Form>
               </Panel>
             </PanelGroup>
@@ -77,19 +89,19 @@ const ReplaceLine: React.VFC<{
 }> = ({ label, control }) => {
   return (
     <FormGroup>
-      <ControlLabel>{label}</ControlLabel>
+      <ControlLabel className={styles.label}>{label}</ControlLabel>
       <FormGroup>
         <Controller
-          as={<Input />}
+          as={<Input/>}
           name={`target_${label}`}
           control={control}
           defaultValue=""
         />
       </FormGroup>
-      　→　
+      {' '}→{' '}
       <FormGroup>
         <Controller
-          as={<Input />}
+          as={<Input/>}
           name={`replace_${label}`}
           control={control}
           defaultValue=""

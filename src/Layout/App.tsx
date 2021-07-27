@@ -22,7 +22,7 @@ export const AppLayout: React.FC<Props> = ({ title = '', children }) => {
         {/*</Header>*/}
         <Container>
           <Sidebar className={styles.sidebar}><SideNavBar/></Sidebar>
-          <Content>{children}</Content>
+          <Content className={styles.main_content}>{children}</Content>
         </Container>
       </Container>
     </>
