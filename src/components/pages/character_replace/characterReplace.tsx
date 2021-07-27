@@ -46,25 +46,23 @@ export const CharacterReplace: React.VFC = () => {
                 />
               </Panel>
               <Panel bordered header={
-                <Grid fluid>
-                  <Row>
-                    <Col xs={4}>
-                      置換する文字
-                    </Col>
-                    <Col xs={8} xsPush={14}>
-                      <ButtonToolbar>
-                        <IconButton disabled={countDownDisabled} icon={<Icon icon="minus"/>} placement="right"
-                                    onClick={countDown}>
-                          削除
-                        </IconButton>
-                        <IconButton disabled={countUpDisabled} icon={<Icon icon="plus"/>} placement="right"
-                                    onClick={countUp}>
-                          追加
-                        </IconButton>
-                      </ButtonToolbar>
-                    </Col>
-                  </Row>
-                </Grid>
+                <div className={styles.input_replace_header}>
+                  <div>
+                    置換する文字
+                  </div>
+                  <div>
+                    <ButtonToolbar>
+                      <IconButton disabled={countDownDisabled} icon={<Icon icon="minus"/>} placement="right"
+                                  onClick={countDown}>
+                        削除
+                      </IconButton>
+                      <IconButton disabled={countUpDisabled} icon={<Icon icon="plus"/>} placement="right"
+                                  onClick={countUp}>
+                        追加
+                      </IconButton>
+                    </ButtonToolbar>
+                  </div>
+                </div>
               }>
                 <Form className={styles.input_form} layout="inline" autoComplete="off">
                   {numberArray.map(i => (<ReplaceLine key={i} label={`${i}`} control={control}/>))}
@@ -88,7 +86,7 @@ const ReplaceLine: React.VFC<{
   control: any;
 }> = ({ label, control }) => {
   return (
-    <FormGroup>
+    <FormGroup className={styles.input_group}>
       <ControlLabel className={styles.label}>{label}</ControlLabel>
       <FormGroup>
         <Controller

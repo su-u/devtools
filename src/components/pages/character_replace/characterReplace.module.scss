@@ -4,6 +4,15 @@
   }
 }
 
+.input_group {
+  display: block !important;
+}
+
 .label {
   width: 20px !important;
+}
+
+.input_replace_header {
+  display: flex;
+  justify-content: space-between;
 }
