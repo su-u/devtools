@@ -2,29 +2,16 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   Col,
-  ControlLabel,
-  Form,
-  FormGroup,
   Grid,
   Icon,
   Input,
   InputGroup,
-  InputNumber,
   InputPicker,
   Panel, PanelGroup,
   Row
 } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
-import styles from './numberComma.module.scss';
-import {
-  characterCountWithoutSpace,
-  characterCountWithSpace,
-  fullWidthCharacterCount,
-  halfWidthCharacterCount,
-  linesCount,
-  spaceCount
-} from '@/components/pages/character_count/CharacterCountLib';
 import { copy } from '@/lib/copy';
 import commonStyles from '@/styles/components/Common.module.scss';
 import { comma } from '@/components/pages/number_comma/numberCommaLib';
@@ -38,14 +25,12 @@ export const NumberComma: React.VFC = () => {
   const { control, watch } = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
-    resolver: undefined,
-    context: undefined,
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
   });
 
-  const title = '数値区切りくん';
+  const title = '数値区切り';
   const input = watch('input') ?? '';
   const separator = watch('separator') ?? ',';
   const output = comma(input, separator);
@@ -72,7 +57,7 @@ export const NumberComma: React.VFC = () => {
         <Row gutter={10}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>
-              <Panel header="カウントする文字列">
+              <Panel header="区切りたい数値">
                 <Controller
                   as={<Input className={commonStyles.no_resize}/>}
                   name="input"
@@ -91,7 +76,7 @@ export const NumberComma: React.VFC = () => {
             </PanelGroup>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header="文字数">
+            <Panel bordered header="区切った数値">
               <InputGroup>
                 <Input
                   className={commonStyles.no_resize}

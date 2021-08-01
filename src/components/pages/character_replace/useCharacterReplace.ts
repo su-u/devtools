@@ -10,8 +10,6 @@ export const useCharacterReplace = () => {
   const { control, watch } = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
-    resolver: undefined,
-    context: undefined,
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React from 'react';
+import { Controller } from 'react-hook-form';
 import {
   ButtonToolbar,
   Col,
   ControlLabel,
   Form,
-  FormGroup,
   Grid, Icon,
   IconButton,
   Input,
@@ -20,7 +19,7 @@ import { useCharacterReplace } from '@/components/pages/character_replace/useCha
 
 
 export const CharacterReplace: React.VFC = () => {
-  const title = '文字列置換くん';
+  const title = '文字列置換';
   const {
     control, output, countUp, countDown, countDownDisabled, countUpDisabled, numberArray
   } = useCharacterReplace();

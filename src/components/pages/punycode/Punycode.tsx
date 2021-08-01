@@ -12,12 +12,10 @@ type PunycodeForm = {
 }
 
 export const Punycode: React.VFC = () => {
-  const title = 'punycode変換くん（日本語ドメイン変換）';
+  const title = 'punycode変換（日本語ドメイン変換）';
   const { control, watch } = useForm<PunycodeForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
-    resolver: undefined,
-    context: undefined,
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,

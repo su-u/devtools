@@ -23,14 +23,12 @@ export const CharacterCount: React.VFC = () => {
   const { control, watch } = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
-    resolver: undefined,
-    context: undefined,
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
   });
 
-  const title = '文字数カウントくん';
+  const title = '文字数カウント';
   const input = watch('input') ?? '';
 
   const characterCountValue = characterCountWithSpace(input).toString();
