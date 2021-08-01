@@ -1,4 +1,4 @@
-import 'rsuite/dist/styles/rsuite-default.min.css';
+import 'rsuite/dist/styles/rsuite-dark.min.css';
 import '@/styles/rs-custom.globals.scss';
 import '@/styles/globals.scss';
 

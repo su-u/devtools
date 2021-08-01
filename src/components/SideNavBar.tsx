@@ -38,6 +38,18 @@ const navList: NavGroup[] = [
         path: '/character_replace',
       }
     ]
+  },
+  {
+    title: '数値ツール',
+    icon: <Icon icon="magic"/>,
+    key: '2',
+    items: [
+      {
+        key: 'number_comma',
+        title: '数字カンマ区切り',
+        path: '/number_comma',
+      },
+    ]
   }
 ];
 
@@ -60,7 +72,7 @@ export const SideNavBar: React.VFC = () => {
 
   return (
     <div>
-      <Sidenav activeKey={activeKey} onSelect={onSelect} defaultOpenKeys={['1']}>
+      <Sidenav activeKey={activeKey} onSelect={onSelect} defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
           <Nav>
             {navList.map((group) => {

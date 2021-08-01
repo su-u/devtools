@@ -1,8 +1,27 @@
-.rs-panel-heading {
-  color: white;
+:root {
+  --gray-color: #a4a9b3;
+}
+
+.rs-panel-group.rs-panel-group-bordered {
+  border-color: var(--gray-color);
+}
+
+.rs-panel.rs-panel-bordered {
+  border-color: var(--gray-color);
+}
+
+.rs-panel-group > .rs-panel + .rs-panel::before {
+  border-color: var(--gray-color);
+}
+
+.rs-input-group:not(.rs-input-group-inside) {
+  border-color: var(--gray-color);
 }
 
 .rs-input {
-  background-color: #40444b;
-  color: white;
+  border-color: var(--gray-color);
+}
+
+.rs-picker-input {
+  border-color: var(--gray-color);
 }
