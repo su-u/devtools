@@ -36,6 +36,11 @@ const navList: NavGroup[] = [
         key: 'character_replace',
         title: '文字列置換',
         path: '/character_replace',
+      },
+      {
+        key: 'base64',
+        title: 'Base64エンコード',
+        path: '/base64',
       }
     ]
   },
