@@ -9,7 +9,7 @@ import { copy } from '@/lib/copy';
 
 type PunycodeForm = {
   input: string;
-}
+};
 
 export const Punycode: React.VFC = () => {
   const title = 'punycode変換（日本語ドメイン変換）';
@@ -29,14 +29,21 @@ export const Punycode: React.VFC = () => {
       <Grid fluid>
         <Row>
           <Col xs={24}>
-            <PageTitle title={title}/>
+            <PageTitle title={title} />
           </Col>
         </Row>
         <Row gutter={10}>
           <Col xs={24} md={12}>
             <Panel bordered header="変換する文字列">
               <Controller
-                as={<Input className={commonStyles.no_resize} componentClass="textarea" rows={14}/>}
+                render={({ field }) => (
+                  <Input
+                    className={commonStyles.no_resize}
+                    componentClass="textarea"
+                    rows={14}
+                    {...field}
+                  />
+                )}
                 name="input"
                 control={control}
                 defaultValue=""
@@ -55,7 +62,7 @@ export const Punycode: React.VFC = () => {
                     value={converted_ascii}
                   />
                   <InputGroup.Button onClick={copy(converted_ascii)}>
-                    <Icon icon="copy-o"/>
+                    <Icon icon="copy-o" />
                   </InputGroup.Button>
                 </InputGroup>
               </Panel>
@@ -69,7 +76,7 @@ export const Punycode: React.VFC = () => {
                     value={converted_punycode}
                   />
                   <InputGroup.Button onClick={copy(converted_punycode)}>
-                    <Icon icon="copy-o"/>
+                    <Icon icon="copy-o" />
                   </InputGroup.Button>
                 </InputGroup>
               </Panel>
@@ -80,4 +87,3 @@ export const Punycode: React.VFC = () => {
     </AppLayout>
   );
 };
-

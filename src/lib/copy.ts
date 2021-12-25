@@ -9,4 +9,4 @@ export const copy = (text?: string) => async () => {
   } catch (e) {
     Alert.error('コピー出来ませんでした。');
   }
-}
+};

@@ -7,7 +7,7 @@ import { SideNavBar } from '@/components/SideNavBar';
 
 type Props = {
   title?: string;
-}
+};
 
 export const AppLayout: React.FC<Props> = ({ title = '', children }) => {
   return (
@@ -21,7 +21,9 @@ export const AppLayout: React.FC<Props> = ({ title = '', children }) => {
         {/*  <NavBar/>*/}
         {/*</Header>*/}
         <Container>
-          <Sidebar className={styles.sidebar}><SideNavBar/></Sidebar>
+          <Sidebar className={styles.sidebar}>
+            <SideNavBar />
+          </Sidebar>
           <Content className={styles.main_content}>{children}</Content>
         </Container>
       </Container>

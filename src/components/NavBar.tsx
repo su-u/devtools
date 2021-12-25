@@ -14,16 +14,16 @@ const NavList = [
   },
   {
     key: 'solutions',
-    title: 'Solutions'
+    title: 'Solutions',
   },
   {
     key: 'products',
-    title: 'Products'
+    title: 'Products',
   },
   {
     key: 'about',
     title: 'About',
-  }
+  },
 ] as const;
 
 type NavKeys = typeof NavList[number]['key'];

@@ -7,7 +7,7 @@ type NavItem = {
   title: string;
   path: string;
   icon?: string;
-}
+};
 
 type NavGroup = {
   title: string;
@@ -19,7 +19,7 @@ type NavGroup = {
 const navList: NavGroup[] = [
   {
     title: 'テキストツール',
-    icon: <Icon icon="magic"/>,
+    icon: <Icon icon="magic" />,
     key: '1',
     items: [
       {
@@ -41,12 +41,12 @@ const navList: NavGroup[] = [
         key: 'base64',
         title: 'Base64エンコード',
         path: '/base64',
-      }
-    ]
+      },
+    ],
   },
   {
     title: '数値ツール',
-    icon: <Icon icon="magic"/>,
+    icon: <Icon icon="magic" />,
     key: '2',
     items: [
       {
@@ -54,8 +54,8 @@ const navList: NavGroup[] = [
         title: '数字カンマ区切り',
         path: '/number_comma',
       },
-    ]
-  }
+    ],
+  },
 ];
 
 type NavKeys = typeof navList[number]['key'];
@@ -82,11 +82,23 @@ export const SideNavBar: React.VFC = () => {
           <Nav>
             {navList.map((group) => {
               return (
-                <Dropdown key={group.key} eventKey={group.key} title={group.title} icon={group.icon}>
+                <Dropdown
+                  key={group.key}
+                  eventKey={group.key}
+                  title={group.title}
+                  icon={group.icon}
+                >
                   {group.items?.map((item) => (
-                    <Dropdown.Item key={item.key} eventKey={item.key} onSelect={itemOnClick(item.path)}>{item.title}</Dropdown.Item>
+                    <Dropdown.Item
+                      key={item.key}
+                      eventKey={item.key}
+                      onSelect={itemOnClick(item.path)}
+                    >
+                      {item.title}
+                    </Dropdown.Item>
                   ))}
-                </Dropdown>);
+                </Dropdown>
+              );
             })}
           </Nav>
         </Sidenav.Body>

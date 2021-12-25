@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 type Base64Form = {
   input: string;
-}
+};
 
 export const useBase64 = () => {
   const { control, watch } = useForm<Base64Form>({
