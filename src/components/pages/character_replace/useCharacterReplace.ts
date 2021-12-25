@@ -4,10 +4,10 @@ import { useCallback, useState } from 'react';
 type characterCountForm = {
   input: string;
   [key: string]: string;
-}
+};
 
 export const useCharacterReplace = () => {
-  const { control, watch } = useForm<characterCountForm>({
+  const { control, watch, setValue } = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     criteriaMode: 'firstError',
@@ -17,7 +17,7 @@ export const useCharacterReplace = () => {
   const [inputCount, setInputCount] = useState(3);
 
   // @ts-ignore
-  const numberArray = [...Array(inputCount).keys()].map(i => ++i);
+  const numberArray = [...Array(inputCount).keys()].map((i) => ++i);
 
   const input = watch('input') ?? '';
   const output = numberArray.reduce((a, b) => {
@@ -28,12 +28,19 @@ export const useCharacterReplace = () => {
     return a.replace(new RegExp(targetRegex, 'gm'), replace);
   }, input);
 
+  const onChange = useCallback(
+    (value: string) => {
+      setValue('input', value);
+    },
+    [setValue],
+  );
+
   const countUp = useCallback(() => {
-    setInputCount((prev) => prev + 1)
+    setInputCount((prev) => prev + 1);
   }, []);
 
   const countDown = useCallback(() => {
-    setInputCount((prev) => prev - 1)
+    setInputCount((prev) => prev - 1);
   }, []);
 
   const countDownDisabled = inputCount <= 1;
@@ -41,11 +48,12 @@ export const useCharacterReplace = () => {
 
   return {
     control,
+    onChange,
     output,
     countUp,
     countDown,
     countDownDisabled,
     countUpDisabled,
     numberArray,
-  }
-}
+  };
+};
