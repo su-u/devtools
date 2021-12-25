@@ -22,7 +22,7 @@ export const useCharacterReplace = () => {
   const input = watch('input') ?? '';
   const output = numberArray.reduce((a, b) => {
     const targetRegex = watch(`target_${b}`)?.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&') ?? '';
-    const replace = watch(`replace_${b}`) ?? '';
+    const replace = watch(`replace_${b}`).replace('\\n', '\n') ?? '';
     if (targetRegex === '') return a;
 
     return a.replace(new RegExp(targetRegex, 'gm'), replace);
