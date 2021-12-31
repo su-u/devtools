@@ -1,41 +1,14 @@
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { Col, Grid, Icon, Input, InputGroup, InputPicker, Panel, PanelGroup, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
 import { copy } from '@/lib/copy';
 import commonStyles from '@/styles/components/Common.module.scss';
-import { comma } from '@/components/pages/number_comma/numberCommaLib';
-
-type characterCountForm = {
-  input: string;
-  separator: string;
-};
+import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
 
 export const NumberComma: React.VFC = () => {
-  const { control, watch } = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
-
-  const title = '数値区切り';
-  const input = watch('input') ?? '';
-  const separator = watch('separator') ?? ',';
-  const output = comma(input, separator);
-
-  const selectData = [
-    {
-      label: ',',
-      value: ',',
-    },
-    {
-      label: '_',
-      value: '_',
-    },
-  ];
+  const { control, title, output, selectData } = useNumberComma();
 
   return (
     <AppLayout title={title}>
