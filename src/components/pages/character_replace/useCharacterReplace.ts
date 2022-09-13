@@ -25,7 +25,7 @@ export const useCharacterReplace = () => {
     const replace = watch(`replace_${b}`)?.replace('\\n', '\n') ?? '';
     if (targetRegex === '') return a;
 
-    return a.replace(new RegExp(targetRegex, 'gm'), replace);
+    return a?.replace(new RegExp(targetRegex, 'gm'), replace);
   }, input);
 
   const onChange = useCallback(
