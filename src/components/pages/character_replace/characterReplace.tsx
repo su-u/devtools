@@ -37,7 +37,7 @@ export const CharacterReplace: React.VFC = () => {
       <Grid fluid>
         <Row>
           <Col xs={24}>
-            <PageTitle title={title} />
+            <PageTitle title={title}/>
           </Col>
         </Row>
         <Row gutter={10}>
@@ -45,12 +45,12 @@ export const CharacterReplace: React.VFC = () => {
             <PanelGroup bordered>
               <Panel bordered header="入力文字">
                 <Editor
-                  name="editor"
                   onChange={onChange}
-                  fontSize="20px"
-                  tabSize={2}
-                  setOptions={{}}
                   width="100%"
+                  options={{
+                    fontSize: '14px',
+                    tabSize: 2,
+                  }}
                 />
               </Panel>
               <Panel
@@ -62,7 +62,7 @@ export const CharacterReplace: React.VFC = () => {
                       <ButtonToolbar>
                         <IconButton
                           disabled={countDownDisabled}
-                          icon={<Icon icon="minus" />}
+                          icon={<Icon icon="minus"/>}
                           placement="right"
                           onClick={countDown}
                         >
@@ -70,7 +70,7 @@ export const CharacterReplace: React.VFC = () => {
                         </IconButton>
                         <IconButton
                           disabled={countUpDisabled}
-                          icon={<Icon icon="plus" />}
+                          icon={<Icon icon="plus"/>}
                           placement="right"
                           onClick={countUp}
                         >
@@ -83,7 +83,7 @@ export const CharacterReplace: React.VFC = () => {
               >
                 <Form className={styles.input_form} layout="inline" autoComplete="off">
                   {numberArray.map((i) => (
-                    <ReplaceLine key={i} label={`${i}`} control={control} />
+                    <ReplaceLine key={i} label={`${i}`} control={control}/>
                   ))}
                 </Form>
               </Panel>
@@ -92,13 +92,13 @@ export const CharacterReplace: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header="置換後">
               <Editor
-                name="output"
-                fontSize="20px"
-                tabSize={2}
-                setOptions={{}}
                 width="100%"
                 value={output}
-                readOnly
+                options={{
+                  fontSize: '14px',
+                  tabSize: 2,
+                  readOnly: true,
+                }}
               />
             </Panel>
           </Col>
@@ -111,7 +111,7 @@ export const CharacterReplace: React.VFC = () => {
 const ReplaceLine: React.VFC<{
   label: string;
   control: any;
-}> = ({ label, control }) => {
+}> = ({label, control}) => {
   return (
     <Grid fluid className={styles.input_group}>
       <Row>
@@ -123,7 +123,7 @@ const ReplaceLine: React.VFC<{
             name={`target_${label}`}
             control={control}
             defaultValue=""
-            render={({ field }) => <Input {...field} />}
+            render={({field}) => <Input {...field} />}
           />
         </Col>
         <Col xs={2} md={1}>
@@ -134,7 +134,7 @@ const ReplaceLine: React.VFC<{
             name={`replace_${label}`}
             control={control}
             defaultValue=""
-            render={({ field }) => <Input {...field} />}
+            render={({field}) => <Input {...field} />}
           />
         </Col>
       </Row>

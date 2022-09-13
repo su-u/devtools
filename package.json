@@ -9,12 +9,12 @@
     "format": "prettier --write **/*.{tsx,ts}"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.4.5",
     "dayjs": "^1.10.4",
     "next": "^11.0.1",
     "obtain-unicode": "^0.0.5",
     "punycode": "^2.1.1",
     "react": "17.0.1",
-    "react-ace": "^9.5.0",
     "react-dom": "17.0.1",
     "react-hook-form": "^7.22.5",
     "rsuite": "^4.9.2"
