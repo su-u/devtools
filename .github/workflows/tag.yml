@@ -1,0 +1,29 @@
+name: publish tag
+
+env:
+  CI: true
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "!*"
+
+jobs:
+  tag:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      # バージョン情報持つタグを付与する
+      - name: add version tag
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          version: ${{ env.VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
