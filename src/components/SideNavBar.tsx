@@ -1,6 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import { Nav, Icon, Navbar as RNavBar, Dropdown, Sidenav } from 'rsuite';
+import NextLink from 'next/link';
+import { Nav, Icon, Dropdown, Sidenav } from 'rsuite';
 
 type NavItem = {
   key: string;
@@ -61,19 +61,14 @@ const navList: NavGroup[] = [
 type NavKeys = typeof navList[number]['key'];
 
 export const SideNavBar: React.VFC = () => {
-  const router = useRouter();
-  const [activeKey, setActiveKey] = React.useState<NavKeys>('home');
+  const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
 
   const onSelect = React.useCallback(
     (activeKey: NavKeys) => {
       setActiveKey(activeKey);
     },
-    [activeKey],
+    [activeKey, setActiveKey],
   );
-
-  const itemOnClick = (key: string) => () => {
-    router.push(key);
-  };
 
   return (
     <div>
@@ -89,13 +84,9 @@ export const SideNavBar: React.VFC = () => {
                   icon={group.icon}
                 >
                   {group.items?.map((item) => (
-                    <Dropdown.Item
-                      key={item.key}
-                      eventKey={item.key}
-                      onSelect={itemOnClick(item.path)}
-                    >
+                    <Link key={item.key} eventKey={item.key} href={item.path}>
                       {item.title}
-                    </Dropdown.Item>
+                    </Link>
                   ))}
                 </Dropdown>
               );
@@ -106,3 +97,15 @@ export const SideNavBar: React.VFC = () => {
     </div>
   );
 };
+
+const LinkComponent = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
+  const { href, as, ...rest } = props;
+  return (
+    <NextLink href={href} as={as}>
+      <a ref={ref} {...rest} />
+    </NextLink>
+  );
+});
+LinkComponent.displayName = 'LinkComponent';
+
+const Link: React.VFC<any> = (props) => <Dropdown.Item componentClass={LinkComponent} {...props} />;
