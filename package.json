@@ -9,6 +9,8 @@
     "format": "prettier --write **/*.{tsx,ts}"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@monaco-editor/react": "^4.4.5",
     "dayjs": "^1.10.4",
     "next": "^11.0.1",

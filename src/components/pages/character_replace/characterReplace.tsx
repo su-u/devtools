@@ -18,6 +18,7 @@ import { PageTitle } from '@/components/PageTitle';
 import styles from './characterReplace.module.scss';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 import { Editor } from '@/components/common/Editor';
+import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換';
@@ -48,9 +49,9 @@ export const CharacterReplace: React.VFC = () => {
               <Panel
                 bordered
                 header={
-                  <div className={styles.input_replace_header}>
-                    <div>入力文字</div>
-                    <div>
+                  <PanelHeader
+                    title="入力文字"
+                    right={
                       <ButtonToolbar>
                         <IconButton
                           icon={<Icon icon="trash-o" />}
@@ -60,8 +61,8 @@ export const CharacterReplace: React.VFC = () => {
                           クリア
                         </IconButton>
                       </ButtonToolbar>
-                    </div>
-                  </div>
+                    }
+                  />
                 }
               >
                 <Editor
@@ -77,9 +78,9 @@ export const CharacterReplace: React.VFC = () => {
               <Panel
                 bordered
                 header={
-                  <div className={styles.input_replace_header}>
-                    <div>置換する文字</div>
-                    <div>
+                  <PanelHeader
+                    title="置換する文字"
+                    right={
                       <ButtonToolbar>
                         <IconButton
                           disabled={countDownDisabled}
@@ -98,8 +99,8 @@ export const CharacterReplace: React.VFC = () => {
                           追加
                         </IconButton>
                       </ButtonToolbar>
-                    </div>
-                  </div>
+                    }
+                  />
                 }
               >
                 <Form className={styles.input_form} layout="inline" autoComplete="off">
