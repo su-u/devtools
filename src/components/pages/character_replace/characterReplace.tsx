@@ -24,12 +24,14 @@ export const CharacterReplace: React.VFC = () => {
   const {
     control,
     onChange,
+    input,
     output,
     countUp,
     countDown,
     countDownDisabled,
     countUpDisabled,
     numberArray,
+    onClickInputClear,
   } = useCharacterReplace();
 
   return (
@@ -43,9 +45,28 @@ export const CharacterReplace: React.VFC = () => {
         <Row gutter={10}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>
-              <Panel bordered header="入力文字">
+              <Panel
+                bordered
+                header={
+                  <div className={styles.input_replace_header}>
+                    <div>入力文字</div>
+                    <div>
+                      <ButtonToolbar>
+                        <IconButton
+                          icon={<Icon icon="trash-o" />}
+                          placement="right"
+                          onClick={onClickInputClear}
+                        >
+                          クリア
+                        </IconButton>
+                      </ButtonToolbar>
+                    </div>
+                  </div>
+                }
+              >
                 <Editor
                   onChange={onChange}
+                  value={input}
                   width="100%"
                   options={{
                     fontSize: '14px',
