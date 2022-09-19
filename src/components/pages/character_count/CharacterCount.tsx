@@ -1,17 +1,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import {
-  Col,
-  ControlLabel,
-  Form,
-  FormGroup,
-  Grid,
-  Icon,
-  Input,
-  InputGroup,
-  Panel,
-  Row,
-} from 'rsuite';
+import { Col, Form, Grid, Input, InputGroup, Panel, Row } from 'rsuite';
+import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
 import styles from './characterCount.module.scss';
@@ -23,8 +13,8 @@ import {
   linesCount,
   spaceCount,
 } from '@/components/pages/character_count/CharacterCountLib';
-import { copy } from '@/lib/copy';
 import commonStyles from '@/styles/components/Common.module.scss';
+import { useCopy } from '@/hooks/useCopy';
 
 type characterCountForm = {
   input: string;
@@ -62,12 +52,7 @@ export const CharacterCount: React.VFC = () => {
             <Panel bordered header="カウントする文字列">
               <Controller
                 render={({ field }) => (
-                  <Input
-                    className={commonStyles.no_resize}
-                    componentClass="textarea"
-                    rows={15}
-                    {...field}
-                  />
+                  <Input className={commonStyles.no_resize} as="textarea" rows={15} {...field} />
                 )}
                 name="input"
                 control={control}
@@ -97,15 +82,17 @@ const InputLine: React.VFC<{
   label: string;
   value: string;
 }> = ({ label, value }) => {
+  const { copy } = useCopy();
+
   return (
-    <FormGroup>
+    <Form.Group>
       <InputGroup>
-        <ControlLabel className={styles.label}>{label}</ControlLabel>
+        <Form.ControlLabel className={styles.label}>{label}</Form.ControlLabel>
         <Input className={commonStyles.no_resize} readOnly value={value} />
         <InputGroup.Button onClick={copy(value)}>
-          <Icon icon="copy-o" />
+          <CopyOIcon />
         </InputGroup.Button>
       </InputGroup>
-    </FormGroup>
+    </Form.Group>
   );
 };

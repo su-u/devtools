@@ -21,7 +21,7 @@ export const Base64: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header="入力文字">
               <Controller
-                render={({ field }) => <Input componentClass="textarea" rows={20} {...field} />}
+                render={({ field }) => <Input as="textarea" rows={20} {...field} />}
                 name="input"
                 control={control}
                 defaultValue=""
@@ -30,7 +30,7 @@ export const Base64: React.VFC = () => {
           </Col>
           <Col xs={24} md={12}>
             <Panel bordered header="base64エンコード">
-              <Input componentClass="textarea" rows={20} readOnly value={output} />
+              <Input as="textarea" rows={20} readOnly value={output} />
             </Panel>
           </Col>
         </Row>

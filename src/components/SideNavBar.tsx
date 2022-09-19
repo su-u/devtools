@@ -1,6 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Nav, Icon, Dropdown, Sidenav } from 'rsuite';
+import { Nav, Sidenav } from 'rsuite';
+import MagicIcon from '@rsuite/icons/legacy/Magic';
 
 type NavItem = {
   key: string;
@@ -19,7 +20,7 @@ type NavGroup = {
 const navList: NavGroup[] = [
   {
     title: 'テキストツール',
-    icon: <Icon icon="magic" />,
+    icon: <MagicIcon />,
     key: '1',
     items: [
       {
@@ -46,7 +47,7 @@ const navList: NavGroup[] = [
   },
   {
     title: '数値ツール',
-    icon: <Icon icon="magic" />,
+    icon: <MagicIcon />,
     key: '2',
     items: [
       {
@@ -62,6 +63,7 @@ type NavKeys = typeof navList[number]['key'];
 
 export const SideNavBar: React.VFC = () => {
   const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
+  const [expanded, setExpanded] = React.useState(true);
 
   const onSelect = React.useCallback(
     (activeKey: NavKeys) => {
@@ -72,33 +74,34 @@ export const SideNavBar: React.VFC = () => {
 
   return (
     <div>
-      <Sidenav activeKey={activeKey} onSelect={onSelect} defaultOpenKeys={['1', '2']}>
+      <Sidenav expanded={expanded} defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
-          <Nav>
+          <Nav activeKey={activeKey} onSelect={onSelect}>
             {navList.map((group) => {
               return (
-                <Dropdown
+                <Nav.Menu
                   key={group.key}
                   eventKey={group.key}
                   title={group.title}
                   icon={group.icon}
                 >
                   {group.items?.map((item) => (
-                    <Link key={item.key} eventKey={item.key} href={item.path}>
+                    <Nav.Item as={NavLink} key={item.key} eventKey={item.key} href={item.path}>
                       {item.title}
-                    </Link>
+                    </Nav.Item>
                   ))}
-                </Dropdown>
+                </Nav.Menu>
               );
             })}
           </Nav>
         </Sidenav.Body>
+        <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
       </Sidenav>
     </div>
   );
 };
 
-const LinkComponent = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
+const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
   const { href, as, ...rest } = props;
   return (
     <NextLink href={href} as={as}>
@@ -106,6 +109,4 @@ const LinkComponent = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
     </NextLink>
   );
 });
-LinkComponent.displayName = 'LinkComponent';
-
-const Link: React.VFC<any> = (props) => <Dropdown.Item componentClass={LinkComponent} {...props} />;
+NavLink.displayName = 'LinkComponent';

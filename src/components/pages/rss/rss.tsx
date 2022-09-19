@@ -7,7 +7,7 @@ const RssGenerator: React.VFC = () => {
     <AppLayout>
       <FlexboxGrid justify="center">
         <FlexboxGrid.Item colspan={8}>
-          <Input componentClass="textarea" rows={3} placeholder="Textarea" />
+          <Input as="textarea" rows={3} placeholder="Textarea" />
         </FlexboxGrid.Item>
         <FlexboxGrid.Item colspan={8}>colspan={4}</FlexboxGrid.Item>
       </FlexboxGrid>

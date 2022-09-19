@@ -1,14 +1,16 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Icon, Input, InputGroup, InputPicker, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, Input, InputGroup, InputPicker, Panel, PanelGroup, Row } from 'rsuite';
+import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
-import { copy } from '@/lib/copy';
 import commonStyles from '@/styles/components/Common.module.scss';
 import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
+import { useCopy } from '@/hooks/useCopy';
 
 export const NumberComma: React.VFC = () => {
   const { control, title, output, selectData } = useNumberComma();
+  const { copy } = useCopy();
 
   return (
     <AppLayout title={title}>
@@ -46,7 +48,7 @@ export const NumberComma: React.VFC = () => {
               <InputGroup>
                 <Input className={commonStyles.no_resize} readOnly value={output} />
                 <InputGroup.Button onClick={copy(output)}>
-                  <Icon icon="copy-o" />
+                  <CopyOIcon />
                 </InputGroup.Button>
               </InputGroup>
             </Panel>

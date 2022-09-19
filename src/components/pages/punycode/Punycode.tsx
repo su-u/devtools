@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Col, Grid, Icon, Input, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, Input, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
+import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import punycode from 'punycode/';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
 import commonStyles from '@/styles/components/Common.module.scss';
-import { copy } from '@/lib/copy';
+import { useCopy } from '@/hooks/useCopy';
 
 type PunycodeForm = {
   input: string;
@@ -20,6 +21,7 @@ export const Punycode: React.VFC = () => {
     shouldFocusError: true,
     shouldUnregister: true,
   });
+  const { copy } = useCopy();
 
   const converted_ascii = punycode.toASCII(watch('input') ?? '');
   const converted_punycode = punycode.encode(watch('input') ?? '');
@@ -37,12 +39,7 @@ export const Punycode: React.VFC = () => {
             <Panel bordered header="変換する文字列">
               <Controller
                 render={({ field }) => (
-                  <Input
-                    className={commonStyles.no_resize}
-                    componentClass="textarea"
-                    rows={14}
-                    {...field}
-                  />
+                  <Input className={commonStyles.no_resize} as="textarea" rows={14} {...field} />
                 )}
                 name="input"
                 control={control}
@@ -56,13 +53,13 @@ export const Punycode: React.VFC = () => {
                 <InputGroup>
                   <Input
                     className={commonStyles.no_resize}
-                    componentClass="textarea"
+                    as="textarea"
                     rows={4}
                     readOnly
                     value={converted_ascii}
                   />
                   <InputGroup.Button onClick={copy(converted_ascii)}>
-                    <Icon icon="copy-o" />
+                    <CopyOIcon />
                   </InputGroup.Button>
                 </InputGroup>
               </Panel>
@@ -70,13 +67,13 @@ export const Punycode: React.VFC = () => {
                 <InputGroup>
                   <Input
                     className={commonStyles.no_resize}
-                    componentClass="textarea"
+                    as="textarea"
                     rows={4}
                     readOnly
                     value={converted_punycode}
                   />
                   <InputGroup.Button onClick={copy(converted_punycode)}>
-                    <Icon icon="copy-o" />
+                    <CopyOIcon />
                   </InputGroup.Button>
                 </InputGroup>
               </Panel>

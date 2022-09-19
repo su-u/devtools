@@ -1,18 +1,9 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import {
-  ButtonToolbar,
-  Col,
-  ControlLabel,
-  Form,
-  Grid,
-  Icon,
-  IconButton,
-  Input,
-  Panel,
-  PanelGroup,
-  Row,
-} from 'rsuite';
+import { ButtonToolbar, Col, Form, Grid, IconButton, Input, Panel, PanelGroup, Row } from 'rsuite';
+import TrashOIcon from '@rsuite/icons/legacy/TrashO';
+import MinusIcon from '@rsuite/icons/legacy/Minus';
+import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/PageTitle';
 import styles from './characterReplace.module.scss';
@@ -54,7 +45,7 @@ export const CharacterReplace: React.VFC = () => {
                     right={
                       <ButtonToolbar>
                         <IconButton
-                          icon={<Icon icon="trash-o" />}
+                          icon={<TrashOIcon />}
                           placement="right"
                           onClick={onClickInputClear}
                         >
@@ -84,7 +75,7 @@ export const CharacterReplace: React.VFC = () => {
                       <ButtonToolbar>
                         <IconButton
                           disabled={countDownDisabled}
-                          icon={<Icon icon="minus" />}
+                          icon={<MinusIcon />}
                           placement="right"
                           onClick={countDown}
                         >
@@ -92,7 +83,7 @@ export const CharacterReplace: React.VFC = () => {
                         </IconButton>
                         <IconButton
                           disabled={countUpDisabled}
-                          icon={<Icon icon="plus" />}
+                          icon={<PlusIcon />}
                           placement="right"
                           onClick={countUp}
                         >
@@ -138,7 +129,7 @@ const ReplaceLine: React.VFC<{
     <Grid fluid className={styles.input_group}>
       <Row>
         <Col xs={2} md={1}>
-          <ControlLabel className={styles.label}>{label}</ControlLabel>
+          <Form.ControlLabel className={styles.label}>{label}</Form.ControlLabel>
         </Col>
         <Col xs={10}>
           <Controller
