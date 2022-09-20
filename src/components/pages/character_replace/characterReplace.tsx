@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { ButtonToolbar, Col, Form, Grid, IconButton, Input, Panel, PanelGroup, Row } from 'rsuite';
+import { ButtonToolbar, Col, Form, Grid, IconButton, Panel, PanelGroup, Row } from 'rsuite';
 import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 import MinusIcon from '@rsuite/icons/legacy/Minus';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
@@ -10,6 +10,7 @@ import { useCharacterReplace } from '@/components/pages/character_replace/useCha
 import { Editor } from '@/components/common/Editor';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import styled from '@emotion/styled';
+import { Input } from '@/components/common/Input';
 
 export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換';

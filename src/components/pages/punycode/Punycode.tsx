@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Col, Grid, Input, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
 import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import punycode from 'punycode/';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import commonStyles from '@/styles/components/Common.module.scss';
 import { useCopy } from '@/hooks/useCopy';
+import { Input } from '@/components/common/Input';
 
 type PunycodeForm = {
   input: string;
@@ -38,9 +38,7 @@ export const Punycode: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header="変換する文字列">
               <Controller
-                render={({ field }) => (
-                  <Input className={commonStyles.no_resize} as="textarea" rows={14} {...field} />
-                )}
+                render={({ field }) => <Input noResize="none" as="textarea" rows={14} {...field} />}
                 name="input"
                 control={control}
                 defaultValue=""
@@ -51,13 +49,7 @@ export const Punycode: React.VFC = () => {
             <PanelGroup bordered>
               <Panel header="ドメイン変換">
                 <InputGroup>
-                  <Input
-                    className={commonStyles.no_resize}
-                    as="textarea"
-                    rows={4}
-                    readOnly
-                    value={converted_ascii}
-                  />
+                  <Input noResize="none" as="textarea" rows={4} readOnly value={converted_ascii} />
                   <InputGroup.Button onClick={copy(converted_ascii)}>
                     <CopyOIcon />
                   </InputGroup.Button>
@@ -66,7 +58,7 @@ export const Punycode: React.VFC = () => {
               <Panel header="punycode変換">
                 <InputGroup>
                   <Input
-                    className={commonStyles.no_resize}
+                    noResize="none"
                     as="textarea"
                     rows={4}
                     readOnly

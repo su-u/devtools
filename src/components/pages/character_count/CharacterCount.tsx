@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Col, Form, Grid, Input, InputGroup, Panel, Row } from 'rsuite';
+import { Col, Form, Grid, InputGroup, Panel, Row } from 'rsuite';
 import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
@@ -12,9 +12,9 @@ import {
   linesCount,
   spaceCount,
 } from '@/components/pages/character_count/CharacterCountLib';
-import commonStyles from '@/styles/components/Common.module.scss';
 import { useCopy } from '@/hooks/useCopy';
 import styled from '@emotion/styled';
+import { Input } from '@/components/common/Input';
 
 type characterCountForm = {
   input: string;
@@ -51,9 +51,7 @@ export const CharacterCount: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header="カウントする文字列">
               <Controller
-                render={({ field }) => (
-                  <Input className={commonStyles.no_resize} as="textarea" rows={15} {...field} />
-                )}
+                render={({ field }) => <Input noResize="none" as="textarea" rows={15} {...field} />}
                 name="input"
                 control={control}
                 defaultValue=""
@@ -88,7 +86,7 @@ const InputLine: React.VFC<{
     <Form.Group>
       <InputGroup>
         <Label>{label}</Label>
-        <Input className={commonStyles.no_resize} readOnly value={value} />
+        <Input noResize="none" readOnly value={value} />
         <InputGroup.Button onClick={copy(value)}>
           <CopyOIcon />
         </InputGroup.Button>
