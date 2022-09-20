@@ -6,10 +6,10 @@ import MinusIcon from '@rsuite/icons/legacy/Minus';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import styles from './characterReplace.module.scss';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 import { Editor } from '@/components/common/Editor';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import styled from '@emotion/styled';
 
 export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換';
@@ -94,11 +94,11 @@ export const CharacterReplace: React.VFC = () => {
                   />
                 }
               >
-                <Form className={styles.input_form} layout="inline" autoComplete="off">
+                <InputForm layout="inline" autoComplete="off">
                   {numberArray.map((i) => (
                     <ReplaceLine key={i} label={`${i}`} control={control} />
                   ))}
-                </Form>
+                </InputForm>
               </Panel>
             </PanelGroup>
           </Col>
@@ -126,10 +126,10 @@ const ReplaceLine: React.VFC<{
   control: any;
 }> = ({ label, control }) => {
   return (
-    <Grid fluid className={styles.input_group}>
+    <Grid fluid>
       <Row>
         <Col xs={2} md={1}>
-          <Form.ControlLabel className={styles.label}>{label}</Form.ControlLabel>
+          <Label>{label}</Label>
         </Col>
         <Col xs={10}>
           <Controller
@@ -140,7 +140,7 @@ const ReplaceLine: React.VFC<{
           />
         </Col>
         <Col xs={2} md={1}>
-          <div className={styles.center_text}>→</div>
+          <Mark>→</Mark>
         </Col>
         <Col xs={10}>
           <Controller
@@ -154,3 +154,20 @@ const ReplaceLine: React.VFC<{
     </Grid>
   );
 };
+
+const InputForm = styled(Form)`
+  > div:last-child {
+    margin-bottom: 0 !important;
+  }
+`;
+
+const Label = styled(Form.ControlLabel)`
+  width: 15px !important;
+`;
+
+const Mark = styled.div`
+  margin-bottom: auto;
+  margin-top: 8px;
+  text-align: center;
+  vertical-align: top;
+`;
