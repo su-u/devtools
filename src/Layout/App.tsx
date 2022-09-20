@@ -17,9 +17,7 @@ export const AppLayout: React.FC<Props> = ({ title = '', children }) => {
       </Head>
       <Container className={styles.container}>
         <Container>
-          <Sidebar className={styles.sidebar}>
-            <SideNavBar />
-          </Sidebar>
+          <SideNavBar />
           <Content className={styles.main_content}>{children}</Content>
         </Container>
       </Container>

@@ -1,7 +1,8 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Nav, Sidenav } from 'rsuite';
+import { Nav, Sidenav, Sidebar } from 'rsuite';
 import MagicIcon from '@rsuite/icons/legacy/Magic';
+import styles from '@/styles/Layout/App.module.scss';
 
 type NavItem = {
   key: string;
@@ -73,7 +74,10 @@ export const SideNavBar: React.VFC = () => {
   );
 
   return (
-    <div>
+    <Sidebar
+      width={expanded ? 260 : 56}
+      className={styles.sidebar}
+    >
       <Sidenav expanded={expanded} defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
@@ -97,7 +101,7 @@ export const SideNavBar: React.VFC = () => {
         </Sidenav.Body>
         <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
       </Sidenav>
-    </div>
+    </Sidebar>
   );
 };
 
