@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { Col, Form, Grid, Input, InputGroup, Panel, Row } from 'rsuite';
 import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/PageTitle';
+import { PageTitle } from '@/components/common/PageTitle';
 import styles from './characterCount.module.scss';
 import {
   characterCountWithoutSpace,

@@ -4,7 +4,7 @@ import { Col, Grid, Input, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
 import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import punycode from 'punycode/';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/PageTitle';
+import { PageTitle } from '@/components/common/PageTitle';
 import commonStyles from '@/styles/components/Common.module.scss';
 import { useCopy } from '@/hooks/useCopy';
 

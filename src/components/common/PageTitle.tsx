@@ -1,10 +1,15 @@
 import React from 'react';
-import styles from '@/styles/components/PageTitle.module.scss';
+import styled from '@emotion/styled';
 
 type Props = {
   title: string;
 };
 
 export const PageTitle: React.VFC<Props> = ({ title }) => {
-  return <h2 className={styles.title}>{title}</h2>;
+  return <H2>{title}</H2>;
 };
+
+const H2 = styled.h2`
+  text-align: center;
+  margin: 10px;
+`

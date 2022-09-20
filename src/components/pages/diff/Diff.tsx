@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonToolbar, Col, Grid, IconButton, Panel, PanelGroup, Row } from 'rsuite';
 import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/PageTitle';
+import { PageTitle } from '@/components/common/PageTitle';
 import { Editor } from '@/components/common/Editor';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { DiffEditor } from '@/components/pages/diff/DiffEditor';

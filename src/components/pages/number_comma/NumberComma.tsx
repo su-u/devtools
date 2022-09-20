@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import { Col, Grid, Input, InputGroup, InputPicker, Panel, PanelGroup, Row } from 'rsuite';
 import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/PageTitle';
+import { PageTitle } from '@/components/common/PageTitle';
 import commonStyles from '@/styles/components/Common.module.scss';
 import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
 import { useCopy } from '@/hooks/useCopy';

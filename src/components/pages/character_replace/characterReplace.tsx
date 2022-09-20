@@ -5,7 +5,7 @@ import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 import MinusIcon from '@rsuite/icons/legacy/Minus';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/PageTitle';
+import { PageTitle } from '@/components/common/PageTitle';
 import styles from './characterReplace.module.scss';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 import { Editor } from '@/components/common/Editor';

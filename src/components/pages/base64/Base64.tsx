@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Input, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/PageTitle';
+import { PageTitle } from '@/components/common/PageTitle';
 import { useBase64 } from '@/components/pages/base64/useBase64';
 
 export const Base64: React.VFC = () => {
