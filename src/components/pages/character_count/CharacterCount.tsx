@@ -4,7 +4,6 @@ import { Col, Form, Grid, Input, InputGroup, Panel, Row } from 'rsuite';
 import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import styles from './characterCount.module.scss';
 import {
   characterCountWithoutSpace,
   characterCountWithSpace,
@@ -15,6 +14,7 @@ import {
 } from '@/components/pages/character_count/CharacterCountLib';
 import commonStyles from '@/styles/components/Common.module.scss';
 import { useCopy } from '@/hooks/useCopy';
+import styled from '@emotion/styled';
 
 type characterCountForm = {
   input: string;
@@ -62,14 +62,14 @@ export const CharacterCount: React.VFC = () => {
           </Col>
           <Col xs={24} md={12}>
             <Panel bordered header="文字数">
-              <Form className={styles.converted_form} layout="horizontal">
+              <ConvertedForm layout="horizontal">
                 <InputLine label="文字数（スペース込み）" value={characterCountValue} />
                 <InputLine label="文字数（スペース除外）" value={characterCountWithoutSpaceValue} />
                 <InputLine label="スペースの数" value={spaceCharacterCountValue} />
                 <InputLine label="全角文字数" value={fullWidthCharacterCountValue} />
                 <InputLine label="半角文字数" value={halfWidthCharacterCountValue} />
                 <InputLine label="行数" value={linesCountValue} />
-              </Form>
+              </ConvertedForm>
             </Panel>
           </Col>
         </Row>
@@ -87,7 +87,7 @@ const InputLine: React.VFC<{
   return (
     <Form.Group>
       <InputGroup>
-        <Form.ControlLabel className={styles.label}>{label}</Form.ControlLabel>
+        <Label>{label}</Label>
         <Input className={commonStyles.no_resize} readOnly value={value} />
         <InputGroup.Button onClick={copy(value)}>
           <CopyOIcon />
@@ -96,3 +96,13 @@ const InputLine: React.VFC<{
     </Form.Group>
   );
 };
+
+const ConvertedForm = styled(Form)`
+  > div:not(:last-child) {
+    margin-bottom: 12px !important;
+  }
+`;
+
+const Label = styled(Form.ControlLabel)`
+  width: 250px !important;
+`
