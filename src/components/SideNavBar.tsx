@@ -1,7 +1,8 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Nav, Sidenav, Sidebar } from 'rsuite';
-import MagicIcon from '@rsuite/icons/legacy/Magic';
+import EditIcon from '@rsuite/icons/Edit';
+import ListOl from '@rsuite/icons/legacy/ListOl';
 import styles from '@/styles/Layout/App.module.scss';
 
 type NavItem = {
@@ -21,7 +22,7 @@ type NavGroup = {
 const navList: NavGroup[] = [
   {
     title: 'テキストツール',
-    icon: <MagicIcon />,
+    icon: <EditIcon />,
     key: '1',
     items: [
       {
@@ -44,11 +45,16 @@ const navList: NavGroup[] = [
         title: 'Base64エンコード',
         path: '/base64',
       },
+      {
+        key: 'diff',
+        title: 'テキスト差分',
+        path: '/diff',
+      },
     ],
   },
   {
     title: '数値ツール',
-    icon: <MagicIcon />,
+    icon: <ListOl />,
     key: '2',
     items: [
       {
@@ -64,7 +70,7 @@ type NavKeys = typeof navList[number]['key'];
 
 export const SideNavBar: React.VFC = () => {
   const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
-  const [expanded, setExpanded] = React.useState(true);
+  const [expanded, setExpanded] = React.useState(false);
 
   const onSelect = React.useCallback(
     (activeKey: NavKeys) => {
@@ -74,10 +80,7 @@ export const SideNavBar: React.VFC = () => {
   );
 
   return (
-    <Sidebar
-      width={expanded ? 260 : 56}
-      className={styles.sidebar}
-    >
+    <Sidebar width={expanded ? 260 : 56} className={styles.sidebar}>
       <Sidenav expanded={expanded} defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
