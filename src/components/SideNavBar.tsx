@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { Nav, Sidenav, Sidebar } from 'rsuite';
 import EditIcon from '@rsuite/icons/Edit';
 import ListOl from '@rsuite/icons/legacy/ListOl';
-import styles from '@/styles/Layout/App.module.scss';
+import styled from '@emotion/styled';
 
 type NavItem = {
   key: string;
@@ -80,7 +80,7 @@ export const SideNavBar: React.VFC = () => {
   );
 
   return (
-    <Sidebar width={expanded ? 260 : 56} className={styles.sidebar}>
+    <StyledSidebar width={expanded ? 260 : 56}>
       <Sidenav expanded={expanded} defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
@@ -104,7 +104,7 @@ export const SideNavBar: React.VFC = () => {
         </Sidenav.Body>
         <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
       </Sidenav>
-    </Sidebar>
+    </StyledSidebar>
   );
 };
 
@@ -117,3 +117,7 @@ const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
   );
 });
 NavLink.displayName = 'LinkComponent';
+
+const StyledSidebar = styled(Sidebar)`
+  background-color: #1a1d24;
+`;

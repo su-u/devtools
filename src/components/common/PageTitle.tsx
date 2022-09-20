@@ -12,4 +12,4 @@ export const PageTitle: React.VFC<Props> = ({ title }) => {
 const H2 = styled.h2`
   text-align: center;
   margin: 10px;
-`
+`;
