@@ -5,21 +5,21 @@ import EditIcon from '@rsuite/icons/Edit';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import styled from '@emotion/styled';
 
-type NavItem = {
+type NavItemType = {
   key: string;
   title: string;
   path: string;
   icon?: string;
 };
 
-type NavGroup = {
+type NavGroupType = {
   title: string;
   icon?: React.ReactElement;
   key?: string;
-  items?: NavItem[];
+  items?: NavItemType[];
 };
 
-const navList: NavGroup[] = [
+const navList: NavGroupType[] = [
   {
     title: 'テキストツール',
     icon: <EditIcon />,
@@ -94,11 +94,11 @@ export const SideNavBar: React.VFC = () => {
                 >
                   {group.items?.map((item) => (
                     <NavItem
-                      expanded={expanded}
                       as={NavLink}
                       key={item.key}
                       eventKey={item.key}
                       href={item.path}
+                      expanded={expanded}
                     >
                       {item.title}
                     </NavItem>
