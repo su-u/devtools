@@ -80,7 +80,7 @@ export const SideNavBar: React.VFC = () => {
   );
 
   return (
-    <StyledSidebar width={expanded ? 260 : 56}>
+    <StyledSidebar width={expanded ? 220 : 56}>
       <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
