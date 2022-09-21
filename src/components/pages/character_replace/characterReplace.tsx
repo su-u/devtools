@@ -48,6 +48,7 @@ export const CharacterReplace: React.VFC = () => {
                         <IconButton
                           icon={<TrashOIcon />}
                           placement="right"
+                          size="xs"
                           onClick={onClickInputClear}
                         >
                           クリア
@@ -75,17 +76,19 @@ export const CharacterReplace: React.VFC = () => {
                     right={
                       <ButtonToolbar>
                         <IconButton
-                          disabled={countDownDisabled}
                           icon={<MinusIcon />}
                           placement="right"
+                          size="xs"
+                          disabled={countDownDisabled}
                           onClick={countDown}
                         >
                           削除
                         </IconButton>
                         <IconButton
-                          disabled={countUpDisabled}
                           icon={<PlusIcon />}
                           placement="right"
+                          size="xs"
+                          disabled={countUpDisabled}
                           onClick={countUp}
                         >
                           追加

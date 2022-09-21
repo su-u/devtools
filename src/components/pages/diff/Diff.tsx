@@ -33,6 +33,7 @@ export const Diff: React.VFC = () => {
                         <IconButton
                           icon={<TrashOIcon />}
                           placement="right"
+                          size="xs"
                           onClick={onClickInputClear('original')}
                         >
                           クリア
@@ -65,6 +66,7 @@ export const Diff: React.VFC = () => {
                       <IconButton
                         icon={<TrashOIcon />}
                         placement="right"
+                        size="xs"
                         onClick={onClickInputClear('modified')}
                       >
                         クリア

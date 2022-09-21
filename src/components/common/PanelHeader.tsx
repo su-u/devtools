@@ -9,7 +9,7 @@ type Props = {
 export const PanelHeader: React.VFC<Props> = ({ title, right }) => {
   return (
     <Header>
-      <div>{title}</div>
+      <Title>{title}</Title>
       <div>{right}</div>
     </Header>
   );
@@ -18,4 +18,9 @@ export const PanelHeader: React.VFC<Props> = ({ title, right }) => {
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const Title = styled.p`
+  font-size: 14px;
+  line-height: 24px;
 `;
