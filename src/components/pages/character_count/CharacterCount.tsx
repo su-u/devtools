@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Col, Form, Grid, InputGroup, Panel, Row } from 'rsuite';
-import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import {
@@ -16,6 +15,7 @@ import { useCopy } from '@/hooks/useCopy';
 import styled from '@emotion/styled';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import CopyIcon from '@rsuite/icons/Copy';
 
 type characterCountForm = {
   input: string;
@@ -62,8 +62,8 @@ export const CharacterCount: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header={<PanelHeader title="文字数" />}>
               <ConvertedForm layout="horizontal">
-                <InputLine label="文字数（スペース込み）" value={characterCountValue} />
-                <InputLine label="文字数（スペース除外）" value={characterCountWithoutSpaceValue} />
+                <InputLine label="文字数(スペース込み)" value={characterCountValue} />
+                <InputLine label="文字数(スペース除)" value={characterCountWithoutSpaceValue} />
                 <InputLine label="スペースの数" value={spaceCharacterCountValue} />
                 <InputLine label="全角文字数" value={fullWidthCharacterCountValue} />
                 <InputLine label="半角文字数" value={halfWidthCharacterCountValue} />
@@ -88,8 +88,8 @@ const InputLine: React.VFC<{
       <InputGroup>
         <Label>{label}</Label>
         <Input noResize="none" readOnly value={value} />
-        <InputGroup.Button onClick={copy(value)}>
-          <CopyOIcon />
+        <InputGroup.Button onClick={copy(value)} size="sm">
+          <CopyIcon />
         </InputGroup.Button>
       </InputGroup>
     </Form.Group>
@@ -103,5 +103,7 @@ const ConvertedForm = styled(Form)`
 `;
 
 const Label = styled(Form.ControlLabel)`
+  margin-left: 12px;
+  font-size: 12px !important;
   width: 250px !important;
 `;

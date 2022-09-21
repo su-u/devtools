@@ -1,13 +1,13 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, InputGroup, InputPicker, Panel, PanelGroup, Row } from 'rsuite';
-import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
 import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import CopyIcon from '@rsuite/icons/Copy';
 
 export const NumberComma: React.VFC = () => {
   const { control, title, output, selectData } = useNumberComma();
@@ -49,7 +49,7 @@ export const NumberComma: React.VFC = () => {
               <InputGroup>
                 <Input noResize="none" readOnly value={output} />
                 <InputGroup.Button onClick={copy(output)}>
-                  <CopyOIcon />
+                  <CopyIcon />
                 </InputGroup.Button>
               </InputGroup>
             </Panel>

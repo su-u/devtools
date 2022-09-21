@@ -6,10 +6,15 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { useBase64 } from '@/components/pages/base64/useBase64';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { ButtonToolbar } from 'rsuite';
+import { IconButton } from 'rsuite';
+import CopyIcon from '@rsuite/icons/Copy';
+import { useCopy } from '@/hooks/useCopy';
 
 export const Base64: React.VFC = () => {
   const title = 'base64エンコード';
   const { control, output } = useBase64();
+  const { copy } = useCopy();
 
   return (
     <AppLayout title={title}>
@@ -31,7 +36,24 @@ export const Base64: React.VFC = () => {
             </Panel>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header={<PanelHeader title="base64エンコード" />}>
+            <Panel
+              bordered
+              header={
+                <PanelHeader
+                  title="base64エンコード"
+                  right={
+                    <ButtonToolbar>
+                      <IconButton
+                        icon={<CopyIcon />}
+                        placement="right"
+                        size="xs"
+                        onClick={copy(output)}
+                      ></IconButton>
+                    </ButtonToolbar>
+                  }
+                />
+              }
+            >
               <Input as="textarea" rows={20} readOnly value={output} />
             </Panel>
           </Col>

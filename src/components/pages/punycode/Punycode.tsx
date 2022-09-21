@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Col, Grid, InputGroup, Panel, PanelGroup, Row } from 'rsuite';
-import CopyOIcon from '@rsuite/icons/legacy/CopyO';
 import punycode from 'punycode/';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import CopyIcon from '@rsuite/icons/Copy';
 
 type PunycodeForm = {
   input: string;
@@ -52,7 +52,7 @@ export const Punycode: React.VFC = () => {
                 <InputGroup>
                   <Input noResize="none" as="textarea" rows={4} readOnly value={converted_ascii} />
                   <InputGroup.Button onClick={copy(converted_ascii)}>
-                    <CopyOIcon />
+                    <CopyIcon />
                   </InputGroup.Button>
                 </InputGroup>
               </Panel>
@@ -66,7 +66,7 @@ export const Punycode: React.VFC = () => {
                     value={converted_punycode}
                   />
                   <InputGroup.Button onClick={copy(converted_punycode)}>
-                    <CopyOIcon />
+                    <CopyIcon />
                   </InputGroup.Button>
                 </InputGroup>
               </Panel>
