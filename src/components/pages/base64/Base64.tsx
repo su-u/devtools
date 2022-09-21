@@ -5,6 +5,7 @@ import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useBase64 } from '@/components/pages/base64/useBase64';
 import { Input } from '@/components/common/Input';
+import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const Base64: React.VFC = () => {
   const title = 'base64エンコード';
@@ -20,7 +21,7 @@ export const Base64: React.VFC = () => {
         </Row>
         <Row gutter={10}>
           <Col xs={24} md={12}>
-            <Panel bordered header="入力文字">
+            <Panel bordered header={<PanelHeader title="入力文字" />}>
               <Controller
                 render={({ field }) => <Input as="textarea" rows={20} {...field} />}
                 name="input"
@@ -30,7 +31,7 @@ export const Base64: React.VFC = () => {
             </Panel>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header="base64エンコード">
+            <Panel bordered header={<PanelHeader title="base64エンコード" />}>
               <Input as="textarea" rows={20} readOnly value={output} />
             </Panel>
           </Col>

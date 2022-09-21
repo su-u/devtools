@@ -7,6 +7,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
 import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Input';
+import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const NumberComma: React.VFC = () => {
   const { control, title, output, selectData } = useNumberComma();
@@ -23,7 +24,7 @@ export const NumberComma: React.VFC = () => {
         <Row gutter={10}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>
-              <Panel header="区切りたい数値">
+              <Panel header={<PanelHeader title="区切りたい数値" />}>
                 <Controller
                   render={({ field }) => <Input noResize="none" {...field} />}
                   name="input"
@@ -31,7 +32,7 @@ export const NumberComma: React.VFC = () => {
                   defaultValue=""
                 />
               </Panel>
-              <Panel bordered header="区切り文字">
+              <Panel bordered header={<PanelHeader title="区切り文字" />}>
                 <Controller
                   render={({ field }) => (
                     <InputPicker data={selectData} defaultValue="," {...field} />
@@ -44,7 +45,7 @@ export const NumberComma: React.VFC = () => {
             </PanelGroup>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header="区切った数値">
+            <Panel bordered header={<PanelHeader title="区切った数値" />}>
               <InputGroup>
                 <Input noResize="none" readOnly value={output} />
                 <InputGroup.Button onClick={copy(output)}>

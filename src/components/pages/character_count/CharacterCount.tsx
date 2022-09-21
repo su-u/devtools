@@ -15,6 +15,7 @@ import {
 import { useCopy } from '@/hooks/useCopy';
 import styled from '@emotion/styled';
 import { Input } from '@/components/common/Input';
+import { PanelHeader } from '@/components/common/PanelHeader';
 
 type characterCountForm = {
   input: string;
@@ -49,7 +50,7 @@ export const CharacterCount: React.VFC = () => {
         </Row>
         <Row gutter={10}>
           <Col xs={24} md={12}>
-            <Panel bordered header="カウントする文字列">
+            <Panel bordered header={<PanelHeader title="カウントする文字列" />}>
               <Controller
                 render={({ field }) => <Input noResize="none" as="textarea" rows={15} {...field} />}
                 name="input"
@@ -59,7 +60,7 @@ export const CharacterCount: React.VFC = () => {
             </Panel>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header="文字数">
+            <Panel bordered header={<PanelHeader title="文字数" />}>
               <ConvertedForm layout="horizontal">
                 <InputLine label="文字数（スペース込み）" value={characterCountValue} />
                 <InputLine label="文字数（スペース除外）" value={characterCountWithoutSpaceValue} />

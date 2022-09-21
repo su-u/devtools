@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 
 type Props = {
   title: string;
-  right: React.ReactNode;
+  right?: React.ReactNode;
 };
 
-export const PanelHeader: React.VFC<Props> = ({ title, right }) => {
+export const PanelHeader: React.VFC<Props> = ({ title, right = null }) => {
   return (
     <Header>
       <Title>{title}</Title>
