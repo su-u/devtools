@@ -1,6 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { ButtonToolbar, Col, Form, Grid, IconButton, Panel, PanelGroup, Row } from 'rsuite';
+import CopyIcon from '@rsuite/icons/Copy';
 import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 import MinusIcon from '@rsuite/icons/legacy/Minus';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
@@ -11,6 +12,7 @@ import { Editor } from '@/components/common/Editor';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import styled from '@emotion/styled';
 import { Input } from '@/components/common/Input';
+import { useCopy } from '@/hooks/useCopy';
 
 export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換';
@@ -26,6 +28,7 @@ export const CharacterReplace: React.VFC = () => {
     numberArray,
     onClickInputClear,
   } = useCharacterReplace();
+  const { copy } = useCopy();
 
   return (
     <AppLayout title={title}>
@@ -107,7 +110,24 @@ export const CharacterReplace: React.VFC = () => {
             </PanelGroup>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header="置換後">
+            <Panel
+              bordered
+              header={
+                <PanelHeader
+                  title="置換後"
+                  right={
+                    <ButtonToolbar>
+                      <IconButton
+                        icon={<CopyIcon />}
+                        placement="right"
+                        size="xs"
+                        onClick={copy(output)}
+                      ></IconButton>
+                    </ButtonToolbar>
+                  }
+                />
+              }
+            >
               <Editor
                 width="100%"
                 value={output}
