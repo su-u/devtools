@@ -19,7 +19,7 @@ export const useCopy = () => {
     try {
       await navigator.clipboard.writeText(text);
       toaster.push(
-        <Message showIcon type="success">
+        <Message showIcon type="success" duration={1000}>
           コピーしました
         </Message>,
         {

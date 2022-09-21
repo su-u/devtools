@@ -5,21 +5,21 @@ import EditIcon from '@rsuite/icons/Edit';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import styled from '@emotion/styled';
 
-type NavItem = {
+type NavItemType = {
   key: string;
   title: string;
   path: string;
   icon?: string;
 };
 
-type NavGroup = {
+type NavGroupType = {
   title: string;
   icon?: React.ReactElement;
   key?: string;
-  items?: NavItem[];
+  items?: NavItemType[];
 };
 
-const navList: NavGroup[] = [
+const navList: NavGroupType[] = [
   {
     title: 'テキストツール',
     icon: <EditIcon />,
@@ -70,7 +70,7 @@ type NavKeys = typeof navList[number]['key'];
 
 export const SideNavBar: React.VFC = () => {
   const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(true);
 
   const onSelect = React.useCallback(
     (activeKey: NavKeys) => {
@@ -80,8 +80,8 @@ export const SideNavBar: React.VFC = () => {
   );
 
   return (
-    <StyledSidebar width={expanded ? 260 : 56}>
-      <Sidenav expanded={expanded} defaultOpenKeys={['1', '2']}>
+    <StyledSidebar width={expanded ? 220 : 56}>
+      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
             {navList.map((group) => {
@@ -93,9 +93,15 @@ export const SideNavBar: React.VFC = () => {
                   icon={group.icon}
                 >
                   {group.items?.map((item) => (
-                    <Nav.Item as={NavLink} key={item.key} eventKey={item.key} href={item.path}>
+                    <NavItem
+                      as={NavLink}
+                      key={item.key}
+                      eventKey={item.key}
+                      href={item.path}
+                      expanded={expanded}
+                    >
                       {item.title}
-                    </Nav.Item>
+                    </NavItem>
                   ))}
                 </Nav.Menu>
               );
@@ -119,5 +125,11 @@ const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
 NavLink.displayName = 'LinkComponent';
 
 const StyledSidebar = styled(Sidebar)`
+  font-size: 12px;
   background-color: #1a1d24;
+`;
+
+const NavItem = styled(Nav.Item)<{ expanded: boolean }>`
+  font-size: 12px;
+  padding: ${({ expanded }) => (expanded ? '6px 12px 6px 42px' : '6px 12px 6px 12px')} !important;
 `;

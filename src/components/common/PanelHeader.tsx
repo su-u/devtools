@@ -3,13 +3,13 @@ import styled from '@emotion/styled';
 
 type Props = {
   title: string;
-  right: React.ReactNode;
+  right?: React.ReactNode;
 };
 
-export const PanelHeader: React.VFC<Props> = ({ title, right }) => {
+export const PanelHeader: React.VFC<Props> = ({ title, right = null }) => {
   return (
     <Header>
-      <div>{title}</div>
+      <Title>{title}</Title>
       <div>{right}</div>
     </Header>
   );
@@ -18,4 +18,9 @@ export const PanelHeader: React.VFC<Props> = ({ title, right }) => {
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const Title = styled.p`
+  font-size: 14px;
+  line-height: 24px;
 `;
