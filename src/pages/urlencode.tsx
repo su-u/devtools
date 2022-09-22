@@ -1,8 +1,8 @@
 import React from 'react';
-import { Base64 } from '@/components/pages/base64/Base64';
+import { UrlEncode } from '@/components/pages/urlencode/UrlEncode';
 
-const Base64Page: React.VFC = () => {
-  return <Base64 />;
+const UrlencodePage: React.VFC = () => {
+  return <UrlEncode />;
 };
 
-export default Base64Page;
+export default UrlencodePage;

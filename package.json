@@ -16,6 +16,7 @@
     "@monaco-editor/react": "^4.4.5",
     "@rsuite/icons": "^1.0.2",
     "dayjs": "^1.10.4",
+    "iconv-lite": "^0.6.3",
     "iconv-urlencode": "^1.0.0",
     "next": "^12.3.0",
     "obtain-unicode": "^0.0.5",

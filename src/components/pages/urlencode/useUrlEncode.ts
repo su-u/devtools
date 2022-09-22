@@ -1,11 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import conv from 'iconv-urlencode';
+import { ENCODING_LIST } from '@/lib/encoding';
 
 type Base64Form = {
-  input: string;
+  decode: string;
+  encode: string;
+  encoding: string;
 };
 
-export const useBase64 = () => {
+export const useUrlEncode = () => {
   const { control, watch } = useForm<Base64Form>({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -14,25 +18,16 @@ export const useBase64 = () => {
     shouldUnregister: true,
   });
   const [output, setOutput] = useState('');
-  const input = watch('input') ?? '';
+  const decode = watch('decode') ?? '';
+  const encoding = watch('encoding') ?? '';
 
   useEffect(() => {
-    if (typeof window === 'undefined' || input.trim() === '') {
-      setOutput('');
-      return;
-    }
-
-    const r = new window.FileReader();
-    const blob = new Blob([input]);
-    r.onload = function () {
-      // console.info(r.result.substr(r.result.indexOf(',')+1));
-      setOutput((r.result as string).replace(/data:.*\/.*;base64,/, ''));
-    };
-    r.readAsDataURL(blob);
-  }, [input]);
+    setOutput(conv.encode(decode.trim(), encoding));
+  }, [decode, encoding]);
 
   return {
     control,
     output,
+    encodingList: ENCODING_LIST,
   };
 };

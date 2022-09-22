@@ -1,19 +1,24 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Panel, Row } from 'rsuite';
+import { Col, Grid, Panel, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import { useBase64 } from '@/components/pages/base64/useBase64';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { ButtonToolbar } from 'rsuite';
 import { IconButton } from 'rsuite';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
+import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
+import MinusIcon from '@rsuite/icons/legacy/Minus';
+import PlusIcon from '@rsuite/icons/legacy/Plus';
+import { PanelGroup } from 'rsuite';
+import { SelectPicker } from 'rsuite';
+import styled from '@emotion/styled';
 
-export const Base64: React.VFC = () => {
-  const title = 'base64エンコード';
-  const { control, output } = useBase64();
+export const UrlEncode: React.VFC = () => {
+  const title = 'URLエンコード';
+  const { control, output, encodingList } = useUrlEncode();
   const { copy } = useCopy();
 
   return (
@@ -26,21 +31,45 @@ export const Base64: React.VFC = () => {
         </Row>
         <Row gutter={10}>
           <Col xs={24} md={12}>
-            <Panel bordered header={<PanelHeader title="入力文字" />}>
-              <Controller
-                render={({ field }) => <Input as="textarea" rows={20} {...field} />}
-                name="input"
-                control={control}
-                defaultValue=""
-              />
-            </Panel>
+            <PanelGroup bordered>
+              <Panel bordered header={<PanelHeader title="デコード" />}>
+                <Controller
+                  render={({ field }) => <Input as="textarea" rows={20} {...field} />}
+                  name="decode"
+                  control={control}
+                  defaultValue=""
+                />
+              </Panel>
+              <Panel bordered header={<PanelHeader title="設定" />}>
+                <Form fluid layout="horizontal">
+                  <Form.Group>
+                    <Label>エンコード</Label>
+                    <Controller
+                      render={({ field }) => (
+                        <SelectPicker
+                          data={encodingList}
+                          size="xs"
+                          groupBy="category"
+                          placement="autoVerticalStart"
+                          style={{ width: 224 }}
+                          {...field}
+                        />
+                      )}
+                      name="encoding"
+                      control={control}
+                      defaultValue={encodingList[0].value}
+                    />
+                  </Form.Group>
+                </Form>
+              </Panel>
+            </PanelGroup>
           </Col>
           <Col xs={24} md={12}>
             <Panel
               bordered
               header={
                 <PanelHeader
-                  title="base64エンコード"
+                  title="エンコード"
                   right={
                     <ButtonToolbar>
                       <IconButton
@@ -54,7 +83,7 @@ export const Base64: React.VFC = () => {
                 />
               }
             >
-              <Input as="textarea" rows={20} readOnly value={output} />
+              <Input name="encode" as="textarea" rows={20} readOnly value={output} />
             </Panel>
           </Col>
         </Row>
@@ -62,3 +91,8 @@ export const Base64: React.VFC = () => {
     </AppLayout>
   );
 };
+
+const Label = styled(Form.ControlLabel)`
+  width: 80px !important;
+  line-height: 8px !important;
+`;

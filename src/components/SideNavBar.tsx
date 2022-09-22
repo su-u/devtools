@@ -21,15 +21,32 @@ type NavGroupType = {
 
 const navList: NavGroupType[] = [
   {
-    title: 'テキストツール',
-    icon: <EditIcon />,
+    title: 'エンコード',
+    icon: <ListOl />,
     key: '1',
     items: [
       {
         key: 'punycode',
-        title: 'Punycode変換',
+        title: 'Punycode',
         path: '/punycode',
       },
+      {
+        key: 'base64',
+        title: 'Base64',
+        path: '/base64',
+      },
+      {
+        key: 'urlencode',
+        title: 'URL',
+        path: '/urlencode',
+      },
+    ],
+  },
+  {
+    title: 'テキストツール',
+    icon: <EditIcon />,
+    key: '2',
+    items: [
       {
         key: 'character_count',
         title: '文字数カウント',
@@ -41,11 +58,6 @@ const navList: NavGroupType[] = [
         path: '/character_replace',
       },
       {
-        key: 'base64',
-        title: 'Base64エンコード',
-        path: '/base64',
-      },
-      {
         key: 'diff',
         title: 'テキスト差分',
         path: '/diff',
@@ -55,7 +67,7 @@ const navList: NavGroupType[] = [
   {
     title: '数値ツール',
     icon: <ListOl />,
-    key: '2',
+    key: '3',
     items: [
       {
         key: 'number_comma',
