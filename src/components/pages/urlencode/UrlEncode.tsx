@@ -10,8 +10,6 @@ import { IconButton } from 'rsuite';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
-import MinusIcon from '@rsuite/icons/legacy/Minus';
-import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { PanelGroup } from 'rsuite';
 import { SelectPicker } from 'rsuite';
 import styled from '@emotion/styled';

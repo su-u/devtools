@@ -28,13 +28,6 @@ export const useCharacterReplace = () => {
     return a?.replace(new RegExp(targetRegex, 'gm'), replace);
   }, input);
 
-  const onChange = useCallback(
-    (value: string) => {
-      setValue('input', value);
-    },
-    [setValue],
-  );
-
   const onClickInputClear = useCallback(() => {
     reset({
       input: '',
@@ -54,8 +47,6 @@ export const useCharacterReplace = () => {
 
   return {
     control,
-    onChange,
-    input,
     output,
     countUp,
     countDown,

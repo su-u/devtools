@@ -8,7 +8,6 @@ import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
-import { Editor } from '@/components/common/Editor';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import styled from '@emotion/styled';
 import { Input } from '@/components/common/Input';
@@ -18,8 +17,6 @@ export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換';
   const {
     control,
-    onChange,
-    input,
     output,
     countUp,
     countDown,
@@ -61,14 +58,11 @@ export const CharacterReplace: React.VFC = () => {
                   />
                 }
               >
-                <Editor
-                  onChange={onChange}
-                  value={input}
-                  width="100%"
-                  options={{
-                    fontSize: '12px',
-                    tabSize: 2,
-                  }}
+                <Controller
+                  render={({ field }) => <Input as="textarea" rows={14} {...field} />}
+                  name="input"
+                  control={control}
+                  defaultValue=""
                 />
               </Panel>
               <Panel
@@ -128,15 +122,7 @@ export const CharacterReplace: React.VFC = () => {
                 />
               }
             >
-              <Editor
-                width="100%"
-                value={output}
-                options={{
-                  fontSize: '12px',
-                  tabSize: 2,
-                  readOnly: true,
-                }}
-              />
+              <Input value={output} as="textarea" readOnly rows={14} />
             </Panel>
           </Col>
         </Row>

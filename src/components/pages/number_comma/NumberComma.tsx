@@ -9,7 +9,6 @@ import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { Form } from 'rsuite';
-import { SelectPicker } from 'rsuite';
 import styled from '@emotion/styled';
 
 export const NumberComma: React.VFC = () => {
