@@ -66,7 +66,7 @@ export const CharacterReplace: React.VFC = () => {
                   value={input}
                   width="100%"
                   options={{
-                    fontSize: '14px',
+                    fontSize: '12px',
                     tabSize: 2,
                   }}
                 />
@@ -132,7 +132,7 @@ export const CharacterReplace: React.VFC = () => {
                 width="100%"
                 value={output}
                 options={{
-                  fontSize: '14px',
+                  fontSize: '12px',
                   tabSize: 2,
                   readOnly: true,
                 }}
