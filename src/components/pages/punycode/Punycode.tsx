@@ -39,7 +39,7 @@ export const Punycode: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header={<PanelHeader title="変換する文字列" />}>
               <Controller
-                render={({ field }) => <Input noResize="none" as="textarea" rows={14} {...field} />}
+                render={({ field }) => <Input noResize="none" as="textarea" rows={13} {...field} />}
                 name="input"
                 control={control}
                 defaultValue=""

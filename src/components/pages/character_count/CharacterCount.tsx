@@ -52,7 +52,7 @@ export const CharacterCount: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header={<PanelHeader title="カウントする文字列" />}>
               <Controller
-                render={({ field }) => <Input noResize="none" as="textarea" rows={15} {...field} />}
+                render={({ field }) => <Input noResize="none" as="textarea" rows={14} {...field} />}
                 name="input"
                 control={control}
                 defaultValue=""
