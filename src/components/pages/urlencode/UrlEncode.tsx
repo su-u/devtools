@@ -48,7 +48,7 @@ export const UrlEncode: React.VFC = () => {
                       render={({ field }) => (
                         <SelectPicker
                           data={encodingList}
-                          size="xs"
+                          size="sm"
                           groupBy="category"
                           placement="autoVerticalStart"
                           style={{ width: 224 }}
@@ -93,6 +93,8 @@ export const UrlEncode: React.VFC = () => {
 };
 
 const Label = styled(Form.ControlLabel)`
-  width: 80px !important;
-  line-height: 8px !important;
+  padding-left: 6px !important;
+  width: 90px !important;
+  line-height: 12px !important;
+  text-align: left !important;
 `;

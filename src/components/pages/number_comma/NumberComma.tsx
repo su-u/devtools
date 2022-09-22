@@ -8,6 +8,9 @@ import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
+import { Form } from 'rsuite';
+import { SelectPicker } from 'rsuite';
+import styled from '@emotion/styled';
 
 export const NumberComma: React.VFC = () => {
   const { control, title, output, selectData } = useNumberComma();
@@ -32,15 +35,20 @@ export const NumberComma: React.VFC = () => {
                   defaultValue=""
                 />
               </Panel>
-              <Panel bordered header={<PanelHeader title="区切り文字" />}>
-                <Controller
-                  render={({ field }) => (
-                    <InputPicker data={selectData} defaultValue="," {...field} />
-                  )}
-                  name="separator"
-                  control={control}
-                  defaultValue=","
-                />
+              <Panel bordered header={<PanelHeader title="設定" />}>
+                <Form fluid layout="horizontal">
+                  <Form.Group>
+                    <Label>エンコード</Label>
+                    <Controller
+                      render={({ field }) => (
+                        <InputPicker data={selectData} size="sm" defaultValue="," {...field} />
+                      )}
+                      name="separator"
+                      control={control}
+                      defaultValue=","
+                    />
+                  </Form.Group>
+                </Form>
               </Panel>
             </PanelGroup>
           </Col>
@@ -59,3 +67,10 @@ export const NumberComma: React.VFC = () => {
     </AppLayout>
   );
 };
+
+const Label = styled(Form.ControlLabel)`
+  padding-left: 6px !important;
+  width: 90px !important;
+  line-height: 12px !important;
+  text-align: left !important;
+`;
