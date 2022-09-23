@@ -6,7 +6,6 @@ import GrowthIcon from '@rsuite/icons/Growth';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import styled from '@emotion/styled';
 
-
 type NavItemType = {
   key: string;
   title: string;
