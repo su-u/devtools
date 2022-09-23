@@ -1,5 +1,5 @@
-import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import conv from 'iconv-urlencode';
 import { ENCODING_LIST } from '@/lib/encoding';
 
@@ -10,13 +10,15 @@ type Base64Form = {
 };
 
 export const useUrlEncode = () => {
-  const { control, watch } = useForm<Base64Form>({
+  const methods = useForm<Base64Form>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
   });
+  const { watch } = methods;
+
   const [output, setOutput] = useState('');
   const decode = watch('decode') ?? '';
   const encoding = watch('encoding') ?? '';
@@ -26,7 +28,7 @@ export const useUrlEncode = () => {
   }, [decode, encoding]);
 
   return {
-    control,
+    methods,
     output,
     encodingList: ENCODING_LIST,
   };
