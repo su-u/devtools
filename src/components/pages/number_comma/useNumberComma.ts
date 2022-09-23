@@ -23,7 +23,6 @@ export const useNumberComma = () => {
     shouldUnregister: true,
   });
 
-  const title = '数値区切り';
   const input = watch('input') ?? '';
   const separator = watch('separator') ?? ',';
   const output = comma(input, separator);
@@ -41,7 +40,6 @@ export const useNumberComma = () => {
 
   return {
     control,
-    title,
     output,
     selectData,
   };

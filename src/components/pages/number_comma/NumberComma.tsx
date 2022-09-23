@@ -12,7 +12,8 @@ import { Form } from 'rsuite';
 import styled from '@emotion/styled';
 
 export const NumberComma: React.VFC = () => {
-  const { control, title, output, selectData } = useNumberComma();
+  const title = '数値区切り';
+  const { control, output, selectData } = useNumberComma();
   const { copy } = useCopy();
 
   return (
