@@ -8,6 +8,7 @@
     "start": "next start",
     "format": "prettier --write **/*.{tsx,ts}",
     "release-major": "yarn version --major",
+    "release-minor": "yarn version --minor",
     "release-patch": "yarn version --patch"
   },
   "dependencies": {
