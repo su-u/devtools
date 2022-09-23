@@ -1,133 +1,127 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
+import styled from '@emotion/styled';
+import { Controller, FormProvider } from 'react-hook-form';
 import { ButtonToolbar, Col, Form, Grid, IconButton, Panel, PanelGroup, Row } from 'rsuite';
 import CopyIcon from '@rsuite/icons/Copy';
-import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 import MinusIcon from '@rsuite/icons/legacy/Minus';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import styled from '@emotion/styled';
 import { Input } from '@/components/common/Form/Input';
 import { useCopy } from '@/hooks/useCopy';
+import { ClearButton } from '@/components/common/Form/ClearButton';
 
 export const CharacterReplace: React.VFC = () => {
   const title = '文字列置換';
   const {
-    control,
+    methods,
     output,
     countUp,
     countDown,
     countDownDisabled,
     countUpDisabled,
     numberArray,
-    onClickInputClear,
   } = useCharacterReplace();
   const { copy } = useCopy();
 
   return (
-    <AppLayout title={title}>
-      <Grid fluid>
-        <Row>
-          <Col xs={24}>
-            <PageTitle title={title} />
-          </Col>
-        </Row>
-        <Row gutter={10}>
-          <Col xs={24} md={12}>
-            <PanelGroup bordered>
-              <Panel
-                bordered
-                header={
-                  <PanelHeader
-                    title="入力文字"
-                    right={
-                      <ButtonToolbar>
-                        <IconButton
-                          icon={<TrashOIcon />}
-                          placement="right"
-                          size="xs"
-                          onClick={onClickInputClear}
-                        >
-                          クリア
-                        </IconButton>
-                      </ButtonToolbar>
-                    }
-                  />
-                }
-              >
-                <Controller
-                  render={({ field }) => <Input as="textarea" rows={14} {...field} />}
-                  name="input"
-                  control={control}
-                  defaultValue=""
-                />
-              </Panel>
-              <Panel
-                bordered
-                header={
-                  <PanelHeader
-                    title="置換する文字"
-                    right={
-                      <ButtonToolbar>
-                        <IconButton
-                          icon={<MinusIcon />}
-                          placement="right"
-                          size="xs"
-                          disabled={countDownDisabled}
-                          onClick={countDown}
-                        >
-                          削除
-                        </IconButton>
-                        <IconButton
-                          icon={<PlusIcon />}
-                          placement="right"
-                          size="xs"
-                          disabled={countUpDisabled}
-                          onClick={countUp}
-                        >
-                          追加
-                        </IconButton>
-                      </ButtonToolbar>
-                    }
-                  />
-                }
-              >
-                <InputForm layout="inline" autoComplete="off">
-                  {numberArray.map((i) => (
-                    <ReplaceLine key={i} label={`${i}`} control={control} />
-                  ))}
-                </InputForm>
-              </Panel>
-            </PanelGroup>
-          </Col>
-          <Col xs={24} md={12}>
-            <Panel
-              bordered
-              header={
-                <PanelHeader
-                  title="置換後"
-                  right={
-                    <ButtonToolbar>
-                      <IconButton
-                        icon={<CopyIcon />}
-                        placement="right"
-                        size="xs"
-                        onClick={copy(output)}
-                      ></IconButton>
-                    </ButtonToolbar>
+    <FormProvider {...methods}>
+      <AppLayout title={title}>
+        <Grid fluid>
+          <Row>
+            <Col xs={24}>
+              <PageTitle title={title} />
+            </Col>
+          </Row>
+          <Row gutter={10}>
+            <Col xs={24} md={12}>
+              <PanelGroup bordered>
+                <Panel
+                  bordered
+                  header={
+                    <PanelHeader
+                      title="入力文字"
+                      right={
+                        <ButtonToolbar>
+                          <ClearButton name="input" />
+                        </ButtonToolbar>
+                      }
+                    />
                   }
-                />
-              }
-            >
-              <Input value={output} as="textarea" readOnly rows={14} />
-            </Panel>
-          </Col>
-        </Row>
-      </Grid>
-    </AppLayout>
+                >
+                  <Controller
+                    render={({ field }) => <Input as="textarea" rows={14} {...field} />}
+                    name="input"
+                    control={methods.control}
+                    defaultValue=""
+                  />
+                </Panel>
+                <Panel
+                  bordered
+                  header={
+                    <PanelHeader
+                      title="置換する文字"
+                      right={
+                        <ButtonToolbar>
+                          <IconButton
+                            icon={<MinusIcon />}
+                            placement="right"
+                            size="xs"
+                            disabled={countDownDisabled}
+                            onClick={countDown}
+                          >
+                            削除
+                          </IconButton>
+                          <IconButton
+                            icon={<PlusIcon />}
+                            placement="right"
+                            size="xs"
+                            disabled={countUpDisabled}
+                            onClick={countUp}
+                          >
+                            追加
+                          </IconButton>
+                        </ButtonToolbar>
+                      }
+                    />
+                  }
+                >
+                  <InputForm layout="inline" autoComplete="off">
+                    {numberArray.map((i) => (
+                      <ReplaceLine key={i} label={`${i}`} control={methods.control} />
+                    ))}
+                  </InputForm>
+                </Panel>
+              </PanelGroup>
+            </Col>
+            <Col xs={24} md={12}>
+              <Panel
+                bordered
+                header={
+                  <PanelHeader
+                    title="置換後"
+                    right={
+                      <ButtonToolbar>
+                        <IconButton
+                          icon={<CopyIcon />}
+                          placement="right"
+                          size="xs"
+                          onClick={copy(output)}
+                        ></IconButton>
+                      </ButtonToolbar>
+                    }
+                  />
+                }
+              >
+                <Input value={output} as="textarea" readOnly rows={14} />
+              </Panel>
+            </Col>
+          </Row>
+        </Grid>
+      </AppLayout>
+    </FormProvider>
   );
 };
 

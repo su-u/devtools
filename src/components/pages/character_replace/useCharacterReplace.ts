@@ -7,13 +7,14 @@ type characterCountForm = {
 };
 
 export const useCharacterReplace = () => {
-  const { control, watch, setValue, reset } = useForm<characterCountForm>({
+  const methods = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
   });
+  const { watch } = methods;
   const [inputCount, setInputCount] = useState(3);
 
   // @ts-ignore
@@ -28,12 +29,6 @@ export const useCharacterReplace = () => {
     return a?.replace(new RegExp(targetRegex, 'gm'), replace);
   }, input);
 
-  const onClickInputClear = useCallback(() => {
-    reset({
-      input: '',
-    });
-  }, [reset]);
-
   const countUp = useCallback(() => {
     setInputCount((prev) => prev + 1);
   }, []);
@@ -46,13 +41,12 @@ export const useCharacterReplace = () => {
   const countUpDisabled = inputCount >= 50;
 
   return {
-    control,
+    methods,
     output,
     countUp,
     countDown,
     countDownDisabled,
     countUpDisabled,
     numberArray,
-    onClickInputClear,
   };
 };
