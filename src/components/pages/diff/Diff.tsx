@@ -17,11 +17,7 @@ export const Diff: React.VFC = () => {
     <FormProvider {...methods}>
       <AppLayout title={title}>
         <Grid fluid>
-          <Row>
-            <Col xs={24}>
-              <PageTitle title={title} />
-            </Col>
-          </Row>
+          <PageTitle title={title} />
           <Row gutter={10}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

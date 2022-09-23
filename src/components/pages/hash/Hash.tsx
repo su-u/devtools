@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, ButtonToolbar, IconButton } from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, ButtonToolbar, InputGroup } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { Input } from '@/components/common/Form/Input';
@@ -8,7 +8,6 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useHash } from '@/components/pages/hash/useHash';
-import { InputGroup } from 'rsuite';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
@@ -21,11 +20,8 @@ export const Hash: React.VFC = () => {
     <FormProvider {...methods}>
       <AppLayout title={title}>
         <Grid fluid>
-          <Row>
-            <Col xs={24}>
-              <PageTitle title={title} />
-            </Col>
-          </Row>
+          <PageTitle title={title} />
+
           <Row gutter={10}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

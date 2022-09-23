@@ -1,6 +1,7 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, InputGroup, InputPicker, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, InputGroup, InputPicker, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
@@ -8,8 +9,6 @@ import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
-import { Form } from 'rsuite';
-import styled from '@emotion/styled';
 
 export const NumberComma: React.VFC = () => {
   const title = '数値区切り';
@@ -19,11 +18,7 @@ export const NumberComma: React.VFC = () => {
   return (
     <AppLayout title={title}>
       <Grid fluid>
-        <Row>
-          <Col xs={24}>
-            <PageTitle title={title} />
-          </Col>
-        </Row>
+        <PageTitle title={title} />
         <Row gutter={10}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>

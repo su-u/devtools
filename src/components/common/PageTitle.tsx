@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Row } from 'rsuite';
+import { Col } from 'rsuite';
 
 type Props = {
   title: string;
 };
 
 export const PageTitle: React.VFC<Props> = ({ title }) => {
-  return <H2>{title}</H2>;
+  return (
+    <Row>
+      <Col xs={24}>
+        <H2>{title}</H2>
+      </Col>
+    </Row>
+  );
 };
 
 const H2 = styled.h2`
