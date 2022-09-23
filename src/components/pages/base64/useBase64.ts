@@ -6,13 +6,14 @@ type Base64Form = {
 };
 
 export const useBase64 = () => {
-  const { control, watch } = useForm<Base64Form>({
+  const methods = useForm<Base64Form>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
   });
+  const { watch } = methods;
   const [output, setOutput] = useState('');
   const input = watch('input') ?? '';
 
@@ -32,7 +33,7 @@ export const useBase64 = () => {
   }, [input]);
 
   return {
-    control,
+    methods,
     output,
   };
 };
