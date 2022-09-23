@@ -18,7 +18,7 @@ export const Diff: React.VFC = () => {
       <AppLayout title={title}>
         <Grid fluid>
           <PageTitle title={title} />
-          <Row gutter={10}>
+          <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>
                 <Panel
@@ -66,7 +66,7 @@ export const Diff: React.VFC = () => {
               </Panel>
             </Col>
           </Row>
-          <Row>
+          <Row style={{ marginTop: '5px' }}>
             <Col xs={24}>
               <PanelGroup bordered>
                 <Panel bordered header={<PanelHeader title="差分" right={null} />}>

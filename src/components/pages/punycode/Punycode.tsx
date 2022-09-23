@@ -34,7 +34,7 @@ export const Punycode: React.VFC = () => {
       <AppLayout title={title}>
         <Grid fluid>
           <PageTitle title={title} />
-          <Row gutter={10}>
+          <Row gutter={5}>
             <Col xs={24} md={12}>
               <Panel
                 bordered
