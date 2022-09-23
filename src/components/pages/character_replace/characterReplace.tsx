@@ -10,7 +10,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import styled from '@emotion/styled';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/common/Form/Input';
 import { useCopy } from '@/hooks/useCopy';
 
 export const CharacterReplace: React.VFC = () => {

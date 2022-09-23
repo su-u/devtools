@@ -3,14 +3,14 @@ import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, ButtonToolbar, IconButton } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useHash } from '@/components/pages/hash/useHash';
 import { InputGroup } from 'rsuite';
-import { ConfigLabel } from '@/components/common/ConfigForm';
-import { OutputLineForm, OutputLabel } from '@/components/common/OutputLineForm';
+import { ConfigLabel } from '@/components/common/Form/ConfigForm';
+import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 
 export const Hash: React.VFC = () => {

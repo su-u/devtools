@@ -5,7 +5,7 @@ import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useNumberComma } from '@/components/pages/number_comma/useNumberComma';
 import { useCopy } from '@/hooks/useCopy';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { Form } from 'rsuite';

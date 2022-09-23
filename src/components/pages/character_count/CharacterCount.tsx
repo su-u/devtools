@@ -13,7 +13,7 @@ import {
 } from '@/components/pages/character_count/CharacterCountLib';
 import { useCopy } from '@/hooks/useCopy';
 import styled from '@emotion/styled';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 

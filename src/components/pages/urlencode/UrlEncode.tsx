@@ -13,12 +13,12 @@ import {
 } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
-import { ConfigLabel } from '@/components/common/ConfigForm';
+import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 
 export const UrlEncode: React.VFC = () => {
   const title = 'URLエンコード';

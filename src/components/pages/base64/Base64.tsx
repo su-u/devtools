@@ -4,7 +4,7 @@ import { Col, Grid, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useBase64 } from '@/components/pages/base64/useBase64';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { ButtonToolbar } from 'rsuite';
 import { IconButton } from 'rsuite';
