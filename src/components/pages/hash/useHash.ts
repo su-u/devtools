@@ -9,21 +9,17 @@ type Base64Form = {
 };
 
 export const useHash = () => {
-  const { control, watch, reset } = useForm<Base64Form>({
+  const methods = useForm<Base64Form>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
   });
+  const { watch } = methods;
+
   const input = watch('input') ?? '';
   const isUppercase = watch('isUppercase') ?? false;
-
-  const onClickInputClear = useCallback(() => {
-    reset({
-      input: '',
-    });
-  }, [reset]);
 
   const createHash = useCallback(
     (algorithm: string, input: string) => {
@@ -40,10 +36,9 @@ export const useHash = () => {
   );
 
   return {
-    control,
+    methods,
     input,
     algorithmList: HASH_ALGORITHMS,
     createHash,
-    onClickInputClear,
   };
 };
