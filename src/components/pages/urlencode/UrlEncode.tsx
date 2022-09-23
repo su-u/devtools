@@ -1,18 +1,24 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Panel, Row, Form } from 'rsuite';
+import {
+  Col,
+  Grid,
+  Panel,
+  Row,
+  Form,
+  ButtonToolbar,
+  IconButton,
+  PanelGroup,
+  SelectPicker,
+} from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { Input } from '@/components/common/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { ButtonToolbar } from 'rsuite';
-import { IconButton } from 'rsuite';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
-import { PanelGroup } from 'rsuite';
-import { SelectPicker } from 'rsuite';
-import styled from '@emotion/styled';
+import { ConfigLabel } from '@/components/common/ConfigForm';
 
 export const UrlEncode: React.VFC = () => {
   const title = 'URLエンコード';
@@ -41,7 +47,7 @@ export const UrlEncode: React.VFC = () => {
               <Panel bordered header={<PanelHeader title="設定" />}>
                 <Form fluid layout="horizontal">
                   <Form.Group>
-                    <Label>エンコード</Label>
+                    <ConfigLabel>エンコード</ConfigLabel>
                     <Controller
                       render={({ field }) => (
                         <SelectPicker
@@ -89,10 +95,3 @@ export const UrlEncode: React.VFC = () => {
     </AppLayout>
   );
 };
-
-const Label = styled(Form.ControlLabel)`
-  padding-left: 6px !important;
-  width: 90px !important;
-  line-height: 12px !important;
-  text-align: left !important;
-`;

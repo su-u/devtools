@@ -2,8 +2,10 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Nav, Sidenav, Sidebar } from 'rsuite';
 import EditIcon from '@rsuite/icons/Edit';
+import GrowthIcon from '@rsuite/icons/Growth';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import styled from '@emotion/styled';
+
 
 type NavItemType = {
   key: string;
@@ -76,6 +78,18 @@ const navList: NavGroupType[] = [
       },
     ],
   },
+  {
+    title: '生成ツール',
+    icon: <GrowthIcon />,
+    key: '4',
+    items: [
+      {
+        key: 'hash',
+        title: 'Hash',
+        path: '/hash',
+      },
+    ],
+  },
 ];
 
 type NavKeys = typeof navList[number]['key'];
@@ -93,7 +107,7 @@ export const SideNavBar: React.VFC = () => {
 
   return (
     <StyledSidebar width={expanded ? 220 : 56}>
-      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2']}>
+      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
             {navList.map((group) => {
