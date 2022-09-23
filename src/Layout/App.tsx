@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Container, Content, Sidebar } from 'rsuite';
+import { Container, Content } from 'rsuite';
 import { SideNavBar } from '@/components/SideNavBar';
 import styled from '@emotion/styled';
 
