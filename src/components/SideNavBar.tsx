@@ -87,6 +87,11 @@ const navList: NavGroupType[] = [
         title: 'Hash',
         path: '/hash',
       },
+      // {
+      //   key: 'dummy',
+      //   title: 'ダミーデータ',
+      //   path: '/dummy',
+      // },
     ],
   },
 ];
