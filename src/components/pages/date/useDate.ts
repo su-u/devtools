@@ -1,18 +1,12 @@
 import { useForm } from 'react-hook-form';
 
-export const LANG_LIST = [
-  {
-    label: '日本語',
-    value: 'ja',
-  },
-];
-
 type characterCountForm = {
-  input: string;
-  separator: string;
+  inputDate: string;
+  inputUnixTime: string;
+  timezone: string;
 };
 
-export const useDummy = () => {
+export const useDate = () => {
   const methods = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -22,11 +16,12 @@ export const useDummy = () => {
   });
   const { watch, control } = methods;
 
-  const input = watch('input') ?? '';
-  const separator = watch('separator') ?? ',';
-  const output = input;
+  const inputDate = watch('inputDate') ?? '';
+  const inputUnixTime = watch('inputUnixTime') ?? '';
+  const output = inputDate;
 
   return {
+    methods,
     control,
     output,
   };

@@ -85,7 +85,7 @@ const OutputLine: React.VFC<{
     <Form.Group>
       <InputGroup>
         <OutputLabel>{label}</OutputLabel>
-        <Input noResize="none" readOnly value={value} />
+        <Input noResize="none" size="sm" readOnly value={value} />
         <InputGroup.Button onClick={copy(value)} size="sm">
           <CopyIcon />
         </InputGroup.Button>

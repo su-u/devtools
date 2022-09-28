@@ -75,6 +75,11 @@ const navList: NavGroupType[] = [
         title: '数字カンマ区切り',
         path: '/number_comma',
       },
+      {
+        key: 'date',
+        title: '日付の変換',
+        path: '/date',
+      },
     ],
   },
   {

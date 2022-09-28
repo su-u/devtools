@@ -24,7 +24,7 @@ export const NumberComma: React.VFC = () => {
             <PanelGroup bordered>
               <Panel header={<PanelHeader title="区切りたい数値" />}>
                 <Controller
-                  render={({ field }) => <Input noResize="none" {...field} />}
+                  render={({ field }) => <Input noResize="none" size="sm" {...field} />}
                   name="input"
                   control={control}
                   defaultValue=""
@@ -50,7 +50,7 @@ export const NumberComma: React.VFC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header={<PanelHeader title="区切った数値" />}>
               <InputGroup>
-                <Input noResize="none" readOnly value={output} />
+                <Input noResize="none" size="sm" readOnly value={output} />
                 <InputGroup.Button onClick={copy(output)}>
                   <CopyIcon />
                 </InputGroup.Button>
