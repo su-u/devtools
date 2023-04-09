@@ -12,6 +12,7 @@ import { ClearButton } from '@/components/common/Form/ClearButton';
 export const Diff: React.FC = () => {
   const title = 'テキスト差分';
   const { methods, original, modified } = useDiff();
+  const INPUT_ROWS = 10;
 
   return (
     <FormProvider {...methods}>
@@ -35,7 +36,7 @@ export const Diff: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={15} {...field} />}
+                    render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} />}
                     name="original"
                     control={methods.control}
                     defaultValue=""
@@ -58,7 +59,7 @@ export const Diff: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Input as="textarea" rows={15} {...field} />}
+                  render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} />}
                   name="modified"
                   control={methods.control}
                   defaultValue=""
