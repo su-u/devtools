@@ -1,7 +1,7 @@
 import React from 'react';
 import { CharacterCount } from '@/components/pages/character_count/CharacterCount';
 
-const CharacterCountPage: React.VFC = () => {
+const CharacterCountPage: React.FC = () => {
   return <CharacterCount />;
 };
 

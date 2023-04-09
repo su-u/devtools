@@ -9,7 +9,7 @@ type Props = {
   onClick?: MouseEventHandler;
 };
 
-export const ClearButton: React.VFC<Props> = ({ name, title = 'クリア', onClick = null }) => {
+export const ClearButton: React.FC<Props> = ({ name, title = 'クリア', onClick = null }) => {
   const { reset } = useFormContext();
 
   const onClickInputClear = useCallback(() => {

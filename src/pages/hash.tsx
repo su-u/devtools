@@ -1,7 +1,7 @@
 import React from 'react';
 import { Hash } from '@/components/pages/hash/Hash';
 
-const hashPage: React.VFC = () => {
+const hashPage: React.FC = () => {
   return <Hash />;
 };
 

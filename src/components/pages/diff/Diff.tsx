@@ -9,7 +9,7 @@ import { useDiff } from '@/components/pages/diff/useDiff';
 import { Input } from '@/components/common/Form/Input';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 
-export const Diff: React.VFC = () => {
+export const Diff: React.FC = () => {
   const title = 'テキスト差分';
   const { methods, original, modified } = useDiff();
 

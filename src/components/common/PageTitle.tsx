@@ -7,7 +7,7 @@ type Props = {
   title: string;
 };
 
-export const PageTitle: React.VFC<Props> = ({ title }) => {
+export const PageTitle: React.FC<Props> = ({ title }) => {
   return (
     <Row>
       <Col xs={24}>

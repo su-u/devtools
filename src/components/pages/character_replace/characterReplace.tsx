@@ -13,7 +13,7 @@ import { Input } from '@/components/common/Form/Input';
 import { useCopy } from '@/hooks/useCopy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 
-export const CharacterReplace: React.VFC = () => {
+export const CharacterReplace: React.FC = () => {
   const title = '文字列置換';
   const {
     methods,
@@ -121,7 +121,7 @@ export const CharacterReplace: React.VFC = () => {
   );
 };
 
-const ReplaceLine: React.VFC<{
+const ReplaceLine: React.FC<{
   label: string;
   control: any;
 }> = ({ label, control }) => {

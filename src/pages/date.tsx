@@ -1,7 +1,7 @@
 import React from 'react';
 import { Date } from '@/components/pages/date/Date';
 
-const DatePage: React.VFC = () => {
+const DatePage: React.FC = () => {
   return <Date />;
 };
 

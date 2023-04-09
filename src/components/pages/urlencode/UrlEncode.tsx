@@ -11,17 +11,17 @@ import {
   PanelGroup,
   SelectPicker,
 } from 'rsuite';
+import CopyIcon from '@rsuite/icons/Copy';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 
-export const UrlEncode: React.VFC = () => {
+export const UrlEncode: React.FC = () => {
   const title = 'URLエンコード';
   const { methods, output, encodingList } = useUrlEncode();
   const { copy } = useCopy();

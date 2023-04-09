@@ -13,7 +13,7 @@ import { DatePicker } from 'rsuite';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { Toggle } from 'rsuite';
 
-export const Date: React.VFC = () => {
+export const Date: React.FC = () => {
   const title = 'ダミーデータ';
   const { methods, control, output } = useDate();
   const { copy } = useCopy();

@@ -10,7 +10,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useDummy, LANG_LIST } from '@/components/pages/dummy/useDummy';
 
-export const Dummy: React.VFC = () => {
+export const Dummy: React.FC = () => {
   const title = 'ダミーデータ';
   const { control, output } = useDummy();
   const { copy } = useCopy();

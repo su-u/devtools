@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
+import styled from '@emotion/styled';
 import { Container, Content } from 'rsuite';
 import { SideNavBar } from '@/components/SideNavBar';
-import styled from '@emotion/styled';
 
 type Props = {
   title?: string;
+  children?: React.ReactNode;
 };
 
 export const AppLayout: React.FC<Props> = ({ title = '', children }) => {

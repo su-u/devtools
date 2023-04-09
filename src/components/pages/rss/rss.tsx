@@ -2,7 +2,7 @@ import React from 'react';
 import { FlexboxGrid, Input } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 
-const RssGenerator: React.VFC = () => {
+const RssGenerator: React.FC = () => {
   return (
     <AppLayout>
       <FlexboxGrid justify="center">

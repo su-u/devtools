@@ -14,7 +14,7 @@ type PunycodeForm = {
   input: string;
 };
 
-export const Punycode: React.VFC = () => {
+export const Punycode: React.FC = () => {
   const title = 'punycode変換（日本語ドメイン変換）';
   const methods = useForm<PunycodeForm>({
     mode: 'onChange',

@@ -10,7 +10,7 @@ import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 
-export const NumberComma: React.VFC = () => {
+export const NumberComma: React.FC = () => {
   const title = '数値区切り';
   const { control, output, selectData } = useNumberComma();
   const { copy } = useCopy();

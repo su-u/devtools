@@ -22,7 +22,7 @@ type characterCountForm = {
   input: string;
 };
 
-export const CharacterCount: React.VFC = () => {
+export const CharacterCount: React.FC = () => {
   const methods = useForm<characterCountForm>({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -91,7 +91,7 @@ export const CharacterCount: React.VFC = () => {
   );
 };
 
-const InputLine: React.VFC<{
+const InputLine: React.FC<{
   label: string;
   value: string;
 }> = ({ label, value }) => {

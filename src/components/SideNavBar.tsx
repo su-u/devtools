@@ -103,7 +103,7 @@ const navList: NavGroupType[] = [
 
 type NavKeys = typeof navList[number]['key'];
 
-export const SideNavBar: React.VFC = () => {
+export const SideNavBar: React.FC = () => {
   const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
   const [expanded, setExpanded] = React.useState(true);
 

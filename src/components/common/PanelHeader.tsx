@@ -6,7 +6,7 @@ type Props = {
   right?: React.ReactNode;
 };
 
-export const PanelHeader: React.VFC<Props> = ({ title, right = null }) => {
+export const PanelHeader: React.FC<Props> = ({ title, right = null }) => {
   return (
     <Header>
       <Title>{title}</Title>

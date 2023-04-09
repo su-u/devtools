@@ -1,18 +1,18 @@
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, ButtonToolbar, InputGroup } from 'rsuite';
+import CopyIcon from '@rsuite/icons/Copy';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { useHash } from '@/components/pages/hash/useHash';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 
-export const Hash: React.VFC = () => {
+export const Hash: React.FC = () => {
   const title = 'ハッシュ';
   const { methods, input, algorithmList, createHash } = useHash();
 
@@ -75,7 +75,7 @@ export const Hash: React.VFC = () => {
   );
 };
 
-const OutputLine: React.VFC<{
+const OutputLine: React.FC<{
   label: string;
   value: string;
 }> = ({ label, value }) => {

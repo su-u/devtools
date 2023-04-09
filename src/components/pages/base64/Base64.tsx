@@ -10,7 +10,7 @@ import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 
-export const Base64: React.VFC = () => {
+export const Base64: React.FC = () => {
   const title = 'base64エンコード';
   const { methods, output } = useBase64();
   const { copy } = useCopy();
