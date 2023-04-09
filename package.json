@@ -20,20 +20,20 @@
     "dayjs": "^1.10.4",
     "iconv-lite": "^0.6.3",
     "iconv-urlencode": "^1.0.0",
-    "next": "^12.3.0",
+    "next": "^13.3.0",
     "obtain-unicode": "^0.0.5",
     "punycode": "^2.1.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-hook-form": "^7.22.5",
     "rsuite": "^5.18.1"
   },
   "devDependencies": {
-    "@types/node": "^14.14.31",
-    "@types/react": "^17.0.2",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.33",
     "prettier": "^2.2.1",
     "sass": "^1.32.8",
-    "typescript": "^4.8.3",
-    "typescript-plugin-css-modules": "^3.2.0"
+    "typescript": "^5.0.4",
+    "typescript-plugin-css-modules": "^5.0.0"
   }
 }
