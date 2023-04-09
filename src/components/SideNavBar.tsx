@@ -152,9 +152,7 @@ export const SideNavBar: React.VFC = () => {
 const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
   const { href, as, ...rest } = props;
   return (
-    <NextLink href={href} as={as}>
-      <a ref={ref} {...rest} />
-    </NextLink>
+    <NextLink href={href} as={as} {...rest} />
   );
 });
 NavLink.displayName = 'LinkComponent';
