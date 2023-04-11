@@ -1,10 +1,10 @@
 import React from 'react';
 import NextLink from 'next/link';
+import styled from '@emotion/styled';
 import { Nav, Sidenav, Sidebar } from 'rsuite';
 import EditIcon from '@rsuite/icons/Edit';
 import GrowthIcon from '@rsuite/icons/Growth';
 import ListOl from '@rsuite/icons/legacy/ListOl';
-import styled from '@emotion/styled';
 
 type NavItemType = {
   key: string;
@@ -150,7 +150,7 @@ export const SideNavBar: React.FC = () => {
 };
 
 const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
-  const { href, as, ...rest } = props;
+  const { href, as, expanded, ...rest } = props;
   return (
     <NextLink href={href} as={as} {...rest} />
   );

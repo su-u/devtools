@@ -8,14 +8,14 @@ import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
-import { useDate } from '@/components/pages/date/useDate';
+import { useConvertDate } from '@/components/pages/convert_date/useConvertDate';
 import { DatePicker } from 'rsuite';
-import { ConfigLabel } from '@/components/common/Form/ConfigForm';
-import { Toggle } from 'rsuite';
+import { LabelInput } from '@/components/common/Form/LabelInput';
+import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
 
-export const Date: React.FC = () => {
+export const ConvertDate: React.FC = () => {
   const title = 'ダミーデータ';
-  const { methods, control, output } = useDate();
+  const { methods, control, output } = useConvertDate();
   const { copy } = useCopy();
 
   return (
@@ -30,19 +30,19 @@ export const Date: React.FC = () => {
                   <Form.Group>
                     <Label>日付</Label>
                     <Controller
-                      render={() => <DatePicker format="yyyy-MM-dd HH:mm:ss" size="sm" style={{ width: 220 }} />}
+                      render={({ field: { onChange } }) => <DatePicker format="yyyy-MM-dd HH:mm:ss" size="sm" style={{ width: 220 }} onChange={onChange}/>}
                       name="inputDate"
                       control={control}
                     />
                   </Form.Group>
-                  <Form.Group>
-                    <Label>Unixtime</Label>
-                    <Controller
-                      render={({ field }) => <Input noResize="none" style={{ width: 220 }} {...field} />}
-                      name="inputUnixTime"
-                      control={control}
-                    />
-                  </Form.Group>
+                  {/*<Form.Group>*/}
+                  {/*  <Label>Unixtime</Label>*/}
+                  {/*  <Controller*/}
+                  {/*    render={({ field }) => <Input noResize="none" style={{ width: 220 }} {...field} />}*/}
+                  {/*    name="inputUnixTime"*/}
+                  {/*    control={control}*/}
+                  {/*  />*/}
+                  {/*</Form.Group>*/}
                 </Form>
               </Panel>
               {/*<Panel bordered header={<PanelHeader title="設定" />}>*/}
@@ -60,13 +60,13 @@ export const Date: React.FC = () => {
             </PanelGroup>
           </Col>
           <Col xs={24} md={12}>
-            <Panel bordered header={<PanelHeader title="区切った数値" />}>
-              <InputGroup>
-                <Input noResize="none" size="sm" readOnly value={output} />
-                <InputGroup.Button onClick={copy(output)}>
-                  <CopyIcon />
-                </InputGroup.Button>
-              </InputGroup>
+            <Panel bordered header={<PanelHeader title="出力" />}>
+              <HorizontalForm>
+                <LabelInput label="ISO 8601" value={output.ISO8601} />
+                <LabelInput label="年" value={output.year} />
+                <LabelInput label="月" value={output.month} />
+                <LabelInput label="日" value={output.d} />
+              </HorizontalForm>
             </Panel>
           </Col>
         </Row>
