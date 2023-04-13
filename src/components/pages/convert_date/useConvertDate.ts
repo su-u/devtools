@@ -1,7 +1,9 @@
 import { useForm } from 'react-hook-form';
+import { Dayjs } from 'dayjs';
+import { dayjs } from '@/lib/dayjs';
 
 type characterCountForm = {
-  inputDate: Date;
+  inputDate: Dayjs;
   inputUnixTime: string;
   timezone: string;
 };
@@ -13,10 +15,13 @@ export const useConvertDate = () => {
     criteriaMode: 'firstError',
     shouldFocusError: true,
     shouldUnregister: true,
+    defaultValues: {
+      inputDate: dayjs(),
+      timezone: 'Asia/Tokyo' }
   });
   const { watch, control } = methods;
 
-  const inputDate = watch('inputDate') ?? new Date();
+  const inputDate = watch('inputDate');
   const inputUnixTime = watch('inputUnixTime');
   const output = convert(inputDate);
 
@@ -27,17 +32,22 @@ export const useConvertDate = () => {
   };
 };
 
-const convert = (date: Date) => {
-  const ISO8601 = date.toISOString();
-  const year = date.getFullYear().toString();
-  const month = (date.getMonth() + 1).toString();
-  const d = date.getDate().toString();
-
+const convert = (date: Dayjs) => {
+  const ISO8601 = date.format('YYYY-MM-DDTHH:mm:ssZ[Z]')
+  const year = date.format('YYYY');
+  const month = date.format('MM');
+  const d = date.format('DD');
+  const week =  date.format('dd');
+  const unixTime = date.unix().toString();
+  const fullDate = date.format('YYYY/MM/DD HH:mm:ss')
 
   return {
     ISO8601,
     year,
     month,
-    d
+    d,
+    week,
+    unixTime,
+    fullDate,
   }
 }

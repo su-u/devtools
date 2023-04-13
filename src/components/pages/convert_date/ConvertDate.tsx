@@ -12,6 +12,8 @@ import { useConvertDate } from '@/components/pages/convert_date/useConvertDate';
 import { DatePicker } from 'rsuite';
 import { LabelInput } from '@/components/common/Form/LabelInput';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
+import dayjs from 'dayjs';
+import { InputPicker } from 'rsuite';
 
 export const ConvertDate: React.FC = () => {
   const title = 'ダミーデータ';
@@ -30,29 +32,23 @@ export const ConvertDate: React.FC = () => {
                   <Form.Group>
                     <Label>日付</Label>
                     <Controller
-                      render={({ field: { onChange } }) => <DatePicker format="yyyy-MM-dd HH:mm:ss" size="sm" style={{ width: 220 }} onChange={onChange}/>}
+                      render={({ field: { onChange } }) => <DatePicker format="yyyy-MM-dd HH:mm:ss" size="sm" style={{ width: 220 }} onChange={(value) => onChange(dayjs(value))}/>}
                       name="inputDate"
                       control={control}
                     />
                   </Form.Group>
-                  {/*<Form.Group>*/}
-                  {/*  <Label>Unixtime</Label>*/}
-                  {/*  <Controller*/}
-                  {/*    render={({ field }) => <Input noResize="none" style={{ width: 220 }} {...field} />}*/}
-                  {/*    name="inputUnixTime"*/}
-                  {/*    control={control}*/}
-                  {/*  />*/}
-                  {/*</Form.Group>*/}
                 </Form>
               </Panel>
-              {/*<Panel bordered header={<PanelHeader title="設定" />}>*/}
+              {/*<Panel bordered header={<PanelHeader title="共通設定" />}>*/}
               {/*  <Form fluid layout="horizontal">*/}
               {/*    <Form.Group>*/}
-              {/*      <ConfigLabel>大文字</ConfigLabel>*/}
+              {/*      <Label>TimeZone</Label>*/}
               {/*      <Controller*/}
-              {/*        render={({ field }) => <Toggle {...field} />}*/}
-              {/*        name="isUppercase"*/}
-              {/*        control={methods.control}*/}
+              {/*        render={({ field }) => (*/}
+              {/*          <InputPicker data={undefined} size="sm" defaultValue="," {...field} />*/}
+              {/*        )}*/}
+              {/*        name="timezone"*/}
+              {/*        control={control}*/}
               {/*      />*/}
               {/*    </Form.Group>*/}
               {/*  </Form>*/}
@@ -63,9 +59,12 @@ export const ConvertDate: React.FC = () => {
             <Panel bordered header={<PanelHeader title="出力" />}>
               <HorizontalForm>
                 <LabelInput label="ISO 8601" value={output.ISO8601} />
+                <LabelInput label="日付時間" value={output.fullDate} />
                 <LabelInput label="年" value={output.year} />
                 <LabelInput label="月" value={output.month} />
                 <LabelInput label="日" value={output.d} />
+                <LabelInput label="曜日" value={output.week} />
+                <LabelInput label="unixtime" value={output.unixTime} />
               </HorizontalForm>
             </Panel>
           </Col>
