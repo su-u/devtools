@@ -1,6 +1,9 @@
-import { useForm } from 'react-hook-form';
+import { useMemo } from 'react';
 import { Dayjs } from 'dayjs';
+import TIME_ZONES, { TimeZone } from 'timezones-list';
+import { useForm } from 'react-hook-form';
 import { dayjs } from '@/lib/dayjs';
+import { useEffect } from 'react';
 
 type characterCountForm = {
   inputDate: Dayjs;
@@ -17,29 +20,36 @@ export const useConvertDate = () => {
     shouldUnregister: true,
     defaultValues: {
       inputDate: dayjs(),
-      timezone: 'Asia/Tokyo' }
+      timezone: dayjs.tz.guess() }
   });
-  const { watch, control } = methods;
+  const { watch, control, setValue } = methods;
+  const timezones = useMemo(() => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })), []);
 
   const inputDate = watch('inputDate');
+  const timezone = watch('timezone');
   const inputUnixTime = watch('inputUnixTime');
-  const output = convert(inputDate);
+  const output = convert(inputDate, timezone);
+
+  useEffect(() => setValue('inputDate', dayjs()), []);
 
   return {
     methods,
+    inputDate,
     control,
     output,
+    timezones,
   };
 };
 
-const convert = (date: Dayjs) => {
-  const ISO8601 = date.format('YYYY-MM-DDTHH:mm:ssZ[Z]')
-  const year = date.format('YYYY');
-  const month = date.format('MM');
-  const d = date.format('DD');
-  const week =  date.format('dd');
-  const unixTime = date.unix().toString();
-  const fullDate = date.format('YYYY/MM/DD HH:mm:ss')
+const convert = (date: Dayjs, timezone: string) => {
+  const dateTimezone = dayjs(date).tz(timezone);
+  const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]')
+  const year = dateTimezone.format('YYYY');
+  const month = dateTimezone.format('MM');
+  const d = dateTimezone.format('DD');
+  const week =  dateTimezone.format('dd');
+  const unixTime = dateTimezone.unix().toString();
+  const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss')
 
   return {
     ISO8601,
