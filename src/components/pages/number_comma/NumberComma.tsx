@@ -36,7 +36,7 @@ export const NumberComma: React.FC = () => {
                     <Label>エンコード</Label>
                     <Controller
                       render={({ field }) => (
-                        <InputPicker data={selectData} size="sm" defaultValue="," {...field} />
+                        <InputPicker data={selectData} size="sm" defaultValue="," cleanable={false} {...field} />
                       )}
                       name="separator"
                       control={control}
