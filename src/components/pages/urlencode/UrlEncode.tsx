@@ -20,6 +20,7 @@ import { useCopy } from '@/hooks/useCopy';
 import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { FormRow } from '@/components/common/Form/FormRow';
 
 export const UrlEncode: React.FC = () => {
   const title = 'URLエンコード';
@@ -38,7 +39,7 @@ export const UrlEncode: React.FC = () => {
                   bordered
                   header={
                     <PanelHeader
-                      title="デコード"
+                      title="入力"
                       right={
                         <ButtonToolbar>
                           <ClearButton name="input" />
@@ -49,15 +50,13 @@ export const UrlEncode: React.FC = () => {
                 >
                   <Controller
                     render={({ field }) => <Input as="textarea" rows={20} {...field} />}
-                    name="decode"
+                    name="input"
                     control={methods.control}
-                    defaultValue=""
                   />
                 </Panel>
                 <Panel bordered header={<PanelHeader title="設定" />}>
                   <Form fluid layout="horizontal">
-                    <Form.Group>
-                      <ConfigLabel>エンコード</ConfigLabel>
+                    <FormRow label="エンコード">
                       <Controller
                         render={({ field }) => (
                           <SelectPicker
@@ -65,6 +64,7 @@ export const UrlEncode: React.FC = () => {
                             size="sm"
                             groupBy="category"
                             placement="autoVerticalStart"
+                            cleanable={false}
                             style={{ width: 224 }}
                             {...field}
                           />
@@ -73,7 +73,7 @@ export const UrlEncode: React.FC = () => {
                         control={methods.control}
                         defaultValue={encodingList[0].value}
                       />
-                    </Form.Group>
+                    </FormRow>
                   </Form>
                 </Panel>
               </PanelGroup>

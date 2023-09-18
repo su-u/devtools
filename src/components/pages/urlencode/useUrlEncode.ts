@@ -4,7 +4,7 @@ import conv from 'iconv-urlencode';
 import { ENCODING_LIST } from '@/lib/encoding';
 
 type Base64Form = {
-  decode: string;
+  input: string;
   encode: string;
   encoding: string;
 };
@@ -20,12 +20,12 @@ export const useUrlEncode = () => {
   const { watch } = methods;
 
   const [output, setOutput] = useState('');
-  const decode = watch('decode') ?? '';
+  const input = watch('input') ?? '';
   const encoding = watch('encoding') ?? '';
 
   useEffect(() => {
-    setOutput(conv.encode(decode.trim(), encoding));
-  }, [decode, encoding]);
+    setOutput(conv.encode(input.trim(), encoding));
+  }, [input, encoding]);
 
   return {
     methods,
