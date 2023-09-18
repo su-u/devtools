@@ -15,9 +15,11 @@ import { useCopy } from '@/hooks/useCopy';
 
 export const Uuid: React.FC = () => {
   const title = 'UUIDの生成';
-  const { methods, selectData, control, output, onClickGenerateUUID, DEFAULT_VALUES } = useUuid();
+  const { methods, selectData, control, output, onClickGenerateUUID, DEFAULT_VALUES, version } =
+    useUuid();
   const { copy } = useCopy();
 
+  const requireName = version === 3 || version === 5;
 
   return (
     <FormProvider {...methods}>
@@ -47,24 +49,52 @@ export const Uuid: React.FC = () => {
                     </FormRow>
                     <FormRow label="ハイフン">
                       <Controller
-                        render={({ field }) => <Toggle defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />}
+                        render={({ field }) => (
+                          <Toggle defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />
+                        )}
                         name="isHyphen"
                         control={methods.control}
                       />
                     </FormRow>
                     <FormRow label="大文字">
                       <Controller
-                        render={({ field }) => <Toggle defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />}
+                        render={({ field }) => (
+                          <Toggle defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />
+                        )}
                         name="isUppercase"
                         control={methods.control}
                       />
                     </FormRow>
+                    {requireName && (
+                      <FormRow label="name">
+                        <Controller
+                          render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                          name="UUIDName"
+                          control={control}
+                        />
+                      </FormRow>
+                    )}
+                    {requireName && (
+                      <FormRow label="namespace">
+                        <Controller
+                          render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                          name="UUIDNamespace"
+                          control={control}
+                        />
+                      </FormRow>
+                    )}
                   </Panel>
                   <Panel bordered header={<PanelHeader title="生成" />}>
-                    <FormRow label="エンコード">
+                    <FormRow label="生成数">
                       <Controller
                         render={({ field }) => (
-                          <InputNumber size="sm" defaultValue={DEFAULT_VALUES.generateCount} min={1} {...field} />
+                          <InputNumber
+                            size="sm"
+                            defaultValue={DEFAULT_VALUES.generateCount}
+                            min={1}
+                            max={100000}
+                            {...field}
+                          />
                         )}
                         name="generateCount"
                         control={control}
