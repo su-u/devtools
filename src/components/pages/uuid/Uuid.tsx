@@ -8,23 +8,18 @@ import {
   PanelGroup,
   Form,
   Toggle,
-  InputGroup,
   InputPicker,
 } from 'rsuite';
-import CopyIcon from '@rsuite/icons/Copy';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
-import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { useCopy } from '@/hooks/useCopy';
-import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
 import { useUuid } from '@/components/pages/uuid/useUuid';
 import { InputNumber } from 'rsuite';
 import { FormRow } from '@/components/common/Form/FormRow';
 
 export const Uuid: React.FC = () => {
   const title = 'UUIDの生成';
-  const { methods, input, algorithmList, createHash, selectData, control } = useUuid();
+  const { methods, selectData, control } = useUuid();
 
   return (
     <FormProvider {...methods}>
@@ -54,7 +49,7 @@ export const Uuid: React.FC = () => {
                     </FormRow>
                     <FormRow label="ハイフン">
                       <Controller
-                        render={({ field }) => <Toggle {...field} />}
+                        render={({ field }) => <Toggle defaultChecked {...field} />}
                         name="isUppercase"
                         control={methods.control}
                       />
@@ -82,36 +77,12 @@ export const Uuid: React.FC = () => {
               </Form>
             </Col>
             <Col md={12} xs={24}>
-              <Panel bordered header={<PanelHeader title="ハッシュ値" />}>
-                <OutputLineForm layout="horizontal">
-                  {algorithmList.map(({ label, value }) => {
-                    return <OutputLine label={label} value={createHash(value, input)} />;
-                  })}
-                </OutputLineForm>
+              <Panel bordered header={<PanelHeader title="UUID" />}>
               </Panel>
             </Col>
           </Row>
         </Grid>
       </AppLayout>
     </FormProvider>
-  );
-};
-
-const OutputLine: React.FC<{
-  label: string;
-  value: string;
-}> = ({ label, value }) => {
-  const { copy } = useCopy();
-
-  return (
-    <Form.Group>
-      <InputGroup>
-        <OutputLabel>{label}</OutputLabel>
-        <Input noResize="none" size="sm" readOnly value={value} />
-        <InputGroup.Button onClick={copy(value)} size="sm">
-          <CopyIcon />
-        </InputGroup.Button>
-      </InputGroup>
-    </Form.Group>
   );
 };

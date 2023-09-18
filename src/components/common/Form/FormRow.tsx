@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexboxGrid, Form, Grid, Row, Col } from 'rsuite';
+import { Form, Grid, Row, Col } from 'rsuite';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 
 type Props = {
