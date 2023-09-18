@@ -33,7 +33,7 @@ export const NumberComma: React.FC = () => {
               <Panel bordered header={<PanelHeader title="設定" />}>
                 <Form fluid layout="horizontal">
                   <Form.Group>
-                    <ConfigLabel>エンコード</ConfigLabel>
+                    <ConfigLabel>区切り文字</ConfigLabel>
                     <Controller
                       render={({ field }) => (
                         <InputPicker
@@ -46,7 +46,6 @@ export const NumberComma: React.FC = () => {
                       )}
                       name="separator"
                       control={control}
-                      defaultValue=","
                     />
                   </Form.Group>
                 </Form>

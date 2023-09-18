@@ -8,7 +8,6 @@ import {
   PanelGroup,
   Form,
   Toggle,
-  ButtonToolbar,
   InputGroup,
   InputPicker,
 } from 'rsuite';
@@ -18,9 +17,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
-import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
-import { ClearButton } from '@/components/common/Form/ClearButton';
 import { useUuid } from '@/components/pages/uuid/useUuid';
 import { InputNumber } from 'rsuite';
 import { FormRow } from '@/components/common/Form/FormRow';
@@ -36,72 +33,55 @@ export const Uuid: React.FC = () => {
           <PageTitle title={title} />
 
           <Row gutter={5}>
-            <Col xs={24} md={12}>
-              <PanelGroup bordered>
-                <Form fluid layout="horizontal">
-                  <Panel
-                    bordered
-                    header={
-                      <PanelHeader
-                        title="設定"
-                        right={
-                          <ButtonToolbar>
-                            <ClearButton name="input" />
-                          </ButtonToolbar>
-                        }
-                      />
-                    }
-                  >
-                    <Form.Group>
-                      <ConfigLabel>大文字</ConfigLabel>
+            <Col md={12} xs={24}>
+              <Form fluid layout="horizontal">
+                <PanelGroup bordered>
+                  <Panel bordered header={<PanelHeader title="設定" />}>
+                    <FormRow label="バージョン">
                       <Controller
                         render={({ field }) => (
                           <InputPicker
                             data={selectData}
                             size="sm"
-                            defaultValue={1}
+                            defaultValue={5}
                             cleanable={false}
                             {...field}
                           />
                         )}
                         name="version"
                         control={control}
-                        defaultValue={1}
                       />
-                    </Form.Group>
-                    <Form.Group>
-                      <ConfigLabel>ハイフン</ConfigLabel>
+                    </FormRow>
+                    <FormRow label="ハイフン">
                       <Controller
                         render={({ field }) => <Toggle {...field} />}
                         name="isUppercase"
                         control={methods.control}
                       />
-                    </Form.Group>
-                    <Form.Group>
-                      <ConfigLabel>大文字</ConfigLabel>
+                    </FormRow>
+                    <FormRow label="大文字">
                       <Controller
                         render={({ field }) => <Toggle {...field} />}
                         name="isUppercase"
                         control={methods.control}
                       />
-                    </Form.Group>
+                    </FormRow>
                   </Panel>
                   <Panel bordered header={<PanelHeader title="生成" />}>
                     <FormRow label="エンコード">
                       <Controller
                         render={({ field }) => (
-                          <InputNumber size="sm" defaultValue={1} {...field} />
+                          <InputNumber size="sm" defaultValue={1} min={1} {...field} />
                         )}
                         name="generateCount"
                         control={control}
-                        defaultValue={1}
                       />
                     </FormRow>
                   </Panel>
-                </Form>
-              </PanelGroup>
+                </PanelGroup>
+              </Form>
             </Col>
-            <Col xs={24} md={12}>
+            <Col md={12} xs={24}>
               <Panel bordered header={<PanelHeader title="ハッシュ値" />}>
                 <OutputLineForm layout="horizontal">
                   {algorithmList.map(({ label, value }) => {
