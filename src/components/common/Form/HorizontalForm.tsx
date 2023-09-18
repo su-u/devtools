@@ -4,13 +4,11 @@ import styled from '@emotion/styled';
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 export const HorizontalForm: React.FC<Props> = ({ children }) => {
-  return <StyledForm layout="horizontal">
-    {children}
-  </StyledForm>
-}
+  return <StyledForm layout="horizontal">{children}</StyledForm>;
+};
 
 const StyledForm = styled(Form)`
   > div:not(:last-child) {

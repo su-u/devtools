@@ -20,10 +20,14 @@ export const useConvertDate = () => {
     shouldUnregister: true,
     defaultValues: {
       inputDate: dayjs(),
-      timezone: dayjs.tz.guess() }
+      timezone: dayjs.tz.guess(),
+    },
   });
   const { watch, control, setValue } = methods;
-  const timezones = useMemo(() => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })), []);
+  const timezones = useMemo(
+    () => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })),
+    [],
+  );
 
   const inputDate = watch('inputDate');
   const timezone = watch('timezone');
@@ -43,13 +47,13 @@ export const useConvertDate = () => {
 
 const convert = (date: Dayjs, timezone: string) => {
   const dateTimezone = dayjs(date).tz(timezone);
-  const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]')
+  const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]');
   const year = dateTimezone.format('YYYY');
   const month = dateTimezone.format('MM');
   const d = dateTimezone.format('DD');
-  const week =  dateTimezone.format('dd');
+  const week = dateTimezone.format('dd');
   const unixTime = dateTimezone.unix().toString();
-  const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss')
+  const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss');
 
   return {
     ISO8601,
@@ -59,5 +63,5 @@ const convert = (date: Dayjs, timezone: string) => {
     week,
     unixTime,
     fullDate,
-  }
-}
+  };
+};

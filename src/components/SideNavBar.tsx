@@ -97,11 +97,16 @@ const navList: NavGroupType[] = [
       //   title: 'ダミーデータ',
       //   path: '/dummy',
       // },
+      {
+        key: 'uuid',
+        title: 'UUID',
+        path: '/uuid',
+      },
     ],
   },
 ];
 
-type NavKeys = typeof navList[number]['key'];
+type NavKeys = (typeof navList)[number]['key'];
 
 export const SideNavBar: React.FC = () => {
   const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
@@ -151,9 +156,7 @@ export const SideNavBar: React.FC = () => {
 
 const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
   const { href, as, expanded, ...rest } = props;
-  return (
-    <NextLink href={href} as={as} {...rest} />
-  );
+  return <NextLink href={href} as={as} {...rest} />;
 });
 NavLink.displayName = 'LinkComponent';
 

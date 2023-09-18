@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, InputGroup, InputPicker, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
@@ -9,6 +8,7 @@ import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
+import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 
 export const NumberComma: React.FC = () => {
   const title = '数値区切り';
@@ -33,10 +33,16 @@ export const NumberComma: React.FC = () => {
               <Panel bordered header={<PanelHeader title="設定" />}>
                 <Form fluid layout="horizontal">
                   <Form.Group>
-                    <Label>エンコード</Label>
+                    <ConfigLabel>エンコード</ConfigLabel>
                     <Controller
                       render={({ field }) => (
-                        <InputPicker data={selectData} size="sm" defaultValue="," cleanable={false} {...field} />
+                        <InputPicker
+                          data={selectData}
+                          size="sm"
+                          defaultValue=","
+                          cleanable={false}
+                          {...field}
+                        />
                       )}
                       name="separator"
                       control={control}
@@ -62,10 +68,3 @@ export const NumberComma: React.FC = () => {
     </AppLayout>
   );
 };
-
-const Label = styled(Form.ControlLabel)`
-  padding-left: 6px !important;
-  width: 90px !important;
-  line-height: 12px !important;
-  text-align: left !important;
-`;

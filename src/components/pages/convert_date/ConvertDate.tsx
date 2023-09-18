@@ -28,7 +28,14 @@ export const ConvertDate: React.FC = () => {
                   <Form.Group>
                     <Label>日付</Label>
                     <Controller
-                      render={({ field: { onChange } }) => <DatePicker format="yyyy-MM-dd HH:mm:ss" size="sm" style={{ width: 220 }} onChange={(value) => value && onChange(dayjs(value))}/>}
+                      render={({ field: { onChange } }) => (
+                        <DatePicker
+                          format="yyyy-MM-dd HH:mm:ss"
+                          size="sm"
+                          style={{ width: 220 }}
+                          onChange={(value) => value && onChange(dayjs(value))}
+                        />
+                      )}
                       name="inputDate"
                       control={control}
                     />

@@ -15,15 +15,8 @@ import { ClearButton } from '@/components/common/Form/ClearButton';
 
 export const CharacterReplace: React.FC = () => {
   const title = '文字列置換';
-  const {
-    methods,
-    output,
-    countUp,
-    countDown,
-    countDownDisabled,
-    countUpDisabled,
-    numberArray,
-  } = useCharacterReplace();
+  const { methods, output, countUp, countDown, countDownDisabled, countUpDisabled, numberArray } =
+    useCharacterReplace();
   const { copy } = useCopy();
 
   return (
