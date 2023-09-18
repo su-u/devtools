@@ -8,9 +8,9 @@ import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
 import { useHash } from '@/components/pages/hash/useHash';
-import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { FormRow } from '@/components/common/Form/FormRow';
 
 export const Hash: React.FC = () => {
   const title = 'ハッシュ';
@@ -21,7 +21,6 @@ export const Hash: React.FC = () => {
       <AppLayout title={title}>
         <Grid fluid>
           <PageTitle title={title} />
-
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>
@@ -47,14 +46,13 @@ export const Hash: React.FC = () => {
                 </Panel>
                 <Panel bordered header={<PanelHeader title="設定" />}>
                   <Form fluid layout="horizontal">
-                    <Form.Group>
-                      <ConfigLabel>大文字</ConfigLabel>
+                    <FormRow label="大文字">
                       <Controller
                         render={({ field }) => <Toggle {...field} />}
                         name="isUppercase"
                         control={methods.control}
                       />
-                    </Form.Group>
+                    </FormRow>
                   </Form>
                 </Panel>
               </PanelGroup>
