@@ -99,7 +99,7 @@ const navList: NavGroupType[] = [
       // },
       {
         key: 'uuid',
-        title: 'UUID(dev)',
+        title: 'UUID生成',
         path: '/uuid',
       },
     ],
