@@ -10,7 +10,13 @@ type UrlEncodeForm = {
 };
 
 export const useUrlEncode = () => {
-  const methods = useCustomForm<UrlEncodeForm>();
+  const methods = useCustomForm<UrlEncodeForm>({
+    defaultValues: {
+      input: '',
+      encode: '',
+      encoding: ENCODING_LIST[0].value,
+    }
+  });
   const { watch } = methods;
 
   const [output, setOutput] = useState('');

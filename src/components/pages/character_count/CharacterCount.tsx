@@ -23,11 +23,15 @@ type characterCountForm = {
 };
 
 export const CharacterCount: React.FC = () => {
-  const methods = useCustomForm<characterCountForm>();
+  const methods = useCustomForm<characterCountForm>({
+    defaultValues: {
+      input: '',
+    }
+  });
   const { control, watch } = methods;
 
   const title = '文字数カウント';
-  const input = watch('input') ?? '';
+  const input = watch('input', '');
 
   const characterCountValue = characterCountWithSpace(input).toString();
   const characterCountWithoutSpaceValue = characterCountWithoutSpace(input).toString();
@@ -58,11 +62,10 @@ export const CharacterCount: React.FC = () => {
               >
                 <Controller
                   render={({ field }) => (
-                    <Input noResize="none" as="textarea" rows={14} {...field} />
+                    <Input noResize="none" as="textarea" rows={14} {...field} ref={null}/>
                   )}
                   name="input"
                   control={control}
-                  defaultValue=""
                 />
               </Panel>
             </Col>

@@ -48,7 +48,7 @@ export const UrlEncode: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={20} {...field} />}
+                    render={({ field }) => <Input as="textarea" rows={20} {...field} ref={null}/>}
                     name="input"
                     control={methods.control}
                   />
@@ -66,11 +66,11 @@ export const UrlEncode: React.FC = () => {
                             cleanable={false}
                             style={{ width: 224 }}
                             {...field}
+                            ref={null}
                           />
                         )}
                         name="encoding"
                         control={methods.control}
-                        defaultValue={encodingList[0].value}
                       />
                     </FormRow>
                   </Form>

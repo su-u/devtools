@@ -17,12 +17,16 @@ type PunycodeForm = {
 
 export const Punycode: React.FC = () => {
   const title = 'punycode変換（日本語ドメイン変換）';
-  const methods = useCustomForm<PunycodeForm>();
+  const methods = useCustomForm<PunycodeForm>({
+    defaultValues: {
+      input: '',
+    }
+  });
   const { control, watch } = methods;
   const { copy } = useCopy();
 
-  const converted_ascii = punycode.toASCII(watch('input') ?? '');
-  const converted_punycode = punycode.encode(watch('input') ?? '');
+  const converted_ascii = punycode.toASCII(watch('input', ''));
+  const converted_punycode = punycode.encode(watch('input', ''));
 
   return (
     <FormProvider {...methods}>
@@ -46,11 +50,10 @@ export const Punycode: React.FC = () => {
               >
                 <Controller
                   render={({ field }) => (
-                    <Input noResize="none" as="textarea" rows={13} {...field} />
+                    <Input noResize="none" as="textarea" rows={13} {...field} ref={null}/>
                   )}
                   name="input"
                   control={control}
-                  defaultValue=""
                 />
               </Panel>
             </Col>

@@ -39,7 +39,6 @@ export const Diff: React.FC = () => {
                     render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} />}
                     name="original"
                     control={methods.control}
-                    defaultValue=""
                   />
                 </Panel>
               </PanelGroup>
@@ -59,10 +58,9 @@ export const Diff: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} />}
+                  render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} ref={null} />}
                   name="modified"
                   control={methods.control}
-                  defaultValue=""
                 />
               </Panel>
             </Col>

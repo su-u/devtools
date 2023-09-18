@@ -7,7 +7,11 @@ type CharacterReplaceForm = {
 };
 
 export const useCharacterReplace = () => {
-  const methods = useCustomForm<CharacterReplaceForm>();
+  const methods = useCustomForm<CharacterReplaceForm>({
+    defaultValues: {
+      input: '',
+    }
+  });
   const { watch } = methods;
   const [inputCount, setInputCount] = useState(3);
 

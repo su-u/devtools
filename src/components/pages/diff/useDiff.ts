@@ -6,7 +6,12 @@ type DiffForm = {
 };
 
 export const useDiff = () => {
-  const methods = useCustomForm<DiffForm>();
+  const methods = useCustomForm<DiffForm>({
+    defaultValues: {
+      original: '',
+      modified: '',
+    }
+  });
   const { watch } = methods;
 
   const original = watch('original', '');

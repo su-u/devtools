@@ -61,7 +61,7 @@ export const Hash: React.FC = () => {
               <Panel bordered header={<PanelHeader title="ハッシュ値" />}>
                 <OutputLineForm layout="horizontal">
                   {algorithmList.map(({ label, value }) => {
-                    return <OutputLine label={label} value={createHash(value, input)} />;
+                    return <OutputLine key={label} label={label} value={createHash(value, input)} />;
                   })}
                 </OutputLineForm>
               </Panel>

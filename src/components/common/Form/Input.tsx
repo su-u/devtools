@@ -11,9 +11,9 @@ export const Input: RsRefForwardingComponent<'input', Props> = ({
   noResize = 'vertical',
   ...field
 }) => {
-  return <StyleInput noResize={noResize} {...field} />;
+  return <StyleInput resize={noResize} {...field} />;
 };
 
-const StyleInput = styled(RInput)<{ noResize: string }>`
-  resize: ${({ noResize }) => noResize} !important;
+const StyleInput = styled(RInput)<{ resize: string }>`
+  resize: ${({ resize }) => resize} !important;
 `;

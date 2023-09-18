@@ -36,10 +36,9 @@ export const Base64: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Input as="textarea" rows={20} {...field} />}
+                  render={({ field }) => <Input as="textarea" rows={20} {...field} ref={null}/>}
                   name="input"
                   control={methods.control}
-                  defaultValue=""
                 />
               </Panel>
             </Col>
