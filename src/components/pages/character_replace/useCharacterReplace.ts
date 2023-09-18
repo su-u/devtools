@@ -1,19 +1,13 @@
-import { useForm } from 'react-hook-form';
 import { useCallback, useState } from 'react';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
-type characterCountForm = {
+type CharacterReplaceForm = {
   input: string;
   [key: string]: string;
 };
 
 export const useCharacterReplace = () => {
-  const methods = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<CharacterReplaceForm>();
   const { watch } = methods;
   const [inputCount, setInputCount] = useState(3);
 

@@ -1,6 +1,6 @@
-import { useForm } from 'react-hook-form';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
-type characterCountForm = {
+type NumberCommaForm = {
   input: string;
   separator: string;
 };
@@ -15,16 +15,10 @@ export const comma = (num: string, separator: string = ',') => {
 };
 
 export const useNumberComma = () => {
-  const { control, watch } = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const { control, watch } = useCustomForm<NumberCommaForm>();
 
-  const input = watch('input') ?? '';
-  const separator = watch('separator') ?? ',';
+  const input = watch('input', '');
+  const separator = watch('separator', '');
   const output = comma(input, separator);
 
   const selectData = [

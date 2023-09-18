@@ -1,5 +1,5 @@
-import { useForm } from 'react-hook-form';
 import { ItemDataType } from 'rsuite/esm/@types/common';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type UuidForm = {
   version: number;
@@ -32,13 +32,7 @@ const selectData: ItemDataType<number>[] = [
 ];
 
 export const useUuid = () => {
-  const methods = useForm<UuidForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<UuidForm>();
   const { control } = methods;
 
   return {

@@ -1,23 +1,16 @@
-import { useForm } from 'react-hook-form';
-import { useCallback } from 'react';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
-type characterCountForm = {
+type DiffForm = {
   original: string;
   modified: string;
 };
 
 export const useDiff = () => {
-  const methods = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<DiffForm>();
   const { watch } = methods;
 
-  const original = watch('original') ?? '';
-  const modified = watch('modified') ?? '';
+  const original = watch('original', '');
+  const modified = watch('modified', '');
 
   return {
     methods,

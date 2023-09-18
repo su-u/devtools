@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 export const LANG_LIST = [
   {
@@ -7,23 +7,17 @@ export const LANG_LIST = [
   },
 ];
 
-type characterCountForm = {
+type CharacterCountForm = {
   input: string;
   separator: string;
 };
 
 export const useDummy = () => {
-  const methods = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<CharacterCountForm>();
   const { watch, control } = methods;
 
-  const input = watch('input') ?? '';
-  const separator = watch('separator') ?? ',';
+  const input = watch('input', '');
+  const separator = watch('separator', '');
   const output = input;
 
   return {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useForm, Controller, FormProvider } from 'react-hook-form';
+import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Form, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
@@ -16,19 +16,14 @@ import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { LabelInput } from '@/components/common/Form/LabelInput';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type characterCountForm = {
   input: string;
 };
 
 export const CharacterCount: React.FC = () => {
-  const methods = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<characterCountForm>();
   const { control, watch } = methods;
 
   const title = '文字数カウント';

@@ -18,7 +18,6 @@ import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
 import { useUrlEncode } from '@/components/pages/urlencode/useUrlEncode';
-import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 

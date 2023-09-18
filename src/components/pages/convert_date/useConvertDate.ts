@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { Dayjs } from 'dayjs';
-import TIME_ZONES, { TimeZone } from 'timezones-list';
-import { useForm } from 'react-hook-form';
+import TIME_ZONES from 'timezones-list';
 import { dayjs } from '@/lib/dayjs';
 import { useEffect } from 'react';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type characterCountForm = {
   inputDate: Dayjs;
@@ -12,12 +12,7 @@ type characterCountForm = {
 };
 
 export const useConvertDate = () => {
-  const methods = useForm<characterCountForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
+  const methods = useCustomForm<characterCountForm>({
     defaultValues: {
       inputDate: dayjs(),
       timezone: dayjs.tz.guess(),

@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { createHash as cryptoCreateHash } from 'crypto';
 import { HASH_ALGORITHMS } from '@/lib/hashAlgorithms';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type Base64Form = {
   input: string;
@@ -9,17 +10,11 @@ type Base64Form = {
 };
 
 export const useHash = () => {
-  const methods = useForm<Base64Form>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<Base64Form>();
   const { watch } = methods;
 
-  const input = watch('input') ?? '';
-  const isUppercase = watch('isUppercase') ?? false;
+  const input = watch('input', '');
+  const isUppercase = watch('isUppercase', false);
 
   const createHash = useCallback(
     (algorithm: string, input: string) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, Controller, FormProvider } from 'react-hook-form';
+import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, InputGroup, Panel, PanelGroup, Row, ButtonToolbar } from 'rsuite';
 import punycode from 'punycode/';
 import { AppLayout } from '@/Layout/App';
@@ -9,6 +9,7 @@ import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type PunycodeForm = {
   input: string;
@@ -16,13 +17,7 @@ type PunycodeForm = {
 
 export const Punycode: React.FC = () => {
   const title = 'punycode変換（日本語ドメイン変換）';
-  const methods = useForm<PunycodeForm>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    criteriaMode: 'firstError',
-    shouldFocusError: true,
-    shouldUnregister: true,
-  });
+  const methods = useCustomForm<PunycodeForm>();
   const { control, watch } = methods;
   const { copy } = useCopy();
 
