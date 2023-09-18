@@ -17,10 +17,8 @@ export const AppLayout: React.FC<Props> = ({ title = '', children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <StyledContainer>
-        <Container>
-          <SideNavBar />
-          <StyledContent>{children}</StyledContent>
-        </Container>
+        <SideNavBar />
+        <StyledContent>{children}</StyledContent>
       </StyledContainer>
     </>
   );
@@ -30,6 +28,9 @@ const StyledContainer = styled(Container)`
   background-color: #36393f;
   color: white;
   height: 100vh;
+
+  // 本来rsuite.cssで反映されるスタイルだが、チラつき防止のため指定する
+  flex-direction: row;
 `;
 
 const StyledContent = styled(Content)`
