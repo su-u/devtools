@@ -5,7 +5,7 @@ import { useCopy } from '@/hooks/useCopy';
 
 type Props = {
   copyText: string;
-}
+};
 
 export const CopyButton: FC<Props> = ({ copyText }) => {
   const { copy } = useCopy();
@@ -17,5 +17,5 @@ export const CopyButton: FC<Props> = ({ copyText }) => {
       size="xs"
       onClick={copy(copyText)}
     ></IconButton>
-  )
-}
+  );
+};
