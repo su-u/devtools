@@ -41,7 +41,6 @@ export const useUuid = () => {
   });
   const { control } = methods;
 
-
   return {
     methods,
     control,

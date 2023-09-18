@@ -1,15 +1,6 @@
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import {
-  Col,
-  Grid,
-  Panel,
-  Row,
-  PanelGroup,
-  Form,
-  Toggle,
-  InputPicker,
-} from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, InputPicker } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
@@ -77,8 +68,7 @@ export const Uuid: React.FC = () => {
               </Form>
             </Col>
             <Col md={12} xs={24}>
-              <Panel bordered header={<PanelHeader title="UUID" />}>
-              </Panel>
+              <Panel bordered header={<PanelHeader title="UUID" />}></Panel>
             </Col>
           </Row>
         </Grid>

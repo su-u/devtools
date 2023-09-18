@@ -46,7 +46,13 @@ export const ConvertDate: React.FC = () => {
                   <FormRow label="TimeZone">
                     <Controller
                       render={({ field }) => (
-                        <InputPicker data={timezones} size="sm" defaultValue="," cleanable={false} {...field} />
+                        <InputPicker
+                          data={timezones}
+                          size="sm"
+                          defaultValue=","
+                          cleanable={false}
+                          {...field}
+                        />
                       )}
                       name="timezone"
                       control={control}
