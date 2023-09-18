@@ -44,7 +44,6 @@ export const CharacterReplace: React.FC = () => {
                     render={({ field }) => <Input as="textarea" rows={14} {...field} />}
                     name="input"
                     control={methods.control}
-                    defaultValue=""
                   />
                 </Panel>
                 <Panel
