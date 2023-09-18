@@ -13,6 +13,8 @@ import { Input } from '@/components/common/Form/Input';
 import { useCopy } from '@/hooks/useCopy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { CopyButton } from '@/components/common/CopyButton';
+import { AddButton } from '@/components/pages/character_replace/AddButton';
+import { DeleteButton } from '@/components/pages/character_replace/DeleteButton';
 
 export const CharacterReplace: React.FC = () => {
   const title = '文字列置換';
@@ -54,24 +56,8 @@ export const CharacterReplace: React.FC = () => {
                       title="置換する文字"
                       right={
                         <ButtonToolbar>
-                          <IconButton
-                            icon={<MinusIcon />}
-                            placement="right"
-                            size="xs"
-                            disabled={countDownDisabled}
-                            onClick={countDown}
-                          >
-                            削除
-                          </IconButton>
-                          <IconButton
-                            icon={<PlusIcon />}
-                            placement="right"
-                            size="xs"
-                            disabled={countUpDisabled}
-                            onClick={countUp}
-                          >
-                            追加
-                          </IconButton>
+                          <DeleteButton disabled={countDownDisabled} onClick={countDown} />
+                          <AddButton disabled={countUpDisabled} onClick={countUp} />
                         </ButtonToolbar>
                       }
                     />
