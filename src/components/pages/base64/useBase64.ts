@@ -6,13 +6,11 @@ type Base64Form = {
 };
 
 export const useBase64 = () => {
-  const methods = useCustomForm<Base64Form>(
-    {
-      defaultValues: {
-        input: '',
-      }
-    }
-  );
+  const methods = useCustomForm<Base64Form>({
+    defaultValues: {
+      input: '',
+    },
+  });
   const { watch } = methods;
   const [output, setOutput] = useState('');
   const input = watch('input', '');

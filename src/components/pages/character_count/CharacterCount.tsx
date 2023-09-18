@@ -26,7 +26,7 @@ export const CharacterCount: React.FC = () => {
   const methods = useCustomForm<characterCountForm>({
     defaultValues: {
       input: '',
-    }
+    },
   });
   const { control, watch } = methods;
 
@@ -62,7 +62,7 @@ export const CharacterCount: React.FC = () => {
               >
                 <Controller
                   render={({ field }) => (
-                    <Input noResize="none" as="textarea" rows={14} {...field} ref={null}/>
+                    <Input noResize="none" as="textarea" rows={14} {...field} ref={null} />
                   )}
                   name="input"
                   control={control}

@@ -10,7 +10,7 @@ export const useDiff = () => {
     defaultValues: {
       original: '',
       modified: '',
-    }
+    },
   });
   const { watch } = methods;
 

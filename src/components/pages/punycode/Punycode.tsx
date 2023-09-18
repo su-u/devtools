@@ -20,7 +20,7 @@ export const Punycode: React.FC = () => {
   const methods = useCustomForm<PunycodeForm>({
     defaultValues: {
       input: '',
-    }
+    },
   });
   const { control, watch } = methods;
   const { copy } = useCopy();
@@ -50,7 +50,7 @@ export const Punycode: React.FC = () => {
               >
                 <Controller
                   render={({ field }) => (
-                    <Input noResize="none" as="textarea" rows={13} {...field} ref={null}/>
+                    <Input noResize="none" as="textarea" rows={13} {...field} ref={null} />
                   )}
                   name="input"
                   control={control}

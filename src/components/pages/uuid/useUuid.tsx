@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useToaster, Message } from 'rsuite';
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
@@ -83,6 +83,10 @@ export const useUuid = () => {
     }
   }, [version, isUppercase, isHyphen, generateCount, UUIDName, UUIDNamespace]);
 
+  const onClickClear = useCallback(() => {
+    setOutput('');
+  }, [setOutput]);
+
   return {
     methods,
     control,
@@ -91,5 +95,6 @@ export const useUuid = () => {
     output,
     DEFAULT_VALUES,
     version,
+    onClickClear,
   };
 };

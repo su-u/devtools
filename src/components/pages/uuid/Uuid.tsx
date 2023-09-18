@@ -12,11 +12,21 @@ import { Input } from '@/components/common/Form/Input';
 import { InputGroup } from 'rsuite';
 import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
+import { ButtonToolbar } from 'rsuite';
+import { ClearButton } from '@/components/common/Form/ClearButton';
 
 export const Uuid: React.FC = () => {
   const title = 'UUIDの生成';
-  const { methods, selectData, control, output, onClickGenerateUUID, DEFAULT_VALUES, version } =
-    useUuid();
+  const {
+    methods,
+    selectData,
+    control,
+    output,
+    onClickGenerateUUID,
+    DEFAULT_VALUES,
+    version,
+    onClickClear,
+  } = useUuid();
   const { copy } = useCopy();
 
   const requireName = version === 3 || version === 5;
@@ -26,7 +36,6 @@ export const Uuid: React.FC = () => {
       <AppLayout title={title}>
         <Grid fluid>
           <PageTitle title={title} />
-
           <Row gutter={5}>
             <Col md={12} xs={24}>
               <Form fluid layout="horizontal">
@@ -108,7 +117,19 @@ export const Uuid: React.FC = () => {
               </Form>
             </Col>
             <Col md={12} xs={24}>
-              <Panel bordered header={<PanelHeader title="UUID" />}>
+              <Panel
+                bordered
+                header={
+                  <PanelHeader
+                    title="UUID"
+                    right={
+                      <ButtonToolbar>
+                        <ClearButton name="output" onClick={onClickClear} />
+                      </ButtonToolbar>
+                    }
+                  />
+                }
+              >
                 <InputGroup>
                   <Input value={output} as="textarea" readOnly rows={15} noResize="none" />
                   <InputGroup.Button onClick={copy(output)}>

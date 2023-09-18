@@ -58,7 +58,9 @@ export const Diff: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} ref={null} />}
+                  render={({ field }) => (
+                    <Input as="textarea" rows={INPUT_ROWS} {...field} ref={null} />
+                  )}
                   name="modified"
                   control={methods.control}
                 />
