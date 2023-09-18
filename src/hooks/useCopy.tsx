@@ -2,6 +2,7 @@ import { useToaster, Message } from 'rsuite';
 
 export const useCopy = () => {
   const toaster = useToaster();
+  const PLACEMENT = 'bottomStart';
 
   const copy = (text?: string) => async () => {
     if (text.trim() === '') {
@@ -10,7 +11,7 @@ export const useCopy = () => {
           コピーする内容がありません。
         </Message>,
         {
-          placement: 'topEnd',
+          placement: PLACEMENT,
         },
       );
       return;
@@ -23,7 +24,7 @@ export const useCopy = () => {
           コピーしました。
         </Message>,
         {
-          placement: 'topEnd',
+          placement: PLACEMENT,
           duration: 1000,
         },
       );
@@ -33,7 +34,7 @@ export const useCopy = () => {
           コピーに失敗しました。
         </Message>,
         {
-          placement: 'topEnd',
+          placement: PLACEMENT,
         },
       );
     }
