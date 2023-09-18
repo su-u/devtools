@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
@@ -11,10 +10,11 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
 import { InputPicker } from 'rsuite';
 import { dayjs } from '@/lib/dayjs';
+import { FormRow } from '@/components/common/Form/FormRow';
 
 export const ConvertDate: React.FC = () => {
-  const title = 'ダミーデータ';
-  const { methods, control, output, timezones, inputDate } = useConvertDate();
+  const title = '日付の変換';
+  const { control, output, timezones, inputDate } = useConvertDate();
 
   return (
     <AppLayout title={title}>
@@ -25,8 +25,7 @@ export const ConvertDate: React.FC = () => {
             <PanelGroup bordered>
               <Panel bordered header={<PanelHeader title="入力" />}>
                 <Form fluid layout="horizontal">
-                  <Form.Group>
-                    <Label>日付</Label>
+                  <FormRow label="日付">
                     <Controller
                       render={({ field: { onChange } }) => (
                         <DatePicker
@@ -39,21 +38,20 @@ export const ConvertDate: React.FC = () => {
                       name="inputDate"
                       control={control}
                     />
-                  </Form.Group>
+                  </FormRow>
                 </Form>
               </Panel>
               <Panel bordered header={<PanelHeader title="共通設定" />}>
                 <Form fluid layout="horizontal">
-                  <Form.Group>
-                    <Label>TimeZone</Label>
+                  <FormRow label="TimeZone">
                     <Controller
                       render={({ field }) => (
-                        <InputPicker data={timezones} size="sm" defaultValue="," {...field} />
+                        <InputPicker data={timezones} size="sm" defaultValue="," cleanable={false} {...field} />
                       )}
                       name="timezone"
                       control={control}
                     />
-                  </Form.Group>
+                  </FormRow>
                 </Form>
               </Panel>
             </PanelGroup>
@@ -76,10 +74,3 @@ export const ConvertDate: React.FC = () => {
     </AppLayout>
   );
 };
-
-const Label = styled(Form.ControlLabel)`
-  padding-left: 6px !important;
-  width: 90px !important;
-  line-height: 12px !important;
-  text-align: left !important;
-`;

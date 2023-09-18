@@ -8,7 +8,7 @@ import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import CopyIcon from '@rsuite/icons/Copy';
-import { ConfigLabel } from '@/components/common/Form/ConfigForm';
+import { FormRow } from '@/components/common/Form/FormRow';
 
 export const NumberComma: React.FC = () => {
   const title = '数値区切り';
@@ -32,8 +32,7 @@ export const NumberComma: React.FC = () => {
               </Panel>
               <Panel bordered header={<PanelHeader title="設定" />}>
                 <Form fluid layout="horizontal">
-                  <Form.Group>
-                    <ConfigLabel>区切り文字</ConfigLabel>
+                  <FormRow label="区切り文字">
                     <Controller
                       render={({ field }) => (
                         <InputPicker
@@ -47,7 +46,7 @@ export const NumberComma: React.FC = () => {
                       name="separator"
                       control={control}
                     />
-                  </Form.Group>
+                  </FormRow>
                 </Form>
               </Panel>
             </PanelGroup>
