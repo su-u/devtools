@@ -1,19 +1,17 @@
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, IconButton, ButtonToolbar } from 'rsuite';
+import { Col, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useBase64 } from '@/components/pages/base64/useBase64';
 import { Input } from '@/components/common/Form/Input';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import CopyIcon from '@rsuite/icons/Copy';
-import { useCopy } from '@/hooks/useCopy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { CopyButton } from '@/components/common/CopyButton';
 
 export const Base64: React.FC = () => {
   const title = 'base64エンコード';
   const { methods, output } = useBase64();
-  const { copy } = useCopy();
 
   return (
     <FormProvider {...methods}>
@@ -50,12 +48,7 @@ export const Base64: React.FC = () => {
                     title="base64エンコード"
                     right={
                       <ButtonToolbar>
-                        <IconButton
-                          icon={<CopyIcon />}
-                          placement="right"
-                          size="xs"
-                          onClick={copy(output)}
-                        ></IconButton>
+                        <CopyButton copyText={output} />
                       </ButtonToolbar>
                     }
                   />
