@@ -12,6 +12,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 import { Input } from '@/components/common/Form/Input';
 import { useCopy } from '@/hooks/useCopy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { CopyButton } from '@/components/common/CopyButton';
 
 export const CharacterReplace: React.FC = () => {
   const title = '文字列置換';
@@ -92,12 +93,7 @@ export const CharacterReplace: React.FC = () => {
                     title="置換後"
                     right={
                       <ButtonToolbar>
-                        <IconButton
-                          icon={<CopyIcon />}
-                          placement="right"
-                          size="xs"
-                          onClick={copy(output)}
-                        ></IconButton>
+                        <CopyButton copyText={output} />
                       </ButtonToolbar>
                     }
                   />

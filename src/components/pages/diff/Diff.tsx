@@ -70,7 +70,7 @@ export const Diff: React.FC = () => {
           <Row style={{ marginTop: '5px' }}>
             <Col xs={24}>
               <PanelGroup bordered>
-                <Panel bordered header={<PanelHeader title="差分" right={null} />}>
+                <Panel bordered header={<PanelHeader title="差分" />}>
                   <DiffEditor
                     original={original}
                     modified={modified}
