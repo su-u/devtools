@@ -10,7 +10,7 @@ export const useCopy = () => {
           コピーする内容がありません。
         </Message>,
         {
-          placement: 'topCenter',
+          placement: 'topEnd',
         },
       );
       return;
@@ -20,19 +20,19 @@ export const useCopy = () => {
       await navigator.clipboard.writeText(text);
       toaster.push(
         <Message showIcon type="success" duration={1000}>
-          コピーしました
+          コピーしました。
         </Message>,
         {
-          placement: 'topCenter',
+          placement: 'topEnd',
         },
       );
     } catch (e) {
       toaster.push(
         <Message showIcon type="error">
-          コピーしました
+          コピーに失敗しました。
         </Message>,
         {
-          placement: 'topCenter',
+          placement: 'topEnd',
         },
       );
     }
