@@ -14,6 +14,7 @@ import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { ButtonToolbar } from 'rsuite';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { CopyButton } from '@/components/common/CopyButton';
 
 export const Uuid: React.FC = () => {
   const title = 'UUIDの生成';
@@ -124,18 +125,14 @@ export const Uuid: React.FC = () => {
                     title="UUID"
                     right={
                       <ButtonToolbar>
+                        <CopyButton copyText={output} />
                         <ClearButton name="output" onClick={onClickClear} />
                       </ButtonToolbar>
                     }
                   />
                 }
               >
-                <InputGroup>
-                  <Input value={output} as="textarea" readOnly rows={15} noResize="none" />
-                  <InputGroup.Button onClick={copy(output)}>
-                    <CopyIcon />
-                  </InputGroup.Button>
-                </InputGroup>
+                <Input value={output} as="textarea" readOnly rows={15} noResize="none" />
               </Panel>
             </Col>
           </Row>
