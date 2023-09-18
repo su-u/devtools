@@ -19,11 +19,12 @@ export const useCopy = () => {
     try {
       await navigator.clipboard.writeText(text);
       toaster.push(
-        <Message showIcon type="success" duration={1000}>
+        <Message showIcon type="success">
           コピーしました。
         </Message>,
         {
           placement: 'topEnd',
+          duration: 1000,
         },
       );
     } catch (e) {
