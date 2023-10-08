@@ -6,7 +6,8 @@ export const DiffEditor: React.FC<DiffEditorProps> = (props) => {
   return (
     <StyledWrapper>
       <MonacoDiffEditor className="diff-editor" height="80vh" theme="vs-dark" {...props} />
-    </StyledWrapper>);
+    </StyledWrapper>
+  );
 };
 
 const StyledWrapper = styled.div``;

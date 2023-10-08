@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, InputGroup, InputPicker, Panel, PanelGroup, Row, Form } from 'rsuite';

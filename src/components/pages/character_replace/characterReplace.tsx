@@ -1,16 +1,13 @@
+'use client';
 import React from 'react';
 import styled from '@emotion/styled';
 import { Controller, FormProvider } from 'react-hook-form';
 import { ButtonToolbar, Col, Form, Grid, IconButton, Panel, PanelGroup, Row } from 'rsuite';
-import CopyIcon from '@rsuite/icons/Copy';
-import MinusIcon from '@rsuite/icons/legacy/Minus';
-import PlusIcon from '@rsuite/icons/legacy/Plus';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useCharacterReplace } from '@/components/pages/character_replace/useCharacterReplace';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { Input } from '@/components/common/Form/Input';
-import { useCopy } from '@/hooks/useCopy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { CopyButton } from '@/components/common/CopyButton';
 import { AddButton } from '@/components/pages/character_replace/AddButton';
@@ -20,7 +17,6 @@ export const CharacterReplace: React.FC = () => {
   const title = '文字列置換';
   const { methods, output, countUp, countDown, countDownDisabled, countUpDisabled, numberArray } =
     useCharacterReplace();
-  const { copy } = useCopy();
 
   return (
     <FormProvider {...methods}>

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Base64 } from '@/components/pages/base64/Base64';
 

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, InputPicker } from 'rsuite';
@@ -9,8 +10,6 @@ import { InputNumber } from 'rsuite';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Button } from 'rsuite';
 import { Input } from '@/components/common/Form/Input';
-import { InputGroup } from 'rsuite';
-import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 import { ButtonToolbar } from 'rsuite';
 import { ClearButton } from '@/components/common/Form/ClearButton';
