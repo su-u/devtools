@@ -8,7 +8,18 @@ type DiffForm = {
 export const useDiff = () => {
   const methods = useCustomForm<DiffForm>({
     defaultValues: {
-      original: '',
+      // 10行の空白
+      original: `
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      `,
       modified: '',
     },
   });
