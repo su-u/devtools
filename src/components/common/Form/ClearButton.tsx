@@ -10,11 +10,11 @@ type Props = {
 };
 
 export const ClearButton: React.FC<Props> = ({ name, title = 'クリア', onClick = null }) => {
-  const { resetField } = useFormContext();
+  const { resetField, watch, setValue } = useFormContext();
 
   const onClickInputClear = useCallback(() => {
     resetField(name);
-  }, [resetField]);
+  }, [resetField, name]);
 
   return (
     <IconButton

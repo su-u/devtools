@@ -10,12 +10,5 @@ type Props = {
 export const CopyButton: FC<Props> = ({ copyText }) => {
   const { copy } = useCopy();
 
-  return (
-    <IconButton
-      icon={<CopyIcon />}
-      placement="right"
-      size="xs"
-      onClick={copy(copyText)}
-    ></IconButton>
-  );
+  return <IconButton icon={<CopyIcon />} placement="right" size="xs" onClick={copy(copyText)} />;
 };

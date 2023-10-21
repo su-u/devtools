@@ -1,3 +1,4 @@
+import React from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type DiffForm = {
@@ -8,29 +9,25 @@ type DiffForm = {
 export const useDiff = () => {
   const methods = useCustomForm<DiffForm>({
     defaultValues: {
-      // 10行の空白
-      original: `
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      `,
+      original: '',
       modified: '',
     },
   });
-  const { watch } = methods;
+  const { watch, resetField, setValue } = methods;
 
   const original = watch('original', '');
   const modified = watch('modified', '');
+
+  const onClickOriginalReset = React.useCallback(() => {
+    resetField('original');
+    // console.log('original', watch('original'));
+    // setValue('original', '');
+  }, [resetField]);
 
   return {
     methods,
     original,
     modified,
+    onClickOriginalReset,
   };
 };

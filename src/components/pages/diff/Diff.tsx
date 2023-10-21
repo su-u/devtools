@@ -1,20 +1,18 @@
 'use client';
 import React from 'react';
-import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, FlexboxGrid } from 'rsuite';
+import { FormProvider } from 'react-hook-form';
+import { Col, Grid, Panel, PanelGroup, Row, FlexboxGrid } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { DiffEditor } from '@/components/pages/diff/DiffEditor';
 import { useDiff } from '@/components/pages/diff/useDiff';
-import { Input } from '@/components/common/Form/Input';
+import { ButtonToolbar } from 'rsuite';
 import { ClearButton } from '@/components/common/Form/ClearButton';
-import { fa } from '@faker-js/faker';
 
 export const Diff: React.FC = () => {
   const title = 'テキスト差分';
-  const { methods, original, modified } = useDiff();
-  const INPUT_ROWS = 10;
+  const { methods, original, modified, onClickOriginalReset } = useDiff();
 
   return (
     <FormProvider {...methods}>
@@ -25,15 +23,25 @@ export const Diff: React.FC = () => {
             <Col xs={24}>
               <PanelGroup bordered>
                 <Panel collapsible={false} bordered header={<PanelHeader title="差分" />}>
-                  <DiffEditor
-                    original={original}
-                    modified={modified}
-                    width="100%"
-                    options={{
-                      fontSize: '14px',
-                      tabSize: 2,
-                    }}
-                  />
+                  <Row>
+                    <Col xs={12}>
+                      <FlexboxGrid justify="end">
+                        <ButtonToolbar>
+                          {/*<ClearButton name="original" onClick={onClickOriginalReset} />*/}
+                        </ButtonToolbar>
+                      </FlexboxGrid>
+                    </Col>
+                    <Col xs={12}>
+                      <FlexboxGrid justify="end">
+                        <ButtonToolbar>
+                          {/*<ClearButton name="modified" />*/}
+                        </ButtonToolbar>
+                      </FlexboxGrid>
+                    </Col>
+                  </Row>
+                  <Row style={{ marginTop: '10px' }}>
+                    <DiffEditor original={original} modified={modified} />
+                  </Row>
                 </Panel>
               </PanelGroup>
             </Col>
