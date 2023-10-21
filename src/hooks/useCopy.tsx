@@ -3,6 +3,7 @@ import { useToaster, Message } from 'rsuite';
 export const useCopy = () => {
   const toaster = useToaster();
   const PLACEMENT = 'bottomStart';
+  const DURATION = 2000;
 
   const copy = (text?: string) => async () => {
     if (text.trim() === '') {
@@ -12,6 +13,7 @@ export const useCopy = () => {
         </Message>,
         {
           placement: PLACEMENT,
+          duration: DURATION,
         },
       );
       return;
@@ -25,7 +27,7 @@ export const useCopy = () => {
         </Message>,
         {
           placement: PLACEMENT,
-          duration: 1000,
+          duration: DURATION,
         },
       );
     } catch (e) {
@@ -35,6 +37,7 @@ export const useCopy = () => {
         </Message>,
         {
           placement: PLACEMENT,
+          duration: DURATION,
         },
       );
     }
