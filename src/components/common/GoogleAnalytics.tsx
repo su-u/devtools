@@ -1,7 +1,7 @@
-'use client'
-import Script from 'next/script'
-import { useEffect, FC } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+'use client';
+import Script from 'next/script';
+import { useEffect, FC } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { existsGaId, GA_MEASUREMENT_ID, pageview } from '@/lib/gtag';
 import { useRouter } from 'next/router';
 
@@ -11,30 +11,30 @@ const GoogleAnalytics: FC = () => {
 
   useEffect(() => {
     if (!existsGaId) {
-      return
+      return;
     }
-    const url = pathname + searchParams.toString()
-    pageview(url)
+    const url = pathname + searchParams.toString();
+    pageview(url);
   }, [pathname, searchParams]);
 
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {
       pageview(url);
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
   }, [router.events]);
 
   return (
     <>
       <Script
-        strategy='lazyOnload'
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
-      <Script id='gtag-init' strategy='afterInteractive'>
+      <Script id="gtag-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -45,7 +45,7 @@ const GoogleAnalytics: FC = () => {
         `}
       </Script>
     </>
-  )
-}
+  );
+};
 
-export default GoogleAnalytics
+export default GoogleAnalytics;

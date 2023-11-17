@@ -12,15 +12,19 @@ export const DiffEditor: React.FC<DiffEditorProps> = (props) => {
   const Original = CodeMirrorMerge.Original;
   const Modified = CodeMirrorMerge.Modified;
 
-  const onChangeOriginal = React.useCallback((value) => {
-    setValue('original', value);
-  }, [setValue]);
+  const onChangeOriginal = React.useCallback(
+    (value) => {
+      setValue('original', value);
+    },
+    [setValue],
+  );
 
-  const onChangeModified = React.useCallback((value) => {
-    setValue('modified', value);
-  }, [setValue]);
-
-
+  const onChangeModified = React.useCallback(
+    (value) => {
+      setValue('modified', value);
+    },
+    [setValue],
+  );
 
   return (
     <CodeMirrorMerge theme={vscodeDark} orientation="a-b">

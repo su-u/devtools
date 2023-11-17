@@ -33,9 +33,7 @@ export const Diff: React.FC = () => {
                     </Col>
                     <Col xs={12}>
                       <FlexboxGrid justify="end">
-                        <ButtonToolbar>
-                          {/*<ClearButton name="modified" />*/}
-                        </ButtonToolbar>
+                        <ButtonToolbar>{/*<ClearButton name="modified" />*/}</ButtonToolbar>
                       </FlexboxGrid>
                     </Col>
                   </Row>
