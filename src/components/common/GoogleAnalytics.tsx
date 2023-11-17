@@ -3,7 +3,6 @@ import Script from 'next/script';
 import { useEffect, FC } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { existsGaId, GA_MEASUREMENT_ID, pageview } from '@/lib/gtag';
-import { useRouter } from 'next/router';
 
 const GoogleAnalytics: FC = () => {
   const pathname = usePathname();
@@ -16,17 +15,6 @@ const GoogleAnalytics: FC = () => {
     const url = pathname + searchParams.toString();
     pageview(url);
   }, [pathname, searchParams]);
-
-  const router = useRouter();
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      pageview(url);
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
 
   return (
     <>
