@@ -1,10 +1,10 @@
 'use client'
-import { usePathname, useSearchParams } from 'next/navigation'
 import Script from 'next/script'
-import { useEffect } from 'react'
+import { useEffect, FC } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { existsGaId, GA_MEASUREMENT_ID, pageview } from '@/lib/gtag';
 
-const GoogleAnalytics = () => {
+const GoogleAnalytics: FC = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
