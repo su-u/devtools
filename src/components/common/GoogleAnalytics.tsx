@@ -5,8 +5,8 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { existsGaId, GA_MEASUREMENT_ID, pageview } from '@/lib/gtag';
 
 const GoogleAnalytics: FC = () => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (!existsGaId) {

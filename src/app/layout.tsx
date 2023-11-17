@@ -15,10 +15,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const className = 'rs-theme-dark';
 
   return (
-    <html lang="en">
-      <head>
-        <GoogleAnalytics />
-      </head>
+    <html lang="ja">
+      <GoogleAnalytics />
       <body className={className}>
         <Provider>{children}</Provider>
         <Analytics />
