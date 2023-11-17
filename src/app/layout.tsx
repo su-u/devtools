@@ -3,6 +3,7 @@ import 'rsuite/dist/rsuite.min.css';
 import '@/styles/rs-custom.globals.scss';
 import '@/styles/globals.scss';
 import { Provider } from '@/app/Provider';
+import GoogleAnalytics from '@/components/common/GoogleAnalytics';
 
 export const metadata = {
   title: 'Next.js',
@@ -15,6 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className={className}>
         <Provider>{children}</Provider>
         <Analytics />
