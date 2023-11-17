@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import 'rsuite/dist/rsuite.min.css';
 import '@/styles/rs-custom.globals.scss';
 import '@/styles/globals.scss';
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={className}>
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );
