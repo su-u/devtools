@@ -9,12 +9,10 @@ const GoogleAnalytics: FC = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    console.log(existsGaId);
     if (!existsGaId) {
       return;
     }
     const url = pathname + searchParams.toString();
-    console.log(url);
     pageview(url);
   }, [pathname, searchParams]);
 
