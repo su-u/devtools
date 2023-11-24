@@ -2,7 +2,7 @@
 import Script from 'next/script';
 import { useEffect, FC } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { existsGaId, GA_MEASUREMENT_ID, pageview } from '@/lib/gtag';
+import { existsGaId, GA_MEASUREMENT_ID, pageView } from '@/lib/gtag';
 
 const GoogleAnalytics: FC = () => {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ const GoogleAnalytics: FC = () => {
       return;
     }
     const url = pathname + searchParams.toString();
-    pageview(url);
+    pageView(url);
   }, [pathname, searchParams]);
 
   return (
