@@ -14,11 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // テーマのチラつきを抑えるために指定
   const className = 'rs-theme-dark';
+  const title = '開発補助ツール';
 
   return (
     <html lang="ja">
       <head>
         <GoogleAnalytics />
+        <title>{title}</title>
       </head>
       <body className={className}>
         <Provider>{children}</Provider>
