@@ -1,10 +1,15 @@
 'use client';
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Form, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { ClearButton } from '@/components/common/Form/ClearButton';
+import { Input } from '@/components/common/Form/Input';
+import { LabelInput } from '@/components/common/Form/LabelInput';
+import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { PageTitle } from '@/components/common/PageTitle';
+import { PanelHeader } from '@/components/common/PanelHeader';
 import {
   characterCountWithoutSpace,
   characterCountWithSpace,
@@ -13,11 +18,6 @@ import {
   linesCount,
   spaceCount,
 } from '@/components/pages/character_count/CharacterCountLib';
-import { Input } from '@/components/common/Form/Input';
-import { PanelHeader } from '@/components/common/PanelHeader';
-import { ClearButton } from '@/components/common/Form/ClearButton';
-import { LabelInput } from '@/components/common/Form/LabelInput';
-import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type characterCountForm = {
   input: string;

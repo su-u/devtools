@@ -74,7 +74,7 @@ export const useUuid = () => {
       }
       console.error(e);
     }
-  }, [version, isUppercase, isHyphen, generateCount, UUIDName, UUIDNamespace]);
+  }, [version, isUppercase, isHyphen, generateCount, UUIDName, UUIDNamespace, toaster]);
 
   const onClickClear = useCallback(() => {
     setOutput('');

@@ -1,10 +1,9 @@
-import React from 'react';
-import { useCopy } from '@/hooks/useCopy';
-import { Form } from 'rsuite';
-import { InputGroup } from 'rsuite';
-import { Input } from '@/components/common/Form/Input';
-import CopyIcon from '@rsuite/icons/Copy';
 import styled from '@emotion/styled';
+import CopyIcon from '@rsuite/icons/Copy';
+import React from 'react';
+import { Form , InputGroup } from 'rsuite';
+import { Input } from '@/components/common/Form/Input';
+import { useCopy } from '@/hooks/useCopy';
 
 export const LabelInput: React.FC<{
   label: string;

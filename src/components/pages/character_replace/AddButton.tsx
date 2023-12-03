@@ -1,7 +1,7 @@
+import PlusIcon from '@rsuite/icons/legacy/Plus';
 import React, { FC } from 'react';
 import { IconButton } from 'rsuite';
-import PlusIcon from '@rsuite/icons/legacy/Plus';
-import { IconButtonProps } from 'rsuite/esm/IconButton/IconButton';
+import type { IconButtonProps } from 'rsuite/esm/IconButton/IconButton';
 
 export const AddButton: FC<IconButtonProps> = (props) => {
   return (

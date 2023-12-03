@@ -1,16 +1,16 @@
 'use client';
+import CopyIcon from '@rsuite/icons/Copy';
+import { toASCII, encode } from 'punycode/';
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, InputGroup, Panel, PanelGroup, Row, ButtonToolbar } from 'rsuite';
-import punycode from 'punycode/';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/common/PageTitle';
-import { useCopy } from '@/hooks/useCopy';
-import { Input } from '@/components/common/Form/Input';
-import { PanelHeader } from '@/components/common/PanelHeader';
-import CopyIcon from '@rsuite/icons/Copy';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { Input } from '@/components/common/Form/Input';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { PageTitle } from '@/components/common/PageTitle';
+import { PanelHeader } from '@/components/common/PanelHeader';
+import { useCopy } from '@/hooks/useCopy';
 
 type PunycodeForm = {
   input: string;
@@ -26,8 +26,8 @@ export const Punycode: React.FC = () => {
   const { control, watch } = methods;
   const { copy } = useCopy();
 
-  const converted_ascii = punycode.toASCII(watch('input', ''));
-  const converted_punycode = punycode.encode(watch('input', ''));
+  const converted_ascii = toASCII(watch('input', ''));
+  const converted_punycode = encode(watch('input', ''));
 
   return (
     <FormProvider {...methods}>

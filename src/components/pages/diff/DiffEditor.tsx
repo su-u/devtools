@@ -1,6 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { DiffEditor as MonacoDiffEditor, DiffEditorProps } from '@monaco-editor/react';
+import React from 'react';
 
 export const DiffEditor: React.FC<DiffEditorProps> = (props) => {
   return (

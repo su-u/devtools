@@ -1,6 +1,6 @@
+import CopyIcon from '@rsuite/icons/Copy';
 import React, { FC } from 'react';
 import { IconButton } from 'rsuite';
-import CopyIcon from '@rsuite/icons/Copy';
 import { useCopy } from '@/hooks/useCopy';
 
 type Props = {

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import conv from 'iconv-urlencode';
-import { ENCODING_LIST } from '@/lib/encoding';
+import { useEffect, useState } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { ENCODING_LIST } from '@/lib/encoding';
 
 type UrlEncodeForm = {
   input: string;

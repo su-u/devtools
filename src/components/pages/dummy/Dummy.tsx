@@ -1,15 +1,15 @@
 'use client';
-import React from 'react';
 import styled from '@emotion/styled';
+import CopyIcon from '@rsuite/icons/Copy';
+import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, InputGroup, InputPicker, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { PageTitle } from '@/components/common/PageTitle';
-import { useCopy } from '@/hooks/useCopy';
 import { Input } from '@/components/common/Form/Input';
+import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import CopyIcon from '@rsuite/icons/Copy';
 import { useDummy, LANG_LIST } from '@/components/pages/dummy/useDummy';
+import { useCopy } from '@/hooks/useCopy';
 
 export const Dummy: React.FC = () => {
   const title = 'ダミーデータ';

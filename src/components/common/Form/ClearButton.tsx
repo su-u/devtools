@@ -1,7 +1,7 @@
+import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 import React, { useCallback, MouseEventHandler } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { IconButton } from 'rsuite';
-import TrashOIcon from '@rsuite/icons/legacy/TrashO';
 
 type Props = {
   name: string;

@@ -1,10 +1,10 @@
-import React from 'react';
-import NextLink from 'next/link';
 import styled from '@emotion/styled';
-import { Nav, Sidenav, Sidebar } from 'rsuite';
 import EditIcon from '@rsuite/icons/Edit';
 import GrowthIcon from '@rsuite/icons/Growth';
 import ListOl from '@rsuite/icons/legacy/ListOl';
+import NextLink from 'next/link';
+import React from 'react';
+import { Nav, Sidenav, Sidebar } from 'rsuite';
 
 type NavItemType = {
   key: string;
@@ -121,7 +121,7 @@ export const SideNavBar: React.FC = () => {
     (activeKey: NavKeys) => {
       setActiveKey(activeKey);
     },
-    [activeKey, setActiveKey],
+    [setActiveKey],
   );
 
   return (

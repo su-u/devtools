@@ -1,9 +1,8 @@
-import { useMemo } from 'react';
 import { Dayjs } from 'dayjs';
+import { useMemo , useEffect } from 'react';
 import TIME_ZONES from 'timezones-list';
-import { dayjs } from '@/lib/dayjs';
-import { useEffect } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { dayjs } from '@/lib/dayjs';
 
 type characterCountForm = {
   inputDate: Dayjs;
@@ -29,7 +28,7 @@ export const useConvertDate = () => {
   const inputUnixTime = watch('inputUnixTime');
   const output = convert(inputDate, timezone);
 
-  useEffect(() => setValue('inputDate', dayjs()), []);
+  useEffect(() => setValue('inputDate', dayjs()), [setValue]);
 
   return {
     methods,

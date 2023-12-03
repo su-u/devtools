@@ -1,7 +1,7 @@
 'use client';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect, FC } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
 import { existsGaId, GA_MEASUREMENT_ID, pageView } from '@/lib/gtag';
 
 const GoogleAnalytics: FC = () => {
