@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row, Form , DatePicker , InputPicker } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row, Form, DatePicker, InputPicker } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';

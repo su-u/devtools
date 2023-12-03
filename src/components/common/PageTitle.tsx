@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { Row , Col } from 'rsuite';
+import { Row, Col } from 'rsuite';
 
 type Props = {
   title: string;
