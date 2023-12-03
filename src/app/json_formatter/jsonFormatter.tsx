@@ -3,15 +3,15 @@ import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, InputNumber } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { useJsonFormatter } from '@/app/json_formatter/useJsonFormatter';
 import { CopyButton } from '@/components/common/CopyButton';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { useJsonFormatter } from '@/components/pages/json_formatter/useJsonFormatter';
 
-export const JsonFormatter: React.FC = () => {
+export const JsonFormatterPage: React.FC = () => {
   const title = 'JSONフォーマット';
   const { methods, output, DEFAULT_VALUES } = useJsonFormatter();
 
@@ -84,3 +84,5 @@ export const JsonFormatter: React.FC = () => {
     </FormProvider>
   );
 };
+
+export default JsonFormatterPage;

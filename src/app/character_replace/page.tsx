@@ -4,14 +4,14 @@ import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { ButtonToolbar, Col, Form, Grid, IconButton, Panel, PanelGroup, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { AddButton } from '@/app/character_replace/AddButton';
+import { DeleteButton } from '@/app/character_replace/DeleteButton';
+import { useCharacterReplace } from '@/app/character_replace/useCharacterReplace';
 import { CopyButton } from '@/components/common/CopyButton';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { AddButton } from '@/app/character_replace/AddButton';
-import { DeleteButton } from '@/app/character_replace/DeleteButton';
-import { useCharacterReplace } from '@/app/character_replace/useCharacterReplace';
 
 const CharacterReplacePage: React.FC = () => {
   const title = '文字列置換';

@@ -3,12 +3,12 @@ import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, FlexboxGrid } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { DiffEditor } from '@/app/diff/DiffEditor';
+import { useDiff } from '@/app/diff/useDiff';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { DiffEditor } from '@/app/diff/DiffEditor';
-import { useDiff } from '@/app/diff/useDiff';
 
 const DiffPage: React.FC = () => {
   const title = 'テキスト差分';

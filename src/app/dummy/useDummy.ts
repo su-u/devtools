@@ -17,7 +17,6 @@ export const useDummy = () => {
   const { watch, control } = methods;
 
   const input = watch('input', '');
-  const separator = watch('separator', '');
   const output = input;
 
   return {

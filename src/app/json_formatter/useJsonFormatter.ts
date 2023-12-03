@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { format } from '@/app/json_formatter/jsonFormatterLib';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
-import { format } from '@/components/pages/json_formatter/jsonFormatterLib';
 
 type JsonFormatForm = {
   input: string;

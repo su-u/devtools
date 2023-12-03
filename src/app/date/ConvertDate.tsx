@@ -3,15 +3,15 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form, DatePicker, InputPicker } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { useConvertDate } from '@/app/date/useConvertDate';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
 import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { useConvertDate } from '@/components/pages/convert_date/useConvertDate';
 import { dayjs } from '@/lib/dayjs';
 
-export const ConvertDate: React.FC = () => {
+const ConvertDatePage: React.FC = () => {
   const title = '日付の変換';
   const { control, output, timezones, inputDate } = useConvertDate();
 
@@ -79,3 +79,5 @@ export const ConvertDate: React.FC = () => {
     </AppLayout>
   );
 };
+
+export default ConvertDatePage;

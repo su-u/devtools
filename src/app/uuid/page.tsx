@@ -15,13 +15,13 @@ import {
   ButtonToolbar,
 } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { useUuid } from '@/app/uuid/useUuid';
 import { CopyButton } from '@/components/common/CopyButton';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { useUuid } from '@/app/uuid/useUuid';
 import { useCopy } from '@/hooks/useCopy';
 
 export const UuidPage: React.FC = () => {
