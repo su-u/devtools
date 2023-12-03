@@ -13,7 +13,7 @@ import { useCopy } from '@/hooks/useCopy';
 
 const Page: React.FC = () => {
   const title = '数値区切り';
-  const { control, output, selectData } = useNumberComma();
+  const { control, output, SEPARATOR_LIST, DEFAULT_VALUES } = useNumberComma();
   const { copy } = useCopy();
 
   return (
@@ -28,7 +28,7 @@ const Page: React.FC = () => {
                   render={({ field }) => <Input noResize="none" size="sm" {...field} />}
                   name="input"
                   control={control}
-                  defaultValue=""
+                  defaultValue={DEFAULT_VALUES.input}
                 />
               </Panel>
               <Panel bordered header={<PanelHeader title="設定" />}>
@@ -37,9 +37,9 @@ const Page: React.FC = () => {
                     <Controller
                       render={({ field }) => (
                         <InputPicker
-                          data={selectData}
+                          data={SEPARATOR_LIST}
                           size="sm"
-                          defaultValue=","
+                          defaultValue={DEFAULT_VALUES.separator}
                           cleanable={false}
                           {...field}
                         />

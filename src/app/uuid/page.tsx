@@ -24,7 +24,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
 
-export const UuidPage: React.FC = () => {
+const UuidPage: React.FC = () => {
   const title = 'UUIDの生成';
   const {
     methods,

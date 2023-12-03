@@ -5,15 +5,17 @@ type Base64Form = {
   input: string;
 };
 
+const DEFAULT_VALUES: Base64Form = {
+  input: '',
+};
+
 export const useBase64 = () => {
   const methods = useCustomForm<Base64Form>({
-    defaultValues: {
-      input: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
   const { watch } = methods;
   const [output, setOutput] = useState('');
-  const input = watch('input', '');
+  const input = watch('input', DEFAULT_VALUES.input);
 
   useEffect(() => {
     if (typeof window === 'undefined' || input.trim() === '') {

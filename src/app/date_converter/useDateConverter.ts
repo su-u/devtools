@@ -4,14 +4,14 @@ import TIME_ZONES from 'timezones-list';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
 
-type characterCountForm = {
+type dateConverterForm = {
   inputDate: Dayjs;
   inputUnixTime: string;
   timezone: string;
 };
 
-export const useConvertDate = () => {
-  const methods = useCustomForm<characterCountForm>({
+export const useDateConverter = () => {
+  const methods = useCustomForm<dateConverterForm>({
     defaultValues: {
       inputDate: dayjs(),
       timezone: dayjs.tz.guess(),

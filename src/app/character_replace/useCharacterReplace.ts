@@ -6,11 +6,17 @@ type CharacterReplaceForm = {
   [key: string]: string;
 };
 
+const DEFAULT_VALUES: CharacterReplaceForm = {
+  input: '',
+};
+const INPUT_LIMIT = {
+  MIN: 1,
+  MAX: 10,
+};
+
 export const useCharacterReplace = () => {
   const methods = useCustomForm<CharacterReplaceForm>({
-    defaultValues: {
-      input: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
   const { watch } = methods;
   const [inputCount, setInputCount] = useState(3);
@@ -18,7 +24,7 @@ export const useCharacterReplace = () => {
   // @ts-ignore
   const numberArray = [...Array(inputCount).keys()].map((i) => ++i);
 
-  const input = watch('input') ?? '';
+  const input = watch('input', DEFAULT_VALUES.input);
   const output = numberArray.reduce((a, b) => {
     const targetRegex = watch(`target_${b}`)?.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&') ?? '';
     const replace = watch(`replace_${b}`)?.replace('\\n', '\n') ?? '';
@@ -35,8 +41,8 @@ export const useCharacterReplace = () => {
     setInputCount((prev) => prev - 1);
   }, [setInputCount]);
 
-  const countDownDisabled = inputCount <= 1;
-  const countUpDisabled = inputCount >= 50;
+  const countDownDisabled = inputCount <= INPUT_LIMIT.MIN;
+  const countUpDisabled = inputCount >= INPUT_LIMIT.MAX;
 
   return {
     methods,

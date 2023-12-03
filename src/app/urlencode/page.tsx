@@ -22,7 +22,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
 
-export const UrlEncodePage: React.FC = () => {
+const UrlEncodePage: React.FC = () => {
   const title = 'URLエンコード';
   const { methods, output, encodingList } = useUrlEncode();
   const { copy } = useCopy();

@@ -5,6 +5,39 @@ type NumberCommaForm = {
   separator: string;
 };
 
+const SEPARATOR_LIST = [
+  {
+    label: ',',
+    value: ',',
+  },
+  {
+    label: '_',
+    value: '_',
+  },
+];
+
+const DEFAULT_VALUES: NumberCommaForm = {
+  input: '',
+  separator: SEPARATOR_LIST[0].value,
+};
+
+export const useNumberComma = () => {
+  const { control, watch } = useCustomForm<NumberCommaForm>({
+    defaultValues: DEFAULT_VALUES,
+  });
+
+  const input = watch('input', DEFAULT_VALUES.input);
+  const separator = watch('separator', DEFAULT_VALUES.separator);
+  const output = comma(input, separator);
+
+  return {
+    control,
+    output,
+    SEPARATOR_LIST,
+    DEFAULT_VALUES,
+  };
+};
+
 export const comma = (num: string, separator: string = ',') => {
   const [integer, decimal] = num.split('.');
   let ret = integer.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, `$1${separator}`);
@@ -12,29 +45,4 @@ export const comma = (num: string, separator: string = ',') => {
     ret += '.' + decimal;
   }
   return ret;
-};
-
-export const useNumberComma = () => {
-  const { control, watch } = useCustomForm<NumberCommaForm>();
-
-  const input = watch('input', '');
-  const separator = watch('separator', '');
-  const output = comma(input, separator);
-
-  const selectData = [
-    {
-      label: ',',
-      value: ',',
-    },
-    {
-      label: '_',
-      value: '_',
-    },
-  ];
-
-  return {
-    control,
-    output,
-    selectData,
-  };
 };

@@ -81,9 +81,9 @@ const navList: NavGroupType[] = [
         path: '/number_comma',
       },
       {
-        key: 'date',
+        key: 'date_converter',
         title: '日付の変換',
-        path: '/date',
+        path: '/date_converter',
       },
     ],
   },

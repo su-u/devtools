@@ -6,22 +6,22 @@ type DiffForm = {
   modified: string;
 };
 
+const DEFAULT_VALUES: DiffForm = {
+  original: '',
+  modified: '',
+};
+
 export const useDiff = () => {
   const methods = useCustomForm<DiffForm>({
-    defaultValues: {
-      original: '',
-      modified: '',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
   const { watch, resetField, setValue } = methods;
 
-  const original = watch('original', '');
-  const modified = watch('modified', '');
+  const original = watch('original', DEFAULT_VALUES.original);
+  const modified = watch('modified', DEFAULT_VALUES.modified);
 
   const onClickOriginalReset = React.useCallback(() => {
     resetField('original');
-    // console.log('original', watch('original'));
-    // setValue('original', '');
   }, [resetField]);
 
   return {

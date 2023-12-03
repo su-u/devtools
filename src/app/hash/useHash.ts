@@ -8,12 +8,19 @@ type Base64Form = {
   isUppercase: boolean;
 };
 
+const DEFAULT_VALUES: Base64Form = {
+  input: '',
+  isUppercase: false,
+};
+
 export const useHash = () => {
-  const methods = useCustomForm<Base64Form>();
+  const methods = useCustomForm<Base64Form>({
+    defaultValues: DEFAULT_VALUES,
+  });
   const { watch } = methods;
 
-  const input = watch('input', '');
-  const isUppercase = watch('isUppercase', false);
+  const input = watch('input', DEFAULT_VALUES.input);
+  const isUppercase = watch('isUppercase', DEFAULT_VALUES.isUppercase);
 
   const createHash = useCallback(
     (algorithm: string, input: string) => {
