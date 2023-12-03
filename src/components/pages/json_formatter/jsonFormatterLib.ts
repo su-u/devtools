@@ -2,7 +2,7 @@ export const format = (text: string, space: number) => {
   try {
     return JSON.stringify(JSON.parse(text), null, toStrSpace(space))
   } catch (e) {
-    console.error(e);
+    // console.error(e);
     return '';
   }
 }
