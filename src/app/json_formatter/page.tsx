@@ -11,7 +11,7 @@ import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const JsonFormatterPage: React.FC = () => {
+const JsonFormatterPage: React.FC = () => {
   const title = 'JSONフォーマット';
   const { methods, output, DEFAULT_VALUES } = useJsonFormatter();
 

@@ -11,7 +11,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
 
-export const DummyPage: React.FC = () => {
+const DummyPage: React.FC = () => {
   const title = 'ダミーデータ';
   const { control, output } = useDummy();
   const { copy } = useCopy();
