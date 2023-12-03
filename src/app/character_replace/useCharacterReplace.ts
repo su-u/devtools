@@ -29,11 +29,11 @@ export const useCharacterReplace = () => {
 
   const countUp = useCallback(() => {
     setInputCount((prev) => prev + 1);
-  }, []);
+  }, [setInputCount]);
 
   const countDown = useCallback(() => {
     setInputCount((prev) => prev - 1);
-  }, []);
+  }, [setInputCount]);
 
   const countDownDisabled = inputCount <= 1;
   const countUpDisabled = inputCount >= 50;
