@@ -13,8 +13,7 @@ import { FormRow } from '@/components/common/Form/FormRow';
 
 export const JsonFormatter: React.FC = () => {
   const title = 'JSONフォーマット';
-  const { methods, output, DEFAULT_VALUES } =
-    useJsonFormatter();
+  const { methods, output, DEFAULT_VALUES } = useJsonFormatter();
 
   return (
     <FormProvider {...methods}>
@@ -43,14 +42,7 @@ export const JsonFormatter: React.FC = () => {
                     control={methods.control}
                   />
                 </Panel>
-                <Panel
-                  bordered
-                  header={
-                    <PanelHeader
-                      title="設定"
-                    />
-                  }
-                >
+                <Panel bordered header={<PanelHeader title="設定" />}>
                   <FormRow label="スペース">
                     <Controller
                       render={({ field }) => (

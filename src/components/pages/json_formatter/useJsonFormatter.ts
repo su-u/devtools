@@ -12,7 +12,7 @@ const DEFAULT_VALUES: JsonFormatForm = {
   input: '',
   output: '',
   indentSpace: 4,
-}
+};
 
 export const useJsonFormatter = () => {
   const methods = useCustomForm<JsonFormatForm>({
