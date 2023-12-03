@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
+import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, InputNumber } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { PageTitle } from '@/components/common/PageTitle';
 import { useJsonFormatter } from '@/components/pages/json_formatter/useJsonFormatter';
@@ -10,11 +10,10 @@ import { Input } from '@/components/common/Form/Input';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { CopyButton } from '@/components/common/CopyButton';
 import { FormRow } from '@/components/common/Form/FormRow';
-import { InputNumber } from 'rsuite';
 
 export const JsonFormatter: React.FC = () => {
   const title = 'JSONフォーマット';
-  const { methods, output, control, DEFAULT_VALUES } =
+  const { methods, output, DEFAULT_VALUES } =
     useJsonFormatter();
 
   return (
@@ -64,7 +63,7 @@ export const JsonFormatter: React.FC = () => {
                         />
                       )}
                       name="indentSpace"
-                      control={control}
+                      control={methods.control}
                     />
                   </FormRow>
                 </Panel>

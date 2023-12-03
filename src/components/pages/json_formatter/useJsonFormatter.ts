@@ -18,14 +18,13 @@ export const useJsonFormatter = () => {
   const methods = useCustomForm<JsonFormatForm>({
     defaultValues: DEFAULT_VALUES,
   });
-  const { watch, control } = methods;
+  const { watch } = methods;
 
-  const input = watch('input') ?? '';
+  const input = watch('input', DEFAULT_VALUES.input);
   const output = format(input, watch('indentSpace'));
 
   return {
     DEFAULT_VALUES,
-    control,
     methods,
     output,
   };
