@@ -63,6 +63,11 @@ const navList: NavGroupType[] = [
         title: 'テキスト差分',
         path: '/diff',
       },
+      {
+        key: 'json_formatter',
+        title: 'JSONフォーマット',
+        path: '/json_formatter',
+      },
     ],
   },
   {

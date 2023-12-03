@@ -13,7 +13,7 @@ type UuidForm = {
   UUIDNamespace: string;
 };
 
-const DEFAULT_VALUES = {
+const DEFAULT_VALUES: UuidForm = {
   version: 4,
   isUppercase: false,
   isHyphen: true,
@@ -45,14 +45,7 @@ export const useUuid = () => {
   const toaster = useToaster();
   const [output, setOutput] = useState('');
   const methods = useCustomForm<UuidForm>({
-    defaultValues: {
-      version: DEFAULT_VALUES.version,
-      isUppercase: DEFAULT_VALUES.isUppercase,
-      isHyphen: DEFAULT_VALUES.isHyphen,
-      generateCount: DEFAULT_VALUES.generateCount,
-      UUIDName: DEFAULT_VALUES.UUIDName,
-      UUIDNamespace: DEFAULT_VALUES.UUIDNamespace,
-    },
+    defaultValues: DEFAULT_VALUES,
   });
   const { control, watch } = methods;
 
