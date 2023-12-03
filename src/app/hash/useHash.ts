@@ -1,6 +1,5 @@
 import { createHash as cryptoCreateHash } from 'crypto';
 import { useCallback } from 'react';
-import { useForm } from 'react-hook-form';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { HASH_ALGORITHMS } from '@/lib/hashAlgorithms';
 
