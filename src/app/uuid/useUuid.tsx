@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useToaster, Message } from 'rsuite';
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
-import { generateUUIDs } from '@/components/pages/uuid/uuidLib';
+import { generateUUIDs } from '@/app/uuid/uuidLib';
 
 type UuidForm = {
   version: number;
