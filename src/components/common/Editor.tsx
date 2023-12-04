@@ -14,11 +14,11 @@ export const Editor: React.FC<ReactCodeMirrorProps> = (props) => {
 
 const WrapperStyle = styled.div`
   .cm-editor {
-    border-radius: 10px;
+    border-radius: 6px;
   }
   .cm-scroller {
     border: 1px solid #a4a9b3;
-    border-radius: 10px;
+    border-radius: 6px;
 
     &:active,
     &:hover,
