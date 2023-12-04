@@ -1,4 +1,5 @@
 import { json } from '@codemirror/lang-json';
+import { EditorView } from '@codemirror/view';
 import styled from '@emotion/styled';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import CodeMirror from '@uiw/react-codemirror';
@@ -29,6 +30,7 @@ const WrapperStyle = styled.div`
   }
 `;
 
-export const lang = {
-  json: json,
+export const ex = {
+  json: json(),
+  lineWrapping: EditorView.lineWrapping,
 };
