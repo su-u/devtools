@@ -10,6 +10,7 @@ import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { Editor, lang } from '@/components/common/Editor';
 
 const JsonFormatterPage: React.FC = () => {
   const title = 'JSONフォーマット';
@@ -37,7 +38,8 @@ const JsonFormatterPage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={14} {...field} />}
+                    render={({ field }) =>
+                      <Editor extensions={[lang.json()]} {...field} />}
                     name="input"
                     control={methods.control}
                   />
@@ -75,7 +77,7 @@ const JsonFormatterPage: React.FC = () => {
                   />
                 }
               >
-                <Input value={output} as="textarea" readOnly rows={14} />
+                <Editor extensions={[lang.json()]} value={output} readOnly />
               </Panel>
             </Col>
           </Row>
