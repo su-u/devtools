@@ -167,7 +167,6 @@ NavLink.displayName = 'LinkComponent';
 
 const StyledSidebar = styled(Sidebar)`
   font-size: 12px;
-  background-color: #1a1d24;
 `;
 
 const NavItem = styled(Nav.Item)<{ expanded: boolean }>`

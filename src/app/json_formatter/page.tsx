@@ -5,9 +5,9 @@ import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, InputNumber } from 'r
 import { AppLayout } from '@/Layout/App';
 import { useJsonFormatter } from '@/app/json_formatter/useJsonFormatter';
 import { CopyButton } from '@/components/common/CopyButton';
+import { Editor, ex } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
-import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
@@ -37,7 +37,7 @@ const JsonFormatterPage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={14} {...field} />}
+                    render={({ field }) => <Editor extensions={[ex.json]} {...field} />}
                     name="input"
                     control={methods.control}
                   />
@@ -75,7 +75,7 @@ const JsonFormatterPage: React.FC = () => {
                   />
                 }
               >
-                <Input value={output} as="textarea" readOnly rows={14} />
+                <Editor extensions={[ex.json]} value={output} readOnly />
               </Panel>
             </Col>
           </Row>

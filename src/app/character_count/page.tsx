@@ -1,6 +1,6 @@
 'use client';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Form, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
@@ -12,8 +12,8 @@ import {
   linesCount,
   spaceCount,
 } from '@/app/character_count/CharacterCountLib';
+import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
-import { Input } from '@/components/common/Form/Input';
 import { LabelInput } from '@/components/common/Form/LabelInput';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { PageTitle } from '@/components/common/PageTitle';
@@ -62,9 +62,7 @@ const CharacterCountPage: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => (
-                    <Input noResize="none" as="textarea" rows={14} {...field} ref={null} />
-                  )}
+                  render={({ field }) => <Editor {...field} />}
                   name="input"
                   control={control}
                 />
