@@ -31,13 +31,6 @@ const CharacterCountPage: React.FC = () => {
   });
   const { control, watch } = methods;
 
-  const onChange = useCallback(
-    (value: string) => {
-      methods.setValue('input', value);
-    },
-    [methods],
-  );
-
   const title = '文字数カウント';
   const input = watch('input', '');
 
@@ -69,7 +62,7 @@ const CharacterCountPage: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Editor value={input} onChange={onChange} {...field} />}
+                  render={({ field }) => <Editor {...field} />}
                   name="input"
                   control={control}
                 />
