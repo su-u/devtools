@@ -1,27 +1,43 @@
 :root {
-  --gray-color: #a4a9b3;
+  --color-gray: #a4a9b3;
+  --color-bg-primary: #181818;
+  --color-bg-code: #1e1e1e;
 }
 
 .rs-panel-group.rs-panel-group-bordered {
-  border-color: var(--gray-color);
+  border-color: var(--color-gray);
 }
 
 .rs-panel.rs-panel-bordered {
-  border-color: var(--gray-color);
+  border-color: var(--color-gray);
 }
 
 .rs-panel-group > .rs-panel + .rs-panel::before {
-  border-color: var(--gray-color);
+  border-color: var(--color-gray);
 }
 
 .rs-input-group:not(.rs-input-group-inside) {
-  border-color: var(--gray-color);
+  border-color: var(--color-gray);
 }
 
 .rs-input {
-  border-color: var(--gray-color);
+  border-color: var(--color-gray);
+  background-color: var(--color-bg-code);
 }
 
-.rs-picker-input {
-  border-color: var(--gray-color);
+.rs-picker .rs-picker-input {
+  border-color: var(--color-gray);
+  background-color: var(--color-bg-code);
+}
+
+.rs-sidebar {
+  background-color: var(--color-bg-primary);
+}
+
+.rs-picker-default .rs-btn, .rs-picker-default .rs-picker-toggle, .rs-picker-input .rs-btn, .rs-picker-input .rs-picker-toggle {
+  background-color: var(--color-bg-code) !important;
+}
+
+.rs-picker-menu {
+  background-color: var(--color-bg-code);
 }
