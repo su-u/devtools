@@ -1,9 +1,9 @@
+import { json } from '@codemirror/lang-json';
 import styled from '@emotion/styled';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import CodeMirror from '@uiw/react-codemirror';
 import { ReactCodeMirrorProps } from '@uiw/react-codemirror/src';
 import React from 'react';
-import { json } from '@codemirror/lang-json';
 
 export const Editor: React.FC<ReactCodeMirrorProps> = (props) => {
   return (
@@ -31,4 +31,4 @@ const WrapperStyle = styled.div`
 
 export const lang = {
   json: json,
-}
+};
