@@ -55,7 +55,7 @@ const Base64Page: React.FC = () => {
                   />
                 }
               >
-                <Editor value={output} readOnly extensions={[ex.lineWrapping]} />
+                <Editor value={output} extensions={[ex.lineWrapping]} />
               </Panel>
             </Col>
           </Row>

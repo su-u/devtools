@@ -75,7 +75,7 @@ const JsonFormatterPage: React.FC = () => {
                   />
                 }
               >
-                <Editor extensions={[ex.json]} value={output} readOnly />
+                <Editor extensions={[ex.json]} value={output} />
               </Panel>
             </Col>
           </Row>

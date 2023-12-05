@@ -98,7 +98,7 @@ const UrlEncodePage: React.FC = () => {
                   />
                 }
               >
-                <Editor value={output} readOnly />
+                <Editor value={output} />
               </Panel>
             </Col>
           </Row>

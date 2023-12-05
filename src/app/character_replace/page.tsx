@@ -12,6 +12,7 @@ import { ClearButton } from '@/components/common/Form/ClearButton';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { Editor } from '@/components/common/Editor';
 
 const CharacterReplacePage: React.FC = () => {
   const title = '文字列置換';
@@ -40,7 +41,7 @@ const CharacterReplacePage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={14} {...field} />}
+                    render={({ field }) => <Editor {...field} />}
                     name="input"
                     control={methods.control}
                   />
@@ -81,7 +82,7 @@ const CharacterReplacePage: React.FC = () => {
                   />
                 }
               >
-                <Input value={output} as="textarea" readOnly rows={14} />
+                <Editor value={output} />
               </Panel>
             </Col>
           </Row>

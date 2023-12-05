@@ -12,6 +12,7 @@ import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLine
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
+import { Editor } from '@/components/common/Editor';
 
 const HashPage: React.FC = () => {
   const title = 'ハッシュ';
@@ -39,7 +40,7 @@ const HashPage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={14} {...field} />}
+                    render={({ field }) => <Editor {...field} />}
                     name="input"
                     control={methods.control}
                     defaultValue=""
