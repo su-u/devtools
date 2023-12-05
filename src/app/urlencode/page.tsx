@@ -21,6 +21,7 @@ import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
+import { Editor } from '@/components/common/Editor';
 
 const UrlEncodePage: React.FC = () => {
   const title = 'URLエンコード';
@@ -49,7 +50,7 @@ const UrlEncodePage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={20} {...field} ref={null} />}
+                    render={({ field }) => <Editor {...field} />}
                     name="input"
                     control={methods.control}
                   />
@@ -97,7 +98,7 @@ const UrlEncodePage: React.FC = () => {
                   />
                 }
               >
-                <Input name="encode" as="textarea" rows={20} readOnly value={output} />
+                <Editor value={output} readOnly />
               </Panel>
             </Col>
           </Row>

@@ -5,6 +5,7 @@ import React from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, InputGroup, Panel, PanelGroup, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { Input } from '@/components/common/Form/Input';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
@@ -50,9 +51,7 @@ const PunycodePage: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => (
-                    <Input noResize="none" as="textarea" rows={13} {...field} ref={null} />
-                  )}
+                  render={({ field }) => <Editor {...field} />}
                   name="input"
                   control={control}
                 />
