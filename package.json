@@ -32,8 +32,8 @@
     "punycode": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.46.1",
-    "rsuite": "^5.40.0",
+    "react-hook-form": "^7.48.2",
+    "rsuite": "^5.46.1",
     "timezones-list": "^3.0.2",
     "uuid": "^9.0.1"
   },
