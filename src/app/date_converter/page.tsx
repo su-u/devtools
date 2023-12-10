@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row, Form, DatePicker, InputPicker } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row, Form, InputPicker } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { DatePicker } from '@/app/date_converter/DatePicker';
 import { useDateConverter } from '@/app/date_converter/useDateConverter';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
@@ -29,14 +30,7 @@ const DateConverterPage: React.FC = () => {
                   <FormRow label="日付">
                     <Controller
                       render={() => (
-                        <DatePicker
-                          format="yyyy-MM-dd HH:mm:ss"
-                          size="sm"
-                          cleanable={false}
-                          style={{ width: 250 }}
-                          onChange={onChangeInputDate}
-                          value={inputDate?.toDate()}
-                        />
+                        <DatePicker onChange={onChangeInputDate} value={inputDate?.toDate()} />
                       )}
                       name="inputDate"
                       control={control}
