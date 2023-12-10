@@ -1,10 +1,14 @@
 import styled from '@emotion/styled';
 import EditIcon from '@rsuite/icons/Edit';
 import GrowthIcon from '@rsuite/icons/Growth';
+import CogIcon from '@rsuite/icons/legacy/Cog';
+import GithubIcon from '@rsuite/icons/legacy/Github';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import NextLink from 'next/link';
 import React from 'react';
-import { Nav, Sidenav, Sidebar } from 'rsuite';
+import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
+
+const GITHUB_LINK = 'https://github.com/su-u/devtools';
 
 type NavItemType = {
   key: string;
@@ -153,7 +157,21 @@ export const SideNavBar: React.FC = () => {
             })}
           </Nav>
         </Sidenav.Body>
-        <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
+        <Navbar appearance="subtle">
+          <Nav>
+            <Nav.Item as={NavLink} href={GITHUB_LINK} target="_blank">
+              <Whisper
+                placement="right"
+                controlId="control-id-sidenav-github"
+                trigger="hover"
+                speaker={<Tooltip>GitHub</Tooltip>}
+              >
+                <GithubIcon style={{ fontSize: 24 }} />
+              </Whisper>
+            </Nav.Item>
+          </Nav>
+          <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
+        </Navbar>
       </Sidenav>
     </StyledSidebar>
   );
