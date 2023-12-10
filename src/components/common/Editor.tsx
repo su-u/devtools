@@ -6,13 +6,14 @@ import CodeMirror from '@uiw/react-codemirror';
 import { ReactCodeMirrorProps } from '@uiw/react-codemirror/src';
 import React from 'react';
 
-export const Editor: React.FC<ReactCodeMirrorProps> = (props) => {
+export const Editor = React.forwardRef<HTMLDivElement, ReactCodeMirrorProps>((props, ref) => {
   return (
-    <WrapperStyle>
+    <WrapperStyle ref={ref}>
       <CodeMirror width="100%" height="60vh" theme={vscodeDark} {...props} />
     </WrapperStyle>
   );
-};
+});
+Editor.displayName = 'Editor';
 
 const WrapperStyle = styled.div`
   .cm-editor {
