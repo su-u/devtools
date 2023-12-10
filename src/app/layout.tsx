@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import Head from 'next/head';
 import React from 'react';
 import 'rsuite/dist/rsuite.min.css';
 import '@/styles/globals.scss';
@@ -18,16 +19,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="ja">
-      <head>
-        <GoogleAnalytics />
+      <Head>
         <title>{METADATA.title}</title>
-        <meta name="description" content={METADATA.description} />
-        <meta name="author" content={METADATA.author} />
         <meta
           name="google-site-verification"
           content="XbfQBUU8iwwFG0-q5UtR_Rde1UfvDzdspEHt2tPs-Uw"
         />
-      </head>
+        <meta name="description" content={METADATA.description} />
+        <meta name="author" content={METADATA.author} />
+        <GoogleAnalytics />
+      </Head>
       <body className={className}>
         <Provider>{children}</Provider>
         <Analytics />
