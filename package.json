@@ -24,6 +24,7 @@
     "@uiw/codemirror-theme-vscode": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@vercel/analytics": "^1.1.1",
+    "@vercel/speed-insights": "^1.0.1",
     "dayjs": "^1.11.9",
     "iconv-lite": "^0.6.3",
     "iconv-urlencode": "^1.0.0",
