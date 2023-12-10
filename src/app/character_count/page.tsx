@@ -62,7 +62,7 @@ const CharacterCountPage: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Editor {...field} />}
+                  render={({ field }) => <Editor {...field} ref={null} />}
                   name="input"
                   control={control}
                 />

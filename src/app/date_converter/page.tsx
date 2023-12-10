@@ -13,7 +13,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const DateConverterPage: React.FC = () => {
   const title = '日付の変換';
-  const { methods, control, output, timezones, onChangeInputDate, onChangeInputUnixTime, onClean } =
+  const { methods, control, output, timezones, onChangeInputDate, onChangeInputUnixTime } =
     useDateConverter();
   const { inputDate, inputUnixTime } = methods.getValues();
 
@@ -51,6 +51,7 @@ const DateConverterPage: React.FC = () => {
                           size="sm"
                           onChange={onChangeInputUnixTime}
                           value={inputUnixTime}
+                          ref={null}
                         />
                       )}
                       name="inputUnixTime"
@@ -80,7 +81,13 @@ const DateConverterPage: React.FC = () => {
                   <FormRow label="カスタム出力">
                     <Controller
                       render={({ field }) => (
-                        <Input style={{ width: 250 }} noResize="none" size="sm" {...field} />
+                        <Input
+                          style={{ width: 250 }}
+                          noResize="none"
+                          size="sm"
+                          {...field}
+                          ref={null}
+                        />
                       )}
                       name="customFormat"
                       control={control}

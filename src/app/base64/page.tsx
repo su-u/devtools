@@ -35,7 +35,7 @@ const Base64Page: React.FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Editor {...field} />}
+                  render={({ field }) => <Editor {...field} ref={null} />}
                   name="input"
                   control={methods.control}
                 />

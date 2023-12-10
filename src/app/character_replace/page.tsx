@@ -41,7 +41,7 @@ const CharacterReplacePage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Editor {...field} />}
+                    render={({ field }) => <Editor {...field} ref={null} />}
                     name="input"
                     control={methods.control}
                   />
@@ -107,7 +107,7 @@ const ReplaceLine: React.FC<{
             name={`target_${label}`}
             control={control}
             defaultValue=""
-            render={({ field }) => <Input {...field} />}
+            render={({ field }) => <Input {...field} ref={null} />}
           />
         </Col>
         <Col xs={2} md={1}>
@@ -118,7 +118,7 @@ const ReplaceLine: React.FC<{
             name={`replace_${label}`}
             control={control}
             defaultValue=""
-            render={({ field }) => <Input {...field} />}
+            render={({ field }) => <Input {...field} ref={null} />}
           />
         </Col>
       </Row>

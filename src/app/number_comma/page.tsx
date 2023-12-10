@@ -25,7 +25,7 @@ const Page: React.FC = () => {
             <PanelGroup bordered>
               <Panel header={<PanelHeader title="区切りたい数値" />}>
                 <Controller
-                  render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                  render={({ field }) => <Input noResize="none" size="sm" {...field} ref={null} />}
                   name="input"
                   control={control}
                   defaultValue={DEFAULT_VALUES.input}

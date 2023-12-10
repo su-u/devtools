@@ -8,12 +8,12 @@ type Props = InputProps & {
   noResize?: string;
 };
 
-export const Input = React.forwardRef<RsRefForwardingComponent<'input', Props>, Props>(
-  ({ noResize = 'vertical', ...field }, ref) => {
-    return <StyleInput ref={ref} resize={noResize} {...field} />;
-  },
-);
-Input.displayName = 'Input';
+export const Input: RsRefForwardingComponent<'input', Props> = ({
+  noResize = 'vertical',
+  ...field
+}) => {
+  return <StyleInput resize={noResize} {...field} />;
+};
 
 const StyleInput = styled(RInput)<{ resize: string }>`
   resize: ${({ resize }) => resize} !important;

@@ -37,7 +37,9 @@ const DiffPage: React.FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input as="textarea" rows={INPUT_ROWS} {...field} />}
+                    render={({ field }) => (
+                      <Input as="textarea" rows={INPUT_ROWS} {...field} ref={null} />
+                    )}
                     name="original"
                     control={methods.control}
                   />
