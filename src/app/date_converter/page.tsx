@@ -58,7 +58,7 @@ const DateConverterPage: React.FC = () => {
                       control={control}
                     />
                   </FormRow>
-                  <FormRow label="カスタム">
+                  <FormRow label="カスタム出力">
                     <Controller
                       render={({ field }) => <Input noResize="none" size="sm" {...field} />}
                       name="customFormat"
