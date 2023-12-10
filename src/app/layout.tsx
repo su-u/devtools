@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
-import Head from 'next/head';
 import type { Metadata } from 'next';
+import Head from 'next/head';
 import React from 'react';
 import 'rsuite/dist/rsuite.min.css';
 import '@/styles/globals.scss';
