@@ -76,15 +76,19 @@ export const useDateConverter = () => {
 const convert = (date: Dayjs, timezone: string) => {
   const dateTimezone = dayjs(date).tz(timezone);
   const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]');
+  const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss');
+  const enDate = dateTimezone.format('LL');
+  const enDatetime = dateTimezone.format('LLLL');
   const year = dateTimezone.format('YYYY');
   const month = dateTimezone.format('MM');
   const d = dateTimezone.format('DD');
   const week = dateTimezone.format('dd');
   const unixTime = dateTimezone.unix().toString();
-  const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss');
 
   return {
     ISO8601,
+    enDate,
+    enDatetime,
     year,
     month,
     d,

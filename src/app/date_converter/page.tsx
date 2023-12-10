@@ -102,6 +102,8 @@ const DateConverterPage: React.FC = () => {
               <HorizontalForm>
                 <LabelInput label="ISO 8601" value={output.ISO8601} />
                 <LabelInput label="日付時間" value={output.fullDate} />
+                <LabelInput label="日付時間(ロング)" value={output.enDatetime} />
+                <LabelInput label="日付" value={output.enDate} />
                 <LabelInput label="年" value={output.year} />
                 <LabelInput label="月" value={output.month} />
                 <LabelInput label="日" value={output.d} />
