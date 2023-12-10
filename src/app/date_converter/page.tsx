@@ -10,8 +10,9 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { dayjs } from '@/lib/dayjs';
+import { Input } from '@/components/common/Form/Input';
 
-const DateConverterePage: React.FC = () => {
+const DateConverterPage: React.FC = () => {
   const title = '日付の変換';
   const { control, output, timezones, inputDate } = useDateConverter();
 
@@ -57,6 +58,14 @@ const DateConverterePage: React.FC = () => {
                       control={control}
                     />
                   </FormRow>
+                  <FormRow label="カスタム">
+                    <Controller
+                      render={({ field }) =>
+                        <Input noResize="none" size="sm" {...field} />}
+                      name="customFormat"
+                      control={control}
+                    />
+                  </FormRow>
                 </Form>
               </Panel>
             </PanelGroup>
@@ -71,6 +80,8 @@ const DateConverterePage: React.FC = () => {
                 <LabelInput label="日" value={output.d} />
                 <LabelInput label="曜日" value={output.week} />
                 <LabelInput label="unixtime" value={output.unixTime} />
+                <LabelInput label="カスタム" value={output.customFormat} />
+                <LabelInput label="TimeZone" value={output.timezone} />
               </HorizontalForm>
             </Panel>
           </Col>
@@ -80,4 +91,4 @@ const DateConverterePage: React.FC = () => {
   );
 };
 
-export default DateConverterePage;
+export default DateConverterPage;

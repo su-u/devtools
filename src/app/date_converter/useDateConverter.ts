@@ -7,7 +7,8 @@ import { dayjs } from '@/lib/dayjs';
 type dateConverterForm = {
   inputDate: Dayjs;
   inputUnixTime: string;
-  timezone: string;
+  timezone: string | null;
+  customFormat: string;
 };
 
 export const useDateConverter = () => {
@@ -15,6 +16,7 @@ export const useDateConverter = () => {
     defaultValues: {
       inputDate: dayjs(),
       timezone: dayjs.tz.guess(),
+      customFormat: '',
     },
   });
   const { watch, control, setValue } = methods;
@@ -24,9 +26,13 @@ export const useDateConverter = () => {
   );
 
   const inputDate = watch('inputDate');
-  const timezone = watch('timezone');
+  const timezone = watch('timezone') ?? 'UTC';
+  const customFormat = watch('customFormat');
   const inputUnixTime = watch('inputUnixTime');
-  const output = convert(inputDate, timezone);
+  const output = {
+    ...convert(inputDate, timezone),
+    customFormat: customConvert(inputDate, timezone, customFormat),
+  };
 
   useEffect(() => setValue('inputDate', dayjs()), [setValue]);
 
@@ -57,5 +63,11 @@ const convert = (date: Dayjs, timezone: string) => {
     week,
     unixTime,
     fullDate,
+    timezone,
   };
+};
+
+const customConvert = (date: Dayjs, timezone: string ,format: string) => {
+  const dateTimezone = dayjs(date).tz(timezone);
+  return dateTimezone.format(format);
 };
