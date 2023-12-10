@@ -8,11 +8,11 @@ import { AddButton } from '@/app/character_replace/AddButton';
 import { DeleteButton } from '@/app/character_replace/DeleteButton';
 import { useCharacterReplace } from '@/app/character_replace/useCharacterReplace';
 import { CopyButton } from '@/components/common/CopyButton';
+import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { Editor } from '@/components/common/Editor';
 
 const CharacterReplacePage: React.FC = () => {
   const title = '文字列置換';

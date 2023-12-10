@@ -5,6 +5,7 @@ import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, ButtonToolbar, InputGroup } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useHash } from '@/app/hash/useHash';
+import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
@@ -12,7 +13,6 @@ import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLine
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
-import { Editor } from '@/components/common/Editor';
 
 const HashPage: React.FC = () => {
   const title = 'ハッシュ';

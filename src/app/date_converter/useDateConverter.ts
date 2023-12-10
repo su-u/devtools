@@ -67,7 +67,7 @@ const convert = (date: Dayjs, timezone: string) => {
   };
 };
 
-const customConvert = (date: Dayjs, timezone: string ,format: string) => {
+const customConvert = (date: Dayjs, timezone: string, format: string) => {
   const dateTimezone = dayjs(date).tz(timezone);
   return dateTimezone.format(format);
 };

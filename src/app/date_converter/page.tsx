@@ -6,11 +6,11 @@ import { AppLayout } from '@/Layout/App';
 import { useDateConverter } from '@/app/date_converter/useDateConverter';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
+import { Input } from '@/components/common/Form/Input';
 import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { dayjs } from '@/lib/dayjs';
-import { Input } from '@/components/common/Form/Input';
 
 const DateConverterPage: React.FC = () => {
   const title = '日付の変換';
@@ -60,8 +60,7 @@ const DateConverterPage: React.FC = () => {
                   </FormRow>
                   <FormRow label="カスタム">
                     <Controller
-                      render={({ field }) =>
-                        <Input noResize="none" size="sm" {...field} />}
+                      render={({ field }) => <Input noResize="none" size="sm" {...field} />}
                       name="customFormat"
                       control={control}
                     />
