@@ -54,8 +54,9 @@ const UuidPage: React.FC = () => {
                       <Controller
                         render={({ field }) => (
                           <InputPicker
-                            data={selectData}
                             size="sm"
+                            style={{ width: 250 }}
+                            data={selectData}
                             defaultValue={DEFAULT_VALUES.version}
                             cleanable={false}
                             {...field}
@@ -108,6 +109,7 @@ const UuidPage: React.FC = () => {
                         render={({ field }) => (
                           <InputNumber
                             size="sm"
+                            style={{ width: 250 }}
                             defaultValue={DEFAULT_VALUES.generateCount}
                             min={1}
                             max={100000}

@@ -61,12 +61,12 @@ const UrlEncodePage: React.FC = () => {
                       <Controller
                         render={({ field }) => (
                           <SelectPicker
-                            data={encodingList}
                             size="sm"
+                            style={{ width: 250 }}
                             groupBy="category"
                             placement="autoVerticalStart"
                             cleanable={false}
-                            style={{ width: 224 }}
+                            data={encodingList}
                             {...field}
                             ref={null}
                           />

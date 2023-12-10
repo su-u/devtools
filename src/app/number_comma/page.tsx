@@ -37,8 +37,9 @@ const Page: React.FC = () => {
                     <Controller
                       render={({ field }) => (
                         <InputPicker
-                          data={SEPARATOR_LIST}
                           size="sm"
+                          style={{ width: 250 }}
+                          data={SEPARATOR_LIST}
                           defaultValue={DEFAULT_VALUES.separator}
                           cleanable={false}
                           {...field}

@@ -48,9 +48,10 @@ const JsonFormatterPage: React.FC = () => {
                       render={({ field }) => (
                         <InputNumber
                           size="sm"
-                          defaultValue={DEFAULT_VALUES.indentSpace}
+                          style={{ width: 250 }}
                           min={0}
                           max={10}
+                          defaultValue={DEFAULT_VALUES.indentSpace}
                           {...field}
                         />
                       )}
