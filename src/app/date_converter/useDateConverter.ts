@@ -31,7 +31,7 @@ export const useDateConverter = () => {
     const initDate = dayjs();
     setValue('inputDate', initDate);
     setValue('inputUnixTime', initDate.unix().toString());
-  }, []);
+  }, [setValue]);
   const [output, setOutput] = useState<any>(() => convert(watch('inputDate'), timezone));
   const onChangeInputDate = useCallback(
     (value: Date) => {
