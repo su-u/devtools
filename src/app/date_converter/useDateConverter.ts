@@ -1,20 +1,21 @@
 import { Dayjs } from 'dayjs';
-import { useMemo, useEffect } from 'react';
+import { useMemo, useEffect, useCallback, useState } from 'react';
 import TIME_ZONES from 'timezones-list';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
 
 type dateConverterForm = {
-  inputDate: Dayjs;
+  inputDate: Dayjs | undefined;
   inputUnixTime: string;
-  timezone: string | null;
+  timezone: string | undefined;
   customFormat: string;
 };
 
 export const useDateConverter = () => {
   const methods = useCustomForm<dateConverterForm>({
     defaultValues: {
-      inputDate: dayjs(),
+      inputDate: undefined,
+      inputUnixTime: '',
       timezone: dayjs.tz.guess(),
       customFormat: '',
     },
@@ -24,24 +25,51 @@ export const useDateConverter = () => {
     () => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })),
     [],
   );
-
-  const inputDate = watch('inputDate');
   const timezone = watch('timezone') ?? 'UTC';
   const customFormat = watch('customFormat');
-  const inputUnixTime = watch('inputUnixTime');
-  const output = {
-    ...convert(inputDate, timezone),
-    customFormat: customConvert(inputDate, timezone, customFormat),
-  };
+  useEffect(() => {
+    const initDate = dayjs();
+    setValue('inputDate', initDate);
+    setValue('inputUnixTime', initDate.unix().toString());
+  }, []);
+  const [output, setOutput] = useState<any>(() => convert(watch('inputDate'), timezone));
+  const onChangeInputDate = useCallback(
+    (value: Date) => {
+      const d = dayjs(value);
+      if (!d.isValid()) return;
 
-  useEffect(() => setValue('inputDate', dayjs()), [setValue]);
+      setValue('inputDate', d);
+      setValue('inputUnixTime', d.unix().toString());
+      setOutput({
+        ...convert(d, timezone),
+        customFormat: customConvert(d, timezone, customFormat),
+      });
+    },
+    [setValue, timezone, customFormat],
+  );
+  const onChangeInputUnixTime = useCallback(
+    (value: string) => {
+      const d = dayjs.unix(Number(value));
+      if (!d.isValid()) return;
+
+      setValue('inputDate', d);
+      setValue('inputUnixTime', value);
+
+      setOutput({
+        ...convert(d, timezone),
+        customFormat: customConvert(d, timezone, customFormat),
+      });
+    },
+    [setValue, timezone, customFormat],
+  );
 
   return {
     methods,
-    inputDate,
     control,
     output,
     timezones,
+    onChangeInputDate,
+    onChangeInputUnixTime,
   };
 };
 

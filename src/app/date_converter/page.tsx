@@ -10,11 +10,12 @@ import { Input } from '@/components/common/Form/Input';
 import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { dayjs } from '@/lib/dayjs';
 
 const DateConverterPage: React.FC = () => {
   const title = '日付の変換';
-  const { control, output, timezones, inputDate } = useDateConverter();
+  const { methods, control, output, timezones, onChangeInputDate, onChangeInputUnixTime, onClean } =
+    useDateConverter();
+  const { inputDate, inputUnixTime } = methods.getValues();
 
   return (
     <AppLayout title={title}>
@@ -27,15 +28,32 @@ const DateConverterPage: React.FC = () => {
                 <Form fluid layout="horizontal">
                   <FormRow label="日付">
                     <Controller
-                      render={({ field: { onChange } }) => (
+                      render={() => (
                         <DatePicker
                           format="yyyy-MM-dd HH:mm:ss"
                           size="sm"
-                          style={{ width: 220 }}
-                          onChange={(value) => value && onChange(dayjs(value))}
+                          cleanable={false}
+                          style={{ width: 250 }}
+                          onChange={onChangeInputDate}
+                          value={inputDate?.toDate()}
                         />
                       )}
                       name="inputDate"
+                      control={control}
+                    />
+                  </FormRow>
+                  <FormRow label="unixtime">
+                    <Controller
+                      render={({ field }) => (
+                        <Input
+                          style={{ width: 250 }}
+                          noResize="none"
+                          size="sm"
+                          onChange={onChangeInputUnixTime}
+                          value={inputUnixTime}
+                        />
+                      )}
+                      name="inputUnixTime"
                       control={control}
                     />
                   </FormRow>
@@ -47,6 +65,7 @@ const DateConverterPage: React.FC = () => {
                     <Controller
                       render={({ field }) => (
                         <InputPicker
+                          style={{ width: 250 }}
                           data={timezones}
                           size="sm"
                           defaultValue=","
@@ -60,7 +79,9 @@ const DateConverterPage: React.FC = () => {
                   </FormRow>
                   <FormRow label="カスタム出力">
                     <Controller
-                      render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                      render={({ field }) => (
+                        <Input style={{ width: 250 }} noResize="none" size="sm" {...field} />
+                      )}
                       name="customFormat"
                       control={control}
                     />
