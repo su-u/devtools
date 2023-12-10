@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // テーマのチラつきを抑えるために指定
   const className = 'rs-theme-dark';
-  const title = '開発補助ツール';
+  const title = 'Dev Toolkit';
 
   return (
     <html lang="ja">

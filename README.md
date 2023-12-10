@@ -1,7 +1,8 @@
 
-# tools.su-u.dev
+#  Dev Toolkit
+Web utility tools for developers
 
-開発に利用する便利なツール集
+開発者のための、Webユーティリティツール
 
 ## 現在利用できる機能
 
@@ -13,8 +14,7 @@
 - 数値に区切り文字追加
 - JSONフォーマット
 
-## 開発環境
-
+## 開発の始め方
 
 ```bash
 yarn install
@@ -24,6 +24,3 @@ yarn dev
 
 [http://localhost:3000](http://localhost:3000) を開く
 
-## デプロイ
-
-mainブランチにpushすると自動的にvercelにデプロイされます。
