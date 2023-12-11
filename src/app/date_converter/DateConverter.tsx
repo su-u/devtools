@@ -14,9 +14,16 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const DateConverter: FC = () => {
   const title = '日付の変換';
-  const { methods, control, output, timezones, onChangeInputDate, onChangeInputUnixTime } =
-    useDateConverter();
-  const { inputDate, inputUnixTime } = methods.getValues();
+  const {
+    methods,
+    control,
+    output,
+    timezones,
+    onChangeInputDate,
+    onChangeInputUnixTime,
+    onChangeTimezone,
+  } = useDateConverter();
+  const { inputDate, inputUnixTime, timezone } = methods.getValues();
 
   return (
     <AppLayout>
@@ -60,12 +67,13 @@ export const DateConverter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <InputPicker
+                          {...field}
                           style={{ width: 250 }}
                           data={timezones}
                           size="sm"
-                          defaultValue=","
                           cleanable={false}
-                          {...field}
+                          onChange={onChangeTimezone}
+                          value={timezone}
                         />
                       )}
                       name="timezone"

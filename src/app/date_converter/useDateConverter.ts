@@ -20,22 +20,24 @@ export const useDateConverter = () => {
       customFormat: '',
     },
   });
-  const { watch, control, setValue } = methods;
+  const { watch, control, setValue, getValues } = methods;
   const timezones = useMemo(
     () => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })),
     [],
   );
   const timezone = watch('timezone') ?? 'UTC';
-  const customFormat = watch('customFormat');
+
   useEffect(() => {
     const initDate = dayjs();
     setValue('inputDate', initDate);
     setValue('inputUnixTime', initDate.unix().toString());
   }, [setValue]);
   const [output, setOutput] = useState<any>(() => convert(watch('inputDate'), timezone));
+
   const onChangeInputDate = useCallback(
     (value: Date) => {
       const d = dayjs(value);
+      const { timezone, customFormat } = getValues();
       if (!d.isValid()) return;
 
       setValue('inputDate', d);
@@ -45,11 +47,12 @@ export const useDateConverter = () => {
         customFormat: customConvert(d, timezone, customFormat),
       });
     },
-    [setValue, timezone, customFormat],
+    [setValue, getValues],
   );
   const onChangeInputUnixTime = useCallback(
     (value: string) => {
       const d = dayjs.unix(Number(value));
+      const { timezone, customFormat } = getValues();
       if (!d.isValid()) return;
 
       setValue('inputDate', d);
@@ -60,7 +63,16 @@ export const useDateConverter = () => {
         customFormat: customConvert(d, timezone, customFormat),
       });
     },
-    [setValue, timezone, customFormat],
+    [setValue, getValues],
+  );
+
+  const onChangeTimezone = useCallback(
+    (value: string) => {
+      setValue('timezone', value);
+      const { inputDate } = getValues();
+      onChangeInputDate(inputDate.toDate());
+    },
+    [setValue, getValues, onChangeInputDate],
   );
 
   return {
@@ -70,6 +82,7 @@ export const useDateConverter = () => {
     timezones,
     onChangeInputDate,
     onChangeInputUnixTime,
+    onChangeTimezone,
   };
 };
 
