@@ -28,10 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           name="google-site-verification"
           content="XbfQBUU8iwwFG0-q5UtR_Rde1UfvDzdspEHt2tPs-Uw"
         />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <GoogleAnalytics />
       </Head>
       <body className={className}>
-        <Provider>{children}</Provider>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

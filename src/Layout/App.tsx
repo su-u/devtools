@@ -1,26 +1,22 @@
+'use client';
 import styled from '@emotion/styled';
-import Head from 'next/head';
 import React from 'react';
 import { Container, Content } from 'rsuite';
+import { Provider } from '@/app/Provider';
 import { SideNavBar } from '@/components/SideNavBar';
 
 type Props = {
-  title?: string;
   children?: React.ReactNode;
 };
 
-export const AppLayout: React.FC<Props> = ({ title = '', children }) => {
+export const AppLayout: React.FC<Props> = ({ children }) => {
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Provider>
       <StyledContainer>
         <SideNavBar />
         <StyledContent>{children}</StyledContent>
       </StyledContainer>
-    </>
+    </Provider>
   );
 };
 
