@@ -5,7 +5,7 @@ import CogIcon from '@rsuite/icons/legacy/Cog';
 import GithubIcon from '@rsuite/icons/legacy/Github';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import NextLink from 'next/link';
-import React from 'react';
+import React, { FC } from 'react';
 import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
 
 const GITHUB_LINK = 'https://github.com/su-u/devtools';
@@ -117,7 +117,7 @@ const navList: NavGroupType[] = [
 
 type NavKeys = (typeof navList)[number]['key'];
 
-export const SideNavBar: React.FC = () => {
+export const SideNavBar: FC = () => {
   const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
   const [expanded, setExpanded] = React.useState(true);
 

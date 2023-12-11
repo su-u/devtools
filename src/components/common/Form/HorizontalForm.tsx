@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { FC } from 'react';
 import { Form } from 'rsuite';
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const HorizontalForm: React.FC<Props> = ({ children }) => {
+export const HorizontalForm: FC<Props> = ({ children }) => {
   return <StyledForm layout="horizontal">{children}</StyledForm>;
 };
 

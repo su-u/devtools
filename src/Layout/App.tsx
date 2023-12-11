@@ -1,6 +1,6 @@
 'use client';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { FC } from 'react';
 import { Container, Content } from 'rsuite';
 import { Provider } from '@/app/Provider';
 import { SideNavBar } from '@/components/SideNavBar';
@@ -9,7 +9,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export const AppLayout: React.FC<Props> = ({ children }) => {
+export const AppLayout: FC<Props> = ({ children }) => {
   return (
     <Provider>
       <StyledContainer>

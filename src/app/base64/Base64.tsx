@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
 import { Grid, Row, Col, Panel, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
@@ -10,7 +10,7 @@ import { ClearButton } from '@/components/common/Form/ClearButton';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-const Base64: React.FC = () => {
+export const Base64: FC = () => {
   const title = 'base64エンコード';
   const { methods, output } = useBase64();
 
@@ -64,5 +64,3 @@ const Base64: React.FC = () => {
     </FormProvider>
   );
 };
-
-export default Base64;

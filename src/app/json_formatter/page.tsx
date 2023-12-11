@@ -1,89 +1,12 @@
-'use client';
-import React from 'react';
-import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, InputNumber } from 'rsuite';
-import { AppLayout } from '@/Layout/App';
-import { useJsonFormatter } from '@/app/json_formatter/useJsonFormatter';
-import { CopyButton } from '@/components/common/CopyButton';
-import { Editor, ex } from '@/components/common/Editor';
-import { ClearButton } from '@/components/common/Form/ClearButton';
-import { FormRow } from '@/components/common/Form/FormRow';
-import { PageTitle } from '@/components/common/PageTitle';
-import { PanelHeader } from '@/components/common/PanelHeader';
+import React, { FC } from 'react';
+import { JsonFormatter } from '@/app/json_formatter/JsonFormatter';
 
-const JsonFormatterPage: React.FC = () => {
-  const title = 'JSONフォーマット';
-  const { methods, output, DEFAULT_VALUES } = useJsonFormatter();
+export const metadata = {
+  title: 'Dev Toolkit - JSONフォーマット',
+};
 
-  return (
-    <FormProvider {...methods}>
-      <AppLayout title={title}>
-        <Grid fluid>
-          <PageTitle title={title} />
-          <Row gutter={5}>
-            <Col xs={24} md={12}>
-              <PanelGroup bordered>
-                <Panel
-                  bordered
-                  header={
-                    <PanelHeader
-                      title="入力文字"
-                      right={
-                        <ButtonToolbar>
-                          <ClearButton name="input" />
-                        </ButtonToolbar>
-                      }
-                    />
-                  }
-                >
-                  <Controller
-                    render={({ field }) => <Editor extensions={[ex.json]} {...field} />}
-                    name="input"
-                    control={methods.control}
-                  />
-                </Panel>
-                <Panel bordered header={<PanelHeader title="設定" />}>
-                  <FormRow label="スペース">
-                    <Controller
-                      render={({ field }) => (
-                        <InputNumber
-                          size="sm"
-                          style={{ width: 250 }}
-                          min={0}
-                          max={10}
-                          defaultValue={DEFAULT_VALUES.indentSpace}
-                          {...field}
-                        />
-                      )}
-                      name="indentSpace"
-                      control={methods.control}
-                    />
-                  </FormRow>
-                </Panel>
-              </PanelGroup>
-            </Col>
-            <Col xs={24} md={12}>
-              <Panel
-                bordered
-                header={
-                  <PanelHeader
-                    title="フォーマット"
-                    right={
-                      <ButtonToolbar>
-                        <CopyButton copyText={output} />
-                      </ButtonToolbar>
-                    }
-                  />
-                }
-              >
-                <Editor extensions={[ex.json]} value={output} />
-              </Panel>
-            </Col>
-          </Row>
-        </Grid>
-      </AppLayout>
-    </FormProvider>
-  );
+const JsonFormatterPage: FC = () => {
+  return <JsonFormatter />;
 };
 
 export default JsonFormatterPage;

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { FC } from 'react';
 
 type Props = {
   title: string;
   right?: React.ReactNode;
 };
 
-export const PanelHeader: React.FC<Props> = ({ title, right = null }) => {
+export const PanelHeader: FC<Props> = ({ title, right = null }) => {
   return (
     <Header>
       <Title>{title}</Title>

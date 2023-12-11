@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { FC } from 'react';
 import { Row, Col } from 'rsuite';
 
 type Props = {
   title: string;
 };
 
-export const PageTitle: React.FC<Props> = ({ title }) => {
+export const PageTitle: FC<Props> = ({ title }) => {
   return (
     <Row>
       <Col xs={24}>

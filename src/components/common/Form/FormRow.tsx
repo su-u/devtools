@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Form, Grid, Row, Col } from 'rsuite';
 import { ConfigLabel } from '@/components/common/Form/ConfigForm';
 
@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const FormRow: React.FC<Props> = ({ label, children, ...rest }) => {
+export const FormRow: FC<Props> = ({ label, children, ...rest }) => {
   return (
     <Form.Group>
       <Grid {...rest} fluid>
