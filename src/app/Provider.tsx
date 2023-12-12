@@ -1,4 +1,5 @@
 'use client';
+import { ConfigProvider, theme } from 'antd';
 import React, { FC } from 'react';
 import { CustomProvider } from 'rsuite';
 
@@ -7,5 +8,13 @@ type Props = {
 };
 
 export const Provider: FC<Props> = ({ children }) => {
-  return <CustomProvider theme="dark">{children}</CustomProvider>;
+  return (
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+      }}
+    >
+      <CustomProvider theme="dark">{children}</CustomProvider>
+    </ConfigProvider>
+  );
 };
