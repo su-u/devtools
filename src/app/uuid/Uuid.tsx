@@ -10,7 +10,6 @@ import {
   Form,
   Toggle,
   InputPicker,
-  InputNumber,
   Button,
   ButtonToolbar,
 } from 'rsuite';
@@ -23,6 +22,7 @@ import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
+import { InputNumber } from '@/components/common/Form/InputNumber';
 
 export const Uuid: FC = () => {
   const title = 'UUIDの生成';
@@ -108,7 +108,6 @@ export const Uuid: FC = () => {
                       <Controller
                         render={({ field }) => (
                           <InputNumber
-                            size="sm"
                             style={{ width: 250 }}
                             defaultValue={DEFAULT_VALUES.generateCount}
                             min={1}
