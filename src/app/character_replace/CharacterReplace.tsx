@@ -107,7 +107,7 @@ const ReplaceLine: FC<{
             name={`target_${label}`}
             control={control}
             defaultValue=""
-            render={({ field }) => <Input {...field} ref={null} />}
+            render={({ field }) => <Input {...field} />}
           />
         </Col>
         <Col xs={2} md={1}>
@@ -118,7 +118,7 @@ const ReplaceLine: FC<{
             name={`replace_${label}`}
             control={control}
             defaultValue=""
-            render={({ field }) => <Input {...field} ref={null} />}
+            render={({ field }) => <Input {...field} />}
           />
         </Col>
       </Row>

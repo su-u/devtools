@@ -37,9 +37,7 @@ export const Diff: FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => (
-                      <Input as="textarea" rows={INPUT_ROWS} {...field} ref={null} />
-                    )}
+                    render={({ field }) => <Input {...field} />}
                     name="original"
                     control={methods.control}
                   />
@@ -61,9 +59,7 @@ export const Diff: FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => (
-                    <Input as="textarea" rows={INPUT_ROWS} {...field} ref={null} />
-                  )}
+                  render={({ field }) => <Input {...field} />}
                   name="modified"
                   control={methods.control}
                 />
