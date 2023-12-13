@@ -1,18 +1,8 @@
 'use client';
+import { Switch } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import {
-  Col,
-  Grid,
-  Panel,
-  Row,
-  PanelGroup,
-  Form,
-  Toggle,
-  InputPicker,
-  Button,
-  ButtonToolbar,
-} from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, Button, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useUuid } from '@/app/uuid/useUuid';
 import { CopyButton } from '@/components/common/CopyButton';
@@ -68,7 +58,7 @@ export const Uuid: FC = () => {
                     <FormRow label="ハイフン">
                       <Controller
                         render={({ field }) => (
-                          <Toggle defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />
+                          <Switch defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />
                         )}
                         name="isHyphen"
                         control={methods.control}
@@ -77,7 +67,7 @@ export const Uuid: FC = () => {
                     <FormRow label="大文字">
                       <Controller
                         render={({ field }) => (
-                          <Toggle defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />
+                          <Switch defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />
                         )}
                         name="isUppercase"
                         control={methods.control}
