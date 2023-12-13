@@ -75,6 +75,19 @@ export const useDateConverter = () => {
     [setValue, getValues, onChangeInputDate],
   );
 
+  const onChangeCustomFormat = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setValue('customFormat', value);
+      const { inputDate, timezone } = getValues();
+      setOutput({
+        ...convert(inputDate, timezone),
+        customFormat: customConvert(inputDate, timezone, value),
+      });
+    },
+    [getValues, setValue],
+  );
+
   return {
     methods,
     control,
@@ -83,6 +96,7 @@ export const useDateConverter = () => {
     onChangeInputDate,
     onChangeInputUnixTime,
     onChangeTimezone,
+    onChangeCustomFormat,
   };
 };
 

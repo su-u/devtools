@@ -12,8 +12,9 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { dayjs } from '@/lib/dayjs';
 
-const INPUT_WIDTH = 300;
+const width = 300;
 
 export const DateConverter: FC = () => {
   const title = '日付の変換';
@@ -25,6 +26,7 @@ export const DateConverter: FC = () => {
     onChangeInputDate,
     onChangeInputUnixTime,
     onChangeTimezone,
+    onChangeCustomFormat,
   } = useDateConverter();
   const { inputUnixTime, timezone } = methods.getValues();
 
@@ -39,9 +41,7 @@ export const DateConverter: FC = () => {
                 <Form fluid layout="horizontal">
                   <FormRow label="日付">
                     <Controller
-                      render={() => (
-                        <DatePicker style={{ width: INPUT_WIDTH }} onChange={onChangeInputDate} />
-                      )}
+                      render={() => <DatePicker style={{ width }} onChange={onChangeInputDate} />}
                       name="inputDate"
                       control={control}
                     />
@@ -50,7 +50,7 @@ export const DateConverter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <Input
-                          style={{ width: INPUT_WIDTH }}
+                          style={{ width }}
                           onChange={onChangeInputUnixTime}
                           value={inputUnixTime}
                         />
@@ -67,8 +67,7 @@ export const DateConverter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <Select
-                          {...field}
-                          style={{ width: INPUT_WIDTH }}
+                          style={{ width }}
                           options={timezones}
                           onChange={onChangeTimezone}
                           value={timezone}
@@ -81,8 +80,8 @@ export const DateConverter: FC = () => {
                   </FormRow>
                   <FormRow label="カスタム出力">
                     <Controller
-                      render={({ field }) => (
-                        <Input style={{ width: INPUT_WIDTH }} noResize="none" {...field} />
+                      render={() => (
+                        <Input style={{ width }} noResize="none" onChange={onChangeCustomFormat} />
                       )}
                       name="customFormat"
                       control={control}
