@@ -7,6 +7,7 @@ import { AppLayout } from '@/Layout/App';
 import { useNumberComma } from '@/app/number_comma/useNumberComma';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
+import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
@@ -36,12 +37,10 @@ export const NumberComma: FC = () => {
                   <FormRow label="区切り文字">
                     <Controller
                       render={({ field }) => (
-                        <InputPicker
-                          size="sm"
+                        <Select
                           style={{ width: 250 }}
-                          data={SEPARATOR_LIST}
+                          options={SEPARATOR_LIST}
                           defaultValue={DEFAULT_VALUES.separator}
-                          cleanable={false}
                           {...field}
                         />
                       )}

@@ -19,10 +19,11 @@ import { CopyButton } from '@/components/common/CopyButton';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
+import { InputNumber } from '@/components/common/Form/InputNumber';
+import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
-import { InputNumber } from '@/components/common/Form/InputNumber';
 
 export const Uuid: FC = () => {
   const title = 'UUIDの生成';
@@ -53,12 +54,10 @@ export const Uuid: FC = () => {
                     <FormRow label="バージョン">
                       <Controller
                         render={({ field }) => (
-                          <InputPicker
-                            size="sm"
+                          <Select
                             style={{ width: 250 }}
-                            data={selectData}
+                            options={selectData}
                             defaultValue={DEFAULT_VALUES.version}
-                            cleanable={false}
                             {...field}
                           />
                         )}

@@ -1,6 +1,6 @@
+import type { SelectValue } from 'antd/es/select';
 import React, { useState, useCallback } from 'react';
 import { useToaster, Message } from 'rsuite';
-import { ItemDataType } from 'rsuite/esm/@types/common';
 import { generateUUIDs } from '@/app/uuid/uuidLib';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
@@ -22,7 +22,7 @@ const DEFAULT_VALUES: UuidForm = {
   UUIDNamespace: '',
 };
 
-const selectData: ItemDataType<number>[] = [
+const selectData: SelectValue = [
   {
     label: 'Version 1',
     value: 1,

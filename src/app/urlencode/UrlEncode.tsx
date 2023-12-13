@@ -18,6 +18,7 @@ import { useUrlEncode } from '@/app/urlencode/useUrlEncode';
 import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
+import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
@@ -59,15 +60,11 @@ export const UrlEncode: FC = () => {
                     <FormRow label="エンコード">
                       <Controller
                         render={({ field }) => (
-                          <SelectPicker
-                            size="sm"
+                          <Select
                             style={{ width: 250 }}
-                            groupBy="category"
-                            placement="autoVerticalStart"
-                            cleanable={false}
-                            data={encodingList}
+                            options={encodingList}
+                            showSearch
                             {...field}
-                            ref={null}
                           />
                         )}
                         name="encoding"

@@ -14,7 +14,7 @@ export const useUrlEncode = () => {
     defaultValues: {
       input: '',
       encode: '',
-      encoding: ENCODING_LIST[0].value,
+      encoding: ENCODING_LIST[0].options[0].value,
     },
   });
   const { watch } = methods;
