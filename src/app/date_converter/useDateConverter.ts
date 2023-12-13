@@ -35,16 +35,15 @@ export const useDateConverter = () => {
   const [output, setOutput] = useState<any>(() => convert(watch('inputDate'), timezone));
 
   const onChangeInputDate = useCallback(
-    (value: Date) => {
-      const d = dayjs(value);
+    (date: Dayjs) => {
       const { timezone, customFormat } = getValues();
-      if (!d.isValid()) return;
+      if (!date.isValid()) return;
 
-      setValue('inputDate', d);
-      setValue('inputUnixTime', d.unix().toString());
+      setValue('inputDate', date);
+      setValue('inputUnixTime', date.unix().toString());
       setOutput({
-        ...convert(d, timezone),
-        customFormat: customConvert(d, timezone, customFormat),
+        ...convert(date, timezone),
+        customFormat: customConvert(date, timezone, customFormat),
       });
     },
     [setValue, getValues],
@@ -71,7 +70,7 @@ export const useDateConverter = () => {
     (event: string) => {
       setValue('timezone', event.toString());
       const { inputDate } = getValues();
-      onChangeInputDate(inputDate.toDate());
+      onChangeInputDate(inputDate);
     },
     [setValue, getValues, onChangeInputDate],
   );
