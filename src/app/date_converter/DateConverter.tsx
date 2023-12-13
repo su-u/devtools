@@ -12,7 +12,6 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { dayjs } from '@/lib/dayjs';
 
 const width = 300;
 
