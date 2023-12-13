@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs';
-import { useMemo, useEffect, useCallback, useState } from 'react';
+import { useMemo, useEffect, useCallback, useState, ChangeEventHandler, ChangeEvent } from 'react';
 import TIME_ZONES from 'timezones-list';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
@@ -50,7 +50,8 @@ export const useDateConverter = () => {
     [setValue, getValues],
   );
   const onChangeInputUnixTime = useCallback(
-    (value: string) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
       const d = dayjs.unix(Number(value));
       const { timezone, customFormat } = getValues();
       if (!d.isValid()) return;
@@ -67,8 +68,8 @@ export const useDateConverter = () => {
   );
 
   const onChangeTimezone = useCallback(
-    (value: string) => {
-      setValue('timezone', value);
+    (event: string) => {
+      setValue('timezone', event.toString());
       const { inputDate } = getValues();
       onChangeInputDate(inputDate.toDate());
     },

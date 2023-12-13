@@ -48,11 +48,8 @@ export const DateConverter: FC = () => {
                       render={({ field }) => (
                         <Input
                           style={{ width: 250 }}
-                          noResize="none"
-                          size="sm"
                           onChange={onChangeInputUnixTime}
                           value={inputUnixTime}
-                          ref={null}
                         />
                       )}
                       name="inputUnixTime"
@@ -83,13 +80,7 @@ export const DateConverter: FC = () => {
                   <FormRow label="カスタム出力">
                     <Controller
                       render={({ field }) => (
-                        <Input
-                          style={{ width: 250 }}
-                          noResize="none"
-                          size="sm"
-                          {...field}
-                          ref={null}
-                        />
+                        <Input style={{ width: 250 }} noResize="none" {...field} />
                       )}
                       name="customFormat"
                       control={control}
