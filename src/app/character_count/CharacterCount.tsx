@@ -72,7 +72,10 @@ export const CharacterCount: FC = () => {
               <Panel bordered header={<PanelHeader title="文字数" />}>
                 <ConvertedForm layout="horizontal">
                   <LabelInput label="文字数(スペース込み)" value={characterCountValue} />
-                  <LabelInput label="文字数(スペース除)" value={characterCountWithoutSpaceValue} />
+                  <LabelInput
+                    label="文字数(スペース除く)"
+                    value={characterCountWithoutSpaceValue}
+                  />
                   <LabelInput label="スペースの数" value={spaceCharacterCountValue} />
                   <LabelInput label="全角文字数" value={fullWidthCharacterCountValue} />
                   <LabelInput label="半角文字数" value={halfWidthCharacterCountValue} />
