@@ -1,13 +1,16 @@
 'use client';
 import CopyIcon from '@rsuite/icons/Copy';
+import { Space } from 'antd';
 import { toASCII, encode } from 'punycode/';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, InputGroup, Panel, PanelGroup, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
+import { CopyButton } from '@/components/common/CopyButton';
 import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { Input } from '@/components/common/Form/Input';
+import { TextArea } from '@/components/common/Form/TextArea';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
@@ -60,32 +63,16 @@ export const Punycode: FC = () => {
             <Col xs={24} md={12}>
               <PanelGroup bordered>
                 <Panel header={<PanelHeader title="ドメイン変換" />}>
-                  <InputGroup>
-                    <Input
-                      noResize="none"
-                      as="textarea"
-                      rows={4}
-                      readOnly
-                      value={converted_ascii}
-                    />
-                    <InputGroup.Button onClick={copy(converted_ascii)}>
-                      <CopyIcon />
-                    </InputGroup.Button>
-                  </InputGroup>
+                  <Space.Compact block>
+                    <Input readOnly value={converted_ascii} />
+                    <CopyButton copyText={converted_punycode} />
+                  </Space.Compact>
                 </Panel>
                 <Panel header={<PanelHeader title="punycode変換" />}>
-                  <InputGroup>
-                    <Input
-                      noResize="none"
-                      as="textarea"
-                      rows={4}
-                      readOnly
-                      value={converted_punycode}
-                    />
-                    <InputGroup.Button onClick={copy(converted_punycode)}>
-                      <CopyIcon />
-                    </InputGroup.Button>
-                  </InputGroup>
+                  <Space.Compact block>
+                    <Input readOnly value={converted_punycode} />
+                    <CopyButton copyText={converted_punycode} />
+                  </Space.Compact>
                 </Panel>
               </PanelGroup>
             </Col>

@@ -11,6 +11,7 @@ import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
 import { InputNumber } from '@/components/common/Form/InputNumber';
 import { Select } from '@/components/common/Form/Select';
+import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
@@ -76,7 +77,7 @@ export const Uuid: FC = () => {
                     {requireName && (
                       <FormRow label="name">
                         <Controller
-                          render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                          render={({ field }) => <Input noResize="none" {...field} />}
                           name="UUIDName"
                           control={control}
                         />
@@ -85,7 +86,7 @@ export const Uuid: FC = () => {
                     {requireName && (
                       <FormRow label="namespace">
                         <Controller
-                          render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                          render={({ field }) => <Input noResize="none" {...field} />}
                           name="UUIDNamespace"
                           control={control}
                         />
@@ -130,7 +131,7 @@ export const Uuid: FC = () => {
                   />
                 }
               >
-                <Input value={output} as="textarea" readOnly rows={15} noResize="none" />
+                <TextArea value={output} readOnly rows={14} />
               </Panel>
             </Col>
           </Row>
