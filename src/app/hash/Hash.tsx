@@ -1,5 +1,4 @@
 'use client';
-import CopyIcon from '@rsuite/icons/Copy';
 import { Switch } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
@@ -9,11 +8,10 @@ import { useHash } from '@/app/hash/useHash';
 import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
-import { Input } from '@/components/common/Form/Input';
-import { OutputLineForm, OutputLabel } from '@/components/common/Form/OutputLineForm';
+import { InputListForm } from '@/components/common/Form/InputListForm';
+import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { useCopy } from '@/hooks/useCopy';
 
 export const Hash: FC = () => {
   const title = 'ハッシュ';
@@ -62,37 +60,18 @@ export const Hash: FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Panel bordered header={<PanelHeader title="ハッシュ値" />}>
-                <OutputLineForm layout="horizontal">
+                <InputListForm layout="horizontal">
                   {algorithmList.map(({ label, value }) => {
                     return (
-                      <OutputLine key={label} label={label} value={createHash(value, input)} />
+                      <LabelInput key={label} label={label} value={createHash(value, input)} />
                     );
                   })}
-                </OutputLineForm>
+                </InputListForm>
               </Panel>
             </Col>
           </Row>
         </Grid>
       </AppLayout>
     </FormProvider>
-  );
-};
-
-const OutputLine: FC<{
-  label: string;
-  value: string;
-}> = ({ label, value }) => {
-  const { copy } = useCopy();
-
-  return (
-    <Form.Group>
-      <InputGroup>
-        <OutputLabel>{label}</OutputLabel>
-        <Input noResize="none" readOnly value={value} />
-        <InputGroup.Button onClick={copy(value)} size="sm">
-          <CopyIcon />
-        </InputGroup.Button>
-      </InputGroup>
-    </Form.Group>
   );
 };

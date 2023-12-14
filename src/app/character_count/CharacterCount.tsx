@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Form, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
+import { Col, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import {
   characterCountWithoutSpace,
@@ -14,6 +14,7 @@ import {
 } from '@/app/character_count/CharacterCountLib';
 import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { InputListForm } from '@/components/common/Form/InputListForm';
 import { LabelInput } from '@/components/common/Form/LabelInput';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { PageTitle } from '@/components/common/PageTitle';
@@ -70,7 +71,7 @@ export const CharacterCount: FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Panel bordered header={<PanelHeader title="文字数" />}>
-                <ConvertedForm layout="horizontal">
+                <InputListForm layout="horizontal">
                   <LabelInput label="文字数(スペース込み)" value={characterCountValue} />
                   <LabelInput
                     label="文字数(スペース除く)"
@@ -80,7 +81,7 @@ export const CharacterCount: FC = () => {
                   <LabelInput label="全角文字数" value={fullWidthCharacterCountValue} />
                   <LabelInput label="半角文字数" value={halfWidthCharacterCountValue} />
                   <LabelInput label="行数" value={linesCountValue} />
-                </ConvertedForm>
+                </InputListForm>
               </Panel>
             </Col>
           </Row>
@@ -89,9 +90,3 @@ export const CharacterCount: FC = () => {
     </FormProvider>
   );
 };
-
-const ConvertedForm = styled(Form)`
-  > div:not(:last-child) {
-    margin-bottom: 12px !important;
-  }
-`;
