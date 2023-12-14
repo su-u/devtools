@@ -1,31 +1,28 @@
 import styled from '@emotion/styled';
-import CopyIcon from '@rsuite/icons/Copy';
+import { Space } from 'antd';
 import React, { FC } from 'react';
-import { Form, InputGroup } from 'rsuite';
+import { Form } from 'rsuite';
+import { CopyButton } from '@/components/common/CopyButton';
 import { Input } from '@/components/common/Form/Input';
-import { useCopy } from '@/hooks/useCopy';
 
 export const LabelInput: FC<{
   label: string;
   value: string;
 }> = ({ label, value }) => {
-  const { copy } = useCopy();
-
   return (
     <Form.Group>
-      <InputGroup>
-        <Label>{label}</Label>
-        <Input noResize="none" size="sm" readOnly value={value} />
-        <InputGroup.Button onClick={copy(value)} size="sm">
-          <CopyIcon />
-        </InputGroup.Button>
-      </InputGroup>
+      <Space.Compact block>
+        <StyleInput addonBefore={label} noResize="none" readOnly value={value} />
+        <CopyButton copyText={value} />
+      </Space.Compact>
     </Form.Group>
   );
 };
 
-const Label = styled(Form.ControlLabel)`
-  margin-left: 12px;
-  font-size: 12px !important;
-  width: 250px !important;
+const StyleInput = styled(Input)`
+  .ant-input-group-addon {
+    margin-left: 12px;
+    width: 200px !important;
+    text-align: right;
+  }
 `;

@@ -1,8 +1,9 @@
 'use client';
 import CopyIcon from '@rsuite/icons/Copy';
+import { Switch } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, PanelGroup, Form, Toggle, ButtonToolbar, InputGroup } from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, ButtonToolbar, InputGroup } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useHash } from '@/app/hash/useHash';
 import { Editor } from '@/components/common/Editor';
@@ -50,7 +51,7 @@ export const Hash: FC = () => {
                   <Form fluid layout="horizontal">
                     <FormRow label="大文字">
                       <Controller
-                        render={({ field }) => <Toggle {...field} />}
+                        render={({ field }) => <Switch {...field} />}
                         name="isUppercase"
                         control={methods.control}
                       />
@@ -87,7 +88,7 @@ const OutputLine: FC<{
     <Form.Group>
       <InputGroup>
         <OutputLabel>{label}</OutputLabel>
-        <Input noResize="none" size="sm" readOnly value={value} />
+        <Input noResize="none" readOnly value={value} />
         <InputGroup.Button onClick={copy(value)} size="sm">
           <CopyIcon />
         </InputGroup.Button>

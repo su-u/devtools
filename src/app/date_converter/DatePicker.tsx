@@ -1,7 +1,7 @@
+import { DatePicker as AntDatePicker } from 'antd';
+import type { DatePickerProps } from 'antd';
 import React, { FC } from 'react';
-import { DatePicker as RSuiteDatePicker } from 'rsuite';
 import type { RangeType } from 'rsuite/DateRangePicker';
-import type { DatePickerProps } from 'rsuite/esm/DatePicker/DatePicker';
 import { dayjs } from '@/lib/dayjs';
 
 type Props = DatePickerProps;
@@ -41,14 +41,12 @@ const predefinedRanges = [
 
 export const DatePicker: FC<Props> = (props) => {
   return (
-    <RSuiteDatePicker
-      ranges={predefinedRanges}
-      appearance="default"
-      format="yyyy-MM-dd HH:mm:ss"
-      oneTap
-      size="sm"
-      cleanable={false}
-      style={{ width: 250 }}
+    <AntDatePicker
+      // @ts-ignore
+      showTime={{ format: 'HH:mm:ss' }}
+      format="YYYY-MM-DD HH:mm:ss"
+      changeOnBlur
+      allowClear={false}
       {...props}
     />
   );

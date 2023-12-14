@@ -1,13 +1,14 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, InputNumber } from 'rsuite';
+import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useJsonFormatter } from '@/app/json_formatter/useJsonFormatter';
 import { CopyButton } from '@/components/common/CopyButton';
 import { Editor, ex } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
+import { InputNumber } from '@/components/common/Form/InputNumber';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
@@ -47,7 +48,6 @@ export const JsonFormatter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <InputNumber
-                          size="sm"
                           style={{ width: 250 }}
                           min={0}
                           max={10}

@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs';
-import { useMemo, useEffect, useCallback, useState } from 'react';
+import { useMemo, useEffect, useCallback, useState, ChangeEventHandler, ChangeEvent } from 'react';
 import TIME_ZONES from 'timezones-list';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
@@ -35,22 +35,22 @@ export const useDateConverter = () => {
   const [output, setOutput] = useState<any>(() => convert(watch('inputDate'), timezone));
 
   const onChangeInputDate = useCallback(
-    (value: Date) => {
-      const d = dayjs(value);
+    (date: Dayjs) => {
       const { timezone, customFormat } = getValues();
-      if (!d.isValid()) return;
+      if (!date.isValid()) return;
 
-      setValue('inputDate', d);
-      setValue('inputUnixTime', d.unix().toString());
+      setValue('inputDate', date);
+      setValue('inputUnixTime', date.unix().toString());
       setOutput({
-        ...convert(d, timezone),
-        customFormat: customConvert(d, timezone, customFormat),
+        ...convert(date, timezone),
+        customFormat: customConvert(date, timezone, customFormat),
       });
     },
     [setValue, getValues],
   );
   const onChangeInputUnixTime = useCallback(
-    (value: string) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
       const d = dayjs.unix(Number(value));
       const { timezone, customFormat } = getValues();
       if (!d.isValid()) return;
@@ -67,12 +67,25 @@ export const useDateConverter = () => {
   );
 
   const onChangeTimezone = useCallback(
-    (value: string) => {
-      setValue('timezone', value);
+    (event: string) => {
+      setValue('timezone', event.toString());
       const { inputDate } = getValues();
-      onChangeInputDate(inputDate.toDate());
+      onChangeInputDate(inputDate);
     },
     [setValue, getValues, onChangeInputDate],
+  );
+
+  const onChangeCustomFormat = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setValue('customFormat', value);
+      const { inputDate, timezone } = getValues();
+      setOutput({
+        ...convert(inputDate, timezone),
+        customFormat: customConvert(inputDate, timezone, value),
+      });
+    },
+    [getValues, setValue],
   );
 
   return {
@@ -83,6 +96,7 @@ export const useDateConverter = () => {
     onChangeInputDate,
     onChangeInputUnixTime,
     onChangeTimezone,
+    onChangeCustomFormat,
   };
 };
 

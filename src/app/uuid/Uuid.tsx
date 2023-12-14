@@ -1,25 +1,17 @@
 'use client';
+import { Switch } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import {
-  Col,
-  Grid,
-  Panel,
-  Row,
-  PanelGroup,
-  Form,
-  Toggle,
-  InputPicker,
-  InputNumber,
-  Button,
-  ButtonToolbar,
-} from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, Button, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useUuid } from '@/app/uuid/useUuid';
 import { CopyButton } from '@/components/common/CopyButton';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
+import { InputNumber } from '@/components/common/Form/InputNumber';
+import { Select } from '@/components/common/Form/Select';
+import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
@@ -53,12 +45,10 @@ export const Uuid: FC = () => {
                     <FormRow label="バージョン">
                       <Controller
                         render={({ field }) => (
-                          <InputPicker
-                            size="sm"
+                          <Select
                             style={{ width: 250 }}
-                            data={selectData}
+                            options={selectData}
                             defaultValue={DEFAULT_VALUES.version}
-                            cleanable={false}
                             {...field}
                           />
                         )}
@@ -69,7 +59,7 @@ export const Uuid: FC = () => {
                     <FormRow label="ハイフン">
                       <Controller
                         render={({ field }) => (
-                          <Toggle defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />
+                          <Switch defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />
                         )}
                         name="isHyphen"
                         control={methods.control}
@@ -78,7 +68,7 @@ export const Uuid: FC = () => {
                     <FormRow label="大文字">
                       <Controller
                         render={({ field }) => (
-                          <Toggle defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />
+                          <Switch defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />
                         )}
                         name="isUppercase"
                         control={methods.control}
@@ -87,7 +77,7 @@ export const Uuid: FC = () => {
                     {requireName && (
                       <FormRow label="name">
                         <Controller
-                          render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                          render={({ field }) => <Input noResize="none" {...field} />}
                           name="UUIDName"
                           control={control}
                         />
@@ -96,7 +86,7 @@ export const Uuid: FC = () => {
                     {requireName && (
                       <FormRow label="namespace">
                         <Controller
-                          render={({ field }) => <Input noResize="none" size="sm" {...field} />}
+                          render={({ field }) => <Input noResize="none" {...field} />}
                           name="UUIDNamespace"
                           control={control}
                         />
@@ -108,7 +98,6 @@ export const Uuid: FC = () => {
                       <Controller
                         render={({ field }) => (
                           <InputNumber
-                            size="sm"
                             style={{ width: 250 }}
                             defaultValue={DEFAULT_VALUES.generateCount}
                             min={1}
@@ -142,7 +131,7 @@ export const Uuid: FC = () => {
                   />
                 }
               >
-                <Input value={output} as="textarea" readOnly rows={15} noResize="none" />
+                <TextArea value={output} readOnly rows={14} />
               </Panel>
             </Col>
           </Row>

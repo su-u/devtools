@@ -1,6 +1,6 @@
-import CopyIcon from '@rsuite/icons/Copy';
+import { CopyOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import React, { FC } from 'react';
-import { IconButton } from 'rsuite';
 import { useCopy } from '@/hooks/useCopy';
 
 type Props = {
@@ -10,5 +10,5 @@ type Props = {
 export const CopyButton: FC<Props> = ({ copyText }) => {
   const { copy } = useCopy();
 
-  return <IconButton icon={<CopyIcon />} placement="right" size="xs" onClick={copy(copyText)} />;
+  return <Button icon={<CopyOutlined />} onClick={copy(copyText)} />;
 };
