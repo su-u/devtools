@@ -1,5 +1,5 @@
 'use client';
-import { Switch } from 'antd';
+import { Switch, Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, ButtonToolbar, InputGroup } from 'rsuite';
@@ -31,9 +31,9 @@ export const Hash: FC = () => {
                     <PanelHeader
                       title="入力"
                       right={
-                        <ButtonToolbar>
+                        <Space.Compact block>
                           <ClearButton name="input" />
-                        </ButtonToolbar>
+                        </Space.Compact>
                       }
                     />
                   }

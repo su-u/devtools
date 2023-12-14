@@ -1,7 +1,7 @@
-import TrashOIcon from '@rsuite/icons/legacy/TrashO';
+import { DeleteOutlined } from '@ant-design/icons';
+import { Tooltip, Button } from 'antd';
 import React, { useCallback, MouseEventHandler, FC } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { IconButton } from 'rsuite';
 
 type Props = {
   name: string;
@@ -17,13 +17,10 @@ export const ClearButton: FC<Props> = ({ name, title = 'クリア', onClick = nu
   }, [resetField, name]);
 
   return (
-    <IconButton
-      icon={<TrashOIcon />}
-      placement="right"
-      size="xs"
-      onClick={onClick ?? onClickInputClear}
-    >
-      {title}
-    </IconButton>
+    <Tooltip title="削除">
+      <Button icon={<DeleteOutlined />} onClick={onClick ?? onClickInputClear}>
+        {title}
+      </Button>
+    </Tooltip>
   );
 };
