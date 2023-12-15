@@ -16,7 +16,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 const width = 300;
 
 export const DateConverter: FC = () => {
-  const title = '日付の変換';
+  const title = '日時の変換';
   const {
     methods,
     control,
