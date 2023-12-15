@@ -86,7 +86,7 @@ const navList: NavGroupType[] = [
       },
       {
         key: 'date_converter',
-        title: '日付の変換',
+        title: '日時の変換',
         path: '/date_converter',
       },
     ],
