@@ -22,16 +22,17 @@ const DEFAULT_VALUES: NumberCommaForm = {
 };
 
 export const useNumberComma = () => {
-  const { control, watch } = useCustomForm<NumberCommaForm>({
+  const methods = useCustomForm<NumberCommaForm>({
     defaultValues: DEFAULT_VALUES,
   });
+  const { control, watch } = methods;
 
   const input = watch('input', DEFAULT_VALUES.input);
   const separator = watch('separator', DEFAULT_VALUES.separator);
   const output = comma(input, separator);
 
   return {
-    control,
+    methods,
     output,
     SEPARATOR_LIST,
     DEFAULT_VALUES,
