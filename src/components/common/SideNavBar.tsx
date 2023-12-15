@@ -7,122 +7,16 @@ import ListOl from '@rsuite/icons/legacy/ListOl';
 import NextLink from 'next/link';
 import React, { FC } from 'react';
 import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
+import { FeatureKeys, features } from '@/components/common/Features';
 
 const GITHUB_LINK = 'https://github.com/su-u/devtools';
 
-type NavItemType = {
-  key: string;
-  title: string;
-  path: string;
-  icon?: string;
-};
-
-type NavGroupType = {
-  title: string;
-  icon?: React.ReactElement;
-  key?: string;
-  items?: NavItemType[];
-};
-
-const navList: NavGroupType[] = [
-  {
-    title: 'エンコード',
-    icon: <ListOl />,
-    key: '1',
-    items: [
-      {
-        key: 'punycode',
-        title: 'Punycode',
-        path: '/punycode',
-      },
-      {
-        key: 'base64',
-        title: 'Base64',
-        path: '/base64',
-      },
-      {
-        key: 'urlencode',
-        title: 'URL',
-        path: '/urlencode',
-      },
-    ],
-  },
-  {
-    title: 'テキストツール',
-    icon: <EditIcon />,
-    key: '2',
-    items: [
-      {
-        key: 'character_count',
-        title: '文字数カウント',
-        path: '/character_count',
-      },
-      {
-        key: 'character_replace',
-        title: '文字列置換',
-        path: '/character_replace',
-      },
-      {
-        key: 'diff',
-        title: 'テキスト差分',
-        path: '/diff',
-      },
-      {
-        key: 'json_formatter',
-        title: 'JSONフォーマット',
-        path: '/json_formatter',
-      },
-    ],
-  },
-  {
-    title: '数値ツール',
-    icon: <ListOl />,
-    key: '3',
-    items: [
-      {
-        key: 'number_comma',
-        title: '数字カンマ区切り',
-        path: '/number_comma',
-      },
-      {
-        key: 'date_converter',
-        title: '日時の変換',
-        path: '/date_converter',
-      },
-    ],
-  },
-  {
-    title: '生成ツール',
-    icon: <GrowthIcon />,
-    key: '4',
-    items: [
-      {
-        key: 'hash',
-        title: 'Hash',
-        path: '/hash',
-      },
-      // {
-      //   key: 'dummy',
-      //   title: 'ダミーデータ',
-      //   path: '/dummy',
-      // },
-      {
-        key: 'uuid',
-        title: 'UUID',
-        path: '/uuid',
-      },
-    ],
-  },
-];
-
-type NavKeys = (typeof navList)[number]['key'];
-
 export const SideNavBar: FC = () => {
-  const [activeKey, setActiveKey] = React.useState<NavKeys>(() => 'home');
+  const [activeKey, setActiveKey] = React.useState<FeatureKeys>(() => 'home');
   const [expanded, setExpanded] = React.useState(true);
 
   const onSelect = React.useCallback(
-    (activeKey: NavKeys) => {
+    (activeKey: FeatureKeys) => {
       setActiveKey(activeKey);
     },
     [setActiveKey],
@@ -133,7 +27,7 @@ export const SideNavBar: FC = () => {
       <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
-            {navList.map((group) => {
+            {features.map((group) => {
               return (
                 <Nav.Menu
                   key={group.key}

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React, { FC } from 'react';
 import { Container, Content } from 'rsuite';
 import { Provider } from '@/app/Provider';
-import { SideNavBar } from '@/components/SideNavBar';
+import { SideNavBar } from '@/components/common/SideNavBar';
 
 type Props = {
   children?: React.ReactNode;

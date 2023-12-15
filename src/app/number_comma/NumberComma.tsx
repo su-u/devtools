@@ -1,12 +1,12 @@
 'use client';
 import { Space } from 'antd';
 import React, { FC } from 'react';
-import { Controller , FormProvider } from 'react-hook-form';
+import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useNumberComma } from '@/app/number_comma/useNumberComma';
-import { CopyButton } from '@/components/common/CopyButton';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { CopyButton } from '@/components/common/Form/CopyButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Input } from '@/components/common/Form/Input';
 import { Select } from '@/components/common/Form/Select';

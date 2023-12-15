@@ -4,9 +4,9 @@ import { FormProvider, Controller } from 'react-hook-form';
 import { Grid, Row, Col, Panel, ButtonToolbar } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useBase64 } from '@/app/base64/useBase64';
-import { CopyButton } from '@/components/common/CopyButton';
 import { Editor, ex } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { CopyButton } from '@/components/common/Form/CopyButton';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 

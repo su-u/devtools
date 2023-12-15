@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Space } from 'antd';
 import React, { FC } from 'react';
 import { Form } from 'rsuite';
-import { CopyButton } from '@/components/common/CopyButton';
+import { CopyButton } from '@/components/common/Form/CopyButton';
 import { Input } from '@/components/common/Form/Input';
 
 export const LabelInput: FC<{
