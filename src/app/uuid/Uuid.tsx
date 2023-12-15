@@ -1,5 +1,5 @@
 'use client';
-import { Switch } from 'antd';
+import { Switch, Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, Button, ButtonToolbar } from 'rsuite';
@@ -123,10 +123,10 @@ export const Uuid: FC = () => {
                   <PanelHeader
                     title="UUID"
                     right={
-                      <ButtonToolbar>
-                        <CopyButton copyText={output} />
+                      <Space.Compact block>
+                        <CopyButton copyText={output} size="small" />
                         <ClearButton name="output" onClick={onClickClear} />
-                      </ButtonToolbar>
+                      </Space.Compact>
                     }
                   />
                 }

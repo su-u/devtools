@@ -18,7 +18,7 @@ export const ClearButton: FC<Props> = ({ name, title = 'クリア', onClick = nu
 
   return (
     <Tooltip title="削除">
-      <Button icon={<DeleteOutlined />} onClick={onClick ?? onClickInputClear}>
+      <Button icon={<DeleteOutlined />} danger size="small" onClick={onClick ?? onClickInputClear}>
         {title}
       </Button>
     </Tooltip>
