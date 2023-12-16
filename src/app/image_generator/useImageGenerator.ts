@@ -1,3 +1,5 @@
+import type { Color } from 'antd/es/color-picker';
+import { ColorFactory } from 'antd/es/color-picker/color';
 import { useCallback, useState } from 'react';
 import { getPresetSize } from '@/app/image_generator/presetSize';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
@@ -6,14 +8,20 @@ type ImageGeneratorForm = {
   wight: number;
   height: number;
   type: 'jpg' | 'png' | 'webp';
+  bgColor: Color | undefined;
+  textColor: Color | undefined;
   tab: 'unsplash' | 'placehold';
+  text: string;
 };
 
 export const DEFAULT_VALUES: ImageGeneratorForm = {
   wight: 256,
   height: 256,
   type: 'jpg',
+  bgColor: new ColorFactory('ffffff00'),
+  textColor: new ColorFactory('1668dc00'),
   tab: 'unsplash',
+  text: '',
 };
 
 export const SIZE_LIMIT = {
@@ -52,7 +60,7 @@ export const useImageGenerator = () => {
 
   const onClickGenerate = useCallback(() => {
     const values = getValues();
-    console.log({ values });
+    console.log(values);
     switch (values.tab) {
       case 'unsplash':
         setSrc(createUnsplashURL(values));
@@ -106,7 +114,13 @@ const createUnsplashURL = (values: ImageGeneratorForm) => {
 
 // https://placehold.jp/
 const createPlaceholdURL = (values: ImageGeneratorForm) => {
-  const { wight, height, type } = values;
+  const { wight, height, type, textColor, bgColor, text } = values;
+  const bgColorPath = bgColor ? `/${bgColor.toHex()}` : '';
+  const textColorPath = textColor ? `/${textColor.toHex()}` : '';
 
-  return `https://placehold.jp/${wight}x${height}.${type}`;
+  const params = new URLSearchParams({
+    text,
+  });
+
+  return `https://placehold.jp${bgColorPath}${textColorPath}/${wight}x${height}.${type}?${params}`;
 };

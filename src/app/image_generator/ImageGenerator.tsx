@@ -1,5 +1,5 @@
 'use client';
-import { Button, Tabs } from 'antd';
+import { Button, Tabs, ColorPicker } from 'antd';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
 import { Grid, Row, Col, PanelGroup, Panel, Form } from 'rsuite';
@@ -13,6 +13,7 @@ import {
   PLACEHOLD_FILE_TYPES,
 } from '@/app/image_generator/useImageGenerator';
 import { FormRow } from '@/components/common/Form/FormRow';
+import { Input } from '@/components/common/Form/Input';
 import { InputNumber } from '@/components/common/Form/InputNumber';
 import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
@@ -87,7 +88,7 @@ const CommonForm: FC<{ control: any }> = ({ control }) => {
     <>
       <FormRow label="幅">
         <Controller
-          render={({ field }) => (
+          render={({ field: { ref, ...field } }) => (
             <InputNumber
               {...field}
               style={{ width }}
@@ -102,7 +103,7 @@ const CommonForm: FC<{ control: any }> = ({ control }) => {
       </FormRow>
       <FormRow label="高さ">
         <Controller
-          render={({ field }) => (
+          render={({ field: { ref, ...field } }) => (
             <InputNumber
               {...field}
               style={{ width }}
@@ -125,7 +126,7 @@ const UnsplashTab: FC<{ control: any }> = ({ control }) => {
       <CommonForm control={control} />
       <FormRow label="拡張子">
         <Controller
-          render={({ field }) => (
+          render={({ field: { ref, ...field } }) => (
             <Select
               {...field}
               style={{ width }}
@@ -147,7 +148,7 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
       <CommonForm control={control} />
       <FormRow label="拡張子">
         <Controller
-          render={({ field }) => (
+          render={({ field: { ref, ...field } }) => (
             <Select
               {...field}
               style={{ width }}
@@ -156,6 +157,33 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
             />
           )}
           name="type"
+          control={control}
+        />
+      </FormRow>
+      <FormRow label="文字色">
+        <Controller
+          render={({ field: { ref, ...field } }) => (
+            <ColorPicker {...field} defaultValue={DEFAULT_VALUES.textColor} showText allowClear />
+          )}
+          name="textColor"
+          control={control}
+        />
+      </FormRow>
+      <FormRow label="背景色">
+        <Controller
+          render={({ field: { ref, ...field } }) => (
+            <ColorPicker {...field} defaultValue={DEFAULT_VALUES.bgColor} showText allowClear />
+          )}
+          name="bgColor"
+          control={control}
+        />
+      </FormRow>
+      <FormRow label="テキスト">
+        <Controller
+          render={({ field: { ref, ...field } }) => (
+            <Input {...field} style={{ width }} noResize="none" />
+          )}
+          name="text"
           control={control}
         />
       </FormRow>
