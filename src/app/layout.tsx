@@ -6,7 +6,6 @@ import React from 'react';
 import 'rsuite/dist/rsuite.min.css';
 import '@/styles/globals.scss';
 import '@/styles/rs-custom.globals.scss';
-import { Provider } from '@/app/Provider';
 import GoogleAnalytics from '@/components/common/GoogleAnalytics';
 
 export const metadata: Metadata = {
