@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form, InputPicker } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { DatePicker } from '@/app/date_converter/DatePicker';
+import { DatePicker } from '@/components/common/Form/DatePicker';
 import { useDateConverter } from '@/app/date_converter/useDateConverter';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
