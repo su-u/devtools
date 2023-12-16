@@ -10,12 +10,13 @@ import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { LabelInput } from '@/components/common/Form/LabelInput';
 
 const width = 200;
 
 export const DateDiff: FC = () => {
   const title = '日数計算';
-  const { methods, onChangeInputDate } = useDateDiff();
+  const { methods, outputs, onChangeInputDate } = useDateDiff();
 
   return (
     <AppLayout>
@@ -81,17 +82,12 @@ export const DateDiff: FC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header={<PanelHeader title="出力" />}>
               <HorizontalForm>
-                {/*<LabelInput label="ISO 8601" value={output.ISO8601} />*/}
-                {/*<LabelInput label="日付時間" value={output.fullDate} />*/}
-                {/*<LabelInput label="日付時間(ロング)" value={output.enDatetime} />*/}
-                {/*<LabelInput label="日付" value={output.enDate} />*/}
-                {/*<LabelInput label="年" value={output.year} />*/}
-                {/*<LabelInput label="月" value={output.month} />*/}
-                {/*<LabelInput label="日" value={output.d} />*/}
-                {/*<LabelInput label="曜日" value={output.week} />*/}
-                {/*<LabelInput label="unixtime" value={output.unixTime} />*/}
-                {/*<LabelInput label="カスタム" value={output.customFormat} />*/}
-                {/*<LabelInput label="TimeZone" value={output.timezone} />*/}
+                <LabelInput label="日" value={outputs.dayFloat} />
+                <LabelInput label="日(整数)" value={outputs.day} />
+                  <LabelInput label="月" value={outputs.month} />
+                  <LabelInput label="分" value={outputs.minute} />
+                  <LabelInput label="週" value={outputs.week} />
+                  <LabelInput label="経過時間" value={outputs.elapsedTime} />
               </HorizontalForm>
             </Panel>
           </Col>
