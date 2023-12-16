@@ -94,6 +94,7 @@ export const useImageGenerator = () => {
   };
 };
 
+// https://picsum.photos/
 const createUnsplashURL = (values: ImageGeneratorForm) => {
   const { wight, height, type } = values;
   const params = new URLSearchParams({
@@ -103,6 +104,7 @@ const createUnsplashURL = (values: ImageGeneratorForm) => {
   return `https://picsum.photos/${wight}/${height}.${type}?${params}`;
 };
 
+// https://placehold.jp/
 const createPlaceholdURL = (values: ImageGeneratorForm) => {
   const { wight, height, type } = values;
 
