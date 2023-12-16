@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useJsonFormatter } from '@/app/json_formatter/useJsonFormatter';
 import { Editor, ex } from '@/components/common/Editor';
@@ -26,16 +26,7 @@ export const JsonFormatter: FC = () => {
               <PanelGroup bordered>
                 <Panel
                   bordered
-                  header={
-                    <PanelHeader
-                      title="入力文字"
-                      right={
-                        <ButtonToolbar>
-                          <ClearButton name="input" />
-                        </ButtonToolbar>
-                      }
-                    />
-                  }
+                  header={<PanelHeader title="入力文字" right={<ClearButton name="input" />} />}
                 >
                   <Controller
                     render={({ field }) => <Editor extensions={[ex.json]} {...field} />}
@@ -68,11 +59,7 @@ export const JsonFormatter: FC = () => {
                 header={
                   <PanelHeader
                     title="フォーマット"
-                    right={
-                      <ButtonToolbar>
-                        <CopyButton copyText={output} />
-                      </ButtonToolbar>
-                    }
+                    right={<CopyButton size="small" copyText={output} />}
                   />
                 }
               >

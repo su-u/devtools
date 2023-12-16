@@ -1,8 +1,7 @@
 'use client';
-import styled from '@emotion/styled';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, ButtonToolbar } from 'rsuite';
+import { Col, Grid, Panel, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import {
   characterCountWithoutSpace,
@@ -52,14 +51,7 @@ export const CharacterCount: FC = () => {
               <Panel
                 bordered
                 header={
-                  <PanelHeader
-                    title="カウントする文字列"
-                    right={
-                      <ButtonToolbar>
-                        <ClearButton name="input" />
-                      </ButtonToolbar>
-                    }
-                  />
+                  <PanelHeader title="カウントする文字列" right={<ClearButton name="input" />} />
                 }
               >
                 <Controller

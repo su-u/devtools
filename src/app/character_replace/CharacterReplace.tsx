@@ -29,16 +29,7 @@ export const CharacterReplace: FC = () => {
               <PanelGroup bordered>
                 <Panel
                   bordered
-                  header={
-                    <PanelHeader
-                      title="入力文字"
-                      right={
-                        <ButtonToolbar>
-                          <ClearButton name="input" />
-                        </ButtonToolbar>
-                      }
-                    />
-                  }
+                  header={<PanelHeader title="入力文字" right={<ClearButton name="input" />} />}
                 >
                   <Controller
                     render={({ field }) => <Editor {...field} ref={null} />}
@@ -74,11 +65,7 @@ export const CharacterReplace: FC = () => {
                 header={
                   <PanelHeader
                     title="置換後"
-                    right={
-                      <ButtonToolbar>
-                        <CopyButton copyText={output} />
-                      </ButtonToolbar>
-                    }
+                    right={<CopyButton size="small" copyText={output} />}
                   />
                 }
               >

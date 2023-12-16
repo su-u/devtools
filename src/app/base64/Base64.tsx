@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
-import { Grid, Row, Col, Panel, ButtonToolbar } from 'rsuite';
+import { Grid, Row, Col, Panel } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useBase64 } from '@/app/base64/useBase64';
 import { Editor, ex } from '@/components/common/Editor';
@@ -23,16 +23,7 @@ export const Base64: FC = () => {
             <Col xs={24} md={12}>
               <Panel
                 bordered
-                header={
-                  <PanelHeader
-                    title="入力文字"
-                    right={
-                      <ButtonToolbar>
-                        <ClearButton name="input" />
-                      </ButtonToolbar>
-                    }
-                  />
-                }
+                header={<PanelHeader title="入力文字" right={<ClearButton name="input" />} />}
               >
                 <Controller
                   render={({ field }) => <Editor {...field} ref={null} />}
@@ -47,11 +38,7 @@ export const Base64: FC = () => {
                 header={
                   <PanelHeader
                     title="base64エンコード"
-                    right={
-                      <ButtonToolbar>
-                        <CopyButton copyText={output} />
-                      </ButtonToolbar>
-                    }
+                    right={<CopyButton size="small" copyText={output} />}
                   />
                 }
               >

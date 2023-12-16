@@ -1,18 +1,7 @@
 'use client';
-import CopyIcon from '@rsuite/icons/Copy';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import {
-  Col,
-  Grid,
-  Panel,
-  Row,
-  Form,
-  ButtonToolbar,
-  IconButton,
-  PanelGroup,
-  SelectPicker,
-} from 'rsuite';
+import { Col, Grid, Panel, Row, Form, PanelGroup } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { useUrlEncode } from '@/app/urlencode/useUrlEncode';
 import { Editor } from '@/components/common/Editor';
@@ -22,6 +11,7 @@ import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
+import { CopyButton } from '@/components/common/Form/CopyButton';
 
 export const UrlEncode: FC = () => {
   const title = 'URLエンコード';
@@ -38,16 +28,7 @@ export const UrlEncode: FC = () => {
               <PanelGroup bordered>
                 <Panel
                   bordered
-                  header={
-                    <PanelHeader
-                      title="入力"
-                      right={
-                        <ButtonToolbar>
-                          <ClearButton name="input" />
-                        </ButtonToolbar>
-                      }
-                    />
-                  }
+                  header={<PanelHeader title="入力" right={<ClearButton name="input" />} />}
                 >
                   <Controller
                     render={({ field }) => <Editor {...field} />}
@@ -81,16 +62,7 @@ export const UrlEncode: FC = () => {
                 header={
                   <PanelHeader
                     title="エンコード"
-                    right={
-                      <ButtonToolbar>
-                        <IconButton
-                          icon={<CopyIcon />}
-                          placement="right"
-                          size="xs"
-                          onClick={copy(output)}
-                        ></IconButton>
-                      </ButtonToolbar>
-                    }
+                    right={<CopyButton size="small" copyText={output} />}
                   />
                 }
               >

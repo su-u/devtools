@@ -1,19 +1,19 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row, FlexboxGrid } from 'rsuite';
+import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { DiffEditor } from '@/app/diff/DiffEditor';
 import { useDiff } from '@/app/diff/useDiff';
 import { ClearButton } from '@/components/common/Form/ClearButton';
-import { Input } from '@/components/common/Form/Input';
+import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const Diff: FC = () => {
   const title = 'テキスト差分';
-  const { methods, original, modified } = useDiff();
   const INPUT_ROWS = 10;
+  const { methods, original, modified } = useDiff();
 
   return (
     <FormProvider {...methods}>
@@ -37,7 +37,7 @@ export const Diff: FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input {...field} />}
+                    render={({ field }) => <TextArea rows={INPUT_ROWS} {...field} />}
                     name="original"
                     control={methods.control}
                   />
@@ -59,7 +59,7 @@ export const Diff: FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Input {...field} />}
+                  render={({ field }) => <TextArea rows={INPUT_ROWS} {...field} />}
                   name="modified"
                   control={methods.control}
                 />
