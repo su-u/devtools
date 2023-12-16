@@ -109,6 +109,11 @@ export const features: FeatureGroupType[] = [
         title: 'UUID',
         path: '/uuid',
       },
+      {
+        key: 'image_generator',
+        title: '画像生成',
+        path: '/image_generator',
+      },
     ],
   },
 ];
