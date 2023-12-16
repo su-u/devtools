@@ -2,9 +2,6 @@ import { Dayjs } from 'dayjs';
 import { useCallback } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import plugin from 'dayjs/plugin/duration';
 
 type DateDiffForm = {
   inputDate1: Dayjs | undefined;
@@ -29,6 +26,13 @@ export const useDateDiff = () => {
     [setValue],
   );
 
+  const onChangeInputDateTime = useCallback(
+    (name: keyof DateDiffForm) => (date: Dayjs) => {
+      const d = date.set('millisecond', 0);
+      setValue(name, d);
+    },
+    [setValue],
+  );
 
   const date1 = watch('inputDate1');
   const date2 = watch('inputDate2');
@@ -38,6 +42,7 @@ export const useDateDiff = () => {
     methods,
     outputs,
     onChangeInputDate,
+    onChangeInputDateTime,
   };
 };
 
@@ -48,43 +53,43 @@ const convert = (date1: Dayjs | undefined, date2: Dayjs | undefined) => {
       month: '0',
       dayFloat: '0',
       day: '0',
+      hour: '0',
       minute: '0',
+      second: '0',
       week: '0',
+      elapsedDays: '',
       elapsedTime: '',
-    }
+    };
   }
-  console.log(date1.toISOString(), date2.toISOString());
+
   const f = new Intl.NumberFormat('ja-JP');
-  const year = f.format(date2.diff(date1, 'year'));
-  const month = f.format(date2.diff(date1, 'month'));
-  const dayFloat = f.format(date2.diff(date1, 'day', true));
-  const day = f.format(date2.diff(date1, 'day'));
-  const hour = f.format(date2.diff(date1, 'hour'));
+  const year = f.format(date2.diff(date1, 'year', true));
+  const month = f.format(date2.diff(date1, 'month', true));
+  const day = f.format(date2.diff(date1, 'day', true));
+  const dayInt = f.format(date2.diff(date1, 'day'));
+  const hour = f.format(date2.diff(date1, 'hour', true));
   const minute = f.format(date2.diff(date1, 'minute', true));
   const second = f.format(date2.diff(date1, 'second', true));
-  const week = f.format(date2.diff(date1, 'week'));
+  const week = f.format(date2.diff(date1, 'week', true));
 
-  // const elapsedTime = dayjs(dayjs.duration(date2.diff(date1)).asMilliseconds()).tz('UTC').format('HH:mm:ss')
-  const diff = dayjs.duration(date2.diff(date1, 'second'), 'second');
-  const elapsedTime = convertElapsedTime(diff);
+  const du = dayjs.duration(date2.diff(date1));
+  const d = Math.floor(du.asDays());
+  const h = Math.floor(du.asHours());
+  const m = Math.floor(du.asMinutes() % 60);
+  const s = Math.floor(du.asSeconds() % 60);
+  const elapsedDays = `${d}日${h % 24}時間${m}分${s}秒`;
+  const elapsedTime = `${h}時間${m}分${s}秒`;
 
   return {
-    day,
-    dayFloat,
+    year,
     month,
+    dayInt,
+    day,
+    hour,
     minute,
+    second,
     week,
+    elapsedDays,
     elapsedTime,
-  }
+  };
 };
-
-const convertElapsedTime = (diff: plugin.Duration) => {
-  const y = Math.floor(diff.asYears());
-  const m = Math.floor(diff.asMonths());
-  const d = Math.floor(diff.asDays());
-  const h = Math.floor(diff.asHours());
-  const n = Math.floor(diff.asMinutes());
-  const s = Math.floor(diff.asSeconds());
-
-  return `${y}年${m}月${d}日${h}時${n}分${s}秒`;
-}

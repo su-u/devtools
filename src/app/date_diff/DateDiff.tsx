@@ -4,19 +4,19 @@ import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { DatePicker } from '@/components/common/Form/DatePicker';
 import { useDateDiff } from '@/app/date_diff/useDateDiff';
+import { DatePicker } from '@/components/common/Form/DatePicker';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
+import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { LabelInput } from '@/components/common/Form/LabelInput';
 
 const width = 200;
 
 export const DateDiff: FC = () => {
   const title = '日数計算';
-  const { methods, outputs, onChangeInputDate } = useDateDiff();
+  const { methods, outputs, onChangeInputDate, onChangeInputDateTime } = useDateDiff();
 
   return (
     <AppLayout>
@@ -43,38 +43,15 @@ export const DateDiff: FC = () => {
                       {
                         label: '日時',
                         key: '日時',
-                        children: <DateTimeTab control={methods.control} />,
+                        children: (
+                          <DateTimeTab
+                            onChangeInputDateTime={onChangeInputDateTime}
+                            control={methods.control}
+                          />
+                        ),
                       },
                     ]}
                   />
-                </Form>
-              </Panel>
-              <Panel bordered header={<PanelHeader title="共通設定" />}>
-                <Form fluid layout="horizontal">
-                  {/*<FormRow label="TimeZone">*/}
-                  {/*  <Controller*/}
-                  {/*    render={({ field }) => (*/}
-                  {/*      <Select*/}
-                  {/*        style={{ width }}*/}
-                  {/*        options={timezones}*/}
-                  {/*        onChange={onChangeTimezone}*/}
-                  {/*        value={timezone}*/}
-                  {/*        showSearch*/}
-                  {/*      />*/}
-                  {/*    )}*/}
-                  {/*    name="timezone"*/}
-                  {/*    control={control}*/}
-                  {/*  />*/}
-                  {/*</FormRow>*/}
-                  {/*<FormRow label="カスタム出力">*/}
-                  {/*  <Controller*/}
-                  {/*    render={() => (*/}
-                  {/*      <Input style={{ width }} noResize="none" onChange={onChangeCustomFormat} />*/}
-                  {/*    )}*/}
-                  {/*    name="customFormat"*/}
-                  {/*    control={control}*/}
-                  {/*  />*/}
-                  {/*</FormRow>*/}
                 </Form>
               </Panel>
             </PanelGroup>
@@ -82,12 +59,16 @@ export const DateDiff: FC = () => {
           <Col xs={24} md={12}>
             <Panel bordered header={<PanelHeader title="出力" />}>
               <HorizontalForm>
-                <LabelInput label="日" value={outputs.dayFloat} />
-                <LabelInput label="日(整数)" value={outputs.day} />
-                  <LabelInput label="月" value={outputs.month} />
-                  <LabelInput label="分" value={outputs.minute} />
-                  <LabelInput label="週" value={outputs.week} />
-                  <LabelInput label="経過時間" value={outputs.elapsedTime} />
+                <LabelInput label="年" value={outputs.year} />
+                <LabelInput label="月" value={outputs.month} />
+                <LabelInput label="日" value={outputs.day} />
+                <LabelInput label="日(整数)" value={outputs.dayInt} />
+                <LabelInput label="時間" value={outputs.hour} />
+                <LabelInput label="分" value={outputs.minute} />
+                <LabelInput label="秒" value={outputs.second} />
+                <LabelInput label="週" value={outputs.week} />
+                <LabelInput label="経過日時" value={outputs.elapsedDays} />
+                <LabelInput label="経過時間" value={outputs.elapsedTime} />
               </HorizontalForm>
             </Panel>
           </Col>
@@ -137,19 +118,34 @@ export const DateTab: FC<{ onChangeInputDate: any; control: any }> = ({
   );
 };
 
-export const DateTimeTab: FC<{ control: any }> = ({ control }) => {
+export const DateTimeTab: FC<{ onChangeInputDateTime: any; control: any }> = ({
+  onChangeInputDateTime,
+  control,
+}) => {
   return (
     <>
       <FormRow label="開始日時">
         <Controller
-          render={({ field }) => <DatePicker {...field} style={{ width }} />}
+          render={({ field }) => (
+            <DatePicker
+              {...field}
+              style={{ width }}
+              onChange={onChangeInputDateTime('inputDate1')}
+            />
+          )}
           name="inputDate1"
           control={control}
         />
       </FormRow>
       <FormRow label="終了日時">
         <Controller
-          render={({ field }) => <DatePicker {...field} style={{ width }} />}
+          render={({ field }) => (
+            <DatePicker
+              {...field}
+              style={{ width }}
+              onChange={onChangeInputDateTime('inputDate2')}
+            />
+          )}
           name="inputDate2"
           control={control}
         />
