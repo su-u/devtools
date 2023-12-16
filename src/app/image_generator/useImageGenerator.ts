@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { PRESET_SIZE } from '@/app/image_generator/presetSize';
+import { getPresetSize } from '@/app/image_generator/presetSize';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
 type ImageGeneratorForm = {
@@ -52,6 +52,7 @@ export const useImageGenerator = () => {
 
   const onClickGenerate = useCallback(() => {
     const values = getValues();
+    console.log({ values });
     switch (values.tab) {
       case 'unsplash':
         setSrc(createUnsplashURL(values));
@@ -63,10 +64,9 @@ export const useImageGenerator = () => {
   }, [getValues]);
 
   const onSelectPreset = useCallback(
-    (value: any) => {
-      const {
-        value: { width, height },
-      } = PRESET_SIZE.find(({ label }) => label === value);
+    (value: string) => {
+      const { width, height } = getPresetSize(value);
+
       setValue('wight', width);
       setValue('height', height);
     },
@@ -76,8 +76,13 @@ export const useImageGenerator = () => {
   const onChangeTab = useCallback(
     (key: ImageGeneratorForm['tab']) => {
       setValue('tab', key);
+
+      const { type } = getValues();
+      if (type === 'webp') {
+        setValue('type', DEFAULT_VALUES.type);
+      }
     },
-    [setValue],
+    [setValue, getValues],
   );
 
   return {

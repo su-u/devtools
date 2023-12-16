@@ -7,7 +7,6 @@ export const useCustomForm = <T>(options: UseFormProps<T> = {}) => {
     reValidateMode: 'onChange',
     criteriaMode: 'firstError',
     shouldFocusError: true,
-    shouldUnregister: true,
     ...options,
   });
 };

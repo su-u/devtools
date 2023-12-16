@@ -55,9 +55,11 @@ export const ImageGenerator: FC = () => {
                   <Panel bordered header={<PanelHeader title="プリセット" />}>
                     <FormRow label="サイズ">
                       <Select
-                        style={{ width: 250 }}
+                        style={{ width: 400 }}
                         options={PRESET_SIZE_OPTIONS}
                         onSelect={onSelectPreset}
+                        listHeight={1024}
+                        showSearch
                       />
                     </FormRow>
                     <Button type="primary" onClick={onClickGenerate}>
@@ -69,7 +71,7 @@ export const ImageGenerator: FC = () => {
             </Col>
             <Col xs={24} md={12}>
               <Panel bordered header={<PanelHeader title="生成画像" />}>
-                <img src={src} width="100%" loading="lazy" alt="生成画像" />
+                <img src={src} width="100%" loading="lazy" alt="" />
               </Panel>
             </Col>
           </Row>
@@ -82,21 +84,33 @@ export const ImageGenerator: FC = () => {
 const CommonForm: FC<{ control: any }> = ({ control }) => {
   return (
     <>
-      <FormRow label="高さ">
-        <Controller
-          render={({ field }) => (
-            <InputNumber {...field} style={{ width }} min={SIZE_LIMIT.min} max={SIZE_LIMIT.max} />
-          )}
-          name="height"
-          control={control}
-        />
-      </FormRow>
       <FormRow label="幅">
         <Controller
           render={({ field }) => (
-            <InputNumber {...field} style={{ width }} min={SIZE_LIMIT.min} max={SIZE_LIMIT.max} />
+            <InputNumber
+              {...field}
+              style={{ width }}
+              min={SIZE_LIMIT.min}
+              max={SIZE_LIMIT.max}
+              defaultValue={DEFAULT_VALUES.wight}
+            />
           )}
           name="wight"
+          control={control}
+        />
+      </FormRow>
+      <FormRow label="高さ">
+        <Controller
+          render={({ field }) => (
+            <InputNumber
+              {...field}
+              style={{ width }}
+              min={SIZE_LIMIT.min}
+              max={SIZE_LIMIT.max}
+              defaultValue={DEFAULT_VALUES.height}
+            />
+          )}
+          name="height"
           control={control}
         />
       </FormRow>
