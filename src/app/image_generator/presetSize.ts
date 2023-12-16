@@ -18,6 +18,27 @@ export const PRESET_SIZES = [
           height: 256,
         },
       },
+      {
+        label: '512x512',
+        value: {
+          width: 512,
+          height: 512,
+        },
+      },
+      {
+        label: '1080x1920',
+        value: {
+          width: 1080,
+          height: 1920,
+        },
+      },
+      {
+        label: '1920x1080',
+        value: {
+          width: 1920,
+          height: 1080,
+        },
+      },
     ],
   },
   {
