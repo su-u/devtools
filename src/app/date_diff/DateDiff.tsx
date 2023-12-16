@@ -1,5 +1,5 @@
 'use client';
-import { Tabs } from 'antd';
+import { Tabs, Switch } from 'antd';
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
@@ -54,6 +54,17 @@ export const DateDiff: FC = () => {
                   />
                 </Form>
               </Panel>
+              <Panel bordered header={<PanelHeader title="共通設定" />}>
+                <Form fluid layout="horizontal">
+                  <FormRow label="整数">
+                    <Controller
+                      render={({ field }) => <Switch {...field} />}
+                      name="isFormatFloat"
+                      control={methods.control}
+                    />
+                  </FormRow>
+                </Form>
+              </Panel>
             </PanelGroup>
           </Col>
           <Col xs={24} md={12}>
@@ -62,7 +73,6 @@ export const DateDiff: FC = () => {
                 <LabelInput label="年" value={outputs.year} />
                 <LabelInput label="月" value={outputs.month} />
                 <LabelInput label="日" value={outputs.day} />
-                <LabelInput label="日(整数)" value={outputs.dayInt} />
                 <LabelInput label="時間" value={outputs.hour} />
                 <LabelInput label="分" value={outputs.minute} />
                 <LabelInput label="秒" value={outputs.second} />

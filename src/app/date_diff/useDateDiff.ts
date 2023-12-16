@@ -6,17 +6,22 @@ import { dayjs } from '@/lib/dayjs';
 type DateDiffForm = {
   inputDate1: Dayjs | undefined;
   inputDate2: Dayjs | undefined;
+  isFormatFloat: boolean;
 };
 
 const DEFAULT_VALUES: DateDiffForm = {
   inputDate1: undefined,
   inputDate2: undefined,
+  isFormatFloat: false,
 };
 export const useDateDiff = () => {
   const methods = useCustomForm<DateDiffForm>({
     defaultValues: DEFAULT_VALUES,
   });
   const { watch, control, setValue, getValues } = methods;
+  const date1 = watch('inputDate1');
+  const date2 = watch('inputDate2');
+  const isFormatInt = watch('isFormatFloat');
 
   const onChangeInputDate = useCallback(
     (name: keyof DateDiffForm) => (date: Dayjs) => {
@@ -34,9 +39,7 @@ export const useDateDiff = () => {
     [setValue],
   );
 
-  const date1 = watch('inputDate1');
-  const date2 = watch('inputDate2');
-  const outputs = convert(date1, date2);
+  const outputs = convert(date1, date2, isFormatInt);
 
   return {
     methods,
@@ -46,12 +49,11 @@ export const useDateDiff = () => {
   };
 };
 
-const convert = (date1: Dayjs | undefined, date2: Dayjs | undefined) => {
+const convert = (date1: Dayjs | undefined, date2: Dayjs | undefined, isFormatFloat: boolean) => {
   if (!date1 || !date2) {
     return {
       year: '0',
       month: '0',
-      dayInt: '0',
       day: '0',
       hour: '0',
       minute: '0',
@@ -62,15 +64,16 @@ const convert = (date1: Dayjs | undefined, date2: Dayjs | undefined) => {
     };
   }
 
-  const f = new Intl.NumberFormat('ja-JP');
-  const year = f.format(date2.diff(date1, 'year', true));
-  const month = f.format(date2.diff(date1, 'month', true));
-  const day = f.format(date2.diff(date1, 'day', true));
-  const dayInt = f.format(date2.diff(date1, 'day'));
-  const hour = f.format(date2.diff(date1, 'hour', true));
-  const minute = f.format(date2.diff(date1, 'minute', true));
-  const second = f.format(date2.diff(date1, 'second', true));
-  const week = f.format(date2.diff(date1, 'week', true));
+  const f = isFormatFloat
+    ? new Intl.NumberFormat('ja-JP', { minimumFractionDigits: 5 })
+    : new Intl.NumberFormat('ja-JP');
+  const year = f.format(date2.diff(date1, 'year', isFormatFloat));
+  const month = f.format(date2.diff(date1, 'month', isFormatFloat));
+  const day = f.format(date2.diff(date1, 'day', isFormatFloat));
+  const hour = f.format(date2.diff(date1, 'hour', isFormatFloat));
+  const minute = f.format(date2.diff(date1, 'minute', isFormatFloat));
+  const second = f.format(date2.diff(date1, 'second', isFormatFloat));
+  const week = f.format(date2.diff(date1, 'week', isFormatFloat));
 
   const du = dayjs.duration(date2.diff(date1));
   const d = Math.floor(du.asDays());
@@ -83,7 +86,6 @@ const convert = (date1: Dayjs | undefined, date2: Dayjs | undefined) => {
   return {
     year,
     month,
-    dayInt,
     day,
     hour,
     minute,
