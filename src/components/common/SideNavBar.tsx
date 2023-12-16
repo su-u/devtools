@@ -1,9 +1,5 @@
 import styled from '@emotion/styled';
-import EditIcon from '@rsuite/icons/Edit';
-import GrowthIcon from '@rsuite/icons/Growth';
-import CogIcon from '@rsuite/icons/legacy/Cog';
 import GithubIcon from '@rsuite/icons/legacy/Github';
-import ListOl from '@rsuite/icons/legacy/ListOl';
 import NextLink from 'next/link';
 import React, { FC } from 'react';
 import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
