@@ -1,6 +1,6 @@
 {
   "name": "tools.su-u.dev",
-  "version": "15.0.0",
+  "version": "15.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
