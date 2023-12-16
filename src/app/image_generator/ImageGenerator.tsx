@@ -58,7 +58,8 @@ export const ImageGenerator: FC = () => {
                         style={{ width: 400 }}
                         options={PRESET_SIZE_OPTIONS}
                         onSelect={onSelectPreset}
-                        listHeight={1024}
+                        listHeight={512}
+                        listItemHeight={12}
                         showSearch
                       />
                     </FormRow>
