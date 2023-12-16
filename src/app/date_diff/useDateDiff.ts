@@ -51,7 +51,7 @@ const convert = (date1: Dayjs | undefined, date2: Dayjs | undefined) => {
     return {
       year: '0',
       month: '0',
-      dayFloat: '0',
+      dayInt: '0',
       day: '0',
       hour: '0',
       minute: '0',
