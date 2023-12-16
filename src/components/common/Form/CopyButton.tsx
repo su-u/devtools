@@ -1,5 +1,5 @@
 import { CopyOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, Tooltip } from 'antd';
 import type { ButtonProps } from 'antd/es/button/button';
 import React, { FC } from 'react';
 import { useCopy } from '@/hooks/useCopy';
@@ -12,5 +12,9 @@ type Props = {
 export const CopyButton: FC<Props> = ({ copyText, size }) => {
   const { copy } = useCopy();
 
-  return <Button icon={<CopyOutlined />} size={size} onClick={copy(copyText)} />;
+  return (
+    <Tooltip title="コピー">
+      <Button icon={<CopyOutlined />} size={size} onClick={copy(copyText)} />
+    </Tooltip>
+  );
 };
