@@ -6,17 +6,15 @@ import { AppLayout } from '@/Layout/App';
 import { useUrlEncode } from '@/app/urlencode/useUrlEncode';
 import { Editor } from '@/components/common/Editor';
 import { ClearButton } from '@/components/common/Form/ClearButton';
+import { CopyButton } from '@/components/common/Form/CopyButton';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { useCopy } from '@/hooks/useCopy';
-import { CopyButton } from '@/components/common/Form/CopyButton';
 
 export const UrlEncode: FC = () => {
   const title = 'URLエンコード';
   const { methods, output, encodingList } = useUrlEncode();
-  const { copy } = useCopy();
 
   return (
     <FormProvider {...methods}>
