@@ -12,6 +12,7 @@ type ImageGeneratorForm = {
   textColor: Color | undefined;
   tab: 'unsplash' | 'placehold';
   text: string;
+  textSize: number | undefined;
 };
 
 export const DEFAULT_VALUES: ImageGeneratorForm = {
@@ -22,11 +23,17 @@ export const DEFAULT_VALUES: ImageGeneratorForm = {
   textColor: new ColorFactory('1668dc00'),
   tab: 'unsplash',
   text: '',
+  textSize: undefined,
 };
 
-export const SIZE_LIMIT = {
+export const IMG_SIZE_LIMIT = {
   min: 1,
   max: 5000,
+};
+
+export const TEXT_SIZE_LIMIT = {
+  min: 1,
+  max: 999,
 };
 
 export const UNSPLASH_FILE_TYPES = [
@@ -114,7 +121,8 @@ const createUnsplashURL = (values: ImageGeneratorForm) => {
 
 // https://placehold.jp/
 const createPlaceholdURL = (values: ImageGeneratorForm) => {
-  const { wight, height, type, textColor, bgColor, text } = values;
+  const { wight, height, type, textColor, bgColor, text, textSize } = values;
+  const textSizePath = textSize ? '' : `/${textSize}`;
   const bgColorPath = bgColor ? `/${bgColor.toHex()}` : '';
   const textColorPath = textColor ? `/${textColor.toHex()}` : '';
 
@@ -122,5 +130,5 @@ const createPlaceholdURL = (values: ImageGeneratorForm) => {
     text,
   });
 
-  return `https://placehold.jp${bgColorPath}${textColorPath}/${wight}x${height}.${type}?${params}`;
+  return `https://placehold.jp${textSizePath}${bgColorPath}${textColorPath}/${wight}x${height}.${type}?${params}`;
 };

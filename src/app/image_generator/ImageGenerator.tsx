@@ -8,7 +8,8 @@ import { PRESET_SIZE_OPTIONS } from '@/app/image_generator/presetSize';
 import {
   useImageGenerator,
   DEFAULT_VALUES,
-  SIZE_LIMIT,
+  IMG_SIZE_LIMIT,
+  TEXT_SIZE_LIMIT,
   UNSPLASH_FILE_TYPES,
   PLACEHOLD_FILE_TYPES,
 } from '@/app/image_generator/useImageGenerator';
@@ -92,8 +93,8 @@ const CommonForm: FC<{ control: any }> = ({ control }) => {
             <InputNumber
               {...field}
               style={{ width }}
-              min={SIZE_LIMIT.min}
-              max={SIZE_LIMIT.max}
+              min={IMG_SIZE_LIMIT.min}
+              max={IMG_SIZE_LIMIT.max}
               defaultValue={DEFAULT_VALUES.wight}
             />
           )}
@@ -107,8 +108,8 @@ const CommonForm: FC<{ control: any }> = ({ control }) => {
             <InputNumber
               {...field}
               style={{ width }}
-              min={SIZE_LIMIT.min}
-              max={SIZE_LIMIT.max}
+              min={IMG_SIZE_LIMIT.min}
+              max={IMG_SIZE_LIMIT.max}
               defaultValue={DEFAULT_VALUES.height}
             />
           )}
@@ -180,10 +181,23 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
       </FormRow>
       <FormRow label="テキスト">
         <Controller
-          render={({ field: { ref, ...field } }) => (
-            <Input {...field} style={{ width }} noResize="none" />
-          )}
+          render={({ field: { ref, ...field } }) => <Input {...field} style={{ width }} />}
           name="text"
+          control={control}
+        />
+      </FormRow>
+      <FormRow label="テキストサイズ">
+        <Controller
+          render={({ field: { ref, ...field } }) => (
+            <InputNumber
+              {...field}
+              style={{ width }}
+              min={TEXT_SIZE_LIMIT.min}
+              max={TEXT_SIZE_LIMIT.max}
+              defaultValue={DEFAULT_VALUES.textSize}
+            />
+          )}
+          name="textSize"
           control={control}
         />
       </FormRow>
