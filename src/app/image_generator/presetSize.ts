@@ -5,6 +5,13 @@ export const PRESET_SIZES = [
     label: '基本サイズ',
     options: [
       {
+        label: '32x32',
+        value: {
+          width: 32,
+          height: 32,
+        },
+      },
+      {
         label: '100x100',
         value: {
           width: 100,
@@ -162,6 +169,25 @@ export const PRESET_SIZES = [
         value: {
           width: 90,
           height: 90,
+        },
+      },
+    ],
+  },
+  {
+    label: 'Web',
+    options: [
+      {
+        label: 'favicon 16x16',
+        value: {
+          width: 16,
+          height: 16,
+        },
+      },
+      {
+        label: 'スマホのホーム画面アイコン 180x180',
+        value: {
+          width: 180,
+          height: 180,
         },
       },
     ],
