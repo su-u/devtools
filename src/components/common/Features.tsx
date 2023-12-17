@@ -3,11 +3,13 @@ import GrowthIcon from '@rsuite/icons/Growth';
 import ListOl from '@rsuite/icons/legacy/ListOl';
 import React from 'react';
 
-type FeatureItemType = {
+export type FeatureItemType = {
   key: string;
   title: string;
+  shortTitle?: string;
   path: string;
   icon?: string;
+  description?: React.ReactNode;
 };
 
 type FeatureGroupType = {
@@ -25,18 +27,24 @@ export const features: FeatureGroupType[] = [
     items: [
       {
         key: 'punycode',
-        title: 'Punycode',
+        title: 'Punycodeエンコード',
+        shortTitle: 'Punycode',
         path: '/punycode',
+        description: '文字列をpunycodeエンコードします',
       },
       {
         key: 'base64',
-        title: 'Base64',
+        title: 'Base64エンコード',
+        shortTitle: 'Base64',
         path: '/base64',
+        description: '文字列をBase64エンコードします',
       },
       {
         key: 'urlencode',
-        title: 'URL',
+        title: 'URLエンコード',
+        shortTitle: 'URL',
         path: '/urlencode',
+        description: '文字列をURLエンコードします',
       },
     ],
   },
@@ -49,6 +57,7 @@ export const features: FeatureGroupType[] = [
         key: 'character_count',
         title: '文字数カウント',
         path: '/character_count',
+        description: '文字数や行数をカウントします',
       },
       {
         key: 'character_replace',
@@ -81,11 +90,13 @@ export const features: FeatureGroupType[] = [
         key: 'date_converter',
         title: '日時の変換',
         path: '/date_converter',
+        description: '日付のフォーマットを変換します',
       },
       {
         key: 'date_diff',
         title: '日数計算',
         path: '/date_diff',
+        description: '2つの時間から差分の時間を計算します',
       },
     ],
   },
@@ -98,6 +109,7 @@ export const features: FeatureGroupType[] = [
         key: 'hash',
         title: 'Hash',
         path: '/hash',
+        description: '文字列からハッシュを生成します',
       },
       // {
       //   key: 'dummy',
@@ -108,11 +120,13 @@ export const features: FeatureGroupType[] = [
         key: 'uuid',
         title: 'UUID',
         path: '/uuid',
+        description: '複数のUUIDを生成します',
       },
       {
         key: 'image_generator',
         title: '画像生成',
         path: '/image_generator',
+        description: 'ダミー用の画像を生成します',
       },
     ],
   },

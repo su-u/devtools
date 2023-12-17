@@ -39,7 +39,7 @@ export const SideNavBar: FC = () => {
                       href={item.path}
                       expanded={expanded}
                     >
-                      {item.title}
+                      {item.shortTitle || item.title}
                     </NavItem>
                   ))}
                 </Nav.Menu>
