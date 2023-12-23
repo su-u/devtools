@@ -6,7 +6,7 @@ export const useCopy = () => {
   const DURATION = 2000;
 
   const copy = (text?: string) => async () => {
-    if (text.trim() === '') {
+    if (!text || text.trim() === '') {
       toaster.push(
         <Message showIcon type="warning">
           コピーする内容がありません。
