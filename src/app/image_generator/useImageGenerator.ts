@@ -122,7 +122,7 @@ const createUnsplashURL = (values: ImageGeneratorForm) => {
 // https://placehold.jp/
 const createPlaceholdURL = (values: ImageGeneratorForm) => {
   const { wight, height, type, textColor, bgColor, text, textSize } = values;
-  const textSizePath = textSize ? '' : `/${textSize}`;
+  const textSizePath = textSize ? `/${textSize}` : '';
   const bgColorPath = bgColor ? `/${bgColor.toHex()}` : '';
   const textColorPath = textColor ? `/${textColor.toHex()}` : '';
 
