@@ -31,7 +31,7 @@ export const NumberComma: FC = () => {
                   }
                 >
                   <Controller
-                    render={({ field }) => <Input noResize="none" {...field} />}
+                    render={({ field: { ref, ...field } }) => <Input noResize="none" {...field} />}
                     name="input"
                     control={methods.control}
                     defaultValue={DEFAULT_VALUES.input}
@@ -41,7 +41,7 @@ export const NumberComma: FC = () => {
                   <Form fluid layout="horizontal">
                     <FormRow label="区切り文字">
                       <Controller
-                        render={({ field }) => (
+                        render={({ field: { ref, ...field } }) => (
                           <Select
                             style={{ width: 250 }}
                             options={SEPARATOR_LIST}

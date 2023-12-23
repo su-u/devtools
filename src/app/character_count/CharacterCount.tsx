@@ -55,7 +55,7 @@ export const CharacterCount: FC = () => {
                 }
               >
                 <Controller
-                  render={({ field }) => <Editor {...field} ref={null} />}
+                  render={({ field }) => <Editor {...field} />}
                   name="input"
                   control={control}
                 />

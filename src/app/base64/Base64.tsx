@@ -26,7 +26,7 @@ export const Base64: FC = () => {
                 header={<PanelHeader title="入力文字" right={<ClearButton name="input" />} />}
               >
                 <Controller
-                  render={({ field }) => <Editor {...field} ref={null} />}
+                  render={({ field }) => <Editor {...field} />}
                   name="input"
                   control={methods.control}
                 />

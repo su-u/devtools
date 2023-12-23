@@ -49,7 +49,7 @@ export const Hash: FC = () => {
                   <Form fluid layout="horizontal">
                     <FormRow label="大文字">
                       <Controller
-                        render={({ field }) => <Switch {...field} />}
+                        render={({ field: { ref, ...field } }) => <Switch {...field} />}
                         name="isUppercase"
                         control={methods.control}
                       />

@@ -44,7 +44,7 @@ export const Uuid: FC = () => {
                   <Panel bordered header={<PanelHeader title="設定" />}>
                     <FormRow label="バージョン">
                       <Controller
-                        render={({ field }) => (
+                        render={({ field: { ref, ...field } }) => (
                           <Select
                             style={{ width: 250 }}
                             options={selectData}
@@ -58,7 +58,7 @@ export const Uuid: FC = () => {
                     </FormRow>
                     <FormRow label="ハイフン">
                       <Controller
-                        render={({ field }) => (
+                        render={({ field: { ref, ...field } }) => (
                           <Switch defaultChecked={DEFAULT_VALUES.isHyphen} {...field} />
                         )}
                         name="isHyphen"
@@ -67,7 +67,7 @@ export const Uuid: FC = () => {
                     </FormRow>
                     <FormRow label="大文字">
                       <Controller
-                        render={({ field }) => (
+                        render={({ field: { ref, ...field } }) => (
                           <Switch defaultChecked={DEFAULT_VALUES.isUppercase} {...field} />
                         )}
                         name="isUppercase"
@@ -77,7 +77,9 @@ export const Uuid: FC = () => {
                     {requireName && (
                       <FormRow label="name">
                         <Controller
-                          render={({ field }) => <Input noResize="none" {...field} />}
+                          render={({ field: { ref, ...field } }) => (
+                            <Input noResize="none" {...field} />
+                          )}
                           name="UUIDName"
                           control={control}
                         />
@@ -86,7 +88,9 @@ export const Uuid: FC = () => {
                     {requireName && (
                       <FormRow label="namespace">
                         <Controller
-                          render={({ field }) => <Input noResize="none" {...field} />}
+                          render={({ field: { ref, ...field } }) => (
+                            <Input noResize="none" {...field} />
+                          )}
                           name="UUIDNamespace"
                           control={control}
                         />
@@ -96,7 +100,7 @@ export const Uuid: FC = () => {
                   <Panel bordered header={<PanelHeader title="生成" />}>
                     <FormRow label="生成数">
                       <Controller
-                        render={({ field }) => (
+                        render={({ field: { ref, ...field } }) => (
                           <InputNumber
                             style={{ width: 250 }}
                             defaultValue={DEFAULT_VALUES.generateCount}

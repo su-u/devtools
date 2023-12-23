@@ -58,7 +58,7 @@ export const DateDiff: FC = () => {
                 <Form fluid layout="horizontal">
                   <FormRow label="整数">
                     <Controller
-                      render={({ field }) => <Switch {...field} />}
+                      render={({ field: { ref, ...field } }) => <Switch {...field} />}
                       name="isFormatFloat"
                       control={methods.control}
                     />
@@ -111,7 +111,7 @@ export const DateTab: FC<{ onChangeInputDate: any; control: any }> = ({
       </FormRow>
       <FormRow label="終了日付">
         <Controller
-          render={({ field }) => (
+          render={({ field: { ref, ...field } }) => (
             <DatePicker
               {...field}
               style={{ width }}
@@ -136,7 +136,7 @@ export const DateTimeTab: FC<{ onChangeInputDateTime: any; control: any }> = ({
     <>
       <FormRow label="開始日時">
         <Controller
-          render={({ field }) => (
+          render={({ field: { ref, ...field } }) => (
             <DatePicker
               {...field}
               style={{ width }}

@@ -38,12 +38,12 @@ export const UrlEncode: FC = () => {
                   <Form fluid layout="horizontal">
                     <FormRow label="エンコード">
                       <Controller
-                        render={({ field }) => (
+                        render={({ field: { ref, ...field } }) => (
                           <Select
+                            {...field}
                             style={{ width: 250 }}
                             options={encodingList}
                             showSearch
-                            {...field}
                           />
                         )}
                         name="encoding"
