@@ -5,7 +5,7 @@ type NumberCommaForm = {
   separator: string;
 };
 
-const SEPARATOR_LIST = [
+export const SEPARATOR_LIST = [
   {
     label: ',',
     value: ',',
@@ -16,7 +16,7 @@ const SEPARATOR_LIST = [
   },
 ];
 
-const DEFAULT_VALUES: NumberCommaForm = {
+export const DEFAULT_VALUES: NumberCommaForm = {
   input: '',
   separator: SEPARATOR_LIST[0].value,
 };
@@ -34,12 +34,10 @@ export const useNumberComma = () => {
   return {
     methods,
     output,
-    SEPARATOR_LIST,
-    DEFAULT_VALUES,
   };
 };
 
-export const comma = (num: string, separator: string = ',') => {
+const comma = (num: string, separator: string = ',') => {
   const [integer, decimal] = num.split('.');
   let ret = integer.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, `$1${separator}`);
   if (decimal) {

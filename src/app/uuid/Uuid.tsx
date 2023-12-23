@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, Row, PanelGroup, Form, Button } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { useUuid } from '@/app/uuid/useUuid';
+import { useUuid, DEFAULT_VALUES } from '@/app/uuid/useUuid';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { CopyButton } from '@/components/common/Form/CopyButton';
 import { FormRow } from '@/components/common/Form/FormRow';
@@ -18,16 +18,8 @@ import { useCopy } from '@/hooks/useCopy';
 
 export const Uuid: FC = () => {
   const title = 'UUIDの生成';
-  const {
-    methods,
-    selectData,
-    control,
-    output,
-    onClickGenerateUUID,
-    DEFAULT_VALUES,
-    version,
-    onClickClear,
-  } = useUuid();
+  const { methods, selectData, control, output, onClickGenerateUUID, version, onClickClear } =
+    useUuid();
   const { copy } = useCopy();
 
   const requireName = version === 3 || version === 5;

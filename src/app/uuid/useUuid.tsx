@@ -13,7 +13,7 @@ type UuidForm = {
   UUIDNamespace: string;
 };
 
-const DEFAULT_VALUES: UuidForm = {
+export const DEFAULT_VALUES: UuidForm = {
   version: 4,
   isUppercase: false,
   isHyphen: true,
@@ -86,7 +86,6 @@ export const useUuid = () => {
     selectData,
     onClickGenerateUUID,
     output,
-    DEFAULT_VALUES,
     version,
     onClickClear,
   };

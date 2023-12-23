@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { useNumberComma } from '@/app/number_comma/useNumberComma';
+import { useNumberComma, DEFAULT_VALUES, SEPARATOR_LIST } from '@/app/number_comma/useNumberComma';
 import { ClearButton } from '@/components/common/Form/ClearButton';
 import { CopyButton } from '@/components/common/Form/CopyButton';
 import { FormRow } from '@/components/common/Form/FormRow';
@@ -15,7 +15,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const NumberComma: FC = () => {
   const title = '数値区切り';
-  const { methods, output, SEPARATOR_LIST, DEFAULT_VALUES } = useNumberComma();
+  const { methods, output } = useNumberComma();
 
   return (
     <FormProvider {...methods}>
