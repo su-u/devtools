@@ -16,7 +16,7 @@ export const FeatureCard: FC<CardProps> = ({ title, path, description }) => {
 };
 
 const StyleCard = styled(Card)`
-  transition: 0.2s;
+  transition: 0.1s;
 
   .ant-card-head {
     min-height: 38px;
