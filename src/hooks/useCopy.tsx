@@ -1,49 +1,37 @@
-import { useToaster, Message } from 'rsuite';
+import { message } from 'antd';
 
 export const useCopy = () => {
-  const toaster = useToaster();
-  const PLACEMENT = 'bottomStart';
-  const DURATION = 2000;
+  const [messageApi, contextHolder] = message.useMessage();
+  const DURATION = 1;
 
   const copy = (text?: string) => async () => {
     if (!text || text.trim() === '') {
-      toaster.push(
-        <Message showIcon type="warning">
-          コピーする内容がありません。
-        </Message>,
-        {
-          placement: PLACEMENT,
-          duration: DURATION,
-        },
-      );
+      messageApi.open({
+        type: 'warning',
+        content: 'コピーする内容がありません。',
+        duration: DURATION,
+      });
       return;
     }
 
     try {
       await navigator.clipboard.writeText(text);
-      toaster.push(
-        <Message showIcon type="success">
-          コピーしました。
-        </Message>,
-        {
-          placement: PLACEMENT,
-          duration: DURATION,
-        },
-      );
+      messageApi.open({
+        type: 'success',
+        content: 'コピーしました。',
+        duration: DURATION,
+      });
     } catch (e) {
-      toaster.push(
-        <Message showIcon type="error">
-          コピーに失敗しました。
-        </Message>,
-        {
-          placement: PLACEMENT,
-          duration: DURATION,
-        },
-      );
+      messageApi.open({
+        type: 'error',
+        content: 'コピーに失敗しました。',
+        duration: DURATION,
+      });
     }
   };
 
   return {
     copy,
+    contextHolder,
   };
 };

@@ -20,7 +20,6 @@ export const Uuid: FC = () => {
   const title = 'UUIDの生成';
   const { methods, selectData, control, output, onClickGenerateUUID, version, onClickClear } =
     useUuid();
-  const { copy } = useCopy();
 
   const requireName = version === 3 || version === 5;
 

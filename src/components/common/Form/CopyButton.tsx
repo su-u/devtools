@@ -10,10 +10,11 @@ type Props = {
 };
 
 export const CopyButton: FC<Props> = ({ copyText, size }) => {
-  const { copy } = useCopy();
+  const { copy, contextHolder } = useCopy();
 
   return (
     <Tooltip title="コピー">
+      {contextHolder}
       <Button icon={<CopyOutlined />} size={size} onClick={copy(copyText)} />
     </Tooltip>
   );
