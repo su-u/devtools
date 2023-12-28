@@ -1,21 +1,27 @@
 'use client';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
-import { Table } from 'antd';
+import { Table, Form } from 'antd';
+import type { DefaultOptionType } from 'antd/es/select';
 import type { ColumnsType } from 'antd/es/table';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
-import { Grid, Row, Col, Form, PanelGroup, Panel, IconButton } from 'rsuite';
+import { Grid, Row, Col, PanelGroup, Panel, IconButton } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { useDummy, DataType } from '@/app/dummy_generator/useDummy';
-import { Input } from '@/components/common/Form/Input';
+import { dataTypeOptions } from '@/app/dummy_generator/facker';
+import type { DataType } from '@/app/dummy_generator/facker';
+import { NameOptions } from '@/app/dummy_generator/options/NameOptions';
+import { useDummy, RecordType } from '@/app/dummy_generator/useDummy';
+import { FormRow } from '@/components/common/Form/FormRow';
+import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-const columns: ColumnsType<DataType> = [
+const columns: ColumnsType<RecordType> = [
   {
     title: 'ID',
     key: 'key',
     dataIndex: 'key',
+    width: '5%',
   },
   {
     title: 'Content',
@@ -23,36 +29,25 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'content',
   },
   {
-    title: 'Action',
+    title: '削除',
     key: 'action',
     dataIndex: 'action',
+    width: '15%',
   },
 ];
 
 export const DummyGenerator: FC = () => {
   const title = 'ダミー情報の生成';
   const { methods, fields, onClickAdd } = useDummy();
+  const { watch, control } = methods;
 
   const source = fields.map((value, index) => {
     return {
       key: index,
-      content: <ConfigRow id={value.id} index={index} control={methods.control} />,
+      content: <ConfigRow id={value.id} index={index} control={control} watch={watch} />,
       action: null,
     };
   });
-
-  // const source: DataType[] = [
-  //   {
-  //     key: 1,
-  //     content: '1',
-  //     action: 'a',
-  //   },
-  //   {
-  //     key: 2,
-  //     content: '2',
-  //     action: 'a',
-  //   }
-  // ];
 
   return (
     <FormProvider {...methods}>
@@ -61,7 +56,7 @@ export const DummyGenerator: FC = () => {
           <PageTitle title={title} />
           <Row gutter={5}>
             <Col md={12} xs={24}>
-              <Form fluid layout="horizontal">
+              <Form layout="horizontal">
                 <PanelGroup bordered>
                   <Panel bordered header={<PanelHeader title="管理" />}>
                     <IconButton
@@ -93,13 +88,40 @@ const ConfigRow: FC<{
   id: string;
   index: number;
   control: any;
-}> = ({ id, index, control }) => {
+  watch: any;
+}> = ({ id, index, control, watch }) => {
   return (
-    <Controller
-      key={id}
-      name={`items.${index}.firstName`}
-      control={control}
-      render={({ field: { ref, ...field } }) => <Input {...field} />}
-    />
+    <FormRow label="形式">
+      <Controller
+        key={id}
+        name={`items.${index}.dataType`}
+        control={control}
+        render={({ field: { ref, ...field } }) => (
+          <Select
+            style={{ width: 250 }}
+            options={dataTypeOptions as unknown as DefaultOptionType[]}
+            defaultValue={undefined}
+            showSearch
+            {...field}
+          />
+        )}
+      />
+      <Options dataType={watch(`items.${index}.dataType`)} index={index} control={control} />
+    </FormRow>
   );
+};
+
+const Options: FC<{ dataType: DataType; index: number; control: any }> = ({
+  dataType,
+  index,
+  control,
+}) => {
+  switch (dataType) {
+    case 'name': {
+      return <NameOptions />;
+    }
+    default: {
+      return null;
+    }
+  }
 };

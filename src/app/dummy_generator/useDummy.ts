@@ -8,7 +8,7 @@ type DummyForm = {
   items: any;
 };
 
-export interface DataType {
+export interface RecordType {
   key: number;
   content: any;
   action: string;
@@ -23,7 +23,7 @@ export const useDummy = () => {
   });
 
   const onClickAdd = useCallback(() => {
-    append({ firstName: '' });
+    append({ dataType: '' });
   }, [append]);
 
   console.log(methods.watch());
