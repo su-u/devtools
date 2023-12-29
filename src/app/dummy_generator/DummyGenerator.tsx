@@ -1,44 +1,28 @@
 'use client';
+import { DeleteOutlined } from '@ant-design/icons';
 import PlusIcon from '@rsuite/icons/legacy/Plus';
-import { Table, Form } from 'antd';
+import { Table, Form, Popconfirm, Button } from 'antd';
 import type { DefaultOptionType } from 'antd/es/select';
 import type { ColumnsType } from 'antd/es/table';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
+import type { Control, UseFormWatch } from 'react-hook-form/dist/types/form';
 import { Grid, Row, Col, PanelGroup, Panel, IconButton } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { dataTypeOptions } from '@/app/dummy_generator/facker';
 import type { DataType } from '@/app/dummy_generator/facker';
 import { NameOptions } from '@/app/dummy_generator/options/NameOptions';
-import { useDummy, RecordType } from '@/app/dummy_generator/useDummy';
+import { useDummy, RecordType, DummyForm } from '@/app/dummy_generator/useDummy';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { Select } from '@/components/common/Form/Select';
+import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-
-const columns: ColumnsType<RecordType> = [
-  {
-    title: 'ID',
-    key: 'key',
-    dataIndex: 'key',
-    width: '5%',
-  },
-  {
-    title: 'Content',
-    key: 'content',
-    dataIndex: 'content',
-  },
-  {
-    title: '削除',
-    key: 'action',
-    dataIndex: 'action',
-    width: '15%',
-  },
-];
+import { AddressOptions } from '@/app/dummy_generator/options/AddressOptions';
 
 export const DummyGenerator: FC = () => {
   const title = 'ダミー情報の生成';
-  const { methods, fields, onClickAdd } = useDummy();
+  const { methods, fields, output, onClickAdd, onClickDelete } = useDummy();
   const { watch, control } = methods;
 
   const source = fields.map((value, index) => {
@@ -48,6 +32,28 @@ export const DummyGenerator: FC = () => {
       action: null,
     };
   });
+
+  const columns: ColumnsType<RecordType> = [
+    {
+      title: 'ID',
+      key: 'key',
+      dataIndex: 'key',
+      width: '5%',
+    },
+    {
+      title: 'データ',
+      key: 'content',
+      dataIndex: 'content',
+    },
+    {
+      key: 'action',
+      dataIndex: 'action',
+      width: '5%',
+      render: (_, record: RecordType) => (
+        <DeleteAction key={record.key} onClick={onClickDelete(record.key)} />
+      ),
+    },
+  ];
 
   return (
     <FormProvider {...methods}>
@@ -75,7 +81,9 @@ export const DummyGenerator: FC = () => {
               </Form>
             </Col>
             <Col md={12} xs={24}>
-              <Panel bordered header={<PanelHeader title="UUID" />}></Panel>
+              <Panel bordered header={<PanelHeader title="UUID" />}>
+                <TextArea value={output} readOnly rows={20} />
+              </Panel>
             </Col>
           </Row>
         </Grid>
@@ -87,8 +95,8 @@ export const DummyGenerator: FC = () => {
 const ConfigRow: FC<{
   id: string;
   index: number;
-  control: any;
-  watch: any;
+  control: Control<DummyForm>;
+  watch: UseFormWatch<DummyForm>;
 }> = ({ id, index, control, watch }) => {
   return (
     <FormRow label="形式">
@@ -101,27 +109,46 @@ const ConfigRow: FC<{
             style={{ width: 250 }}
             options={dataTypeOptions as unknown as DefaultOptionType[]}
             defaultValue={undefined}
+            listHeight={512}
+            listItemHeight={12}
             showSearch
             {...field}
           />
         )}
       />
-      <Options dataType={watch(`items.${index}.dataType`)} index={index} control={control} />
+      <Options
+        dataType={watch(`items.${index}.dataType`)}
+        id={id}
+        index={index}
+        control={control}
+      />
     </FormRow>
   );
 };
 
-const Options: FC<{ dataType: DataType; index: number; control: any }> = ({
-  dataType,
-  index,
-  control,
-}) => {
+const Options: FC<{
+  dataType: DataType;
+  id: string;
+  index: number;
+  control: Control<DummyForm>;
+}> = ({ dataType, id: id, index, control }) => {
   switch (dataType) {
     case 'name': {
-      return <NameOptions />;
+      return <NameOptions id={id} index={index} control={control} />;
+    }
+    case 'address': {
+      return <AddressOptions id={id} index={index} control={control} />;
     }
     default: {
       return null;
     }
   }
+};
+
+const DeleteAction: FC<{ key: number; onClick: any }> = ({ key, onClick }) => {
+  return (
+    <Popconfirm title="本当に削除していいですか？" onConfirm={onClick}>
+      <Button icon={<DeleteOutlined />} danger />
+    </Popconfirm>
+  );
 };

@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useFieldArray } from 'react-hook-form';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 
-type DummyForm = {
+export type DummyForm = {
   count: number;
   format: 'csv' | 'tsv' | 'json';
   items: any;
@@ -15,9 +15,9 @@ export interface RecordType {
 }
 
 export const useDummy = () => {
-  const methods = useCustomForm<DummyForm>();
+  const methods = useCustomForm<DummyForm>({});
   const { control } = methods;
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control,
     name: 'items',
   });
@@ -26,11 +26,20 @@ export const useDummy = () => {
     append({ dataType: '' });
   }, [append]);
 
-  console.log(methods.watch());
+  const onClickDelete = useCallback(
+    (index: number) => () => {
+      remove(index);
+    },
+    [remove],
+  );
+
+  const output = JSON.stringify(methods.watch(), null, `  `);
 
   return {
     methods,
     fields,
+    output,
     onClickAdd,
+    onClickDelete,
   };
 };
