@@ -15,7 +15,9 @@ export interface RecordType {
 }
 
 export const useDummy = () => {
-  const methods = useCustomForm<DummyForm>({});
+  const methods = useCustomForm<DummyForm>({
+    shouldUnregister: true,
+  });
   const { control } = methods;
   const { fields, append, remove } = useFieldArray({
     control,

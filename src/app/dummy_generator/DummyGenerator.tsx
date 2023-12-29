@@ -11,6 +11,7 @@ import { Grid, Row, Col, PanelGroup, Panel, IconButton } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
 import { dataTypeOptions } from '@/app/dummy_generator/facker';
 import type { DataType } from '@/app/dummy_generator/facker';
+import { AddressOptions } from '@/app/dummy_generator/options/AddressOptions';
 import { NameOptions } from '@/app/dummy_generator/options/NameOptions';
 import { useDummy, RecordType, DummyForm } from '@/app/dummy_generator/useDummy';
 import { FormRow } from '@/components/common/Form/FormRow';
@@ -18,7 +19,6 @@ import { Select } from '@/components/common/Form/Select';
 import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
-import { AddressOptions } from '@/app/dummy_generator/options/AddressOptions';
 
 export const DummyGenerator: FC = () => {
   const title = 'ダミー情報の生成';
@@ -81,7 +81,7 @@ export const DummyGenerator: FC = () => {
               </Form>
             </Col>
             <Col md={12} xs={24}>
-              <Panel bordered header={<PanelHeader title="UUID" />}>
+              <Panel bordered header={<PanelHeader title="テストデータ" />}>
                 <TextArea value={output} readOnly rows={20} />
               </Panel>
             </Col>
@@ -106,13 +106,13 @@ const ConfigRow: FC<{
         control={control}
         render={({ field: { ref, ...field } }) => (
           <Select
+            {...field}
             style={{ width: 250 }}
             options={dataTypeOptions as unknown as DefaultOptionType[]}
             defaultValue={undefined}
             listHeight={512}
             listItemHeight={12}
             showSearch
-            {...field}
           />
         )}
       />
@@ -145,7 +145,7 @@ const Options: FC<{
   }
 };
 
-const DeleteAction: FC<{ key: number; onClick: any }> = ({ key, onClick }) => {
+const DeleteAction: FC<{ key: number; onClick: () => void }> = ({ key, onClick }) => {
   return (
     <Popconfirm title="本当に削除していいですか？" onConfirm={onClick}>
       <Button icon={<DeleteOutlined />} danger />

@@ -21,6 +21,10 @@ export const dataTypeOptions = [
         label: '住所',
         value: 'address',
       },
+      {
+        label: '仕事',
+        value: 'job',
+      },
     ],
   },
   {
@@ -58,6 +62,15 @@ export const dataTypeOptions = [
       {
         label: '会社メールアドレス',
         value: 'companyEmail',
+      },
+    ],
+  },
+  {
+    label: 'その他',
+    options: [
+      {
+        label: '絵文字',
+        value: 'emoji',
       },
     ],
   },
