@@ -2,7 +2,7 @@ import { Radio, Form } from 'antd';
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 import type { Control } from 'react-hook-form/dist/types/form';
-import { nameOptions, nameDataOptions } from '@/app/dummy_generator/facker';
+import { nameOptions, nameDataOptions } from '@/app/dummy_generator/options';
 import { DummyForm } from '@/app/dummy_generator/useDummy';
 
 type Props<TFieldValues> = {

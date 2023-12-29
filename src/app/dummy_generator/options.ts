@@ -1,6 +1,3 @@
-import { faker } from '@faker-js/faker/locale/ja';
-import type { DefaultOptionType } from 'antd/es/select';
-
 export const dataTypeOptions = [
   {
     label: '個人情報',

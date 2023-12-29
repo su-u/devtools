@@ -28,6 +28,10 @@ export const useDummy = () => {
     append({ dataType: '' });
   }, [append]);
 
+  const onClickClear = useCallback(() => {
+    remove();
+  }, [remove]);
+
   const onClickDelete = useCallback(
     (index: number) => () => {
       remove(index);
@@ -42,6 +46,7 @@ export const useDummy = () => {
     fields,
     output,
     onClickAdd,
+    onClickClear,
     onClickDelete,
   };
 };
