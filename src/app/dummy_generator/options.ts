@@ -90,6 +90,8 @@ export const nameOptions = [
   },
 ] as const;
 
+export type nameType = (typeof nameOptions)[number]['value'];
+
 export const nameDataOptions = [
   {
     label: '漢字',
@@ -104,6 +106,8 @@ export const nameDataOptions = [
     value: 'jaRomazi',
   },
 ] as const;
+
+export type nameDataType = (typeof nameDataOptions)[number]['value'];
 
 export const addressOptions = [
   {
@@ -131,3 +135,5 @@ export const addressOptions = [
     value: 'gou',
   },
 ] as const;
+
+export type addressType = (typeof addressOptions)[number]['value'];
