@@ -18,10 +18,13 @@ import { Select } from '@/components/common/Form/Select';
 import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { InputNumber } from '@/components/common/Form/InputNumber';
+import { COUNT_LIMIT, DEFAULT_VALUES } from '@/app/dummy_generator/useDummy';
 
 export const DummyGenerator: FC = () => {
   const title = 'ダミー情報の生成';
-  const { methods, fields, output, onClickAdd, onClickClear, onClickDelete } = useDummy();
+  const width = 250;
+  const { methods, fields, output, onClickAdd, onClickClear, onClickDelete, onClickGenerate } = useDummy();
   const { watch, control } = methods;
 
   const source = fields.map((value, index) => {
@@ -63,7 +66,27 @@ export const DummyGenerator: FC = () => {
             <Col md={12} xs={24}>
               <Form layout="horizontal">
                 <PanelGroup bordered>
-                  <Panel bordered header={<PanelHeader title="管理" />}></Panel>
+                  <Panel bordered header={<PanelHeader title="管理" />}>
+                    <FormRow label="生成数">
+                      <Controller
+                        render={({ field: { ref, ...field } }) => (
+                          <InputNumber
+                            {...field}
+                            style={{ width }}
+                            min={COUNT_LIMIT.min}
+                            max={COUNT_LIMIT.max}
+                            defaultValue={DEFAULT_VALUES.count}
+                          />
+                        )}
+                        name="count"
+                        control={control}
+                      />
+
+                    </FormRow>
+                    <Button type="primary" onClick={onClickGenerate}>
+                      生成
+                    </Button>
+                  </Panel>
                   <Panel
                     bordered
                     header={
