@@ -1,4 +1,4 @@
-import type { DataType , nameType , nameDataType , addressType } from '@/app/dummy_generator/options';
+import type { DataType, nameType, nameDataType, addressType } from '@/app/dummy_generator/options';
 
 type Option = undefined | nameType | nameDataType | addressType;
 
@@ -9,12 +9,9 @@ export const facker = (dataType: DataType, option: Option) => {
     }
     default:
       break;
-
   }
 
   return [];
 };
 
-const nameFacker = (option: nameType) => {
-
-};
+const nameFacker = (option: nameType) => {};

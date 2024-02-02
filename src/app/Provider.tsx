@@ -1,6 +1,6 @@
 'use client';
 import { ConfigProvider, theme } from 'antd';
-import locale from 'antd/locale/ja_JP';
+import jaJP from 'antd/locale/ja_JP';
 import React, { FC } from 'react';
 import { CustomProvider } from 'rsuite';
 import 'dayjs/locale/ja';
@@ -15,7 +15,7 @@ export const Provider: FC<Props> = ({ children }) => {
       theme={{
         algorithm: theme.darkAlgorithm,
       }}
-      // locale={locale}
+      locale={jaJP}
     >
       <CustomProvider theme="dark">{children}</CustomProvider>
     </ConfigProvider>

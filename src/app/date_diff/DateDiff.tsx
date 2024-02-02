@@ -56,7 +56,7 @@ export const DateDiff: FC = () => {
               </Panel>
               <Panel bordered header={<PanelHeader title="共通設定" />}>
                 <Form fluid layout="horizontal">
-                  <FormRow label="整数">
+                  <FormRow label="少数">
                     <Controller
                       render={({ field: { ref, ...field } }) => <Switch {...field} />}
                       name="isFormatFloat"

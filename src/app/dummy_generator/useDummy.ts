@@ -1,7 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback , useState } from 'react';
 import { useFieldArray } from 'react-hook-form';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
-import { useState } from 'react';
 
 export type DummyForm = {
   count: number;
@@ -18,7 +17,7 @@ export const DEFAULT_VALUES: DummyForm = {
   count: 1,
   format: 'csv',
   items: [],
-}
+};
 
 export interface RecordType {
   key: number;
@@ -56,7 +55,6 @@ export const useDummy = () => {
     const values = getValues();
     setOutput(JSON.stringify(values, null, `  `));
   }, [getValues]);
-
 
   return {
     methods,
