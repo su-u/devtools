@@ -26,6 +26,7 @@ const StyleCard = styled(Card)`
 
   .ant-card-body {
     height: 120px;
+    padding: 12px;
   }
 
   &:hover {
