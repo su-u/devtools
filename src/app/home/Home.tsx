@@ -7,14 +7,20 @@ import { features } from '@/components/common/Features';
 
 export const HomePage: FC = () => {
   const list = features.map(({ items }) => [...items]).flat();
-  console.log(list);
 
   return (
     <AppLayout>
       <Flex style={{ margin: 8 }} wrap="wrap" gap="small">
-        {list.map((feature) => (
-          <FeatureCard key={feature.key} {...feature} />
-        ))}
+        {list.map((feature) => {
+          return (
+            <FeatureCard
+              key={feature.key}
+              title={feature.title}
+              path={feature.path}
+              description={feature.description}
+            />
+          );
+        })}
       </Flex>
     </AppLayout>
   );
