@@ -12,7 +12,13 @@ import { dataTypeOptions } from '@/app/dummy_generator/options';
 import type { DataType } from '@/app/dummy_generator/options';
 import { AddressOptions } from '@/app/dummy_generator/options/AddressOptions';
 import { NameOptions } from '@/app/dummy_generator/options/NameOptions';
-import { useDummy, RecordType, DummyForm , COUNT_LIMIT, DEFAULT_VALUES } from '@/app/dummy_generator/useDummy';
+import {
+  useDummy,
+  RecordType,
+  DummyForm,
+  COUNT_LIMIT,
+  DEFAULT_VALUES,
+} from '@/app/dummy_generator/useDummy';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { InputNumber } from '@/components/common/Form/InputNumber';
 import { Select } from '@/components/common/Form/Select';
