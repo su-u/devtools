@@ -1,0 +1,8 @@
+modules = ["nodejs-20"]
+run = "yarn run dev"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "yarn run dev"]
