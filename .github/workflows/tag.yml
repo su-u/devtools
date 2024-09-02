@@ -9,8 +9,8 @@ on:
       - main
     tags:
       - "v.*"
-  paths:
-    - 'package.json'
+    paths:
+      - 'package.json'
 
 jobs:
   tag:
