@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
-import { useEffectOnce } from 'react-use';
 
 // フォームの情報をlocalStorageに保存して永続化する
 export const useFormPersistence = <T>(
