@@ -3,6 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useToaster, Message } from 'rsuite';
 import { generateUUIDs } from '@/app/uuid/uuidLib';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type UuidForm = {
   version: number;
@@ -47,7 +48,15 @@ export const useUuid = () => {
   const methods = useCustomForm<UuidForm>({
     defaultValues: DEFAULT_VALUES,
   });
-  const { control, watch } = methods;
+  const { control, watch, setValue } = methods;
+  useFormPersistence('uuid', methods, (defaultValues) => {
+    setValue('version', defaultValues?.version);
+    setValue('isUppercase', defaultValues?.isUppercase);
+    setValue('isHyphen', defaultValues?.isHyphen);
+    setValue('generateCount', defaultValues?.generateCount);
+    setValue('UUIDName', defaultValues?.UUIDName);
+    setValue('UUIDNamespace', defaultValues?.UUIDNamespace);
+  });
 
   const { version, isUppercase, isHyphen, generateCount, UUIDName, UUIDNamespace } = watch();
 

@@ -2,6 +2,7 @@ import conv from 'iconv-urlencode';
 import { useEffect, useState } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { ENCODING_LIST } from '@/lib/encoding';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type UrlEncodeForm = {
   input: string;
@@ -17,7 +18,12 @@ export const useUrlEncode = () => {
       encoding: ENCODING_LIST[0].options[0].value,
     },
   });
-  const { watch } = methods;
+  const { watch, setValue } = methods;
+  useFormPersistence('urlencode', methods, (defaultValues) => {
+    setValue('input', defaultValues?.input);
+    setValue('encode', defaultValues?.encode);
+    setValue('encoding', defaultValues?.encoding);
+  });
 
   const [output, setOutput] = useState('');
   const input = watch('input', '');

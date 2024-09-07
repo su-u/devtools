@@ -3,10 +3,11 @@ import type { UseFormReturn } from 'react-hook-form';
 
 // フォームの情報をlocalStorageに保存して永続化する
 export const useFormPersistence = <T>(
-  name: string,
+  featureName: string,
   methods: UseFormReturn<T>,
   setCallback: (defaultValues: T) => void,
 ) => {
+  const name = `devtools.formData.${featureName}`;
   const {
     watch,
     formState: { isDirty },
@@ -23,7 +24,6 @@ export const useFormPersistence = <T>(
   useEffect(() => {
     if (isDirty) {
       localStorage.setItem(name, JSON.stringify(formData));
-      console.log('set', isDirty, formData);
     }
   }, [formData, isDirty]);
 };

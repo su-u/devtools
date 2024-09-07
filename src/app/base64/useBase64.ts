@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type Base64Form = {
   input: string;
@@ -13,9 +14,13 @@ export const useBase64 = () => {
   const methods = useCustomForm<Base64Form>({
     defaultValues: DEFAULT_VALUES,
   });
-  const { watch } = methods;
+  const { watch, setValue } = methods;
   const [output, setOutput] = useState('');
   const input = watch('input', DEFAULT_VALUES.input);
+
+  useFormPersistence('base64', methods, (defaultValues) => {
+    setValue('input', defaultValues?.input);
+  });
 
   useEffect(() => {
     if (typeof window === 'undefined' || input.trim() === '') {
