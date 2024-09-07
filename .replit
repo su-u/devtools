@@ -1,4 +1,4 @@
-modules = ["nodejs-20"]
+modules = ["nodejs-20", "nodejs-21"]
 run = "yarn run dev"
 
 [nix]
