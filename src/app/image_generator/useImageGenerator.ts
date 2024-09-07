@@ -1,5 +1,5 @@
 import type { Color } from 'antd/es/color-picker';
-import { ColorFactory } from 'antd/es/color-picker/color';
+import { AggregationColor } from 'antd/es/color-picker/color';
 import { useCallback, useState } from 'react';
 import { getPresetSize } from '@/app/image_generator/presetSize';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
@@ -19,8 +19,8 @@ export const DEFAULT_VALUES: ImageGeneratorForm = {
   wight: 256,
   height: 256,
   type: 'jpg',
-  bgColor: new ColorFactory('ffffff00'),
-  textColor: new ColorFactory('1668dc00'),
+  bgColor: new AggregationColor('ffffff'),
+  textColor: new AggregationColor('1668dc'),
   tab: 'unsplash',
   text: '',
   textSize: undefined,
@@ -67,7 +67,6 @@ export const useImageGenerator = () => {
 
   const onClickGenerate = useCallback(() => {
     const values = getValues();
-    console.log(values);
     switch (values.tab) {
       case 'unsplash':
         setSrc(createUnsplashURL(values));

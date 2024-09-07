@@ -74,6 +74,11 @@ export const features: FeatureGroupType[] = [
         title: 'JSONフォーマット',
         path: '/json_formatter',
       },
+      {
+        key: 'json_view',
+        title: 'JSONビューアー',
+        path: '/json_view',
+      },
     ],
   },
   {
