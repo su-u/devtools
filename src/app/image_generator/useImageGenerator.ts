@@ -3,6 +3,7 @@ import { AggregationColor } from 'antd/es/color-picker/color';
 import { useCallback, useState } from 'react';
 import { getPresetSize } from '@/app/image_generator/presetSize';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type ImageGeneratorForm = {
   wight: number;
@@ -65,6 +66,16 @@ export const useImageGenerator = () => {
   const { getValues, setValue } = methods;
   const [src, setSrc] = useState('');
 
+  useFormPersistence('image_generator', methods, (defaultValues) => {
+    setValue('wight', defaultValues?.wight);
+    setValue('height', defaultValues?.height);
+    setValue('type', defaultValues?.type);
+    setValue('bgColor', defaultValues?.bgColor);
+    setValue('textColor', defaultValues?.textColor);
+    setValue('tab', defaultValues?.tab);
+    setValue('text', defaultValues?.text);
+    setValue('textSize', defaultValues?.textSize);
+  });
   const onClickGenerate = useCallback(() => {
     const values = getValues();
     switch (values.tab) {

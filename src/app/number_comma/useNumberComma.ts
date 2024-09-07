@@ -1,4 +1,5 @@
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type NumberCommaForm = {
   input: string;
@@ -25,7 +26,11 @@ export const useNumberComma = () => {
   const methods = useCustomForm<NumberCommaForm>({
     defaultValues: DEFAULT_VALUES,
   });
-  const { control, watch } = methods;
+  const { watch, setValue } = methods;
+  useFormPersistence('number_comma', methods, (defaultValues) => {
+    setValue('input', defaultValues?.input);
+    setValue('separator', defaultValues?.separator);
+  });
 
   const input = watch('input', DEFAULT_VALUES.input);
   const separator = watch('separator', DEFAULT_VALUES.separator);

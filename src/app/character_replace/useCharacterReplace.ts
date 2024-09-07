@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type CharacterReplaceForm = {
   input: string;
@@ -18,8 +19,12 @@ export const useCharacterReplace = () => {
   const methods = useCustomForm<CharacterReplaceForm>({
     defaultValues: DEFAULT_VALUES,
   });
-  const { watch } = methods;
+  const { watch, setValue } = methods;
   const [inputCount, setInputCount] = useState(3);
+
+  useFormPersistence('character_replace', methods, (defaultValues) => {
+    setValue('input', defaultValues?.input);
+  });
 
   // @ts-ignore
   const numberArray = [...Array(inputCount).keys()].map((i) => ++i);

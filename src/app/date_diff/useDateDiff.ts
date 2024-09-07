@@ -2,6 +2,7 @@ import { Dayjs } from 'dayjs';
 import { useCallback } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type DateDiffForm = {
   inputDate1: Dayjs | undefined;
@@ -19,6 +20,12 @@ export const useDateDiff = () => {
     defaultValues: DEFAULT_VALUES,
   });
   const { watch, control, setValue, getValues } = methods;
+  useFormPersistence('date_diff', methods, (defaultValues) => {
+    setValue('inputDate1', defaultValues?.inputDate1);
+    setValue('inputDate2', defaultValues?.inputDate2);
+    setValue('isFormatFloat', defaultValues?.isFormatFloat);
+  });
+
   const date1 = watch('inputDate1');
   const date2 = watch('inputDate2');
   const isFormatInt = watch('isFormatFloat');

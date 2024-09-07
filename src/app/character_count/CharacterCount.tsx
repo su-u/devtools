@@ -18,6 +18,7 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type characterCountForm = {
   input: string;
@@ -29,7 +30,10 @@ export const CharacterCount: FC = () => {
       input: '',
     },
   });
-  const { control, watch } = methods;
+  const { control, watch, setValue } = methods;
+  useFormPersistence('character_count', methods, (defaultValues) => {
+    setValue('input', defaultValues?.input);
+  });
 
   const title = '文字数カウント';
   const input = watch('input', '');

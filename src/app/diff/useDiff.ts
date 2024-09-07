@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type DiffForm = {
   original: string;
@@ -16,6 +17,10 @@ export const useDiff = () => {
     defaultValues: DEFAULT_VALUES,
   });
   const { watch, resetField, setValue } = methods;
+  useFormPersistence('diff', methods, (defaultValues) => {
+    setValue('original', defaultValues?.original);
+    setValue('modified', defaultValues?.modified);
+  });
 
   const original = watch('original', DEFAULT_VALUES.original);
   const modified = watch('modified', DEFAULT_VALUES.modified);

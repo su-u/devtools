@@ -3,6 +3,7 @@ import { useMemo, useEffect, useCallback, useState, ChangeEventHandler, ChangeEv
 import TIME_ZONES from 'timezones-list';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
+import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 type dateConverterForm = {
   inputDate: Dayjs | undefined;
@@ -21,6 +22,13 @@ export const useDateConverter = () => {
     },
   });
   const { watch, control, setValue, getValues } = methods;
+  useFormPersistence('date_converter', methods, (defaultValues) => {
+    setValue('inputDate', defaultValues?.inputDate);
+    setValue('inputUnixTime', defaultValues?.inputUnixTime);
+    setValue('timezone', defaultValues?.timezone);
+    setValue('customFormat', defaultValues?.customFormat);
+  });
+
   const timezones = useMemo(
     () => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })),
     [],

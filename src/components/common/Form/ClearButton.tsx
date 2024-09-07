@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const ClearButton: FC<Props> = ({ name, title = 'クリア', onClick = null }) => {
-  const { resetField, watch, setValue } = useFormContext();
+  const { resetField } = useFormContext();
 
   const onClickInputClear = useCallback(() => {
     resetField(name);
