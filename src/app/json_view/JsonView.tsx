@@ -1,8 +1,8 @@
 'use client';
 import React, { FC } from 'react';
+import dynamic from 'next/dynamic';
 import { Controller, FormProvider } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
-import ReactJson from 'react-json-view';
 import { AppLayout } from '@/Layout/App';
 import { useJsonView } from '@/app/json_view/useJsonView';
 import { Editor, ex } from '@/components/common/Editor';
@@ -10,6 +10,9 @@ import { ClearButton } from '@/components/common/Form/ClearButton';
 import { CopyButton } from '@/components/common/Form/CopyButton';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
+const ReactJson = dynamic(() => import('react-json-view'), {
+  ssr: false,
+});
 
 export const JsonView: FC = () => {
   const title = 'JSONビューアー';
