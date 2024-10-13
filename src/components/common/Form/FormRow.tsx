@@ -3,8 +3,8 @@ import { Form, Grid, Row, Col } from 'rsuite';
 import { FormLabel } from '@/components/common/Form/FormLabel';
 
 type Props = {
-  label: string;
-  children: React.ReactNode;
+  label: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export const FormRow: FC<Props> = ({ label, children, ...rest }) => {

@@ -2,6 +2,7 @@
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '@/Layout/App';
 import { useDateConverter } from '@/app/datetime_converter/useDateConverter';
 import { DatePicker } from '@/components/common/Form/DatePicker';
@@ -77,7 +78,21 @@ export const DateTimeConverter: FC = () => {
                       control={control}
                     />
                   </FormRow>
-                  <FormRow label="カスタム出力">
+                  <FormRow
+                    label={
+                      <>
+                        カスタム出力
+                        <a
+                          href="https://day.js.org/docs/en/display/format"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ marginLeft: '4px' }}
+                        >
+                          <QuestionCircleOutlined />
+                        </a>
+                      </>
+                    }
+                  >
                     <Controller
                       render={() => (
                         <Input style={{ width }} noResize="none" onChange={onChangeCustomFormat} />
