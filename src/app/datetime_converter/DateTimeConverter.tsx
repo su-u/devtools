@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '@/Layout/App';
-import { useDateConverter } from '@/app/datetime_converter/useDateConverter';
+import { useDateTimeConverter } from '@/app/datetime_converter/useDateTimeConverter';
 import { DatePicker } from '@/components/common/Form/DatePicker';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
@@ -24,11 +24,10 @@ export const DateTimeConverter: FC = () => {
     output,
     timezones,
     onChangeInputDate,
-    onChangeInputUnixTime,
     onChangeTimezone,
     onChangeCustomFormat,
-  } = useDateConverter();
-  const { inputUnixTime, timezone } = methods.getValues();
+  } = useDateTimeConverter();
+  const { timezone } = methods.getValues();
 
   return (
     <AppLayout>
@@ -43,19 +42,6 @@ export const DateTimeConverter: FC = () => {
                     <Controller
                       render={() => <DatePicker style={{ width }} onChange={onChangeInputDate} />}
                       name="inputDate"
-                      control={control}
-                    />
-                  </FormRow>
-                  <FormRow label="unixtime">
-                    <Controller
-                      render={() => (
-                        <Input
-                          style={{ width }}
-                          onChange={onChangeInputUnixTime}
-                          value={inputUnixTime}
-                        />
-                      )}
-                      name="inputUnixTime"
                       control={control}
                     />
                   </FormRow>
