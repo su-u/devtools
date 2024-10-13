@@ -4,8 +4,7 @@ import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '@/Layout/App';
-import { useDateTimeConverter } from '@/app/datetime_converter/useDateTimeConverter';
-import { DatePicker } from '@/components/common/Form/DatePicker';
+import { useUnixTimeConverter } from '@/app/unixtime_converter/useUnixTimeConverter';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
 import { Input } from '@/components/common/Form/Input';
@@ -16,18 +15,16 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 300;
 
-export const DateTimeConverter: FC = () => {
-  const title = '日時->日時変換';
+export const UnixTimeConverter: FC = () => {
+  const title = 'UnixTime->日時変換';
   const {
-    methods,
     control,
     output,
     timezones,
-    onChangeInputDate,
+    onChangeInputUnixTime,
     onChangeTimezone,
     onChangeCustomFormat,
-  } = useDateTimeConverter();
-  const { timezone } = methods.getValues();
+  } = useUnixTimeConverter();
 
   return (
     <AppLayout>
@@ -38,12 +35,12 @@ export const DateTimeConverter: FC = () => {
             <PanelGroup bordered>
               <Panel bordered header={<PanelHeader title="入力" />}>
                 <Form fluid layout="horizontal">
-                  <FormRow label="日時">
+                  <FormRow label="UnixTime">
                     <Controller
                       render={({ field }) => (
-                        <DatePicker style={{ width }} onChange={onChangeInputDate} {...field} />
+                        <Input style={{ width }} onChange={onChangeInputUnixTime} {...field} />
                       )}
-                      name="inputDate"
+                      name="inputUnixTime"
                       control={control}
                     />
                   </FormRow>

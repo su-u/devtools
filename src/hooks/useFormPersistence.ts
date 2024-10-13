@@ -5,7 +5,7 @@ import type { UseFormReturn } from 'react-hook-form';
 export const useFormPersistence = <T>(
   featureName: string,
   methods: UseFormReturn<T>,
-  setCallback: (defaultValues: T) => void,
+  setCallback: (localValues: T) => void,
 ) => {
   const name = `devtools.formData.${featureName}`;
   const {
@@ -17,9 +17,9 @@ export const useFormPersistence = <T>(
 
   useEffect(() => {
     try {
-      const defaultValues = JSON.parse(localStorage.getItem(name));
+      const localValues = JSON.parse(localStorage.getItem(name));
       if (!isDirty && isDefault) {
-        setCallback(defaultValues);
+        setCallback(localValues);
         // console.log('get', { name, defaultValues });
         setIsDefault(false);
       }

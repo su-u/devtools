@@ -5,23 +5,23 @@ import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
 import { useFormPersistence } from '@/hooks/useFormPersistence';
 
-type dateConverterForm = {
-  inputDate: Dayjs | undefined;
+type DateConverterForm = {
+  inputUnixTime: string;
   timezone: string | undefined;
   customFormat: string;
 };
 
-export const useDateTimeConverter = () => {
-  const methods = useCustomForm<dateConverterForm>({
+export const useUnixTimeConverter = () => {
+  const methods = useCustomForm<DateConverterForm>({
     defaultValues: {
-      inputDate: undefined,
+      inputUnixTime: undefined,
       timezone: undefined,
       customFormat: '',
     },
   });
   const { watch, control, setValue, getValues } = methods;
-  useFormPersistence('datetime_converter', methods, (values) => {
-    setValue('inputDate', values?.inputDate);
+  useFormPersistence('unixtime_converter', methods, (values) => {
+    setValue('inputUnixTime', values?.inputUnixTime);
     setValue('timezone', values?.timezone);
     setValue('customFormat', values?.customFormat);
   });
@@ -31,17 +31,19 @@ export const useDateTimeConverter = () => {
     [],
   );
   const timezone = watch('timezone') ?? 'UTC';
-  const [output, setOutput] = useState<any>(() => convert(getValues('inputDate'), timezone));
+  const [output, setOutput] = useState<any>(() => convert(getValues('inputUnixTime'), timezone));
 
-  const onChangeInputDate = useCallback(
-    (date: Dayjs) => {
+  const onChangeInputUnixTime = useCallback(
+    (value: DateConverterForm['inputUnixTime']) => {
+      const d = dayjs.unix(Number(value));
       const { timezone, customFormat } = getValues();
-      if (!date || !date.isValid()) return;
+      if (!d.isValid()) return;
 
-      setValue('inputDate', date);
+      setValue('inputUnixTime', value);
+
       setOutput({
-        ...convert(date, timezone),
-        customFormat: customConvert(date, timezone, customFormat),
+        ...convert(d, timezone),
+        customFormat: customConvert(d, timezone, customFormat),
       });
     },
     [setValue, getValues],
@@ -49,11 +51,12 @@ export const useDateTimeConverter = () => {
 
   const onChangeTimezone = useCallback(
     (event: string) => {
+      console.log(event);
       setValue('timezone', event.toString());
-      const { inputDate } = getValues();
-      onChangeInputDate(inputDate);
+      const { inputUnixTime } = getValues();
+      onChangeInputUnixTime(inputUnixTime);
     },
-    [setValue, getValues, onChangeInputDate],
+    [setValue, getValues],
   );
 
   const onChangeCustomFormat = useCallback(
@@ -70,11 +73,10 @@ export const useDateTimeConverter = () => {
   );
 
   return {
-    methods,
     control,
     output,
     timezones,
-    onChangeInputDate,
+    onChangeInputUnixTime,
     onChangeTimezone,
     onChangeCustomFormat,
   };
