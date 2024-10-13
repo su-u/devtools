@@ -1,6 +1,7 @@
 import EditIcon from '@rsuite/icons/Edit';
 import GrowthIcon from '@rsuite/icons/Growth';
 import ListOl from '@rsuite/icons/legacy/ListOl';
+import TimeIcon from '@rsuite/icons/Time';
 import React from 'react';
 
 export type FeatureItemType = {
@@ -91,11 +92,18 @@ export const features: FeatureGroupType[] = [
         title: '数字カンマ区切り',
         path: '/number_comma',
       },
+    ],
+  },
+  {
+    title: '時間ツール',
+    icon: <TimeIcon />,
+    key: '4',
+    items: [
       {
         key: 'date_converter',
-        title: '日時の変換',
-        path: '/date_converter',
-        description: '日付のフォーマットを変換します',
+        title: '日時->日時変換',
+        path: '/datetime_converter',
+        description: '日時のフォーマットを変換します',
       },
       {
         key: 'date_diff',
@@ -108,7 +116,7 @@ export const features: FeatureGroupType[] = [
   {
     title: '生成ツール',
     icon: <GrowthIcon />,
-    key: '4',
+    key: '5',
     items: [
       {
         key: 'hash',

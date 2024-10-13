@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { AppLayout } from '@/Layout/App';
-import { useDateConverter } from '@/app/date_converter/useDateConverter';
+import { useDateConverter } from '@/app/datetime_converter/useDateConverter';
 import { DatePicker } from '@/components/common/Form/DatePicker';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
@@ -15,8 +15,8 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 300;
 
-export const DateConverter: FC = () => {
-  const title = '日時の変換';
+export const DateTimeConverter: FC = () => {
+  const title = '日時->日時変換';
   const {
     methods,
     control,
@@ -38,7 +38,7 @@ export const DateConverter: FC = () => {
             <PanelGroup bordered>
               <Panel bordered header={<PanelHeader title="入力" />}>
                 <Form fluid layout="horizontal">
-                  <FormRow label="日付">
+                  <FormRow label="日時">
                     <Controller
                       render={() => <DatePicker style={{ width }} onChange={onChangeInputDate} />}
                       name="inputDate"
@@ -47,7 +47,7 @@ export const DateConverter: FC = () => {
                   </FormRow>
                   <FormRow label="unixtime">
                     <Controller
-                      render={({ field }) => (
+                      render={() => (
                         <Input
                           style={{ width }}
                           onChange={onChangeInputUnixTime}
@@ -64,7 +64,7 @@ export const DateConverter: FC = () => {
                 <Form fluid layout="horizontal">
                   <FormRow label="TimeZone">
                     <Controller
-                      render={({ field }) => (
+                      render={() => (
                         <Select
                           style={{ width }}
                           options={timezones}

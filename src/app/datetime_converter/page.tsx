@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { DateConverter } from '@/app/date_converter/DateConverter';
+import { DateTimeConverter } from '@/app/datetime_converter/DateConverter';
 
 export const metadata = {
   title: 'Dev Toolkit - 日時の変換',
 };
 
 const DateConverterPage: FC = () => {
-  return <DateConverter />;
+  return <DateTimeConverter />;
 };
 
 export default DateConverterPage;
