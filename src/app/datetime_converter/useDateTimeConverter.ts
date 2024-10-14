@@ -56,6 +56,14 @@ export const useDateTimeConverter = () => {
 
   useEffect(() => {
     const { inputDate, timezone, customFormat } = getValues();
+    const d = dayjs(inputDate);
+
+    if (!d.isValid()) {
+      setOutput({
+        ...convert(dayjs(), timezone, customFormat),
+      });
+    }
+
     setOutput({
       ...convert(inputDate, timezone, customFormat),
     });

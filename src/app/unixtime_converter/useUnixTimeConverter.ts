@@ -14,7 +14,7 @@ type DateConverterForm = {
 export const useUnixTimeConverter = () => {
   const methods = useCustomForm<DateConverterForm>({
     defaultValues: {
-      inputUnixTime: undefined,
+      inputUnixTime: '',
       timezone: undefined,
       customFormat: '',
     },
@@ -30,47 +30,40 @@ export const useUnixTimeConverter = () => {
     () => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })),
     [],
   );
-  const timezone = watch('timezone') ?? 'UTC';
-  const [output, setOutput] = useState<any>(() => convert(getValues('inputUnixTime'), timezone));
+  const [output, setOutput] =  useState<ReturnType<typeof convert>>();
 
   const onChangeInputUnixTime = useCallback(
     (value: DateConverterForm['inputUnixTime']) => {
       const d = dayjs.unix(Number(value));
-      const { timezone, customFormat } = getValues();
       if (!d.isValid()) return;
 
       setValue('inputUnixTime', value);
-
-      setOutput({
-        ...convert(d, timezone),
-        customFormat: customConvert(d, timezone, customFormat),
-      });
     },
-    [setValue, getValues],
+    [setValue],
   );
 
   const onChangeTimezone = useCallback(
     (event: string) => {
-      console.log(event);
       setValue('timezone', event.toString());
-      const { inputUnixTime } = getValues();
-      onChangeInputUnixTime(inputUnixTime);
     },
-    [setValue, getValues],
+    [setValue],
   );
 
   const onChangeCustomFormat = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
       setValue('customFormat', value);
-      const { inputDate, timezone } = getValues();
-      setOutput({
-        ...convert(inputDate, timezone),
-        customFormat: customConvert(inputDate, timezone, value),
-      });
     },
-    [getValues, setValue],
+    [setValue],
   );
+
+  useEffect(() => {
+    const { inputUnixTime, timezone, customFormat } = getValues();
+
+    setOutput({
+      ...convert(inputUnixTime, timezone, customFormat),
+    });
+  }, [watch('inputUnixTime'), watch('timezone'), watch('customFormat')]);
 
   return {
     control,
@@ -82,8 +75,8 @@ export const useUnixTimeConverter = () => {
   };
 };
 
-const convert = (date: Dayjs, timezone: string) => {
-  const dateTimezone = dayjs(date).tz(timezone);
+const convert = (unixtime: string, timezone: string, format: string) => {
+  const dateTimezone = dayjs(unixtime).tz(timezone);
   const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]');
   const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss');
   const enDate = dateTimezone.format('LL');
@@ -92,7 +85,8 @@ const convert = (date: Dayjs, timezone: string) => {
   const month = dateTimezone.format('MM');
   const d = dateTimezone.format('DD');
   const week = dateTimezone.format('dd');
-  const unixTime = dateTimezone.unix().toString();
+  const unixTime = unixtime;
+  const customFormat = dateTimezone.format(format);
 
   return {
     ISO8601,
@@ -104,11 +98,7 @@ const convert = (date: Dayjs, timezone: string) => {
     week,
     unixTime,
     fullDate,
+    customFormat,
     timezone,
   };
-};
-
-const customConvert = (date: Dayjs, timezone: string, format: string) => {
-  const dateTimezone = dayjs(date).tz(timezone);
-  return dateTimezone.format(format);
 };
