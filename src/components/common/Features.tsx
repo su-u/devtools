@@ -100,10 +100,16 @@ export const features: FeatureGroupType[] = [
     key: '4',
     items: [
       {
-        key: 'date_converter',
+        key: 'datetime_converter',
         title: '日時->日時変換',
         path: '/datetime_converter',
-        description: '日時のフォーマットを変換します',
+        description: '日時を変換します',
+      },
+      {
+        key: 'unixtime_converter',
+        title: 'UnixTime->日時変換',
+        path: '/unixtime_converter',
+        description: 'Unixtimeを変換します',
       },
       {
         key: 'date_diff',

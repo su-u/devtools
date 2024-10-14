@@ -9,7 +9,7 @@ import React from 'react';
 export const Editor = React.forwardRef<HTMLDivElement, ReactCodeMirrorProps>((props, ref) => {
   return (
     <WrapperStyle ref={ref}>
-      <CodeMirror width="100%" height="60vh" theme={vscodeDark} {...props} />
+      <CodeMirror width="100%" maxWidth="1200px" height="60vh" theme={vscodeDark} {...props} />
     </WrapperStyle>
   );
 });
