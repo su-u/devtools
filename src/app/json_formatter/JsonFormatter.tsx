@@ -29,7 +29,7 @@ export const JsonFormatter: FC = () => {
                   header={<PanelHeader title="入力文字" right={<ClearButton name="input" />} />}
                 >
                   <Controller
-                    render={({ field }) => <Editor extensions={[ex.json]} {...field} />}
+                    render={({ field }) => <Editor {...field} extensions={[ex.json]} />}
                     name="input"
                     control={methods.control}
                   />
@@ -39,11 +39,11 @@ export const JsonFormatter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <InputNumber
+                          {...field}
                           style={{ width: 250 }}
                           min={0}
                           max={10}
                           defaultValue={DEFAULT_VALUES.indentSpace}
-                          {...field}
                         />
                       )}
                       name="indentSpace"

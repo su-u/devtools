@@ -1,7 +1,7 @@
 import { InputNumber as AntInputNumber } from 'antd';
 import type { InputNumberProps } from 'antd';
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 
-export const InputNumber: FC<InputNumberProps> = (props) => {
+export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>((props, ref) => {
   return <AntInputNumber {...props} />;
-};
+});
