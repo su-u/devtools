@@ -1,8 +1,9 @@
 import { DatePicker as AntDatePicker } from 'antd';
 import type { DatePickerProps } from 'antd';
-import React, { FC } from 'react';
 import type { RangeType } from 'rsuite/DateRangePicker';
 import { dayjs } from '@/lib/dayjs';
+import { forwardRef } from 'react';
+import { ReactNode } from 'react';
 
 type Props = DatePickerProps;
 
@@ -39,7 +40,7 @@ const predefinedRanges = [
   },
 ] as RangeType<Date>[];
 
-export const DatePicker: FC<Props> = (props) => {
+export const DatePicker = forwardRef<ReactNode, Props>((props, ref) => {
   return (
     <AntDatePicker
       // @ts-ignore
@@ -47,7 +48,8 @@ export const DatePicker: FC<Props> = (props) => {
       format="YYYY-MM-DD HH:mm:ss"
       changeOnBlur
       allowClear={false}
+      ref={ref}
       {...props}
     />
   );
-};
+});

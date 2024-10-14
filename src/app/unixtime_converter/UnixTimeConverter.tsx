@@ -4,8 +4,7 @@ import { Controller } from 'react-hook-form';
 import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '@/Layout/App';
-import { useDateConverter } from '@/app/datetime_converter/useDateConverter';
-import { DatePicker } from '@/components/common/Form/DatePicker';
+import { useUnixTimeConverter } from '@/app/unixtime_converter/useUnixTimeConverter';
 import { FormRow } from '@/components/common/Form/FormRow';
 import { HorizontalForm } from '@/components/common/Form/HorizontalForm';
 import { Input } from '@/components/common/Form/Input';
@@ -16,19 +15,16 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 300;
 
-export const DateTimeConverter: FC = () => {
-  const title = '日時->日時変換';
+export const UnixTimeConverter: FC = () => {
+  const title = 'UnixTime->日時変換';
   const {
-    methods,
     control,
     output,
     timezones,
-    onChangeInputDate,
     onChangeInputUnixTime,
     onChangeTimezone,
     onChangeCustomFormat,
-  } = useDateConverter();
-  const { inputUnixTime, timezone } = methods.getValues();
+  } = useUnixTimeConverter();
 
   return (
     <AppLayout>
@@ -39,21 +35,10 @@ export const DateTimeConverter: FC = () => {
             <PanelGroup bordered>
               <Panel bordered header={<PanelHeader title="入力" />}>
                 <Form fluid layout="horizontal">
-                  <FormRow label="日時">
+                  <FormRow label="UnixTime">
                     <Controller
-                      render={() => <DatePicker style={{ width }} onChange={onChangeInputDate} />}
-                      name="inputDate"
-                      control={control}
-                    />
-                  </FormRow>
-                  <FormRow label="unixtime">
-                    <Controller
-                      render={() => (
-                        <Input
-                          style={{ width }}
-                          onChange={onChangeInputUnixTime}
-                          value={inputUnixTime}
-                        />
+                      render={({ field }) => (
+                        <Input style={{ width }} onChange={onChangeInputUnixTime} {...field} />
                       )}
                       name="inputUnixTime"
                       control={control}
@@ -65,13 +50,13 @@ export const DateTimeConverter: FC = () => {
                 <Form fluid layout="horizontal">
                   <FormRow label="TimeZone">
                     <Controller
-                      render={() => (
+                      render={({ field }) => (
                         <Select
                           style={{ width }}
                           options={timezones}
                           onChange={onChangeTimezone}
-                          value={timezone}
                           showSearch
+                          {...field}
                         />
                       )}
                       name="timezone"
@@ -94,8 +79,13 @@ export const DateTimeConverter: FC = () => {
                     }
                   >
                     <Controller
-                      render={() => (
-                        <Input style={{ width }} noResize="none" onChange={onChangeCustomFormat} />
+                      render={({ field }) => (
+                        <Input
+                          style={{ width }}
+                          noResize="none"
+                          onChange={onChangeCustomFormat}
+                          {...field}
+                        />
                       )}
                       name="customFormat"
                       control={control}

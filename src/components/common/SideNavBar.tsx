@@ -20,7 +20,7 @@ export const SideNavBar: FC = () => {
 
   return (
     <StyledSidebar width={expanded ? 220 : 56}>
-      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4']}>
+      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4', '5']}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={onSelect}>
             {features.map((group) => {
