@@ -5,14 +5,14 @@ import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { dayjs } from '@/lib/dayjs';
 import { useFormPersistence } from '@/hooks/useFormPersistence';
 
-type dateConverterForm = {
+type DateConverterForm = {
   inputDate: Dayjs | undefined;
   timezone: string | undefined;
   customFormat: string;
 };
 
 export const useDateTimeConverter = () => {
-  const methods = useCustomForm<dateConverterForm>({
+  const methods = useCustomForm<DateConverterForm>({
     defaultValues: {
       inputDate: undefined,
       timezone: undefined,
