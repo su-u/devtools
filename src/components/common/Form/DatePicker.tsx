@@ -4,6 +4,7 @@ import type { RangeType } from 'rsuite/DateRangePicker';
 import { dayjs } from '@/lib/dayjs';
 import { forwardRef } from 'react';
 import { ReactNode } from 'react';
+import { LegacyRef } from 'react';
 
 type Props = DatePickerProps;
 
@@ -40,7 +41,7 @@ const predefinedRanges = [
   },
 ] as RangeType<Date>[];
 
-export const DatePicker = forwardRef<ReactNode, Props>((props, ref) => {
+export const DatePicker = forwardRef<any, Props>((props, ref) => {
   return (
     <AntDatePicker
       // @ts-ignore
