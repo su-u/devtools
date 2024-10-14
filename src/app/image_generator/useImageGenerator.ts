@@ -126,7 +126,9 @@ const createUnsplashURL = (values: ImageGeneratorForm) => {
     random: Math.random().toString(),
   });
 
-  return `https://picsum.photos/${wight}/${height}.${type}?${params}`;
+  const url = `https://picsum.photos/${wight}/${height}.${type}?${params}`;
+  // console.log(url);
+  return url;
 };
 
 // https://placehold.jp/
