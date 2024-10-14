@@ -41,7 +41,7 @@ export const DateTimeConverter: FC = () => {
                   <FormRow label="日時">
                     <Controller
                       render={({ field }) => (
-                        <DatePicker style={{ width }} onChange={onChangeInputDate} {...field} />
+                        <DatePicker {...field} style={{ width }} onChange={onChangeInputDate} />
                       )}
                       name="inputDate"
                       control={control}
@@ -55,11 +55,11 @@ export const DateTimeConverter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <Select
+                          {...field}
                           style={{ width }}
                           options={timezones}
                           onChange={onChangeTimezone}
                           showSearch
-                          {...field}
                         />
                       )}
                       name="timezone"
@@ -84,10 +84,10 @@ export const DateTimeConverter: FC = () => {
                     <Controller
                       render={({ field }) => (
                         <Input
+                          {...field}
                           style={{ width }}
                           noResize="none"
                           onChange={onChangeCustomFormat}
-                          {...field}
                         />
                       )}
                       name="customFormat"

@@ -21,7 +21,7 @@ export const useDateTimeConverter = () => {
   });
   const { watch, control, setValue, getValues } = methods;
   useFormPersistence('datetime_converter', methods, (values) => {
-    setValue('inputDate', values?.inputDate);
+    setValue('inputDate', dayjs(values?.inputDate));
     setValue('timezone', values?.timezone);
     setValue('customFormat', values?.customFormat);
   });
@@ -31,43 +31,37 @@ export const useDateTimeConverter = () => {
     [],
   );
   const timezone = watch('timezone') ?? 'UTC';
-  const [output, setOutput] = useState<any>(() => convert(getValues('inputDate'), timezone));
+  const [output, setOutput] = useState<any>({});
 
   const onChangeInputDate = useCallback(
     (date: Dayjs) => {
-      const { timezone, customFormat } = getValues();
-      if (!date || !date.isValid()) return;
-
       setValue('inputDate', date);
-      setOutput({
-        ...convert(date, timezone),
-        customFormat: customConvert(date, timezone, customFormat),
-      });
     },
-    [setValue, getValues],
+    [setValue],
   );
 
   const onChangeTimezone = useCallback(
     (event: string) => {
       setValue('timezone', event.toString());
-      const { inputDate } = getValues();
-      onChangeInputDate(inputDate);
     },
-    [setValue, getValues, onChangeInputDate],
+    [setValue, onChangeInputDate],
   );
 
   const onChangeCustomFormat = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
       setValue('customFormat', value);
-      const { inputDate, timezone } = getValues();
-      setOutput({
-        ...convert(inputDate, timezone),
-        customFormat: customConvert(inputDate, timezone, value),
-      });
     },
-    [getValues, setValue],
+    [setValue],
   );
+
+  useEffect(() => {
+    const { inputDate, timezone, customFormat } = getValues();
+    setOutput({
+      ...convert(inputDate, timezone),
+      customFormat: customConvert(inputDate, timezone, customFormat),
+    });
+  }, [watch('inputDate'), watch('timezone'), watch('customFormat')]);
 
   return {
     methods,
@@ -81,6 +75,7 @@ export const useDateTimeConverter = () => {
 };
 
 const convert = (date: Dayjs, timezone: string) => {
+  console.log(date, timezone);
   const dateTimezone = dayjs(date).tz(timezone);
   const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]');
   const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss');
