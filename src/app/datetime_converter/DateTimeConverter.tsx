@@ -18,16 +18,8 @@ const width = 300;
 
 export const DateTimeConverter: FC = () => {
   const title = '日時->日時変換';
-  const {
-    methods,
-    control,
-    output,
-    timezones,
-    onChangeInputDate,
-    onChangeTimezone,
-    onChangeCustomFormat,
-  } = useDateTimeConverter();
-  const { timezone } = methods.getValues();
+  const { control, output, timezones, onChangeInputDate, onChangeTimezone, onChangeCustomFormat } =
+    useDateTimeConverter();
 
   return (
     <AppLayout>

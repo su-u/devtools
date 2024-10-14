@@ -30,8 +30,7 @@ export const useDateTimeConverter = () => {
     () => TIME_ZONES.map(({ label, tzCode }) => ({ label: label, value: tzCode })),
     [],
   );
-  const timezone = watch('timezone') ?? 'UTC';
-  const [output, setOutput] = useState<any>({});
+  const [output, setOutput] = useState<ReturnType<typeof convert>>();
 
   const onChangeInputDate = useCallback(
     (date: Dayjs) => {
@@ -58,8 +57,7 @@ export const useDateTimeConverter = () => {
   useEffect(() => {
     const { inputDate, timezone, customFormat } = getValues();
     setOutput({
-      ...convert(inputDate, timezone),
-      customFormat: customConvert(inputDate, timezone, customFormat),
+      ...convert(inputDate, timezone, customFormat),
     });
   }, [watch('inputDate'), watch('timezone'), watch('customFormat')]);
 
@@ -74,8 +72,7 @@ export const useDateTimeConverter = () => {
   };
 };
 
-const convert = (date: Dayjs, timezone: string) => {
-  console.log(date, timezone);
+const convert = (date: Dayjs, timezone: string, format: string) => {
   const dateTimezone = dayjs(date).tz(timezone);
   const ISO8601 = dateTimezone.format('YYYY-MM-DDTHH:mm:ssZ[Z]');
   const fullDate = dateTimezone.format('YYYY/MM/DD HH:mm:ss');
@@ -86,6 +83,7 @@ const convert = (date: Dayjs, timezone: string) => {
   const d = dateTimezone.format('DD');
   const week = dateTimezone.format('dd');
   const unixTime = dateTimezone.unix().toString();
+  const customFormat = dateTimezone.format(format);
 
   return {
     ISO8601,
@@ -97,11 +95,7 @@ const convert = (date: Dayjs, timezone: string) => {
     week,
     unixTime,
     fullDate,
+    customFormat,
     timezone,
   };
-};
-
-const customConvert = (date: Dayjs, timezone: string, format: string) => {
-  const dateTimezone = dayjs(date).tz(timezone);
-  return dateTimezone.format(format);
 };
