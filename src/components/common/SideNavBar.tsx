@@ -1,28 +1,29 @@
 import styled from '@emotion/styled';
 import GithubIcon from '@rsuite/icons/legacy/Github';
 import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { FC } from 'react';
 import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
-import { FeatureKeys, features } from '@/components/common/Features';
+import { features } from '@/components/common/Features';
 
 const GITHUB_LINK = 'https://github.com/su-u/devtools';
 
 export const SideNavBar: FC = () => {
-  const [activeKey, setActiveKey] = React.useState<FeatureKeys>(() => 'home');
+  const pathname = usePathname();
   const [expanded, setExpanded] = React.useState(true);
 
-  const onSelect = React.useCallback(
-    (activeKey: FeatureKeys) => {
-      setActiveKey(activeKey);
-    },
-    [setActiveKey],
-  );
+  const activeKey = React.useMemo(() => {
+    const matched = features
+      .flatMap((group) => group.items ?? [])
+      .find((item) => item.path === pathname);
+    return matched?.key ?? 'home';
+  }, [pathname]);
 
   return (
     <StyledSidebar width={expanded ? 220 : 56}>
       <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4', '5']}>
         <Sidenav.Body>
-          <Nav activeKey={activeKey} onSelect={onSelect}>
+          <Nav activeKey={activeKey}>
             {features.map((group) => {
               return (
                 <Nav.Menu
