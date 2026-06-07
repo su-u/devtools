@@ -19,9 +19,9 @@ https://tools.su-u.dev/
 ## 開発の始め方
 
 ```bash
-yarn install
+npm install
 
-yarn dev
+npm run dev
 ```
 
 [http://localhost:3000](http://localhost:3000) を開く
