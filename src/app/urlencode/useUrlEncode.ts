@@ -1,4 +1,3 @@
-import conv from 'iconv-urlencode';
 import { useEffect, useState } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { ENCODING_LIST } from '@/lib/encoding';
@@ -30,7 +29,15 @@ export const useUrlEncode = () => {
   const encoding = watch('encoding', '');
 
   useEffect(() => {
-    setOutput(conv.encode(input.trim(), encoding));
+    let canceled = false;
+    // iconv-urlencode は全エンコーディングテーブルを含み重いため、初期バンドルから外して遅延ロードする。
+    void import('iconv-urlencode').then(({ default: conv }) => {
+      if (canceled) return;
+      setOutput(conv.encode(input.trim(), encoding));
+    });
+    return () => {
+      canceled = true;
+    };
   }, [input, encoding]);
 
   return {

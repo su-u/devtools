@@ -1,15 +1,25 @@
-import { json } from '@codemirror/lang-json';
-import { EditorView } from '@codemirror/view';
 import styled from '@emotion/styled';
-import { vscodeDark } from '@uiw/codemirror-theme-vscode';
-import CodeMirror from '@uiw/react-codemirror';
-import { ReactCodeMirrorProps } from '@uiw/react-codemirror/src';
+import { ReactCodeMirrorProps } from '@uiw/react-codemirror';
+import dynamic from 'next/dynamic';
 import React from 'react';
 
-export const Editor = React.forwardRef<HTMLDivElement, ReactCodeMirrorProps>((props, ref) => {
+// 拡張は @codemirror/* を静的 import せずに渡せるよう、軽量なトークン文字列として扱う。
+// 実体への解決は CodeMirrorEditor 側で行う。
+export type EditorProps = Omit<ReactCodeMirrorProps, 'extensions'> & {
+  extensions?: any[];
+};
+
+// CodeMirror 本体・テーマ・言語拡張（@codemirror/*）は重いため、
+// クライアントでの遅延ロードに切り出して初期バンドルから除外する。
+const CodeMirrorEditor = dynamic(() => import('@/components/common/CodeMirrorEditor'), {
+  ssr: false,
+  loading: () => <EditorPlaceholder />,
+});
+
+export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref) => {
   return (
     <WrapperStyle ref={ref}>
-      <CodeMirror width="100%" maxWidth="1800px" height="60vh" theme={vscodeDark} {...props} />
+      <CodeMirrorEditor {...props} />
     </WrapperStyle>
   );
 });
@@ -31,7 +41,16 @@ const WrapperStyle = styled.div`
   }
 `;
 
+// 遅延ロード中に高さを確保してレイアウトシフトを防ぐプレースホルダー。
+const EditorPlaceholder = styled.div`
+  width: 100%;
+  max-width: 1800px;
+  height: 60vh;
+  border: 1px solid #a4a9b3;
+  border-radius: 6px;
+`;
+
 export const ex = {
-  json: json(),
-  lineWrapping: EditorView.lineWrapping,
-};
+  json: 'json',
+  lineWrapping: 'lineWrapping',
+} as const;

@@ -15,7 +15,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const Hash: FC = () => {
   const title = 'ハッシュ';
-  const { methods, input, algorithmList, createHash } = useHash();
+  const { methods, algorithmList, hashes } = useHash();
 
   return (
     <FormProvider {...methods}>
@@ -63,7 +63,7 @@ export const Hash: FC = () => {
                 <InputListForm layout="horizontal">
                   {algorithmList.map(({ label, value }) => {
                     return (
-                      <LabelInput key={label} label={label} value={createHash(value, input)} />
+                      <LabelInput key={label} label={label} value={hashes[value] ?? ''} />
                     );
                   })}
                 </InputListForm>

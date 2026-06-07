@@ -1,5 +1,4 @@
-import { createHash as cryptoCreateHash } from 'crypto';
-import { useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { HASH_ALGORITHMS } from '@/lib/hashAlgorithms';
 import { useFormPersistence } from '@/hooks/useFormPersistence';
@@ -27,24 +26,34 @@ export const useHash = () => {
   const input = watch('input', DEFAULT_VALUES.input);
   const isUppercase = watch('isUppercase', DEFAULT_VALUES.isUppercase);
 
-  const createHash = useCallback(
-    (algorithm: string, input: string) => {
-      if (input.trim() === '') return '';
+  // アルゴリズムごとのハッシュ値。crypto（ブラウザでは重い polyfill）は
+  // 初期バンドルから外し、入力があったときに動的 import して計算する。
+  const [hashes, setHashes] = useState<Record<string, string>>({});
 
-      const hash = cryptoCreateHash(algorithm).update(input).digest('hex');
-
-      if (isUppercase) {
-        return hash.toUpperCase();
+  useEffect(() => {
+    if (input.trim() === '') {
+      setHashes({});
+      return;
+    }
+    let canceled = false;
+    void import('crypto').then(({ createHash }) => {
+      if (canceled) return;
+      const next: Record<string, string> = {};
+      for (const { value } of HASH_ALGORITHMS) {
+        const hash = createHash(value).update(input).digest('hex');
+        next[value] = isUppercase ? hash.toUpperCase() : hash;
       }
-      return hash;
-    },
-    [isUppercase],
-  );
+      setHashes(next);
+    });
+    return () => {
+      canceled = true;
+    };
+  }, [input, isUppercase]);
 
   return {
     methods,
     input,
     algorithmList: HASH_ALGORITHMS,
-    createHash,
+    hashes,
   };
 };

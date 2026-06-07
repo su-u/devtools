@@ -8,8 +8,12 @@ export type Options = {
 };
 
 export const generateUUIDs = (version: number, generateCount: number, options?: Options) => {
+  const count = Number(generateCount);
+  if (!Number.isInteger(count) || count < 1) {
+    throw new Error('生成数が不正です。');
+  }
   const uuids: string[] = [];
-  for (let i = 0; i < generateCount; i++) {
+  for (let i = 0; i < count; i++) {
     const uuid = getUUID(version, options);
     const processedUUID = UUIDProcessor(uuid, options);
     uuids.push(processedUUID);
@@ -18,7 +22,7 @@ export const generateUUIDs = (version: number, generateCount: number, options?: 
 };
 
 const UUIDProcessor = (uuid: string, options?: Options) => {
-  const { isUppercase, isHyphen } = options;
+  const { isUppercase, isHyphen } = options ?? {};
   const processedHyphen = isHyphen ? uuid : uuid.replaceAll('-', '');
   const processedUppercase = isUppercase ? processedHyphen.toUpperCase() : processedHyphen;
 
@@ -26,8 +30,8 @@ const UUIDProcessor = (uuid: string, options?: Options) => {
 };
 
 export const getUUID = (version: number, options?: Options) => {
-  const { name, namespace } = options;
-  switch (version) {
+  const { name, namespace } = options ?? {};
+  switch (Number(version)) {
     case 1:
       return v1();
     case 3:
@@ -37,6 +41,6 @@ export const getUUID = (version: number, options?: Options) => {
     case 5:
       return v5(name, namespace);
     default:
-      new Error('不正なバージョンです。');
+      throw new Error('不正なバージョンです。');
   }
 };
