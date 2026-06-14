@@ -48,6 +48,8 @@ export const SideNavBar: FC = () => {
       breakpoint="md"
       trigger={null}
       theme="dark"
+      // 背景色は inline で固定（クラスのスタイルが当たる前の初回描画から効かせる）
+      style={{ background: '#181818' }}
     >
       <MenuArea>
         <Menu

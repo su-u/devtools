@@ -12,9 +12,14 @@ type Props = {
 export const AppLayout: FC<Props> = ({ children }) => {
   return (
     <Provider>
-      <StyledLayout>
+      {/* レイアウト骨格は inline style で固定する。
+          クラス(emotion/antd cssinjs)は JS 経由で当たるまで時間がかかり初回描画に間に合わないため、
+          inline style（クラスより優先・SSR HTMLに直接出力）で描画前から横並びを確定させる。 */}
+      <StyledLayout style={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>
         <SideNavBar />
-        <StyledContent>{children}</StyledContent>
+        <StyledContent style={{ flex: 'auto', minWidth: 0, overflow: 'auto' }}>
+          {children}
+        </StyledContent>
       </StyledLayout>
     </Provider>
   );
