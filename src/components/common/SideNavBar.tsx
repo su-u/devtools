@@ -1,83 +1,135 @@
+import {
+  GithubOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from '@ant-design/icons';
 import styled from '@emotion/styled';
-import GithubIcon from '@rsuite/icons/legacy/Github';
+import { Layout, Menu, Tooltip } from 'antd';
+import type { MenuProps } from 'antd';
 import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { FC } from 'react';
-import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
-import { FeatureKeys, features } from '@/components/common/Features';
+import { features } from '@/components/common/Features';
 
 const GITHUB_LINK = 'https://github.com/su-u/devtools';
 
 export const SideNavBar: FC = () => {
-  const [activeKey, setActiveKey] = React.useState<FeatureKeys>(() => 'home');
-  const [expanded, setExpanded] = React.useState(true);
+  const pathname = usePathname();
+  const [collapsed, setCollapsed] = React.useState(false);
 
-  const onSelect = React.useCallback(
-    (activeKey: FeatureKeys) => {
-      setActiveKey(activeKey);
-    },
-    [setActiveKey],
-  );
+  const activeKey = React.useMemo(() => {
+    const matched = features
+      .flatMap((group) => group.items ?? [])
+      .find((item) => item.path === pathname);
+    return matched?.key ?? 'home';
+  }, [pathname]);
+
+  const items: MenuProps['items'] = features.map((group) => ({
+    key: group.key as string,
+    label: group.title,
+    icon: group.icon,
+    children: group.items?.map((item) => ({
+      key: item.key,
+      label: <NextLink href={item.path}>{item.shortTitle || item.title}</NextLink>,
+    })),
+  }));
+
+  const defaultOpenKeys = features
+    .map((group) => group.key)
+    .filter((key): key is string => Boolean(key));
 
   return (
-    <StyledSidebar width={expanded ? 220 : 56}>
-      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4', '5']}>
-        <Sidenav.Body>
-          <Nav activeKey={activeKey} onSelect={onSelect}>
-            {features.map((group) => {
-              return (
-                <Nav.Menu
-                  key={group.key}
-                  eventKey={group.key}
-                  title={group.title}
-                  icon={group.icon}
-                >
-                  {group.items?.map((item) => (
-                    <NavItem
-                      as={NavLink}
-                      key={item.key}
-                      eventKey={item.key}
-                      href={item.path}
-                      expanded={expanded}
-                    >
-                      {item.shortTitle || item.title}
-                    </NavItem>
-                  ))}
-                </Nav.Menu>
-              );
-            })}
-          </Nav>
-        </Sidenav.Body>
-        <Navbar appearance="subtle">
-          <Nav>
-            <Nav.Item as={NavLink} href={GITHUB_LINK} target="_blank">
-              <Whisper
-                placement="right"
-                controlId="control-id-sidenav-github"
-                trigger="hover"
-                speaker={<Tooltip>GitHub</Tooltip>}
-              >
-                <GithubIcon style={{ fontSize: 24 }} />
-              </Whisper>
-            </Nav.Item>
-          </Nav>
-          <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
-        </Navbar>
-      </Sidenav>
-    </StyledSidebar>
+    <StyledSider
+      width={200}
+      collapsedWidth={56}
+      collapsible
+      collapsed={collapsed}
+      onCollapse={setCollapsed}
+      breakpoint="md"
+      trigger={null}
+      theme="dark"
+      // 背景色は inline で固定（クラスのスタイルが当たる前の初回描画から効かせる）
+      style={{ background: '#181818' }}
+    >
+      <MenuArea>
+        <Menu
+          mode="inline"
+          theme="dark"
+          selectedKeys={[activeKey]}
+          defaultOpenKeys={collapsed ? [] : defaultOpenKeys}
+          items={items}
+          style={{ background: 'transparent', borderInlineEnd: 'none', fontSize: 12 }}
+        />
+      </MenuArea>
+      <BottomBar collapsed={collapsed}>
+        {!collapsed && (
+          <Tooltip title="GitHub" placement="right">
+            <NextLink href={GITHUB_LINK} target="_blank" aria-label="GitHub">
+              <GithubOutlined style={{ fontSize: 22, color: '#fff' }} />
+            </NextLink>
+          </Tooltip>
+        )}
+        <ToggleButton
+          type="button"
+          aria-label={collapsed ? 'サイドバーを開く' : 'サイドバーを閉じる'}
+          onClick={() => setCollapsed((v) => !v)}
+        >
+          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </ToggleButton>
+      </BottomBar>
+    </StyledSider>
   );
 };
 
-const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
-  const { href, as, expanded, ...rest } = props;
-  return <NextLink href={href} as={as} {...rest} />;
-});
-NavLink.displayName = 'LinkComponent';
+const StyledSider = styled(Layout.Sider)`
+  background-color: #181818 !important;
+  height: 100vh;
 
-const StyledSidebar = styled(Sidebar)`
-  font-size: 12px;
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .ant-menu.ant-menu-dark,
+  .ant-menu-dark .ant-menu-sub {
+    background: transparent;
+  }
 `;
 
-const NavItem = styled(Nav.Item)<{ expanded: boolean }>`
-  font-size: 12px;
-  padding: ${({ expanded }) => (expanded ? '6px 12px 6px 42px' : '6px 12px 6px 12px')} !important;
+// メニュー領域は伸縮＋スクロール、下部バーは常に最下部に固定
+const MenuArea = styled.div`
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+`;
+
+const BottomBar = styled.div<{ collapsed: boolean }>`
+  flex-shrink: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: ${({ collapsed }) => (collapsed ? 'center' : 'space-between')};
+  gap: 8px;
+  padding: 0 16px;
+  border-top: 1px solid #2b2d31;
+`;
+
+const ToggleButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 `;

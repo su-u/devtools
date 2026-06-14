@@ -2,7 +2,7 @@
 import { Switch, Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, PanelGroup, Form, ButtonToolbar, InputGroup } from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, ButtonToolbar, InputGroup } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useHash } from '@/app/hash/useHash';
 import { Editor } from '@/components/common/Editor';
@@ -15,7 +15,7 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 export const Hash: FC = () => {
   const title = 'ハッシュ';
-  const { methods, input, algorithmList, createHash } = useHash();
+  const { methods, algorithmList, hashes } = useHash();
 
   return (
     <FormProvider {...methods}>
@@ -63,7 +63,7 @@ export const Hash: FC = () => {
                 <InputListForm layout="horizontal">
                   {algorithmList.map(({ label, value }) => {
                     return (
-                      <LabelInput key={label} label={label} value={createHash(value, input)} />
+                      <LabelInput key={label} label={label} value={hashes[value] ?? ''} />
                     );
                   })}
                 </InputListForm>

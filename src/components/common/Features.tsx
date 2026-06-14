@@ -1,7 +1,10 @@
-import EditIcon from '@rsuite/icons/Edit';
-import GrowthIcon from '@rsuite/icons/Growth';
-import ListOl from '@rsuite/icons/legacy/ListOl';
-import TimeIcon from '@rsuite/icons/Time';
+import {
+  BgColorsOutlined,
+  ClockCircleOutlined,
+  EditOutlined,
+  OrderedListOutlined,
+  RiseOutlined,
+} from '@ant-design/icons';
 import React from 'react';
 
 export type FeatureItemType = {
@@ -23,7 +26,7 @@ type FeatureGroupType = {
 export const features: FeatureGroupType[] = [
   {
     title: 'エンコード',
-    icon: <ListOl />,
+    icon: <OrderedListOutlined />,
     key: '1',
     items: [
       {
@@ -47,11 +50,18 @@ export const features: FeatureGroupType[] = [
         path: '/urlencode',
         description: '文字列をURLエンコードします',
       },
+      {
+        key: 'jwt_decoder',
+        title: 'JWTデコーダー',
+        shortTitle: 'JWT',
+        path: '/jwt_decoder',
+        description: 'JWTをヘッダー・ペイロード・署名に分解します',
+      },
     ],
   },
   {
     title: 'テキストツール',
-    icon: <EditIcon />,
+    icon: <EditOutlined />,
     key: '2',
     items: [
       {
@@ -84,7 +94,7 @@ export const features: FeatureGroupType[] = [
   },
   {
     title: '数値ツール',
-    icon: <ListOl />,
+    icon: <OrderedListOutlined />,
     key: '3',
     items: [
       {
@@ -92,11 +102,31 @@ export const features: FeatureGroupType[] = [
         title: '数字カンマ区切り',
         path: '/number_comma',
       },
+      {
+        key: 'radix_converter',
+        title: '基数変換',
+        path: '/radix_converter',
+        description: '2進数・8進数・10進数・16進数を相互変換します',
+      },
+    ],
+  },
+  {
+    title: 'カラーツール',
+    icon: <BgColorsOutlined />,
+    key: 'color',
+    items: [
+      {
+        key: 'color_converter',
+        title: 'カラーコード変換',
+        shortTitle: 'カラーコード',
+        path: '/color_converter',
+        description: 'HEX・RGB・HSLを相互変換します',
+      },
     ],
   },
   {
     title: '時間ツール',
-    icon: <TimeIcon />,
+    icon: <ClockCircleOutlined />,
     key: '4',
     items: [
       {
@@ -121,7 +151,7 @@ export const features: FeatureGroupType[] = [
   },
   {
     title: '生成ツール',
-    icon: <GrowthIcon />,
+    icon: <RiseOutlined />,
     key: '5',
     items: [
       {
@@ -130,11 +160,12 @@ export const features: FeatureGroupType[] = [
         path: '/hash',
         description: '文字列からハッシュを生成します',
       },
-      // {
-      //   key: 'dummy',
-      //   title: 'ダミーデータ',
-      //   path: '/dummy',
-      // },
+      {
+        key: 'dummy',
+        title: 'ダミーデータ',
+        path: '/dummy',
+        description: '氏名・住所などのダミーデータをJSON/CSVで生成します',
+      },
       {
         key: 'uuid',
         title: 'UUID',

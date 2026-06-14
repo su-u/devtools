@@ -1,11 +1,11 @@
-modules = ["nodejs-20", "nodejs-21"]
-run = "yarn run dev"
+modules = ["nodejs-22"]
+run = "npm run dev"
 
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "yarn run dev"]
+run = ["sh", "-c", "npm run dev"]
 
 [[ports]]
 localPort = 3000

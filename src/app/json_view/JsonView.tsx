@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 import dynamic from 'next/dynamic';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useJsonView } from '@/app/json_view/useJsonView';
 import { Editor, ex } from '@/components/common/Editor';
@@ -51,7 +51,7 @@ export const JsonView: FC = () => {
                 <ReactJson
                   src={input}
                   theme="chalk"
-                  style={{ padding: '4px', border: '1px solid #a4a9b3', borderRadius: '6px' }}
+                  style={{ padding: '4px', border: '1px solid #565a61', borderRadius: '6px' }}
                 />
               </Panel>
             </Col>

@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row } from 'rsuite';
+import { Col, Grid, Panel, Row } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import {
   characterCountWithoutSpace,

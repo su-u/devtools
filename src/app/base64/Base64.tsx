@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
-import { Grid, Row, Col, Panel } from 'rsuite';
+import { Grid, Row, Col, Panel } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useBase64 } from '@/app/base64/useBase64';
 import { Editor, ex } from '@/components/common/Editor';

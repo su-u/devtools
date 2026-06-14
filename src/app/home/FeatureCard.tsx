@@ -19,14 +19,14 @@ const StyleCard = styled(Card)`
   transition: 0.1s;
 
   .ant-card-head {
-    min-height: 38px;
-    padding: 0 12px;
-    font-size: 14px;
+    min-height: 38px !important;
+    padding: 0 12px !important;
+    font-size: 14px !important;
   }
 
   .ant-card-body {
-    height: 120px;
-    padding: 12px;
+    height: 120px !important;
+    padding: 12px !important;
   }
 
   &:hover {

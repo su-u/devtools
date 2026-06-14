@@ -2,7 +2,7 @@
 import { Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row, Form } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useNumberComma, DEFAULT_VALUES, SEPARATOR_LIST } from '@/app/number_comma/useNumberComma';
 import { ClearButton } from '@/components/common/Form/ClearButton';
@@ -43,7 +43,7 @@ export const NumberComma: FC = () => {
                       <Controller
                         render={({ field: { ref, ...field } }) => (
                           <Select
-                            style={{ width: 250 }}
+                            style={{ width: '100%', maxWidth: 250 }}
                             options={SEPARATOR_LIST}
                             defaultValue={DEFAULT_VALUES.separator}
                             {...field}

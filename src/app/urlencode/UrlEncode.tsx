@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, Form, PanelGroup } from 'rsuite';
+import { Col, Grid, Panel, Row, Form, PanelGroup } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useUrlEncode } from '@/app/urlencode/useUrlEncode';
 import { Editor } from '@/components/common/Editor';
@@ -41,7 +41,7 @@ export const UrlEncode: FC = () => {
                         render={({ field: { ref, ...field } }) => (
                           <Select
                             {...field}
-                            style={{ width: 250 }}
+                            style={{ width: '100%', maxWidth: 250 }}
                             options={encodingList}
                             showSearch
                           />

@@ -2,7 +2,7 @@
 import { Tabs, Switch } from 'antd';
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row, Form } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useDateDiff } from '@/app/date_diff/useDateDiff';
 import { DatePicker } from '@/components/common/Form/DatePicker';

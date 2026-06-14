@@ -1,0 +1,54 @@
+:root {
+  --color-gray: #a4a9b3;
+  --color-bg-primary: #181818;
+  --color-bg-code: #1e1e1e;
+  // 入力欄の枠線。#a4a9b3 は白っぽく強いため、控えめなグレーにする
+  --color-border-input: #565a61;
+}
+
+// antd Tabs のタブ余白調整
+.ant-tabs-tab {
+  padding: 0 0 12px !important;
+}
+
+// パネル(Card)の余白を引き締める。ヘッダーは低めに、本文の上下paddingを小さく
+.ant-card-small > .ant-card-head {
+  min-height: 32px !important;
+  padding: 0 10px !important;
+}
+.ant-card-small > .ant-card-body {
+  padding: 8px 10px !important;
+}
+
+// 入力欄系の背景をパネル(#2b2d31)より濃い #1e1e1e にして、パネル内で埋もれないようにする。
+// CodeMirror エディタ(#1e1e1e)とも色味を揃える。
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-number,
+.ant-input-number-group-addon,
+.ant-select-outlined .ant-select-selector,
+.ant-picker {
+  background-color: var(--color-bg-code) !important;
+}
+
+// 入力欄の枠線を控えめなグレーに（hover/focus 時の primary 色はそのまま活かす）
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-number,
+.ant-select-outlined:not(.ant-select-focused) .ant-select-selector,
+.ant-picker {
+  border-color: var(--color-border-input) !important;
+}
+
+// addonBefore（ラベル付きInput）も入力欄と同色にして、1つの入力枠内で色が割れないようにする
+.ant-input-group-addon {
+  background-color: var(--color-bg-code) !important;
+  border-color: var(--color-border-input) !important;
+}
+
+// 入力欄に連結されたボタン（コピー等。Space.Compact 内のデフォルトボタン）も
+// 入力欄と同色にして、入力枠全体の色を揃える。danger(クリア)・primary は除外
+.ant-space-compact .ant-btn-default:not(.ant-btn-dangerous) {
+  background-color: var(--color-bg-code) !important;
+  border-color: var(--color-border-input) !important;
+}

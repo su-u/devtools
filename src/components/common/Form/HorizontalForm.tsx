@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
 import React, { FC } from 'react';
-import { Form } from 'rsuite';
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const HorizontalForm: FC<Props> = ({ children }) => {
-  return <StyledForm layout="horizontal">{children}</StyledForm>;
+  return <StyledForm>{children}</StyledForm>;
 };
 
-const StyledForm = styled(Form)`
+const StyledForm = styled.div`
+  width: 100%;
   > div:not(:last-child) {
-    margin-bottom: 12px !important;
+    margin-bottom: 12px;
   }
 `;

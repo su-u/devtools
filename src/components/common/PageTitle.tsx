@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
+import { Row, Col } from 'antd';
 import React, { FC } from 'react';
-import { Row, Col } from 'rsuite';
 
 type Props = {
   title: string;

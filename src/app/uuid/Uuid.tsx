@@ -2,7 +2,7 @@
 import { Switch, Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, PanelGroup, Form, Button } from 'rsuite';
+import { Col, Grid, Panel, Row, PanelGroup, Form, Button } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useUuid, DEFAULT_VALUES } from '@/app/uuid/useUuid';
 import { ClearButton } from '@/components/common/Form/ClearButton';
@@ -18,13 +18,22 @@ import { useCopy } from '@/hooks/useCopy';
 
 export const Uuid: FC = () => {
   const title = 'UUIDの生成';
-  const { methods, selectData, control, output, onClickGenerateUUID, version, onClickClear } =
-    useUuid();
+  const {
+    methods,
+    selectData,
+    control,
+    output,
+    onClickGenerateUUID,
+    version,
+    onClickClear,
+    contextHolder,
+  } = useUuid();
 
   const requireName = version === 3 || version === 5;
 
   return (
     <FormProvider {...methods}>
+      {contextHolder}
       <AppLayout>
         <Grid fluid>
           <PageTitle title={title} />
@@ -37,7 +46,7 @@ export const Uuid: FC = () => {
                       <Controller
                         render={({ field: { ref, ...field } }) => (
                           <Select
-                            style={{ width: 250 }}
+                            style={{ width: '100%', maxWidth: 250 }}
                             options={selectData}
                             defaultValue={DEFAULT_VALUES.version}
                             {...field}
@@ -93,7 +102,7 @@ export const Uuid: FC = () => {
                       <Controller
                         render={({ field: { ref, ...field } }) => (
                           <InputNumber
-                            style={{ width: 250 }}
+                            style={{ width: '100%', maxWidth: 250 }}
                             defaultValue={DEFAULT_VALUES.generateCount}
                             min={1}
                             max={100000}
