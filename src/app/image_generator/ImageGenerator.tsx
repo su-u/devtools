@@ -57,7 +57,7 @@ export const ImageGenerator: FC = () => {
                   <Panel bordered header={<PanelHeader title="プリセット" />}>
                     <FormRow label="サイズ">
                       <Select
-                        style={{ width: 400 }}
+                        style={{ width: '100%', maxWidth: 400 }}
                         options={PRESET_SIZE_OPTIONS}
                         onSelect={onSelectPreset}
                         listHeight={512}
@@ -92,7 +92,7 @@ const CommonForm: FC<{ control: any }> = ({ control }) => {
           render={({ field: { ref, ...field } }) => (
             <InputNumber
               {...field}
-              style={{ width }}
+              style={{ width: '100%', maxWidth: width }}
               min={IMG_SIZE_LIMIT.min}
               max={IMG_SIZE_LIMIT.max}
               defaultValue={DEFAULT_VALUES.wight}
@@ -107,7 +107,7 @@ const CommonForm: FC<{ control: any }> = ({ control }) => {
           render={({ field: { ref, ...field } }) => (
             <InputNumber
               {...field}
-              style={{ width }}
+              style={{ width: '100%', maxWidth: width }}
               min={IMG_SIZE_LIMIT.min}
               max={IMG_SIZE_LIMIT.max}
               defaultValue={DEFAULT_VALUES.height}
@@ -130,7 +130,7 @@ const UnsplashTab: FC<{ control: any }> = ({ control }) => {
           render={({ field: { ref, ...field } }) => (
             <Select
               {...field}
-              style={{ width }}
+              style={{ width: '100%', maxWidth: width }}
               options={UNSPLASH_FILE_TYPES}
               defaultValue={DEFAULT_VALUES.type}
             />
@@ -152,7 +152,7 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
           render={({ field: { ref, ...field } }) => (
             <Select
               {...field}
-              style={{ width }}
+              style={{ width: '100%', maxWidth: width }}
               options={PLACEHOLD_FILE_TYPES}
               defaultValue={DEFAULT_VALUES.type}
             />
@@ -181,7 +181,7 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
       </FormRow>
       <FormRow label="テキスト">
         <Controller
-          render={({ field: { ref, ...field } }) => <Input {...field} style={{ width }} />}
+          render={({ field: { ref, ...field } }) => <Input {...field} style={{ width: '100%', maxWidth: width }} />}
           name="text"
           control={control}
         />
@@ -191,7 +191,7 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
           render={({ field: { ref, ...field } }) => (
             <InputNumber
               {...field}
-              style={{ width }}
+              style={{ width: '100%', maxWidth: width }}
               min={TEXT_SIZE_LIMIT.min}
               max={TEXT_SIZE_LIMIT.max}
               defaultValue={DEFAULT_VALUES.textSize}

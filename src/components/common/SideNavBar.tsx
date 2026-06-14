@@ -1,4 +1,8 @@
-import { GithubOutlined } from '@ant-design/icons';
+import {
+  GithubOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from '@ant-design/icons';
 import styled from '@emotion/styled';
 import { Layout, Menu, Tooltip } from 'antd';
 import type { MenuProps } from 'antd';
@@ -42,9 +46,10 @@ export const SideNavBar: FC = () => {
       collapsed={collapsed}
       onCollapse={setCollapsed}
       breakpoint="md"
+      trigger={null}
       theme="dark"
     >
-      <SiderInner>
+      <MenuArea>
         <Menu
           mode="inline"
           theme="dark"
@@ -53,14 +58,23 @@ export const SideNavBar: FC = () => {
           items={items}
           style={{ background: 'transparent', borderInlineEnd: 'none', fontSize: 12 }}
         />
-        <Footer>
+      </MenuArea>
+      <BottomBar collapsed={collapsed}>
+        {!collapsed && (
           <Tooltip title="GitHub" placement="right">
-            <NextLink href={GITHUB_LINK} target="_blank">
-              <GithubOutlined style={{ fontSize: 24, color: '#fff' }} />
+            <NextLink href={GITHUB_LINK} target="_blank" aria-label="GitHub">
+              <GithubOutlined style={{ fontSize: 22, color: '#fff' }} />
             </NextLink>
           </Tooltip>
-        </Footer>
-      </SiderInner>
+        )}
+        <ToggleButton
+          type="button"
+          aria-label={collapsed ? 'サイドバーを開く' : 'サイドバーを閉じる'}
+          onClick={() => setCollapsed((v) => !v)}
+        >
+          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </ToggleButton>
+      </BottomBar>
     </StyledSider>
   );
 };
@@ -72,6 +86,7 @@ const StyledSider = styled(Layout.Sider)`
   .ant-layout-sider-children {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 
   .ant-menu.ant-menu-dark,
@@ -80,16 +95,39 @@ const StyledSider = styled(Layout.Sider)`
   }
 `;
 
-const SiderInner = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  /* Sider 下部のデフォルト折りたたみトリガー(高さ48px)と重ならないように余白を確保 */
-  padding-bottom: 48px;
+// メニュー領域は伸縮＋スクロール、下部バーは常に最下部に固定
+const MenuArea = styled.div`
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
 `;
 
-const Footer = styled.div`
-  margin-top: auto;
-  padding: 12px 16px;
+const BottomBar = styled.div<{ collapsed: boolean }>`
+  flex-shrink: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: ${({ collapsed }) => (collapsed ? 'center' : 'space-between')};
+  gap: 8px;
+  padding: 0 16px;
+  border-top: 1px solid #2b2d31;
+`;
+
+const ToggleButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 `;
