@@ -1,4 +1,5 @@
 import {
+  BgColorsOutlined,
   ClockCircleOutlined,
   EditOutlined,
   OrderedListOutlined,
@@ -99,6 +100,20 @@ export const features: FeatureGroupType[] = [
         title: '基数変換',
         path: '/radix_converter',
         description: '2進数・8進数・10進数・16進数を相互変換します',
+      },
+    ],
+  },
+  {
+    title: 'カラーツール',
+    icon: <BgColorsOutlined />,
+    key: 'color',
+    items: [
+      {
+        key: 'color_converter',
+        title: 'カラーコード変換',
+        shortTitle: 'カラーコード',
+        path: '/color_converter',
+        description: 'HEX・RGB・HSLを相互変換します',
       },
     ],
   },
