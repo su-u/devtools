@@ -25,7 +25,7 @@ const StyleCard = styled(Card)`
   }
 
   .ant-card-body {
-    height: 120px !importanta;
+    height: 120px !important;
     padding: 12px !important;
   }
 
