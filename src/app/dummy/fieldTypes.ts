@@ -1,0 +1,88 @@
+import type { FieldGroup, FieldTypeDef } from '@/app/dummy/types';
+
+export const FIELD_GROUPS: FieldGroup[] = [
+  '個人・連絡先',
+  '企業・仕事',
+  'ネット・ID系',
+  'コマース・金融',
+  '乗り物',
+  '数値・日付・その他',
+];
+
+export const FIELD_TYPES: FieldTypeDef[] = [
+  // 個人・連絡先
+  { key: 'name', label: '氏名', group: '個人・連絡先' },
+  { key: 'name_kana', label: '氏名(カナ)', group: '個人・連絡先' },
+  { key: 'last_name', label: '姓', group: '個人・連絡先' },
+  { key: 'first_name', label: '名', group: '個人・連絡先' },
+  { key: 'gender', label: '性別', group: '個人・連絡先' },
+  { key: 'birthdate', label: '生年月日', group: '個人・連絡先' },
+  { key: 'age', label: '年齢', group: '個人・連絡先', option: 'minmax' },
+  { key: 'email', label: 'メールアドレス', group: '個人・連絡先' },
+  { key: 'phone', label: '電話番号', group: '個人・連絡先' },
+  { key: 'phone_mobile', label: '携帯電話番号', group: '個人・連絡先' },
+  { key: 'phone_landline', label: '固定電話番号', group: '個人・連絡先' },
+  { key: 'address', label: '住所', group: '個人・連絡先' },
+  { key: 'zipcode', label: '郵便番号', group: '個人・連絡先' },
+  { key: 'prefecture', label: '都道府県', group: '個人・連絡先' },
+  { key: 'city', label: '市区町村', group: '個人・連絡先' },
+  { key: 'country', label: '国', group: '個人・連絡先' },
+  { key: 'latitude', label: '緯度', group: '個人・連絡先' },
+  { key: 'longitude', label: '経度', group: '個人・連絡先' },
+  { key: 'avatar', label: 'アバターURL', group: '個人・連絡先' },
+  // 企業・仕事
+  { key: 'company', label: '会社名', group: '企業・仕事' },
+  { key: 'department', label: '部署', group: '企業・仕事' },
+  { key: 'job_title', label: '役職', group: '企業・仕事' },
+  { key: 'job_type', label: '職種', group: '企業・仕事' },
+  { key: 'catch_phrase', label: 'キャッチフレーズ', group: '企業・仕事' },
+  // ネット・ID系
+  { key: 'uuid', label: 'UUID', group: 'ネット・ID系' },
+  { key: 'autoincrement', label: '連番', group: 'ネット・ID系', option: 'start' },
+  { key: 'random_string', label: 'ランダム文字列', group: 'ネット・ID系', option: 'length' },
+  { key: 'username', label: 'ユーザー名', group: 'ネット・ID系' },
+  { key: 'url', label: 'URL', group: 'ネット・ID系' },
+  { key: 'domain', label: 'ドメイン名', group: 'ネット・ID系' },
+  { key: 'ip', label: 'IPアドレス', group: 'ネット・ID系' },
+  { key: 'ipv6', label: 'IPv6アドレス', group: 'ネット・ID系' },
+  { key: 'mac', label: 'MACアドレス', group: 'ネット・ID系' },
+  { key: 'password', label: 'パスワード', group: 'ネット・ID系', option: 'length' },
+  { key: 'emoji', label: '絵文字', group: 'ネット・ID系' },
+  { key: 'http_status', label: 'HTTPステータスコード', group: 'ネット・ID系' },
+  { key: 'slug', label: 'スラッグ', group: 'ネット・ID系' },
+  { key: 'hex', label: '16進数文字列', group: 'ネット・ID系', option: 'length' },
+  { key: 'ulid', label: 'ULID', group: 'ネット・ID系' },
+  { key: 'nanoid', label: 'NanoID', group: 'ネット・ID系' },
+  { key: 'image_url', label: '画像URL', group: 'ネット・ID系' },
+  // コマース・金融
+  { key: 'product', label: '商品名', group: 'コマース・金融' },
+  { key: 'price', label: '価格', group: 'コマース・金融', option: 'minmax' },
+  { key: 'product_description', label: '商品説明', group: 'コマース・金融' },
+  { key: 'product_category', label: '商品カテゴリ', group: 'コマース・金融' },
+  { key: 'amount', label: '金額', group: 'コマース・金融', option: 'minmax' },
+  { key: 'currency_code', label: '通貨コード', group: 'コマース・金融' },
+  { key: 'credit_card', label: 'クレジットカード番号', group: 'コマース・金融' },
+  { key: 'account_number', label: '口座番号', group: 'コマース・金融' },
+  // 乗り物
+  { key: 'vehicle_manufacturer', label: '自動車メーカー', group: '乗り物' },
+  { key: 'vehicle_model', label: '車種', group: '乗り物' },
+  { key: 'license_plate', label: 'ナンバープレート', group: '乗り物' },
+  { key: 'vin', label: '車台番号(VIN)', group: '乗り物' },
+  // 数値・日付・その他
+  { key: 'integer', label: '整数', group: '数値・日付・その他', option: 'minmax' },
+  { key: 'float', label: '小数', group: '数値・日付・その他', option: 'minmax' },
+  { key: 'boolean', label: '真偽値', group: '数値・日付・その他' },
+  { key: 'date', label: '日付', group: '数値・日付・その他', option: 'dateRange' },
+  { key: 'datetime', label: '日時', group: '数値・日付・その他', option: 'dateRange' },
+  { key: 'time', label: '時刻', group: '数値・日付・その他' },
+  { key: 'timestamp', label: 'UNIXタイムスタンプ', group: '数値・日付・その他', option: 'dateRange' },
+  { key: 'word', label: '単語', group: '数値・日付・その他' },
+  { key: 'sentence', label: '文', group: '数値・日付・その他' },
+  { key: 'paragraph', label: '段落', group: '数値・日付・その他' },
+  { key: 'color', label: 'カラーコード', group: '数値・日付・その他' },
+  { key: 'list_pick', label: 'リストから選択', group: '数値・日付・その他', option: 'list' },
+  { key: 'fixed', label: '固定値', group: '数値・日付・その他', option: 'fixed' },
+];
+
+export const getFieldType = (key: string): FieldTypeDef | undefined =>
+  FIELD_TYPES.find((t) => t.key === key);

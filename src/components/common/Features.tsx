@@ -160,11 +160,12 @@ export const features: FeatureGroupType[] = [
         path: '/hash',
         description: '文字列からハッシュを生成します',
       },
-      // {
-      //   key: 'dummy',
-      //   title: 'ダミーデータ',
-      //   path: '/dummy',
-      // },
+      {
+        key: 'dummy',
+        title: 'ダミーデータ',
+        path: '/dummy',
+        description: '氏名・住所などのダミーデータをJSON/CSVで生成します',
+      },
       {
         key: 'uuid',
         title: 'UUID',
