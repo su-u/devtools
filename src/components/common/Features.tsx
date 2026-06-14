@@ -1,7 +1,9 @@
-import EditIcon from '@rsuite/icons/Edit';
-import GrowthIcon from '@rsuite/icons/Growth';
-import ListOl from '@rsuite/icons/legacy/ListOl';
-import TimeIcon from '@rsuite/icons/Time';
+import {
+  ClockCircleOutlined,
+  EditOutlined,
+  OrderedListOutlined,
+  RiseOutlined,
+} from '@ant-design/icons';
 import React from 'react';
 
 export type FeatureItemType = {
@@ -23,7 +25,7 @@ type FeatureGroupType = {
 export const features: FeatureGroupType[] = [
   {
     title: 'エンコード',
-    icon: <ListOl />,
+    icon: <OrderedListOutlined />,
     key: '1',
     items: [
       {
@@ -51,7 +53,7 @@ export const features: FeatureGroupType[] = [
   },
   {
     title: 'テキストツール',
-    icon: <EditIcon />,
+    icon: <EditOutlined />,
     key: '2',
     items: [
       {
@@ -84,7 +86,7 @@ export const features: FeatureGroupType[] = [
   },
   {
     title: '数値ツール',
-    icon: <ListOl />,
+    icon: <OrderedListOutlined />,
     key: '3',
     items: [
       {
@@ -96,7 +98,7 @@ export const features: FeatureGroupType[] = [
   },
   {
     title: '時間ツール',
-    icon: <TimeIcon />,
+    icon: <ClockCircleOutlined />,
     key: '4',
     items: [
       {
@@ -121,7 +123,7 @@ export const features: FeatureGroupType[] = [
   },
   {
     title: '生成ツール',
-    icon: <GrowthIcon />,
+    icon: <RiseOutlined />,
     key: '5',
     items: [
       {

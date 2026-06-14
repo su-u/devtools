@@ -1,16 +1,17 @@
+import { GithubOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
-import GithubIcon from '@rsuite/icons/legacy/Github';
+import { Layout, Menu, Tooltip } from 'antd';
+import type { MenuProps } from 'antd';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { FC } from 'react';
-import { Nav, Sidenav, Sidebar, Navbar, Whisper, Tooltip } from 'rsuite';
 import { features } from '@/components/common/Features';
 
 const GITHUB_LINK = 'https://github.com/su-u/devtools';
 
 export const SideNavBar: FC = () => {
   const pathname = usePathname();
-  const [expanded, setExpanded] = React.useState(true);
+  const [collapsed, setCollapsed] = React.useState(false);
 
   const activeKey = React.useMemo(() => {
     const matched = features
@@ -19,66 +20,76 @@ export const SideNavBar: FC = () => {
     return matched?.key ?? 'home';
   }, [pathname]);
 
+  const items: MenuProps['items'] = features.map((group) => ({
+    key: group.key as string,
+    label: group.title,
+    icon: group.icon,
+    children: group.items?.map((item) => ({
+      key: item.key,
+      label: <NextLink href={item.path}>{item.shortTitle || item.title}</NextLink>,
+    })),
+  }));
+
+  const defaultOpenKeys = features
+    .map((group) => group.key)
+    .filter((key): key is string => Boolean(key));
+
   return (
-    <StyledSidebar width={expanded ? 220 : 56}>
-      <Sidenav expanded={expanded} appearance="subtle" defaultOpenKeys={['1', '2', '3', '4', '5']}>
-        <Sidenav.Body>
-          <Nav activeKey={activeKey}>
-            {features.map((group) => {
-              return (
-                <Nav.Menu
-                  key={group.key}
-                  eventKey={group.key}
-                  title={group.title}
-                  icon={group.icon}
-                >
-                  {group.items?.map((item) => (
-                    <NavItem
-                      as={NavLink}
-                      key={item.key}
-                      eventKey={item.key}
-                      href={item.path}
-                      expanded={expanded}
-                    >
-                      {item.shortTitle || item.title}
-                    </NavItem>
-                  ))}
-                </Nav.Menu>
-              );
-            })}
-          </Nav>
-        </Sidenav.Body>
-        <Navbar appearance="subtle">
-          <Nav>
-            <Nav.Item as={NavLink} href={GITHUB_LINK} target="_blank">
-              <Whisper
-                placement="right"
-                controlId="control-id-sidenav-github"
-                trigger="hover"
-                speaker={<Tooltip>GitHub</Tooltip>}
-              >
-                <GithubIcon style={{ fontSize: 24 }} />
-              </Whisper>
-            </Nav.Item>
-          </Nav>
-          <Sidenav.Toggle onToggle={(expanded) => setExpanded(expanded)} />
-        </Navbar>
-      </Sidenav>
-    </StyledSidebar>
+    <StyledSider
+      width={200}
+      collapsedWidth={56}
+      collapsible
+      collapsed={collapsed}
+      onCollapse={setCollapsed}
+      breakpoint="md"
+      theme="dark"
+    >
+      <SiderInner>
+        <Menu
+          mode="inline"
+          theme="dark"
+          selectedKeys={[activeKey]}
+          defaultOpenKeys={collapsed ? [] : defaultOpenKeys}
+          items={items}
+          style={{ background: 'transparent', borderInlineEnd: 'none', fontSize: 12 }}
+        />
+        <Footer>
+          <Tooltip title="GitHub" placement="right">
+            <NextLink href={GITHUB_LINK} target="_blank">
+              <GithubOutlined style={{ fontSize: 24, color: '#fff' }} />
+            </NextLink>
+          </Tooltip>
+        </Footer>
+      </SiderInner>
+    </StyledSider>
   );
 };
 
-const NavLink = React.forwardRef<HTMLAnchorElement, any>((props, ref) => {
-  const { href, as, expanded, ...rest } = props;
-  return <NextLink href={href} as={as} {...rest} />;
-});
-NavLink.displayName = 'LinkComponent';
+const StyledSider = styled(Layout.Sider)`
+  background-color: #181818 !important;
+  height: 100vh;
 
-const StyledSidebar = styled(Sidebar)`
-  font-size: 12px;
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ant-menu.ant-menu-dark,
+  .ant-menu-dark .ant-menu-sub {
+    background: transparent;
+  }
 `;
 
-const NavItem = styled(Nav.Item)<{ expanded: boolean }>`
-  font-size: 12px;
-  padding: ${({ expanded }) => (expanded ? '6px 12px 6px 42px' : '6px 12px 6px 12px')} !important;
+const SiderInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* Sider 下部のデフォルト折りたたみトリガー(高さ48px)と重ならないように余白を確保 */
+  padding-bottom: 48px;
+  overflow-y: auto;
+`;
+
+const Footer = styled.div`
+  margin-top: auto;
+  padding: 12px 16px;
 `;

@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { Form } from 'rsuite';
 
-export const FormLabel = styled(Form.ControlLabel)`
-  padding-left: 6px !important;
-  text-align: left !important;
-  line-height: 12px !important;
+export const FormLabel = styled.label`
+  display: inline-block;
+  padding-left: 6px;
+  text-align: left;
+  line-height: 12px;
+  font-size: 14px;
 `;

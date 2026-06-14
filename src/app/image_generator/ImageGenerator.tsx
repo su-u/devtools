@@ -2,7 +2,7 @@
 import { Button, Tabs, ColorPicker } from 'antd';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
-import { Grid, Row, Col, PanelGroup, Panel, Form } from 'rsuite';
+import { Grid, Row, Col, PanelGroup, Panel, Form } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { PRESET_SIZE_OPTIONS } from '@/app/image_generator/presetSize';
 import {

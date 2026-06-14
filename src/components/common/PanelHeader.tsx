@@ -18,9 +18,11 @@ export const PanelHeader: FC<Props> = ({ title, right = null }) => {
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.p`
+  margin: 0;
   font-size: 14px;
   line-height: 24px;
 `;

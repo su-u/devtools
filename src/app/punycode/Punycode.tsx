@@ -2,7 +2,7 @@
 import { Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row, ButtonToolbar } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row, ButtonToolbar } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { usePunycode } from '@/app/punycode/usePunycode';
 import { Editor } from '@/components/common/Editor';

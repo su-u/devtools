@@ -30,7 +30,7 @@ const WrapperStyle = styled.div`
     border-radius: 6px;
   }
   .cm-scroller {
-    border: 1px solid #a4a9b3;
+    border: 1px solid #565a61;
     border-radius: 6px;
 
     &:active,
@@ -46,7 +46,7 @@ const EditorPlaceholder = styled.div`
   width: 100%;
   max-width: 1800px;
   height: 60vh;
-  border: 1px solid #a4a9b3;
+  border: 1px solid #565a61;
   border-radius: 6px;
 `;
 

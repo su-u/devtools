@@ -1,12 +1,12 @@
-import PlusIcon from '@rsuite/icons/legacy/Plus';
+import { PlusOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import type { ButtonProps } from 'antd';
 import React, { FC } from 'react';
-import { IconButton } from 'rsuite';
-import type { IconButtonProps } from 'rsuite/esm/IconButton/IconButton';
 
-export const AddButton: FC<IconButtonProps> = (props) => {
+export const AddButton: FC<ButtonProps> = (props) => {
   return (
-    <IconButton icon={<PlusIcon />} placement="right" size="xs" {...props}>
+    <Button icon={<PlusOutlined />} size="small" {...props}>
       追加
-    </IconButton>
+    </Button>
   );
 };

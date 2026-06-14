@@ -1,6 +1,6 @@
+import { message } from 'antd';
 import type { SelectValue } from 'antd/es/select';
 import React, { useState, useCallback } from 'react';
-import { useToaster, Message } from 'rsuite';
 import { generateUUIDs } from '@/app/uuid/uuidLib';
 import { useCustomForm } from '@/components/common/Form/useCustomForm';
 import { useFormPersistence } from '@/hooks/useFormPersistence';
@@ -43,7 +43,7 @@ const selectData: SelectValue = [
 ];
 
 export const useUuid = () => {
-  const toaster = useToaster();
+  const [messageApi, contextHolder] = message.useMessage();
   const [output, setOutput] = useState('');
   const methods = useCustomForm<UuidForm>({
     defaultValues: DEFAULT_VALUES,
@@ -71,19 +71,12 @@ export const useUuid = () => {
       setOutput(uuids);
     } catch (e: unknown) {
       if (e instanceof Error) {
-        toaster.push(
-          <Message showIcon type="error">
-            {e.message}
-          </Message>,
-          {
-            placement: 'topEnd',
-          },
-        );
+        messageApi.open({ type: 'error', content: e.message });
         return;
       }
       console.error(e);
     }
-  }, [version, isUppercase, isHyphen, generateCount, UUIDName, UUIDNamespace, toaster]);
+  }, [version, isUppercase, isHyphen, generateCount, UUIDName, UUIDNamespace, messageApi]);
 
   const onClickClear = useCallback(() => {
     setOutput('');
@@ -97,5 +90,6 @@ export const useUuid = () => {
     output,
     version,
     onClickClear,
+    contextHolder,
   };
 };

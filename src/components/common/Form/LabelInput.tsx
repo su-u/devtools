@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Space } from 'antd';
 import React, { FC } from 'react';
-import { Form } from 'rsuite';
 import { CopyButton } from '@/components/common/Form/CopyButton';
 import { Input } from '@/components/common/Form/Input';
 
@@ -10,12 +9,12 @@ export const LabelInput: FC<{
   value: string;
 }> = ({ label, value }) => {
   return (
-    <Form.Group>
+    <div>
       <Space.Compact block>
         <StyleInput addonBefore={label} noResize="none" readOnly value={value} />
         <CopyButton copyText={value} />
       </Space.Compact>
-    </Form.Group>
+    </div>
   );
 };
 

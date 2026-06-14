@@ -1,12 +1,12 @@
-import MinusIcon from '@rsuite/icons/legacy/Minus';
+import { MinusOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import type { ButtonProps } from 'antd';
 import React, { FC } from 'react';
-import { IconButton } from 'rsuite';
-import type { IconButtonProps } from 'rsuite/esm/IconButton/IconButton';
 
-export const DeleteButton: FC<IconButtonProps> = (props) => {
+export const DeleteButton: FC<ButtonProps> = (props) => {
   return (
-    <IconButton icon={<MinusIcon />} placement="right" size="xs" {...props}>
+    <Button icon={<MinusOutlined />} size="small" {...props}>
       削除
-    </IconButton>
+    </Button>
   );
 };

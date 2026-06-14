@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row, Form } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row, Form } from '@/components/common/layout';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '@/Layout/App';
 import { useDateTimeConverter } from '@/app/datetime_converter/useDateTimeConverter';

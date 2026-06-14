@@ -1,11 +1,11 @@
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import 'rsuite/dist/rsuite.min.css';
 import '@/styles/globals.scss';
-import '@/styles/rs-custom.globals.scss';
+import '@/styles/custom.globals.scss';
 import GoogleAnalytics from '@/components/common/GoogleAnalytics';
 
 export const metadata: Metadata = {
@@ -17,9 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // テーマのチラつきを抑えるために指定
-  const className = 'rs-theme-dark';
-
   return (
     <html lang="ja">
       <Head>
@@ -30,8 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <GoogleAnalytics />
       </Head>
-      <body className={className}>
-        {children}
+      <body>
+        <AntdRegistry>{children}</AntdRegistry>
         <Analytics />
         <SpeedInsights />
       </body>

@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
+import { ButtonToolbar, Col, Grid, Panel, PanelGroup, Row } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { DiffEditor } from '@/app/diff/DiffEditor';
 import { useDiff } from '@/app/diff/useDiff';

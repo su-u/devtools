@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, PanelGroup, Row } from 'rsuite';
+import { Col, Grid, Panel, PanelGroup, Row } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useJsonFormatter } from '@/app/json_formatter/useJsonFormatter';
 import { Editor, ex } from '@/components/common/Editor';
@@ -40,7 +40,7 @@ export const JsonFormatter: FC = () => {
                       render={({ field }) => (
                         <InputNumber
                           {...field}
-                          style={{ width: 250 }}
+                          style={{ width: '100%', maxWidth: 250 }}
                           min={0}
                           max={10}
                           defaultValue={DEFAULT_VALUES.indentSpace}

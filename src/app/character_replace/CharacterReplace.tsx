@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { ButtonToolbar, Col, Form, Grid, Panel, PanelGroup, Row } from 'rsuite';
+import { ButtonToolbar, Col, Form, Grid, Panel, PanelGroup, Row } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { AddButton } from '@/app/character_replace/AddButton';
 import { DeleteButton } from '@/app/character_replace/DeleteButton';

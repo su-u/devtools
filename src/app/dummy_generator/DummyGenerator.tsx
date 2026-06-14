@@ -6,7 +6,7 @@ import type { ColumnsType } from 'antd/es/table';
 import React, { FC } from 'react';
 import { FormProvider, Controller } from 'react-hook-form';
 import type { Control, UseFormWatch } from 'react-hook-form/dist/types/form';
-import { Grid, Row, Col, PanelGroup, Panel } from 'rsuite';
+import { Grid, Row, Col, PanelGroup, Panel } from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { dataTypeOptions } from '@/app/dummy_generator/options';
 import type { DataType } from '@/app/dummy_generator/options';
@@ -150,7 +150,7 @@ const ConfigRow: FC<{
         render={({ field: { ref, ...field } }) => (
           <Select
             {...field}
-            style={{ width: 250 }}
+            style={{ width: '100%', maxWidth: 250 }}
             options={dataTypeOptions as unknown as DefaultOptionType[]}
             defaultValue={undefined}
             listHeight={512}

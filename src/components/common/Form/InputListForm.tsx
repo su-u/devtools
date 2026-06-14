@@ -1,8 +1,18 @@
 import styled from '@emotion/styled';
-import { Form } from 'rsuite';
+import React, { FC } from 'react';
 
-export const InputListForm = styled(Form)`
+type Props = {
+  layout?: string;
+  children?: React.ReactNode;
+};
+
+export const InputListForm: FC<Props> = ({ children }) => {
+  return <Wrapper>{children}</Wrapper>;
+};
+
+const Wrapper = styled.div`
+  width: 100%;
   > div:not(:last-child) {
-    margin-bottom: 12px !important;
+    margin-bottom: 12px;
   }
 `;
