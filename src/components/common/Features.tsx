@@ -94,6 +94,12 @@ export const features: FeatureGroupType[] = [
         title: '数字カンマ区切り',
         path: '/number_comma',
       },
+      {
+        key: 'radix_converter',
+        title: '基数変換',
+        path: '/radix_converter',
+        description: '2進数・8進数・10進数・16進数を相互変換します',
+      },
     ],
   },
   {
