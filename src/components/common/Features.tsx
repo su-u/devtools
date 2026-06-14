@@ -50,6 +50,13 @@ export const features: FeatureGroupType[] = [
         path: '/urlencode',
         description: '文字列をURLエンコードします',
       },
+      {
+        key: 'jwt_decoder',
+        title: 'JWTデコーダー',
+        shortTitle: 'JWT',
+        path: '/jwt_decoder',
+        description: 'JWTをヘッダー・ペイロード・署名に分解します',
+      },
     ],
   },
   {
