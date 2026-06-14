@@ -22,6 +22,6 @@ const StyleInput = styled(Input)`
   .ant-input-group-addon {
     margin-left: 12px;
     width: 200px !important;
-    text-align: right;
+    text-align: right !important;
   }
 `;
