@@ -73,7 +73,7 @@ export const JwtDecoder: FC = () => {
                     <TextArea
                       readOnly
                       value={result.header}
-                      autoSize={{ minRows: 2, maxRows: 6 }}
+                      autoSize={{ minRows: 2, maxRows: 8 }}
                       style={{ fontFamily: 'monospace' }}
                     />
                   </Panel>
@@ -89,7 +89,7 @@ export const JwtDecoder: FC = () => {
                     <TextArea
                       readOnly
                       value={result.payload}
-                      autoSize={{ minRows: 3, maxRows: 12 }}
+                      autoSize={{ minRows: 3, maxRows: 20 }}
                       style={{ fontFamily: 'monospace' }}
                     />
                   </Panel>
