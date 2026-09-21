@@ -4,11 +4,12 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { FeatureItemType } from '@/components/common/Features';
 
-type CardProps = FeatureItemType;
-export const FeatureCard: FC<CardProps> = ({ title, path, description }) => {
+type CardProps = Omit<FeatureItemType, 'key'>;
+export const FeatureCard: FC<CardProps> = ({ title, path, description, icon }) => {
   return (
     <Link href={path} style={{ textDecoration: 'none' }}>
       <StyleCard style={{ width: 200 }} title={title}>
+        {icon && <FeatureIcon aria-hidden="true">{icon}</FeatureIcon>}
         {description}
       </StyleCard>
     </Link>
@@ -36,4 +37,12 @@ const StyleCard = styled(Card)`
       0 12px 48px 16px #00000008;
     transform: scale(1.02);
   }
+`;
+
+const FeatureIcon = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 28px;
 `;
