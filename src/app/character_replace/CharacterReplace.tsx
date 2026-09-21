@@ -14,8 +14,10 @@ import { Input } from '@/components/common/Form/Input';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const CharacterReplace: FC = () => {
-  const title = '文字列置換';
+export const CharacterReplace: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const { methods, output, countUp, countDown, countDownDisabled, countUpDisabled, numberArray } =
     useCharacterReplace();
 
@@ -23,7 +25,7 @@ export const CharacterReplace: FC = () => {
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

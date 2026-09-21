@@ -16,15 +16,17 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 300;
 
-export const DateTimeConverter: FC = () => {
-  const title = '日時->日時変換';
+export const DateTimeConverter: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const { control, output, timezones, onChangeInputDate, onChangeTimezone, onChangeCustomFormat } =
     useDateTimeConverter();
 
   return (
     <AppLayout>
       <Grid fluid>
-        <PageTitle title={title} />
+        <PageTitle title={title} description={description} />
         <Row gutter={5}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>

@@ -12,7 +12,8 @@ const GoogleAnalytics: FC = () => {
     if (!existsGaId) {
       return;
     }
-    const url = pathname + searchParams.toString();
+    const query = searchParams.toString();
+    const url = query ? `${pathname}?${query}` : pathname;
     pageView(url);
   }, [pathname, searchParams]);
 

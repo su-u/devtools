@@ -12,8 +12,7 @@ import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const Punycode: FC = () => {
-  const title = 'punycode変換（日本語ドメイン変換）';
+export const Punycode: FC<{ title: string; description: string }> = ({ title, description }) => {
   const INPUT_ROWS = 5;
   const { methods, converted_ascii, converted_punycode } = usePunycode();
   const { control } = methods;
@@ -22,7 +21,7 @@ export const Punycode: FC = () => {
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <Panel

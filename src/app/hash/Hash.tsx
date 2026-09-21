@@ -2,7 +2,16 @@
 import { Switch, Space } from 'antd';
 import React, { FC } from 'react';
 import { Controller, FormProvider } from 'react-hook-form';
-import { Col, Grid, Panel, Row, PanelGroup, Form, ButtonToolbar, InputGroup } from '@/components/common/layout';
+import {
+  Col,
+  Grid,
+  Panel,
+  Row,
+  PanelGroup,
+  Form,
+  ButtonToolbar,
+  InputGroup,
+} from '@/components/common/layout';
 import { AppLayout } from '@/Layout/App';
 import { useHash } from '@/app/hash/useHash';
 import { Editor } from '@/components/common/Editor';
@@ -13,15 +22,14 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const Hash: FC = () => {
-  const title = 'ハッシュ';
+export const Hash: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { methods, algorithmList, hashes } = useHash();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>
@@ -62,9 +70,7 @@ export const Hash: FC = () => {
               <Panel bordered header={<PanelHeader title="ハッシュ値" />}>
                 <InputListForm layout="horizontal">
                   {algorithmList.map(({ label, value }) => {
-                    return (
-                      <LabelInput key={label} label={label} value={hashes[value] ?? ''} />
-                    );
+                    return <LabelInput key={label} label={label} value={hashes[value] ?? ''} />;
                   })}
                 </InputListForm>
               </Panel>

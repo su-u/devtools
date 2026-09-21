@@ -14,15 +14,14 @@ const ReactJson = dynamic(() => import('react-json-view'), {
   ssr: false,
 });
 
-export const JsonView: FC = () => {
-  const title = 'JSONビューアー';
+export const JsonView: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { input, methods } = useJsonView();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

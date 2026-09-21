@@ -24,7 +24,10 @@ type characterCountForm = {
   input: string;
 };
 
-export const CharacterCount: FC = () => {
+export const CharacterCount: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const methods = useCustomForm<characterCountForm>({
     defaultValues: {
       input: '',
@@ -35,7 +38,6 @@ export const CharacterCount: FC = () => {
     setValue('input', defaultValues?.input);
   });
 
-  const title = '文字数カウント';
   const input = watch('input', '');
 
   const characterCountValue = characterCountWithSpace(input).toString();
@@ -49,7 +51,7 @@ export const CharacterCount: FC = () => {
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <Panel

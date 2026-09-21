@@ -19,8 +19,7 @@ import { TextArea } from '@/components/common/Form/TextArea';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const Dummy: FC = () => {
-  const title = 'ダミーデータの生成';
+export const Dummy: FC<{ title: string; description: string }> = ({ title, description }) => {
   const {
     methods,
     control,
@@ -152,7 +151,7 @@ export const Dummy: FC = () => {
           onClose={closeTypePicker}
         />
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col md={12} xs={24}>
               <Form fluid layout="horizontal">

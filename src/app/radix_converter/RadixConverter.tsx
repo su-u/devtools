@@ -17,15 +17,17 @@ import { InputListForm } from '@/components/common/Form/InputListForm';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const RadixConverter: FC = () => {
-  const title = '基数変換';
+export const RadixConverter: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const { methods, result, error, baseOptions } = useRadixConverter();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

@@ -15,3 +15,42 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: #fff;
+  color: #181818;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.content-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px 8px 32px;
+  color: #e8e8e8;
+  line-height: 1.8;
+}
+
+.content-page h1 {
+  margin: 0 0 20px;
+  font-size: 26px;
+}
+
+.content-page h2 {
+  margin: 28px 0 8px;
+  font-size: 19px;
+}
+
+.content-page a {
+  color: #69b1ff;
+  text-decoration: underline;
+}

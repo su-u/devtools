@@ -1,6 +1,7 @@
 'use client';
 import styled from '@emotion/styled';
 import { Layout } from 'antd';
+import NextLink from 'next/link';
 import React, { FC } from 'react';
 import { Provider } from '@/app/Provider';
 import { SideNavBar } from '@/components/common/SideNavBar';
@@ -17,8 +18,22 @@ export const AppLayout: FC<Props> = ({ children }) => {
           inline style（クラスより優先・SSR HTMLに直接出力）で描画前から横並びを確定させる。 */}
       <StyledLayout style={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>
         <SideNavBar />
-        <StyledContent style={{ flex: 'auto', minWidth: 0, overflow: 'auto' }}>
+        <StyledContent id="main-content" style={{ flex: 'auto', minWidth: 0, overflow: 'auto' }}>
           {children}
+          <Footer>
+            <FooterLinks>
+              <NextLink href="/about">このサイトについて</NextLink>
+              <NextLink href="/privacy">プライバシーポリシー</NextLink>
+              <NextLink
+                href="https://github.com/su-u/devtools"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </NextLink>
+            </FooterLinks>
+            <small>© {new Date().getFullYear()} Dev Toolkit</small>
+          </Footer>
         </StyledContent>
       </StyledLayout>
     </Provider>
@@ -38,4 +53,24 @@ const StyledContent = styled(Layout.Content)`
   overflow: auto;
   /* flex の子が中身の最小幅以下に縮めず横あふれするのを防ぐ */
   min-width: 0;
+`;
+
+const Footer = styled.footer`
+  margin: 32px 5px 4px;
+  padding-top: 16px;
+  border-top: 1px solid #565a61;
+  color: #a4a9b3;
+  font-size: 12px;
+`;
+
+const FooterLinks = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 8px;
+
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
 `;

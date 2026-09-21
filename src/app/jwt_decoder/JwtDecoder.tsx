@@ -24,15 +24,14 @@ const formatClaim = (claim: TimeClaim): string => {
   return formatted;
 };
 
-export const JwtDecoder: FC = () => {
-  const title = 'JWTデコーダー';
+export const JwtDecoder: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { methods, result, error } = useJwtDecoder();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <Panel
@@ -97,7 +96,11 @@ export const JwtDecoder: FC = () => {
                     <Panel bordered header={<PanelHeader title="時刻クレーム" />}>
                       <InputListForm>
                         {result.timeClaims.map((claim) => (
-                          <LabelInput key={claim.key} label={claim.label} value={formatClaim(claim)} />
+                          <LabelInput
+                            key={claim.key}
+                            label={claim.label}
+                            value={formatClaim(claim)}
+                          />
                         ))}
                       </InputListForm>
                     </Panel>

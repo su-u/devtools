@@ -15,8 +15,10 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 300;
 
-export const UnixTimeConverter: FC = () => {
-  const title = 'UnixTime->日時変換';
+export const UnixTimeConverter: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const {
     control,
     output,
@@ -29,7 +31,7 @@ export const UnixTimeConverter: FC = () => {
   return (
     <AppLayout>
       <Grid fluid>
-        <PageTitle title={title} />
+        <PageTitle title={title} description={description} />
         <Row gutter={5}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>

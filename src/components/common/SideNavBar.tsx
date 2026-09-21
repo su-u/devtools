@@ -1,8 +1,4 @@
-import {
-  GithubOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-} from '@ant-design/icons';
+import { GithubOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
 import { Layout, Menu, Tooltip } from 'antd';
 import type { MenuProps } from 'antd';
@@ -51,7 +47,7 @@ export const SideNavBar: FC = () => {
       // 背景色は inline で固定（クラスのスタイルが当たる前の初回描画から効かせる）
       style={{ background: '#181818' }}
     >
-      <MenuArea>
+      <MenuArea aria-label="ツール一覧">
         <Menu
           mode="inline"
           theme="dark"
@@ -98,7 +94,7 @@ const StyledSider = styled(Layout.Sider)`
 `;
 
 // メニュー領域は伸縮＋スクロール、下部バーは常に最下部に固定
-const MenuArea = styled.div`
+const MenuArea = styled.nav`
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;

@@ -9,8 +9,7 @@ import { ClearButton } from '@/components/common/Form/ClearButton';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const Diff: FC = () => {
-  const title = 'テキスト差分';
+export const Diff: FC<{ title: string; description: string }> = ({ title, description }) => {
   const {
     methods,
     getOriginal,
@@ -26,7 +25,7 @@ export const Diff: FC = () => {
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row>
             <Col xs={24}>
               <PanelGroup bordered>

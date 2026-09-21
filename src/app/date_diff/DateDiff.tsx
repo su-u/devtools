@@ -14,14 +14,13 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 200;
 
-export const DateDiff: FC = () => {
-  const title = '日数計算';
+export const DateDiff: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { methods, outputs, onChangeInputDate, onChangeInputDateTime } = useDateDiff();
 
   return (
     <AppLayout>
       <Grid fluid>
-        <PageTitle title={title} />
+        <PageTitle title={title} description={description} />
         <Row gutter={5}>
           <Col xs={24} md={12}>
             <PanelGroup bordered>

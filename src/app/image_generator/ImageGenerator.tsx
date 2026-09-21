@@ -22,8 +22,10 @@ import { PanelHeader } from '@/components/common/PanelHeader';
 
 const width = 250;
 
-export const ImageGenerator: FC = () => {
-  const title = '画像生成';
+export const ImageGenerator: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const { methods, src, onClickGenerate, onSelectPreset, onChangeTab } = useImageGenerator();
   const { control } = methods;
 
@@ -31,7 +33,7 @@ export const ImageGenerator: FC = () => {
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <Form fluid layout="horizontal">
@@ -181,7 +183,9 @@ const PlaceholdTab: FC<{ control: any }> = ({ control }) => {
       </FormRow>
       <FormRow label="テキスト">
         <Controller
-          render={({ field: { ref, ...field } }) => <Input {...field} style={{ width: '100%', maxWidth: width }} />}
+          render={({ field: { ref, ...field } }) => (
+            <Input {...field} style={{ width: '100%', maxWidth: width }} />
+          )}
           name="text"
           control={control}
         />

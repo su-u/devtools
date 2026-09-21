@@ -12,15 +12,17 @@ import { LabelInput } from '@/components/common/Form/LabelInput';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const ColorConverter: FC = () => {
-  const title = 'カラーコード変換';
+export const ColorConverter: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const { methods, result, error, pickerValue, onPickColor } = useColorConverter();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>
@@ -107,7 +109,11 @@ const Preview = styled.div`
     linear-gradient(45deg, transparent 75%, #555 75%),
     linear-gradient(-45deg, transparent 75%, #555 75%);
   background-size: 16px 16px;
-  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
 `;
 
 // 市松模様の上に重ねる実際の色（透過色は下地が透ける）

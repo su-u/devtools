@@ -12,15 +12,14 @@ import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const UrlEncode: FC = () => {
-  const title = 'URLエンコード';
+export const UrlEncode: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { methods, output, encodingList } = useUrlEncode();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

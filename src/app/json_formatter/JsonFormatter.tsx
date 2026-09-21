@@ -12,15 +12,17 @@ import { InputNumber } from '@/components/common/Form/InputNumber';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const JsonFormatter: FC = () => {
-  const title = 'JSONフォーマット';
+export const JsonFormatter: FC<{ title: string; description: string }> = ({
+  title,
+  description,
+}) => {
   const { methods, output, DEFAULT_VALUES } = useJsonFormatter();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

@@ -13,15 +13,14 @@ import { Select } from '@/components/common/Form/Select';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const NumberComma: FC = () => {
-  const title = '数値区切り';
+export const NumberComma: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { methods, output } = useNumberComma();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <PanelGroup bordered>

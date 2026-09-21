@@ -16,8 +16,7 @@ import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 import { useCopy } from '@/hooks/useCopy';
 
-export const Uuid: FC = () => {
-  const title = 'UUIDの生成';
+export const Uuid: FC<{ title: string; description: string }> = ({ title, description }) => {
   const {
     methods,
     selectData,
@@ -36,7 +35,7 @@ export const Uuid: FC = () => {
       {contextHolder}
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col md={12} xs={24}>
               <Form fluid layout="horizontal">

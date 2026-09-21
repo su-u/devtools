@@ -10,15 +10,14 @@ import { CopyButton } from '@/components/common/Form/CopyButton';
 import { PageTitle } from '@/components/common/PageTitle';
 import { PanelHeader } from '@/components/common/PanelHeader';
 
-export const Base64: FC = () => {
-  const title = 'base64エンコード';
+export const Base64: FC<{ title: string; description: string }> = ({ title, description }) => {
   const { methods, output } = useBase64();
 
   return (
     <FormProvider {...methods}>
       <AppLayout>
         <Grid fluid>
-          <PageTitle title={title} />
+          <PageTitle title={title} description={description} />
           <Row gutter={5}>
             <Col xs={24} md={12}>
               <Panel

@@ -9,6 +9,13 @@ export const HomePage: FC = () => {
   return (
     <AppLayout>
       <div style={{ margin: 8 }}>
+        <header style={{ margin: '12px 0 20px' }}>
+          <h1 style={{ margin: '0 0 8px', fontSize: 24 }}>開発者向けWebツール集</h1>
+          <p style={{ maxWidth: 760, margin: 0, color: '#c9cdd4', lineHeight: 1.7 }}>
+            文字数カウント、JSON整形、エンコード、日時変換などを無料で利用できます。
+            入力したデータはブラウザ内で処理され、サーバーには送信されません。
+          </p>
+        </header>
         {features.map((group) => (
           <section
             key={group.key}
